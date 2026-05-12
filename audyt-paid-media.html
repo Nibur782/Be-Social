@@ -1,0 +1,426 @@
+﻿<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Audyt Paid Media - Checklista 30 punktów | Dawid Rubin</title>
+    <meta name="description" content="Pobierz darmową checklistę 30 punktów audytu Paid Media. Sprawdź, gdzie przepalasz budżet reklamowy - tracking, architektura kampanii, kreacje, raportowanie.">
+    <meta name="author" content="Dawid Rubin">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://twojadomena.pl/audyt-paid-media.html">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://twojadomena.pl/audyt-paid-media.html">
+    <meta property="og:title" content="Audyt Paid Media - Checklista 30 punktów [Darmowy PDF]">
+    <meta property="og:description" content="30 konkretnych punktów kontrolnych dla e-commerce. Sprawdź, gdzie przepalasz budżet reklamowy.">
+    <meta property="og:image" content="https://twojadomena.pl/dawid-rubin-portret.webp">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #F8FAFC; color: #0F172A; }
+        .vasco-blue { color: #1D4ED8; }
+        .bg-vasco-blue { background-color: #1D4ED8; }
+        .bento-card { background: #FFFFFF; border: 1px solid #E2E8F0; transition: all 0.3s ease; box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.05); }
+        .checklist-item { display: flex; align-items: flex-start; gap: 10px; padding: 10px 0; border-bottom: 1px solid #F1F5F9; }
+        .checklist-item:last-child { border-bottom: none; }
+        .check-num { width: 24px; height: 24px; border-radius: 50%; background: #EFF6FF; color: #1D4ED8; font-size: 11px; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px; }
+        @keyframes pulse-border {
+            0%, 100% { border-color: rgba(29, 78, 216, 0.4); }
+            50% { border-color: rgba(29, 78, 216, 1); box-shadow: 0 0 20px rgba(29, 78, 216, 0.3); }
+        }
+        .form-highlight { animation: pulse-border 3s ease-in-out infinite; }
+        #success-message { display: none; }
+    </style>
+</head>
+<body class="antialiased">
+
+    <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 bg-white/90 backdrop-blur-md border-b border-gray-200 shadow-sm">
+        <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+            <a href="index.html" class="text-xl font-bold tracking-tighter italic">DAWID<span class="vasco-blue">RUBIN</span></a>
+            <div class="hidden lg:flex items-center gap-8 text-sm font-semibold text-slate-600">
+                <a href="index.html#about" class="hover:text-blue-600 transition-all">O mnie</a>
+                <a href="index.html#services" class="hover:text-blue-600 transition-all">Usługi</a>
+                <a href="index.html#process" class="hover:text-blue-600 transition-all">Proces</a>
+                <div class="relative group/cs">
+                    <button class="flex items-center gap-1 hover:text-blue-600 transition-all cursor-pointer">
+                        Case Study
+                        <svg class="w-3.5 h-3.5 transition-transform duration-200 group-hover/cs:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"/></svg>
+                    </button>
+                    <div class="absolute top-full left-1/2 -translate-x-1/2 pt-3 opacity-0 invisible group-hover/cs:opacity-100 group-hover/cs:visible transition-all duration-200 z-50">
+                        <div class="bg-white rounded-2xl shadow-xl border border-gray-100 py-2" style="min-width: 230px;">
+                            <a href="case-study-globalny-wzrost.html" class="flex items-center gap-3 px-4 py-3 hover:bg-blue-50 hover:text-blue-700 transition-colors text-slate-700">
+                                <span class="text-blue-600 font-bold text-sm w-12 flex-shrink-0">+64%</span>
+                                <span class="text-sm font-medium">Globalny wzrost sprzedaży</span>
+                            </a>
+                            <a href="case-study-automatyzacja.html" class="flex items-center gap-3 px-4 py-3 hover:bg-blue-50 hover:text-blue-700 transition-colors text-slate-700">
+                                <span class="text-blue-600 font-bold text-sm w-12 flex-shrink-0">80%</span>
+                                <span class="text-sm font-medium">Oszczędność czasu</span>
+                            </a>
+                            <a href="case-study-vasco-usa.html" class="flex items-center gap-3 px-4 py-3 hover:bg-blue-50 hover:text-blue-700 transition-colors text-slate-700">
+                                <span class="text-blue-600 font-bold text-sm w-12 flex-shrink-0">+466%</span>
+                                <span class="text-sm font-medium">Wzrost sprzedaży USA</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <a href="index.html#reporting" class="hover:text-blue-600 transition-all">Raportowanie</a>
+                <a href="audyt-paid-media.html" class="text-blue-600 hover:text-blue-800 transition-all border-b border-blue-300 hover:border-blue-600 pb-0.5">Pobierz PDF</a>
+            </div>
+            <div class="flex items-center gap-4">
+                <a href="index.html#audit" class="hidden md:inline-block bg-vasco-blue hover:bg-blue-700 text-white px-5 py-2.5 rounded-full text-sm font-semibold transition-all">Zamów Audyt</a>
+                <button id="mobile-menu-btn" class="lg:hidden p-2 text-slate-600 hover:text-blue-600 focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                </button>
+            </div>
+        </div>
+        <div id="mobile-menu" class="hidden lg:hidden bg-white border-b border-gray-200">
+            <div class="flex flex-col px-6 py-4 space-y-4 text-sm font-semibold text-slate-600">
+                <a href="index.html#about" class="hover:text-blue-600 transition-all">O mnie</a>
+                <a href="index.html#services" class="hover:text-blue-600 transition-all">Usługi</a>
+                <a href="index.html#process" class="hover:text-blue-600 transition-all">Proces</a>
+                <div>
+                    <button id="cs-mobile-btn" class="flex items-center justify-between w-full text-left hover:text-blue-600 transition-all">
+                        Case Study
+                        <svg id="cs-mobile-arrow" class="w-4 h-4 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"/></svg>
+                    </button>
+                    <div id="cs-mobile-submenu" class="hidden mt-3 space-y-2 border-l-2 border-blue-100 pl-4">
+                        <a href="case-study-globalny-wzrost.html" class="flex items-center gap-2 text-sm text-slate-500 hover:text-blue-600 transition-all py-1"><span class="text-blue-500 font-bold">+64%</span> Globalny wzrost</a>
+                        <a href="case-study-automatyzacja.html" class="flex items-center gap-2 text-sm text-slate-500 hover:text-blue-600 transition-all py-1"><span class="text-blue-500 font-bold">80%</span> Oszczędność czasu</a>
+                        <a href="case-study-vasco-usa.html" class="flex items-center gap-2 text-sm text-slate-500 hover:text-blue-600 transition-all py-1"><span class="text-blue-500 font-bold">+466%</span> Wzrost USA</a>
+                    </div>
+                </div>
+                <a href="index.html#reporting" class="hover:text-blue-600 transition-all">Raportowanie</a>
+                <a href="audyt-paid-media.html" class="text-blue-600 hover:text-blue-800 transition-all">Pobierz PDF</a>
+                <a href="index.html#audit" class="inline-block text-center bg-vasco-blue text-white px-5 py-3 rounded-full mt-4 transition-all">Zamów Audyt</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="pt-32 pb-20 px-6 bg-white border-b border-gray-100">
+        <div class="max-w-5xl mx-auto text-center">
+            <div class="inline-flex items-center gap-2 bg-blue-50 border border-blue-200 text-blue-700 text-sm font-semibold px-4 py-2 rounded-full mb-6">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-4 h-4"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3" /></svg>
+                Darmowy PDF - bez zobowiązań
+            </div>
+            <h1 class="text-4xl md:text-6xl font-bold leading-tight mb-6">
+                Ile pieniędzy<br/><span class="vasco-blue">przepalasz</span> teraz?
+            </h1>
+            <p class="text-xl text-slate-600 max-w-2xl mx-auto leading-relaxed mb-10">
+                30 konkretnych punktów kontrolnych dla e-commerce. Sprawdź tracking, architekturę kampanii, kreacje i raportowanie - w jednej checkliście.
+            </p>
+            <a href="#formularz" class="inline-flex items-center gap-2 bg-blue-600 text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-blue-700 transition-all shadow-lg shadow-blue-600/20">
+                Pobierz za darmo
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 13.5L12 21m0 0l-7.5-7.5M12 21V3" /></svg>
+            </a>
+            <p class="text-sm text-slate-400 mt-4">Podaj e-mail - PDF przychodzi od razu. Zero spamu.</p>
+        </div>
+    </section>
+
+    <!-- Co jest w środku -->
+    <section class="py-20 px-6">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-14">
+                <span class="text-blue-500 font-mono text-sm tracking-widest uppercase mb-3 block">Co jest w środku</span>
+                <h2 class="text-3xl md:text-4xl font-bold italic">30 punktów. 5 kategorii. Zero lania wody.</h2>
+                <p class="text-slate-600 mt-4 max-w-xl mx-auto">Każdy punkt to konkretne pytanie kontrolne z wyjaśnieniem, dlaczego ma znaczenie i co sprawdzić.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+
+                <!-- Tracking -->
+                <div class="bento-card rounded-3xl p-7">
+                    <div class="flex items-center gap-3 mb-5">
+                        <div class="w-10 h-10 rounded-xl bg-blue-600 flex items-center justify-center flex-shrink-0">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 text-white"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 3v11.25A2.25 2.25 0 006 16.5h2.25M3.75 3h-1.5m1.5 0h16.5m0 0h1.5m-1.5 0v11.25A2.25 2.25 0 0118 16.5h-2.25m-7.5 0h7.5m-7.5 0-1 3m8.5-3 1 3m0 0 .5 1.5m-.5-1.5h-9.5m0 0-.5 1.5" /></svg>
+                        </div>
+                        <div>
+                            <div class="text-xs font-mono text-blue-600 uppercase tracking-widest font-bold">Punkty 1-8</div>
+                            <div class="font-bold text-lg">Tracking & Analityka</div>
+                        </div>
+                    </div>
+                    <div class="space-y-0">
+                        <div class="checklist-item"><div class="check-num">1</div><span class="text-sm text-slate-600">GA4 skonfigurowany przez GTM</span></div>
+                        <div class="checklist-item"><div class="check-num">2</div><span class="text-sm text-slate-600">Śledzenie e-commerce (ATC, purchase, checkout)</span></div>
+                        <div class="checklist-item"><div class="check-num">3</div><span class="text-sm text-slate-600">Conversions API wdrożone</span></div>
+                        <div class="checklist-item"><div class="check-num">4</div><span class="text-sm text-slate-600">Server-Side Tracking pokrywa 80%+ zdarzeń</span></div>
+                        <div class="checklist-item"><div class="check-num">5</div><span class="text-sm text-slate-600">Zdarzenia iOS14 priorytetyzowane</span></div>
+                        <div class="checklist-item"><div class="check-num">6</div><span class="text-sm text-slate-600">Deduplikacja browser + server</span></div>
+                        <div class="checklist-item"><div class="check-num">7</div><span class="text-sm text-slate-600">UTM we wszystkich linkach reklamowych</span></div>
+                        <div class="checklist-item"><div class="check-num">8</div><span class="text-sm text-slate-600">Ruch wewnętrzny odfiltrowany z GA4</span></div>
+                    </div>
+                </div>
+
+                <!-- Architektura -->
+                <div class="bento-card rounded-3xl p-7">
+                    <div class="flex items-center gap-3 mb-5">
+                        <div class="w-10 h-10 rounded-xl bg-blue-600 flex items-center justify-center flex-shrink-0">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 text-white"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 21h16.5M4.5 3h15M5.25 3v18m13.5-18v18M9 6.75h1.5m-1.5 3h1.5m-1.5 3h1.5m3-6H15m-1.5 3H15m-1.5 3H15M9 21v-3.375c0-.621.504-1.125 1.125-1.125h3.75c.621 0 1.125.504 1.125 1.125V21" /></svg>
+                        </div>
+                        <div>
+                            <div class="text-xs font-mono text-blue-600 uppercase tracking-widest font-bold">Punkty 9-15</div>
+                            <div class="font-bold text-lg">Architektura kampanii</div>
+                        </div>
+                    </div>
+                    <div class="space-y-0">
+                        <div class="checklist-item"><div class="check-num">9</div><span class="text-sm text-slate-600">Spójna nomenklatura kampanii / Ad Set / Ad</span></div>
+                        <div class="checklist-item"><div class="check-num">10</div><span class="text-sm text-slate-600">Zimna i retargetingowa w osobnych kampaniach</span></div>
+                        <div class="checklist-item"><div class="check-num">11</div><span class="text-sm text-slate-600">Testy A/B - struktura vs. kreacja osobno</span></div>
+                        <div class="checklist-item"><div class="check-num">12</div><span class="text-sm text-slate-600">Optymalizacja pod właściwe zdarzenie (sygnał wraca)</span></div>
+                        <div class="checklist-item"><div class="check-num">13</div><span class="text-sm text-slate-600">Wykluczenia audience między kampaniami</span></div>
+                        <div class="checklist-item"><div class="check-num">14</div><span class="text-sm text-slate-600">Frequency cap dla retargetingu</span></div>
+                        <div class="checklist-item"><div class="check-num">15</div><span class="text-sm text-slate-600">CBO vs ABO - świadoma decyzja z uzasadnieniem</span></div>
+                    </div>
+                </div>
+
+                <!-- Kreacja -->
+                <div class="bento-card rounded-3xl p-7">
+                    <div class="flex items-center gap-3 mb-5">
+                        <div class="w-10 h-10 rounded-xl bg-blue-600 flex items-center justify-center flex-shrink-0">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 text-white"><path stroke-linecap="round" stroke-linejoin="round" d="M9.53 16.122a3 3 0 00-5.78 1.128 2.25 2.25 0 01-2.4 2.245 4.5 4.5 0 008.4-2.245c0-.399-.078-.78-.22-1.128zm0 0a15.998 15.998 0 003.388-1.62m-5.043-.025a15.994 15.994 0 011.622-3.395m3.42 3.42a15.995 15.995 0 004.764-4.648l3.876-5.814a1.151 1.151 0 00-1.597-1.597L14.146 6.32a15.996 15.996 0 00-4.649 4.763m3.42 3.42a6.776 6.776 0 00-3.42-3.42" /></svg>
+                        </div>
+                        <div>
+                            <div class="text-xs font-mono text-blue-600 uppercase tracking-widest font-bold">Punkty 16-20</div>
+                            <div class="font-bold text-lg">Kreacja i komunikacja</div>
+                        </div>
+                    </div>
+                    <div class="space-y-0">
+                        <div class="checklist-item"><div class="check-num">16</div><span class="text-sm text-slate-600">Min. 3-5 kreacji na Ad Set testowanych równolegle</span></div>
+                        <div class="checklist-item"><div class="check-num">17</div><span class="text-sm text-slate-600">Hook (pierwsze 3 sek.) przetestowany na metrykach</span></div>
+                        <div class="checklist-item"><div class="check-num">18</div><span class="text-sm text-slate-600">Kreacje dopasowane do formatu (feed / stories / reels)</span></div>
+                        <div class="checklist-item"><div class="check-num">19</div><span class="text-sm text-slate-600">Social proof w komunikacji (liczby, opinie, certyfikaty)</span></div>
+                        <div class="checklist-item"><div class="check-num">20</div><span class="text-sm text-slate-600">Lokalizacja kreacji per rynek (język, waluta, kontekst)</span></div>
+                    </div>
+                </div>
+
+                <!-- Budżet -->
+                <div class="bento-card rounded-3xl p-7">
+                    <div class="flex items-center gap-3 mb-5">
+                        <div class="w-10 h-10 rounded-xl bg-blue-600 flex items-center justify-center flex-shrink-0">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 text-white"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m-3-2.818l.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182s2.9-.879 4.006 0l.415.33M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                        </div>
+                        <div>
+                            <div class="text-xs font-mono text-blue-600 uppercase tracking-widest font-bold">Punkty 21-25</div>
+                            <div class="font-bold text-lg">Budżet i optymalizacja</div>
+                        </div>
+                    </div>
+                    <div class="space-y-0">
+                        <div class="checklist-item"><div class="check-num">21</div><span class="text-sm text-slate-600">Rozkład TOFU/MOFU/BOFU odpowiedni do etapu wzrostu</span></div>
+                        <div class="checklist-item"><div class="check-num">22</div><span class="text-sm text-slate-600">Bid strategy dopasowana do celu kampanii</span></div>
+                        <div class="checklist-item"><div class="check-num">23</div><span class="text-sm text-slate-600">Analiza performance per audience (nie tylko kampania)</span></div>
+                        <div class="checklist-item"><div class="check-num">24</div><span class="text-sm text-slate-600">Min. 50 zdarzeń/tydzień per Ad Set (Learning Phase)</span></div>
+                        <div class="checklist-item"><div class="check-num">25</div><span class="text-sm text-slate-600">Scalowanie max. +20% tygodniowo dla stabilnych kampanii</span></div>
+                    </div>
+                </div>
+
+                <!-- Raportowanie -->
+                <div class="bento-card rounded-3xl p-7">
+                    <div class="flex items-center gap-3 mb-5">
+                        <div class="w-10 h-10 rounded-xl bg-blue-600 flex items-center justify-center flex-shrink-0">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 text-white"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 3v11.25A2.25 2.25 0 006 16.5h2.25M3.75 3h-1.5m1.5 0h16.5m0 0h1.5m-1.5 0v11.25A2.25 2.25 0 0118 16.5h-2.25m-7.5 0h7.5m-7.5 0-1 3m8.5-3 1 3m0 0 .5 1.5m-.5-1.5h-9.5m0 0-.5 1.5m.75-9 3-3 2.148 2.148A12.061 12.061 0 0116.5 7.605" /></svg>
+                        </div>
+                        <div>
+                            <div class="text-xs font-mono text-blue-600 uppercase tracking-widest font-bold">Punkty 26-30</div>
+                            <div class="font-bold text-lg">Raportowanie</div>
+                        </div>
+                    </div>
+                    <div class="space-y-0">
+                        <div class="checklist-item"><div class="check-num">26</div><span class="text-sm text-slate-600">Dashboard live łączący platformy + GA4</span></div>
+                        <div class="checklist-item"><div class="check-num">27</div><span class="text-sm text-slate-600">Atrybucja omawiana jawnie (last-click vs. data-driven)</span></div>
+                        <div class="checklist-item"><div class="check-num">28</div><span class="text-sm text-slate-600">Raport tygodniowy z wnioskami (nie tylko danymi)</span></div>
+                        <div class="checklist-item"><div class="check-num">29</div><span class="text-sm text-slate-600">Benchmarki branżowe jako punkt odniesienia</span></div>
+                        <div class="checklist-item"><div class="check-num">30</div><span class="text-sm text-slate-600">Alerty dla anomalii kosztowych (ROAS/CPA progi)</span></div>
+                    </div>
+                </div>
+
+                <!-- Co dostajesz -->
+                <div class="bg-gradient-to-br from-blue-700 to-blue-900 rounded-3xl p-7 text-white flex flex-col justify-between">
+                    <div>
+                        <div class="text-blue-200 font-mono text-xs tracking-widest uppercase mb-4">Co dostajesz</div>
+                        <h3 class="text-xl font-bold mb-4">PDF gotowy do wydruku i pracy z zespołem</h3>
+                        <ul class="space-y-3 text-sm text-blue-100">
+                            <li class="flex items-center gap-2"><span class="w-5 h-5 rounded-full bg-white/20 flex items-center justify-center text-xs font-bold flex-shrink-0">✓</span>30 punktów z wyjaśnieniami</li>
+                            <li class="flex items-center gap-2"><span class="w-5 h-5 rounded-full bg-white/20 flex items-center justify-center text-xs font-bold flex-shrink-0">✓</span>Kolumna "Status" do odhaczenia</li>
+                            <li class="flex items-center gap-2"><span class="w-5 h-5 rounded-full bg-white/20 flex items-center justify-center text-xs font-bold flex-shrink-0">✓</span>Priorytetyzacja: co naprawić najpierw</li>
+                            <li class="flex items-center gap-2"><span class="w-5 h-5 rounded-full bg-white/20 flex items-center justify-center text-xs font-bold flex-shrink-0">✓</span>Format: PDF, format A4</li>
+                        </ul>
+                    </div>
+                    <div class="mt-8 pt-6 border-t border-white/20">
+                        <div class="text-2xl font-bold">0 PLN</div>
+                        <div class="text-blue-200 text-sm">W zamian za e-mail. Bez ograniczeń czasowych.</div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Formularz -->
+    <section id="formularz" class="py-24 px-6 bg-white border-y border-gray-200">
+        <div class="max-w-2xl mx-auto text-center">
+            <span class="text-blue-500 font-mono text-sm tracking-widest uppercase mb-4 block">Pobierz teraz</span>
+            <h2 class="text-3xl md:text-4xl font-bold mb-4 italic">Podaj e-mail - PDF leci do Ciebie.</h2>
+            <p class="text-slate-600 mb-10">Jeden e-mail. Checklista w formacie PDF. Żadnych newsletterów bez zgody.</p>
+
+            <form id="download-form" class="bg-slate-50 border-2 border-blue-200 rounded-3xl p-8 md:p-10 form-highlight" action="#" method="post">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                    <div class="text-left">
+                        <label for="fname" class="block text-sm font-semibold text-slate-700 mb-1.5">Imię</label>
+                        <input type="text" id="fname" name="fname" placeholder="np. Dawid" required
+                            class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-100 outline-none transition-all text-slate-800 bg-white">
+                    </div>
+                    <div class="text-left">
+                        <label for="company" class="block text-sm font-semibold text-slate-700 mb-1.5">Firma (opcjonalnie)</label>
+                        <input type="text" id="company" name="company" placeholder="np. Be Social"
+                            class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-100 outline-none transition-all text-slate-800 bg-white">
+                    </div>
+                </div>
+                <div class="text-left mb-6">
+                    <label for="email" class="block text-sm font-semibold text-slate-700 mb-1.5">E-mail</label>
+                    <input type="email" id="email" name="email" placeholder="twoj@email.pl" required
+                        class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-100 outline-none transition-all text-slate-800 bg-white">
+                </div>
+                <div class="text-left mb-6">
+                    <label class="flex items-start gap-3 cursor-pointer">
+                        <input type="checkbox" required class="mt-1 w-4 h-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500 flex-shrink-0">
+                        <span class="text-sm text-slate-600">Wyrażam zgodę na przesłanie materiału na podany adres e-mail oraz kontakt w celach związanych z ofertą usług Dawida Rubina. Mogę cofnąć zgodę w każdej chwili.</span>
+                    </label>
+                </div>
+                <button type="submit"
+                    class="w-full bg-blue-600 text-white py-4 rounded-xl font-bold text-lg hover:bg-blue-700 transition-all shadow-lg shadow-blue-600/20 flex items-center justify-center gap-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3" /></svg>
+                    Pobierz darmową checklistę
+                </button>
+                <p class="text-xs text-slate-400 mt-4">Wysyłamy PDF automatycznie po potwierdzeniu e-maila.</p>
+            </form>
+
+            <div id="success-message" class="bg-green-50 border border-green-200 rounded-3xl p-8 text-center">
+                <div class="text-4xl mb-4">✓</div>
+                <h3 class="text-xl font-bold text-green-800 mb-2">Sprawdź skrzynkę pocztową.</h3>
+                <p class="text-green-700 text-sm">Wysłaliśmy PDF na podany adres. Jeśli nie widzisz wiadomości w ciągu 2 minut, sprawdź folder "Spam".</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Autorytet -->
+    <section class="py-20 px-6">
+        <div class="max-w-5xl mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <span class="text-blue-500 font-mono text-sm tracking-widest uppercase mb-4 block">Kto to stworzył</span>
+                    <h2 class="text-3xl font-bold mb-6 italic">Checklista pochodzi z pracy na realnych danych - nie z teorii.</h2>
+                    <p class="text-slate-600 mb-4 leading-relaxed">Przez 8+ lat zarządzałem kampaniami i systemami reklamowymi na 20+ rynkach. Każdy punkt tej listy to błąd lub lukę, którą znajdowałem w klientach podczas audytów.</p>
+                    <p class="text-slate-600 mb-6 leading-relaxed">Zarządzałem budżetami 100k+ PLN miesięcznie w portfolio obejmującym Vasco Electronics, Biedronkę, Domodi i inne marki. Ta checklista to skondensowane 8 lat doświadczenia.</p>
+                    <div class="flex flex-wrap gap-4">
+                        <div class="bg-slate-50 border border-gray-200 rounded-xl px-4 py-2 text-sm font-semibold text-slate-600">8+ lat w e-commerce</div>
+                        <div class="bg-slate-50 border border-gray-200 rounded-xl px-4 py-2 text-sm font-semibold text-slate-600">20+ rynków</div>
+                        <div class="bg-slate-50 border border-gray-200 rounded-xl px-4 py-2 text-sm font-semibold text-slate-600">Strategiczny Partner Meta</div>
+                    </div>
+                </div>
+                <div class="rounded-3xl overflow-hidden border border-gray-200 shadow-lg aspect-square max-w-sm mx-auto md:mx-0">
+                    <img src="dawid-rubin-portret.webp" alt="Dawid Rubin - Architekt Wzrostu i Inzynier AI" class="w-full h-full object-cover" style="object-position: 50% 8%;" loading="lazy">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social proof krótki -->
+    <section class="py-16 px-6 bg-slate-900 text-white">
+        <div class="max-w-5xl mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                <div>
+                    <div class="text-4xl font-bold mb-1">+466%</div>
+                    <div class="text-blue-300 text-sm font-mono uppercase tracking-widest">Wzrost sprzedaży USA YoY</div>
+                    <div class="text-slate-400 text-xs mt-1">Vasco Electronics</div>
+                </div>
+                <div>
+                    <div class="text-4xl font-bold mb-1">80%</div>
+                    <div class="text-blue-300 text-sm font-mono uppercase tracking-widest">Oszczędność czasu operacyjnego</div>
+                    <div class="text-slate-400 text-xs mt-1">Automatyzacja procesów</div>
+                </div>
+                <div>
+                    <div class="text-4xl font-bold mb-1">20+</div>
+                    <div class="text-blue-300 text-sm font-mono uppercase tracking-widest">Rynków, jeden system</div>
+                    <div class="text-slate-400 text-xs mt-1">Globalna ekspansja</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="py-20 px-6 bg-white border-t border-gray-100">
+        <div class="max-w-2xl mx-auto">
+            <h2 class="text-2xl font-bold mb-8 text-center">Pytania</h2>
+            <div class="space-y-4">
+                <div class="border border-gray-200 rounded-2xl p-6">
+                    <h3 class="font-bold mb-2 text-slate-900">Czy PDF jest naprawdę darmowy?</h3>
+                    <p class="text-slate-600 text-sm">Tak. Podajesz e-mail, dostajesz PDF. Bez ukrytych kosztów, bez wymuszonych subskrypcji. Jeśli nie chcesz dalszych wiadomości - jeden klik i usuwamy Cię z listy.</p>
+                </div>
+                <div class="border border-gray-200 rounded-2xl p-6">
+                    <h3 class="font-bold mb-2 text-slate-900">Dla kogo jest ta checklista?</h3>
+                    <p class="text-slate-600 text-sm">Dla właścicieli e-commerce, CMO, liderów marketingu i specjalistów Paid Media, którzy chcą sprawdzić, czy ich obecna konfiguracja ma luki. Minimalne wymagania: budżet reklamowy 10 000+ PLN/mies.</p>
+                </div>
+                <div class="border border-gray-200 rounded-2xl p-6">
+                    <h3 class="font-bold mb-2 text-slate-900">Czy mogę ją przetworzyć z moim zespołem?</h3>
+                    <p class="text-slate-600 text-sm">Tak - do tego właśnie służy. PDF ma format gotowy do druku i kolumnę "Status" do odhaczania punktów podczas wewnętrznego audytu.</p>
+                </div>
+                <div class="border border-gray-200 rounded-2xl p-6">
+                    <h3 class="font-bold mb-2 text-slate-900">Co jeśli znajdę problemy i nie wiem, jak je naprawić?</h3>
+                    <p class="text-slate-600 text-sm">To jest właśnie moment, w którym możemy porozmawiać. <a href="index.html#audit" class="text-blue-600 font-semibold hover:underline">Zamów audyt</a> - w 2 tygodnie dostarczam pełną diagnozę z planem naprawy.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bottom CTA -->
+    <section class="py-16 px-6 bg-blue-600 text-white text-center">
+        <div class="max-w-2xl mx-auto">
+            <h2 class="text-3xl font-bold mb-4 italic">Pobierz checklistę teraz.</h2>
+            <p class="text-blue-100 mb-8">Zero ryzyka. Pełne 30 punktów. Gotowe do użycia od razu.</p>
+            <a href="#formularz" class="inline-flex items-center gap-2 bg-white text-blue-700 px-8 py-4 rounded-full font-bold text-lg hover:bg-blue-50 transition-all">
+                Pobierz za darmo
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 13.5L12 21m0 0l-7.5-7.5M12 21V3" /></svg>
+            </a>
+        </div>
+    </section>
+
+    <footer class="py-12 bg-slate-900 text-white border-t border-white/10">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center text-slate-400 text-sm font-medium gap-4">
+            <div>
+                <a href="index.html" class="text-lg font-bold tracking-tighter italic text-white">DAWID<span class="text-blue-400">RUBIN</span></a>
+            </div>
+            <div>&copy; <script>document.write(new Date().getFullYear())</script> Dawid Rubin. Wszelkie prawa zastrzeżone.</div>
+            <div class="flex gap-6">
+                <a href="index.html" class="hover:text-white transition-colors">Strona główna</a>
+                <a href="case-study-vasco-usa.html" class="hover:text-white transition-colors">Case Study</a>
+                <a href="index.html#audit" class="hover:text-white transition-colors">Kontakt</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('download-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            this.style.display = 'none';
+            document.getElementById('success-message').style.display = 'block';
+        });
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenuBtn.addEventListener('click', () => { mobileMenu.classList.toggle('hidden'); });
+        const csMobileBtn = document.getElementById('cs-mobile-btn');
+        const csMobileSubmenu = document.getElementById('cs-mobile-submenu');
+        const csMobileArrow = document.getElementById('cs-mobile-arrow');
+        if (csMobileBtn) {
+            csMobileBtn.addEventListener('click', () => {
+                csMobileSubmenu.classList.toggle('hidden');
+                csMobileArrow.classList.toggle('rotate-180');
+            });
+        }
+    </script>
+
+</body>
+</html>

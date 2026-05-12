@@ -1,0 +1,379 @@
+﻿<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Metodologia i Stack Technologiczny | Dawid Rubin</title>
+    <meta name="description" content="Jak technicznie działają systemy analityczne, automatyzacje i raportowanie wdrażane przez Dawida Rubina. Stack narzędzi, integracje, architektura danych.">
+    <meta name="author" content="Dawid Rubin">
+    <link rel="canonical" href="https://twojadomena.pl/metodologia.html">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #F8FAFC; color: #0F172A; }
+        .vasco-blue { color: #1D4ED8; }
+        .bg-vasco-blue { background-color: #1D4ED8; }
+        .bento-card { background: #FFFFFF; border: 1px solid #E2E8F0; box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.05); }
+        .tech-tag { display: inline-block; background: #EFF6FF; color: #1D4ED8; border: 1px solid #BFDBFE; font-size: 11px; font-weight: 700; padding: 2px 10px; border-radius: 9999px; font-family: monospace; letter-spacing: 0.05em; }
+        .step-line { position: absolute; left: 23px; top: 48px; bottom: -32px; width: 2px; background: linear-gradient(to bottom, #1D4ED8, #BFDBFE); }
+    </style>
+</head>
+<body class="antialiased">
+
+    <nav class="fixed w-full z-50 bg-white/90 backdrop-blur-md border-b border-gray-200 shadow-sm">
+        <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+            <a href="index.html" class="text-xl font-bold tracking-tighter italic">DAWID<span class="vasco-blue">RUBIN</span></a>
+            <div class="flex items-center gap-6 text-sm font-semibold text-slate-600">
+                <a href="index.html#reporting" class="hover:text-blue-600 transition-all hidden md:block">← Raporty</a>
+                <a href="index.html#audit" class="bg-vasco-blue hover:bg-blue-700 text-white px-5 py-2.5 rounded-full text-sm font-semibold transition-all">Zamów Audyt</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="pt-32 pb-16 px-6 bg-white border-b border-gray-100">
+        <div class="max-w-4xl mx-auto">
+            <div class="flex flex-wrap items-center gap-3 mb-6">
+                <a href="index.html" class="text-sm text-slate-500 hover:text-blue-600 transition-colors font-mono">← Strona główna</a>
+                <span class="text-slate-300">/</span>
+                <span class="text-sm text-slate-500 font-mono">Metodologia</span>
+            </div>
+            <span class="text-blue-500 font-mono text-sm tracking-widest uppercase mb-4 block">Pod maską</span>
+            <h1 class="text-4xl md:text-5xl font-bold leading-tight mb-6 italic">
+                Jak to działa<br/>od strony technicznej.
+            </h1>
+            <p class="text-xl text-slate-600 max-w-2xl leading-relaxed">
+                Stack narzędzi, architektura danych, integracje i podejście do automatyzacji. Dla tych, którzy chcą wiedzieć dokładnie co wdrażam i dlaczego akurat tak.
+            </p>
+        </div>
+    </section>
+
+    <!-- Warstwa 1: Tracking -->
+    <section class="py-20 px-6">
+        <div class="max-w-5xl mx-auto">
+
+            <div class="flex items-center gap-4 mb-10">
+                <div class="w-10 h-10 rounded-full bg-blue-600 flex items-center justify-center text-white font-bold flex-shrink-0">1</div>
+                <div>
+                    <span class="text-blue-500 font-mono text-xs tracking-widest uppercase">Warstwa pierwsza</span>
+                    <h2 class="text-2xl font-bold">Śledzenie i zbieranie danych</h2>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                <div class="bento-card rounded-3xl p-7">
+                    <h3 class="font-bold text-lg mb-2">Google Tag Manager + GA4</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed mb-4">GTM jako kontener wszystkich tagów - jeden punkt zarządzania zamiast rozsypanych skryptów w kodzie strony. GA4 skonfigurowany z pełnym śledzeniem e-commerce: add_to_cart, begin_checkout, purchase - z walidacją każdego zdarzenia przez DebugView i GA4 Realtime.</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="tech-tag">GTM</span>
+                        <span class="tech-tag">GA4</span>
+                        <span class="tech-tag">DataLayer</span>
+                        <span class="tech-tag">DebugView</span>
+                    </div>
+                </div>
+                <div class="bento-card rounded-3xl p-7">
+                    <h3 class="font-bold text-lg mb-2">Server-Side Tracking</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed mb-4">Własny serwer GTM (Google Cloud lub Stape.io) jako pośrednik między stroną a platformami reklamowymi. Piksele Meta, TikTok i Google trafiają do platform przez serwer - omijając adblockery, iOS14 ITP i blokady przeglądarek. Odzysk danych na poziomie 15-30% w typowych przypadkach.</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="tech-tag">sGTM</span>
+                        <span class="tech-tag">Google Cloud</span>
+                        <span class="tech-tag">Stape.io</span>
+                        <span class="tech-tag">First-party cookies</span>
+                    </div>
+                </div>
+                <div class="bento-card rounded-3xl p-7">
+                    <h3 class="font-bold text-lg mb-2">Conversions API (CAPI)</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed mb-4">Bezpośrednie połączenie serwera e-commerce z API Meta, TikTok i Google. Zdarzenia wychodzą z backendu - nie z przeglądarki klienta. Deduplikacja browser + server przez event_id, żeby platforma nie liczyła jednego zdarzenia dwa razy. Wymagany dla stabilnego działania kampanii po iOS14.</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="tech-tag">Meta CAPI</span>
+                        <span class="tech-tag">TikTok Events API</span>
+                        <span class="tech-tag">Google Ads API</span>
+                        <span class="tech-tag">Deduplikacja</span>
+                    </div>
+                </div>
+                <div class="bento-card rounded-3xl p-7">
+                    <h3 class="font-bold text-lg mb-2">Priorytetyzacja zdarzeń (iOS14)</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed mb-4">Weryfikacja domeny w Meta Business Manager, konfiguracja Aggregated Event Measurement - maksymalnie 8 zdarzeń na domenę, ustawione według priorytetu konwersji. Zdarzenia niżej w hierarchii nie są widoczne dla kampanii optymalizowanych pod Purchase po iOS14.</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="tech-tag">AEM</span>
+                        <span class="tech-tag">Domain Verification</span>
+                        <span class="tech-tag">Event Prioritization</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Diagram walidacji -->
+            <div class="bento-card rounded-3xl p-8 bg-slate-900 text-white">
+                <h3 class="font-bold text-lg mb-4">Jak wygląda walidacja danych przed wdrożeniem?</h3>
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-4 text-center text-sm">
+                    <div class="bg-white/10 rounded-xl p-4">
+                        <div class="text-blue-300 font-mono text-xs mb-2">KROK 1</div>
+                        <div class="font-semibold">GTM Preview Mode</div>
+                        <div class="text-slate-400 text-xs mt-1">Weryfikacja czy tagi odpalają się na właściwych zdarzeniach</div>
+                    </div>
+                    <div class="bg-white/10 rounded-xl p-4">
+                        <div class="text-blue-300 font-mono text-xs mb-2">KROK 2</div>
+                        <div class="font-semibold">GA4 DebugView</div>
+                        <div class="text-slate-400 text-xs mt-1">Poprawność parametrów zdarzeń w czasie rzeczywistym</div>
+                    </div>
+                    <div class="bg-white/10 rounded-xl p-4">
+                        <div class="text-blue-300 font-mono text-xs mb-2">KROK 3</div>
+                        <div class="font-semibold">Meta Test Events</div>
+                        <div class="text-slate-400 text-xs mt-1">Browser + Server - sprawdzenie deduplikacji event_id</div>
+                    </div>
+                    <div class="bg-white/10 rounded-xl p-4">
+                        <div class="text-blue-300 font-mono text-xs mb-2">KROK 4</div>
+                        <div class="font-semibold">7-dniowy monitoring</div>
+                        <div class="text-slate-400 text-xs mt-1">Porównanie danych GA4 vs platformy reklamowe vs backend</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Warstwa 2: Analityka -->
+    <section class="py-20 px-6 bg-white border-y border-gray-200">
+        <div class="max-w-5xl mx-auto">
+
+            <div class="flex items-center gap-4 mb-10">
+                <div class="w-10 h-10 rounded-full bg-blue-600 flex items-center justify-center text-white font-bold flex-shrink-0">2</div>
+                <div>
+                    <span class="text-blue-500 font-mono text-xs tracking-widest uppercase">Warstwa druga</span>
+                    <h2 class="text-2xl font-bold">Analityka i raportowanie</h2>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                <div class="bento-card rounded-3xl p-7">
+                    <h3 class="font-bold text-lg mb-2">Atrybucja multi-touch</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed mb-4">Last-click attribution zawyża wartość kanałów domykających (retargeting, brand search) i zaniża kanały inicjujące (cold social, display). Używam modelu data-driven w GA4 dla kont z wystarczającą ilością konwersji, lub linear/time-decay dla mniejszych wolumenów. Dla każdego klienta porównujemy modele i świadomie wybieramy ten, który podejmuje właściwe decyzje budżetowe.</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="tech-tag">Data-driven attribution</span>
+                        <span class="tech-tag">GA4 Attribution</span>
+                        <span class="tech-tag">Cross-channel</span>
+                    </div>
+                </div>
+                <div class="bento-card rounded-3xl p-7">
+                    <h3 class="font-bold text-lg mb-2">Ścieżki konwersji i okno decyzyjne</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed mb-4">Raport ścieżek konwersji w GA4 pokazuje ile touchpointów i ile dni potrzebuje klient przed zakupem. Dla Vasco Electronics okno decyzyjne w USA wynosiło 5-7 dni - co bezpośrednio informowało o optymalnym ustawieniu okna atrybucji w kampaniach Meta i długości cyklu retargetingowego.</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="tech-tag">GA4 Path Exploration</span>
+                        <span class="tech-tag">Conversion Window</span>
+                        <span class="tech-tag">Touchpoint Analysis</span>
+                    </div>
+                </div>
+                <div class="bento-card rounded-3xl p-7">
+                    <h3 class="font-bold text-lg mb-2">Dashboardy live - stack</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed mb-4">Looker Studio (dawniej Data Studio) jako warstwa wizualizacji. Connektory: GA4 (natywny), Meta Ads (Supermetrics lub Funnel.io), Google Ads (natywny), TikTok Ads (Supermetrics), dane z arkuszy Google jako źródło dodatkowe. BigQuery jako warstwa pośrednia dla dużych wolumenów danych i transformacji SQL.</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="tech-tag">Looker Studio</span>
+                        <span class="tech-tag">Supermetrics</span>
+                        <span class="tech-tag">BigQuery</span>
+                        <span class="tech-tag">Funnel.io</span>
+                    </div>
+                </div>
+                <div class="bento-card rounded-3xl p-7">
+                    <h3 class="font-bold text-lg mb-2">Analiza lejków w GA4</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed mb-4">Funnel Exploration w GA4 z segmentacją po źródle ruchu, urządzeniu i geografii. Identyfikacja drop-off per etap: session_start → view_item → add_to_cart → begin_checkout → purchase. Każdy próg odpadania to konkretna hipoteza - UX, cena, brak zaufania, wolne ładowanie - weryfikowana przez testy.</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="tech-tag">GA4 Funnel Exploration</span>
+                        <span class="tech-tag">Segment Comparison</span>
+                        <span class="tech-tag">Drop-off Analysis</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tabela - kto co widzi -->
+            <div class="bento-card rounded-3xl overflow-hidden">
+                <div class="p-7 border-b border-gray-100">
+                    <h3 class="font-bold text-xl">Architektura dostępu do raportów</h3>
+                    <p class="text-slate-600 text-sm mt-1">Ten sam zestaw danych - cztery osobne widoki w Looker Studio, każdy z innym zakresem metryk i granularnością.</p>
+                </div>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-sm">
+                        <thead class="bg-slate-50 border-b border-gray-200">
+                            <tr>
+                                <th class="text-left p-4 font-semibold text-slate-700">Rola</th>
+                                <th class="text-left p-4 font-semibold text-slate-700">Główne metryki</th>
+                                <th class="text-left p-4 font-semibold text-slate-700">Granularność</th>
+                                <th class="text-left p-4 font-semibold text-slate-700">Częstość aktualizacji</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-gray-100">
+                            <tr class="hover:bg-blue-50 transition-colors">
+                                <td class="p-4 font-semibold text-blue-700 font-mono text-xs uppercase tracking-wide">Zarząd / CEO</td>
+                                <td class="p-4 text-slate-600">Revenue, ROAS, CAC, trend YoY/MoM</td>
+                                <td class="p-4 text-slate-500 text-xs">Portfel / rynek</td>
+                                <td class="p-4 text-slate-500 text-xs">Dzienna</td>
+                            </tr>
+                            <tr class="hover:bg-blue-50 transition-colors">
+                                <td class="p-4 font-semibold text-blue-700 font-mono text-xs uppercase tracking-wide">Lider Performance</td>
+                                <td class="p-4 text-slate-600">ROAS/CPL per kanał, analiza lejka, efektywność segmentów</td>
+                                <td class="p-4 text-slate-500 text-xs">Kampania / Ad Set</td>
+                                <td class="p-4 text-slate-500 text-xs">Dzienna / godzinowa</td>
+                            </tr>
+                            <tr class="hover:bg-blue-50 transition-colors">
+                                <td class="p-4 font-semibold text-blue-700 font-mono text-xs uppercase tracking-wide">Analityk Danych</td>
+                                <td class="p-4 text-slate-600">Kohorty, ścieżki, atrybucja, surowe zdarzenia GA4</td>
+                                <td class="p-4 text-slate-500 text-xs">Sesja / użytkownik</td>
+                                <td class="p-4 text-slate-500 text-xs">Ciągła (BigQuery)</td>
+                            </tr>
+                            <tr class="hover:bg-blue-50 transition-colors">
+                                <td class="p-4 font-semibold text-blue-700 font-mono text-xs uppercase tracking-wide">Specjalista kampanii</td>
+                                <td class="p-4 text-slate-600">CTR, Hook Rate, Thumb Stop Rate, Frequency, CPM</td>
+                                <td class="p-4 text-slate-500 text-xs">Ad / kreacja</td>
+                                <td class="p-4 text-slate-500 text-xs">Godzinowa + alerty</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Warstwa 3: Automatyzacja -->
+    <section class="py-20 px-6">
+        <div class="max-w-5xl mx-auto">
+
+            <div class="flex items-center gap-4 mb-10">
+                <div class="w-10 h-10 rounded-full bg-blue-600 flex items-center justify-center text-white font-bold flex-shrink-0">3</div>
+                <div>
+                    <span class="text-blue-500 font-mono text-xs tracking-widest uppercase">Warstwa trzecia</span>
+                    <h2 class="text-2xl font-bold">Automatyzacja i integracje</h2>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                <div class="bento-card rounded-3xl p-7">
+                    <h3 class="font-bold text-lg mb-2">Make (Integromat) jako orkiestrator</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed mb-4">Make jako główny no-code orchestrator przepływów danych. Typowe scenariusze: zbieranie danych z API Meta/Google → transformacja → zapis do GSheets → triggerowanie notyfikacji Slack lub email. Obsługa webhooków, harmonogramów i logiki warunkowej bez pisania kodu.</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="tech-tag">Make</span>
+                        <span class="tech-tag">Webhooks</span>
+                        <span class="tech-tag">API connectors</span>
+                        <span class="tech-tag">Error handling</span>
+                    </div>
+                </div>
+                <div class="bento-card rounded-3xl p-7">
+                    <h3 class="font-bold text-lg mb-2">Custom API integrations (Python / Apps Script)</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed mb-4">Gdy Make nie wystarcza - skrypty Python (Meta Graph API, Google Ads API, Smartly API) uruchamiane przez Google Cloud Scheduler lub lokalnie. Google Apps Script dla integracji bezpośrednio z GSheets - np. automatyczne tworzenie kampanii z arkusza lub pull danych z API o określonych godzinach.</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">Apps Script</span>
+                        <span class="tech-tag">Meta Graph API</span>
+                        <span class="tech-tag">Cloud Scheduler</span>
+                    </div>
+                </div>
+                <div class="bento-card rounded-3xl p-7">
+                    <h3 class="font-bold text-lg mb-2">AI w procesach operacyjnych</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed mb-4">Custom GPT Actions z połączeniem do własnego API - asystent, który odpowiada na pytania o wyniki kampanii pobierając dane w czasie rzeczywistym. Claude API do automatycznej analizy raportów: system dostarcza dane, model generuje wnioski i rekomendacje w zdefiniowanym formacie, wyniki trafiają do Slacka lub dokumentu.</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="tech-tag">OpenAI API</span>
+                        <span class="tech-tag">Claude API</span>
+                        <span class="tech-tag">Custom GPT Actions</span>
+                        <span class="tech-tag">Structured outputs</span>
+                    </div>
+                </div>
+                <div class="bento-card rounded-3xl p-7">
+                    <h3 class="font-bold text-lg mb-2">Automatyzacja zarządzania kampaniami</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed mb-4">Smartly.io jako platforma do zarządzania kampaniami na wielu rynkach - dynamiczne kreacje, reguły automatyzacji, budget pacing. Uzupełniony o autorskie skrypty dla scenariuszy, których Smartly nie obsługuje: monitoring nocny, alerty o anomaliach kosztowych, automatyczne pauzy kampanii przy przekroczeniu progów.</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="tech-tag">Smartly.io</span>
+                        <span class="tech-tag">Automated Rules</span>
+                        <span class="tech-tag">Budget Pacing</span>
+                        <span class="tech-tag">Cost Anomaly Detection</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Przykład architektury -->
+            <div class="bento-card rounded-3xl p-8 border-l-4 border-blue-600">
+                <h3 class="font-bold text-xl mb-2">Przykład: architektura automatyzacji dla Vasco Electronics</h3>
+                <p class="text-slate-500 text-xs font-mono uppercase tracking-widest mb-6">20 rynków, 2-osobowy zespół performance</p>
+                <div class="space-y-4">
+                    <div class="flex items-start gap-4">
+                        <span class="tech-tag flex-shrink-0 mt-0.5">TRIGGER</span>
+                        <p class="text-slate-600 text-sm">Dział Social Media wkleja URL posta do GSheets i zaznacza checkbox "Promuj"</p>
+                    </div>
+                    <div class="flex items-start gap-4">
+                        <span class="tech-tag flex-shrink-0 mt-0.5">STEP 1</span>
+                        <p class="text-slate-600 text-sm">Apps Script wykrywa zmianę, waliduje dane i wywołuje Meta Graph API</p>
+                    </div>
+                    <div class="flex items-start gap-4">
+                        <span class="tech-tag flex-shrink-0 mt-0.5">STEP 2</span>
+                        <p class="text-slate-600 text-sm">API tworzy kampanię, Ad Set z targetowaniem (lookalike + interest per rynek) i Ad z postem jako kreacją</p>
+                    </div>
+                    <div class="flex items-start gap-4">
+                        <span class="tech-tag flex-shrink-0 mt-0.5">STEP 3</span>
+                        <p class="text-slate-600 text-sm">Status kampanii i ID zapisują się z powrotem do arkusza - specjalista widzi wyniki bez wchodzenia do Ads Managera</p>
+                    </div>
+                    <div class="flex items-start gap-4">
+                        <span class="tech-tag flex-shrink-0 mt-0.5">EFEKT</span>
+                        <p class="text-slate-600 text-sm font-semibold text-slate-800">Czas tworzenia kampanii: z 45 minut do 2 minut. Dział Performance odciążony od zadań manualnych.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Warstwa 4: Architektura kont -->
+    <section class="py-20 px-6 bg-white border-y border-gray-200">
+        <div class="max-w-5xl mx-auto">
+
+            <div class="flex items-center gap-4 mb-10">
+                <div class="w-10 h-10 rounded-full bg-blue-600 flex items-center justify-center text-white font-bold flex-shrink-0">4</div>
+                <div>
+                    <span class="text-blue-500 font-mono text-xs tracking-widest uppercase">Warstwa czwarta</span>
+                    <h2 class="text-2xl font-bold">Architektura kampanii i kont</h2>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                <div class="bento-card rounded-3xl p-7">
+                    <h3 class="font-bold text-lg mb-3">Taksonomia nazewnictwa</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed mb-4">Spójna konwencja nazw kampanii, Ad Setów i reklam umożliwia automatyczne filtrowanie i raportowanie bez manualnej pracy. Format: <span class="font-mono text-xs bg-slate-100 px-1 rounded">[RYNEK]_[PLATFORMA]_[CEL]_[AUDIENCE]_[DATA]</span></p>
+                    <p class="text-slate-500 text-xs">Jeden standard dla wszystkich rynków = błyskawiczne porównania i pełna kompatybilność z zewnętrznymi narzędziami raportowania.</p>
+                </div>
+                <div class="bento-card rounded-3xl p-7">
+                    <h3 class="font-bold text-lg mb-3">Segmentacja kampanii</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed mb-4">Twarda separacja kampanii zimnych (prospecting), ciepłych (engagement) i retargetingowych w osobnych kampaniach - nie Ad Setach. Powód: algorytm optymalizuje inaczej per kampania, mieszanie grup daje artefakty w danych i utrudnia skalowanie.</p>
+                    <p class="text-slate-500 text-xs">Wykluczenia audience między kampaniami obowiązkowe - bez nich przepalasz budżet retargetując zimną grupę i prospectujesz do gorącej.</p>
+                </div>
+                <div class="bento-card rounded-3xl p-7">
+                    <h3 class="font-bold text-lg mb-3">CBO vs ABO - kiedy co</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed mb-4">Campaign Budget Optimization (CBO) dla stabilnych kampanii z wieloma Ad Setami - algorytm sam alokuje budżet do najlepiej działających. Ad Set Budget Optimization (ABO) dla testów - gdy chcesz kontrolować dokładnie ile idzie na każdą grupę i masz hipotezę do zweryfikowania.</p>
+                    <p class="text-slate-500 text-xs">Learning Phase: minimum 50 zdarzeń optymalizacyjnych tygodniowo per Ad Set. Poniżej tego progu - kampania działa po omacku.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="py-20 px-6 text-center">
+        <div class="max-w-2xl mx-auto">
+            <h2 class="text-3xl font-bold mb-4 italic">Gotowy żeby wdrożyć to u siebie?</h2>
+            <p class="text-slate-600 mb-8">Audyt pokazuje stan obecny i konkretny plan wdrożenia powyższego stacku pod Twój biznes.</p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="index.html#audit" class="bg-blue-600 text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-blue-700 transition-all">Zamów Audyt</a>
+                <a href="case-study-vasco-usa.html" class="border border-gray-300 text-slate-800 px-8 py-4 rounded-full font-bold text-lg hover:bg-gray-100 transition-all">Zobacz case study →</a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-12 bg-slate-900 text-white border-t border-white/10">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center text-slate-400 text-sm font-medium gap-4">
+            <a href="index.html" class="text-lg font-bold tracking-tighter italic text-white">DAWID<span class="text-blue-400">RUBIN</span></a>
+            <div>&copy; <script>document.write(new Date().getFullYear())</script> Dawid Rubin. Wszelkie prawa zastrzeżone.</div>
+            <div class="flex gap-6">
+                <a href="index.html" class="hover:text-white transition-colors">Strona główna</a>
+                <a href="case-study-vasco-usa.html" class="hover:text-white transition-colors">Case Study</a>
+                <a href="index.html#audit" class="hover:text-white transition-colors">Kontakt</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

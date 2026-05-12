@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Case Study: 80% oszczędności czasu - Smartly, GSheets i autorskie API | Dawid Rubin</title>
+    <meta name="description" content="Jak wdrożenie Smartly i autorskich rozwiązań opartych na GSheets i API pozwoliło zaoszczędzić 80% czasu operacyjnego przy zarządzaniu kampaniami na 20+ rynkach.">
+    <meta name="author" content="Dawid Rubin">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://twojadomena.pl/case-study-automatyzacja.html">
+
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://twojadomena.pl/case-study-automatyzacja.html">
+    <meta property="og:title" content="80% oszczędności czasu - Smartly + autorskie API na 20 rynkach">
+    <meta property="og:description" content="Jak zautomatyzowałem zarządzanie budżetami i promocję postów dla Vasco Electronics, eliminując 80% manualnej pracy operacyjnej.">
+    <meta property="og:image" content="https://twojadomena.pl/screenshots/vasco-smartly-automation.webp">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org/",
+      "@type": "Article",
+      "headline": "80% oszczędności czasu operacyjnego: Smartly + autorskie rozwiązania GSheets i API",
+      "author": { "@type": "Person", "name": "Dawid Rubin", "url": "https://twojadomena.pl/" },
+      "publisher": { "@type": "Person", "name": "Dawid Rubin" },
+      "datePublished": "2025-01-01",
+      "image": "https://twojadomena.pl/screenshots/vasco-smartly-automation.webp",
+      "description": "Analiza wdrożenia Smartly i autorskich systemów automatyzacji, które pozwoliły zarządzać kampaniami na 20+ rynkach bez proporcjonalnego wzrostu zespołu."
+    }
+    </script>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #F8FAFC; color: #0F172A; }
+        .vasco-blue { color: #1D4ED8; }
+        .bg-vasco-blue { background-color: #1D4ED8; }
+        .bento-card { background: #FFFFFF; border: 1px solid #E2E8F0; transition: all 0.3s ease; box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.05); }
+        .prose-custom p { margin-bottom: 1.25rem; line-height: 1.8; color: #475569; }
+        .prose-custom h3 { font-size: 1.35rem; font-weight: 700; margin-bottom: 0.75rem; margin-top: 2rem; color: #0F172A; }
+    </style>
+</head>
+<body class="antialiased">
+
+    <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 bg-white/90 backdrop-blur-md border-b border-gray-200 shadow-sm">
+        <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+            <a href="index.html" class="text-xl font-bold tracking-tighter italic">DAWID<span class="vasco-blue">RUBIN</span></a>
+            <div class="hidden lg:flex items-center gap-8 text-sm font-semibold text-slate-600">
+                <a href="index.html#about" class="hover:text-blue-600 transition-all">O mnie</a>
+                <a href="index.html#services" class="hover:text-blue-600 transition-all">Usługi</a>
+                <a href="index.html#process" class="hover:text-blue-600 transition-all">Proces</a>
+                <div class="relative group/cs">
+                    <button class="flex items-center gap-1 hover:text-blue-600 transition-all cursor-pointer">
+                        Case Study
+                        <svg class="w-3.5 h-3.5 transition-transform duration-200 group-hover/cs:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"/></svg>
+                    </button>
+                    <div class="absolute top-full left-1/2 -translate-x-1/2 pt-3 opacity-0 invisible group-hover/cs:opacity-100 group-hover/cs:visible transition-all duration-200 z-50">
+                        <div class="bg-white rounded-2xl shadow-xl border border-gray-100 py-2" style="min-width: 230px;">
+                            <a href="case-study-globalny-wzrost.html" class="flex items-center gap-3 px-4 py-3 hover:bg-blue-50 hover:text-blue-700 transition-colors text-slate-700">
+                                <span class="text-blue-600 font-bold text-sm w-12 flex-shrink-0">+64%</span>
+                                <span class="text-sm font-medium">Globalny wzrost sprzedaży</span>
+                            </a>
+                            <a href="case-study-automatyzacja.html" class="flex items-center gap-3 px-4 py-3 hover:bg-blue-50 hover:text-blue-700 transition-colors text-slate-700">
+                                <span class="text-blue-600 font-bold text-sm w-12 flex-shrink-0">80%</span>
+                                <span class="text-sm font-medium">Oszczędność czasu</span>
+                            </a>
+                            <a href="case-study-vasco-usa.html" class="flex items-center gap-3 px-4 py-3 hover:bg-blue-50 hover:text-blue-700 transition-colors text-slate-700">
+                                <span class="text-blue-600 font-bold text-sm w-12 flex-shrink-0">+466%</span>
+                                <span class="text-sm font-medium">Wzrost sprzedaży USA</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <a href="index.html#reporting" class="hover:text-blue-600 transition-all">Raportowanie</a>
+                <a href="audyt-paid-media.html" class="text-blue-600 hover:text-blue-800 transition-all border-b border-blue-300 hover:border-blue-600 pb-0.5">Pobierz PDF</a>
+            </div>
+            <div class="flex items-center gap-4">
+                <a href="index.html#audit" class="hidden md:inline-block bg-vasco-blue hover:bg-blue-700 text-white px-5 py-2.5 rounded-full text-sm font-semibold transition-all">Zamów Audyt</a>
+                <button id="mobile-menu-btn" class="lg:hidden p-2 text-slate-600 hover:text-blue-600 focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                </button>
+            </div>
+        </div>
+        <div id="mobile-menu" class="hidden lg:hidden bg-white border-b border-gray-200">
+            <div class="flex flex-col px-6 py-4 space-y-4 text-sm font-semibold text-slate-600">
+                <a href="index.html#about" class="hover:text-blue-600 transition-all">O mnie</a>
+                <a href="index.html#services" class="hover:text-blue-600 transition-all">Usługi</a>
+                <a href="index.html#process" class="hover:text-blue-600 transition-all">Proces</a>
+                <div>
+                    <button id="cs-mobile-btn" class="flex items-center justify-between w-full text-left hover:text-blue-600 transition-all">
+                        Case Study
+                        <svg id="cs-mobile-arrow" class="w-4 h-4 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"/></svg>
+                    </button>
+                    <div id="cs-mobile-submenu" class="hidden mt-3 space-y-2 border-l-2 border-blue-100 pl-4">
+                        <a href="case-study-globalny-wzrost.html" class="flex items-center gap-2 text-sm text-slate-500 hover:text-blue-600 transition-all py-1"><span class="text-blue-500 font-bold">+64%</span> Globalny wzrost</a>
+                        <a href="case-study-automatyzacja.html" class="flex items-center gap-2 text-sm text-slate-500 hover:text-blue-600 transition-all py-1"><span class="text-blue-500 font-bold">80%</span> Oszczędność czasu</a>
+                        <a href="case-study-vasco-usa.html" class="flex items-center gap-2 text-sm text-slate-500 hover:text-blue-600 transition-all py-1"><span class="text-blue-500 font-bold">+466%</span> Wzrost USA</a>
+                    </div>
+                </div>
+                <a href="index.html#reporting" class="hover:text-blue-600 transition-all">Raportowanie</a>
+                <a href="audyt-paid-media.html" class="text-blue-600 hover:text-blue-800 transition-all">Pobierz PDF</a>
+                <a href="index.html#audit" class="inline-block text-center bg-vasco-blue text-white px-5 py-3 rounded-full mt-4 transition-all">Zamów Audyt</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="pt-32 pb-16 px-6 bg-white border-b border-gray-100">
+        <div class="max-w-4xl mx-auto">
+            <div class="flex flex-wrap items-center gap-3 mb-6">
+                <a href="index.html" class="text-sm text-slate-500 hover:text-blue-600 transition-colors font-mono">← Strona główna</a>
+                <span class="text-slate-300">/</span>
+                <span class="text-sm text-slate-500 font-mono">Case Study</span>
+                <span class="bg-blue-100 text-blue-700 text-xs font-bold px-3 py-1 rounded-full">Vasco Electronics</span>
+            </div>
+            <span class="text-blue-500 font-mono text-sm tracking-widest uppercase mb-4 block">Case Study - Automatyzacja operacyjna</span>
+            <h1 class="text-4xl md:text-6xl font-bold leading-tight mb-6">
+                <span class="vasco-blue">80%</span> mniej<br/>pracy manualnej.
+            </h1>
+            <p class="text-xl text-slate-600 max-w-2xl leading-relaxed mb-8">
+                Zarządzanie kampaniami na 20+ rynkach przez 2-osobowy zespół nie jest możliwe bez automatyzacji. Smartly przejął zarządzanie budżetami, autorskie narzędzie GSheets + API wyeliminowało ręczne tworzenie kampanii. <strong class="text-slate-800">Skala rosła - nakład pracy nie.</strong>
+            </p>
+            <div class="flex flex-wrap gap-6 text-sm font-mono text-slate-500 border-t border-gray-100 pt-6">
+                <span>Klient: <strong class="text-slate-700">Vasco Electronics</strong></span>
+                <span>Rynki: <strong class="text-slate-700">20+ jednocześnie</strong></span>
+                <span>Narzędzia: <strong class="text-slate-700">Smartly, GSheets, API Meta</strong></span>
+                <span>Efekt: <strong class="text-slate-700">-80% czasu operacyjnego</strong></span>
+            </div>
+        </div>
+    </section>
+
+    <!-- KPI bar -->
+    <section class="py-12 bg-vasco-blue text-white">
+        <div class="max-w-4xl mx-auto px-6">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center divide-y md:divide-y-0 md:divide-x divide-white/20">
+                <div class="pt-6 md:pt-0">
+                    <div class="text-4xl font-bold mb-1">80%</div>
+                    <div class="text-xs font-semibold tracking-widest uppercase text-blue-200">Mniej manualnej pracy</div>
+                </div>
+                <div class="pt-6 md:pt-0">
+                    <div class="text-4xl font-bold mb-1">20+</div>
+                    <div class="text-xs font-semibold tracking-widest uppercase text-blue-200">Rynków w jednym systemie</div>
+                </div>
+                <div class="pt-6 md:pt-0">
+                    <div class="text-4xl font-bold mb-1">2</div>
+                    <div class="text-xs font-semibold tracking-widest uppercase text-blue-200">Osoby w zespole</div>
+                </div>
+                <div class="pt-6 md:pt-0">
+                    <div class="text-4xl font-bold mb-1">24/7</div>
+                    <div class="text-xs font-semibold tracking-widest uppercase text-blue-200">Monitoring bez przerw</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main content -->
+    <section class="py-20 px-6">
+        <div class="max-w-4xl mx-auto">
+
+            <!-- Kontekst -->
+            <div class="mb-16">
+                <span class="text-blue-500 font-mono text-sm tracking-widest uppercase mb-3 block">01 - Kontekst</span>
+                <h2 class="text-3xl font-bold mb-8 italic">20 rynków, 2 osoby, jeden zegar.</h2>
+                <div class="prose-custom">
+                    <p>Vasco Electronics rosło szybko - nowe rynki, nowe formaty, rosnące budżety. Problem w tym, że zespół performance nie rósł proporcjonalnie. Dwa etaty miały zarządzać kampaniami na ponad dwudziestu rynkach, w różnych strefach czasowych, z różnymi walutami, sezonowościami i specyfiką platformy.</p>
+                    <p>W takiej skali każda godzina spędzona na manualnym zarządzaniu budżetami to godzina, której nie ma na strategię, analizę i optymalizację. I każda ręcznie tworzona kampania to źródło potencjalnego błędu - literówka w nazwie, zły budżet, zła data. Na 20 rynkach takie błędy zdarzają się regularnie, a konsekwencje mogą być kosztowne.</p>
+                </div>
+
+                <div class="bento-card rounded-3xl p-8 my-8 border-l-4 border-blue-600">
+                    <h3 class="text-lg font-bold mb-3 text-blue-700 mt-0">Matematyka problemu operacyjnego</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed mb-2">Przy 20 rynkach i założeniu, że każdy wymaga codziennej weryfikacji budżetów (15 min/rynek) - to 5 godzin dziennie tylko na sprawdzenie, czy kampanie działają zgodnie z planem. Bez weekendów, bez uwzględnienia promocji postów, zmian kreacji ani raportowania.</p>
+                    <p class="text-slate-600 text-sm leading-relaxed mb-0">W praktyce: albo coś jest monitorowane rzadziej niż powinno, albo ktoś sprawdza budżety o 22:00 w niedzielę. Żadna z tych opcji nie jest akceptowalna w skali.</p>
+                </div>
+            </div>
+
+            <!-- Problem A - budżety -->
+            <div class="mb-16">
+                <span class="text-blue-500 font-mono text-sm tracking-widest uppercase mb-3 block">02 - Problem A</span>
+                <h2 class="text-3xl font-bold mb-8 italic">Zarządzanie budżetami: manualnie, na okrągło, przez 7 dni w tygodniu.</h2>
+                <div class="prose-custom">
+                    <p>Budżety kampanii na 20+ rynkach zmieniają się dynamicznie - sezonowość, wyprzedaże, nowe produkty, różne kursy walut. Każda zmiana wymagała ręcznej interwencji: wejście na konto, zmiana budżetu, weryfikacja, zapisanie. Na 20 rynkach, kilka razy w tygodniu.</p>
+                    <p>Dodatkowe wyzwanie: Smartly - platforma do automatyzacji kampanii Meta - obsługiwał większość standardowych scenariuszy, ale zostawiał luki. Specyficzne przypadki alokacji budżetu między rynkami, monitoring nocny w weekendy, alerty o anomaliach kosztowych - tego Smartly nie ogarniał w pełni. Potrzebowałem uzupełnienia, które działa tam, gdzie Smartly ma ograniczenia.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 my-8">
+                    <div class="bento-card rounded-2xl p-6">
+                        <div class="text-red-500 font-mono text-xs font-bold uppercase tracking-widest mb-3">Przed</div>
+                        <h4 class="font-bold mb-2">Ręczne zarządzanie - codziennie</h4>
+                        <p class="text-slate-600 text-sm">Każda zmiana budżetu = wejście na konto reklamowe per rynek, manualna edycja, weryfikacja. Weekendy i noce bez monitoringu oznaczały ryzyko przepalenia budżetu bez reakcji.</p>
+                    </div>
+                    <div class="bento-card rounded-2xl p-6 border-blue-200 border">
+                        <div class="text-blue-600 font-mono text-xs font-bold uppercase tracking-widest mb-3">Po</div>
+                        <h4 class="font-bold mb-2">Smartly + autorski system uzupełniający</h4>
+                        <p class="text-slate-600 text-sm">Smartly zarządza standardowymi scenariuszami. Autorski skrypt monitoruje status kampanii w czasie rzeczywistym i dostosowuje budżety automatycznie - również w nocy i weekendy.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Problem B - promocja postów -->
+            <div class="mb-16">
+                <span class="text-blue-500 font-mono text-sm tracking-widest uppercase mb-3 block">03 - Problem B</span>
+                <h2 class="text-3xl font-bold mb-8 italic">Promocja postów: bottleneck między social media a performance.</h2>
+                <div class="prose-custom">
+                    <p>Dział social media Vasco produkował content na kilkunastu rynkach - posty organiczne, relacje, materiały lokalne. Gdy post miał potencjał reklamowy, ktoś z działu performance musiał ręcznie stworzyć kampanię: wybrać konto, ustawić targeting, określić budżet, wgrać kreację, określić czas trwania.</p>
+                    <p>To zajmowało 20-40 minut per post. Na kilkanaście rynków, kilka razy w tygodniu, dawało kilkanaście godzin miesięcznie - tylko na tworzenie kampanii, które mogłyby powstać w 30 sekund. I wprowadzało dodatkowe ryzyko błędów ludzkich przy każdej operacji.</p>
+                </div>
+
+                <div class="bento-card rounded-3xl p-8 my-8 border-l-4 border-amber-400">
+                    <h3 class="text-lg font-bold mb-3 text-amber-700 mt-0">Rzeczywisty koszt "prostego zadania"</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed mb-0">30 minut na stworzenie kampanii z posta * 3 posty tygodniowo * 12 rynków = 18 godzin miesięcznie. To prawie 2,5 dnia roboczego specjalisty performance - spędzone na zadaniu, które jest w 100% powtarzalne i nie wymaga żadnej decyzji merytorycznej. To praca dla systemu, nie dla człowieka.</p>
+                </div>
+            </div>
+
+            <!-- Rozwiązanie -->
+            <div class="mb-16">
+                <span class="text-blue-500 font-mono text-sm tracking-widest uppercase mb-3 block">04 - Rozwiązanie</span>
+                <h2 class="text-3xl font-bold mb-8 italic">Dwa systemy, jeden cel: człowiek podejmuje decyzje - maszyna je wykonuje.</h2>
+
+                <h3 class="text-xl font-bold mb-4 mt-8">System A: Smartly + autorski monitoring budżetów</h3>
+                <div class="prose-custom">
+                    <p>Smartly przejął dynamiczne zarządzanie budżetami według zdefiniowanych reguł - alokacja między rynkami, skalowanie w sezonach, ograniczenia dzienne. Tam, gdzie Smartly miał luki, dołożyłem autorski skrypt: system monitorujący status kampanii w czasie rzeczywistym i automatycznie korygujący budżety według własnej logiki.</p>
+                </div>
+
+                <div class="bento-card rounded-3xl overflow-hidden mb-8 mt-4">
+                    <div class="p-6">
+                        <div class="font-bold text-slate-800 mb-1">System zarządzania budżetami - Smartly + autorskie API</div>
+                        <p class="text-slate-500 text-xs font-mono uppercase">Monitoring 20 rynków w czasie rzeczywistym</p>
+                    </div>
+                    <img src="screenshots/vasco-smartly-automation.webp" alt="System automatyzacji budżetów - Smartly + autorskie API" class="w-full" loading="lazy">
+                </div>
+
+                <h3 class="text-xl font-bold mb-4 mt-10">System B: Autorskie narzędzie promocji postów (GSheets + API Meta)</h3>
+                <div class="prose-custom">
+                    <p>Zaprojektowałem i wdrożyłem dedykowany arkusz Google Sheets zintegrowany bezpośrednio z API platformy reklamowej Meta. Zasada działania jest prosta: osoba z działu social media wkleja nazwę posta i zaznacza checkbox - system sam tworzy kampanię reklamową na właściwym koncie, z właściwymi ustawieniami, we właściwym czasie.</p>
+                    <p>Żadnego logowania do Menedżera Reklam. Żadnego ręcznego tworzenia zestawów reklam. Żadnego ryzyka błędu w budżecie czy dacie. Całkowity czas działania działu performance: 0 minut na post.</p>
+                </div>
+
+                <div class="bento-card rounded-3xl overflow-hidden mb-8 mt-4">
+                    <div class="p-6">
+                        <div class="font-bold text-slate-800 mb-1">Interfejs autorskiego narzędzia - GSheets + API Meta</div>
+                        <p class="text-slate-500 text-xs font-mono uppercase">Checkbox uruchamia pełny pipeline tworzenia kampanii</p>
+                    </div>
+                    <img src="screenshots/vasco-api-tool.webp" alt="Autorskie narzędzie promocji postów - GSheets + API" class="w-full" loading="lazy">
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 my-8">
+                    <div class="bg-blue-50 rounded-2xl p-5 text-center">
+                        <div class="text-3xl font-bold text-blue-700 mb-1">~0 min</div>
+                        <div class="text-sm font-semibold text-slate-600">Czas na promocję posta</div>
+                        <div class="text-xs text-slate-400 mt-1">vs 20-40 min wcześniej</div>
+                    </div>
+                    <div class="bg-blue-50 rounded-2xl p-5 text-center">
+                        <div class="text-3xl font-bold text-blue-700 mb-1">24/7</div>
+                        <div class="text-sm font-semibold text-slate-600">Monitoring budżetów</div>
+                        <div class="text-xs text-slate-400 mt-1">też w nocy i weekendy</div>
+                    </div>
+                    <div class="bg-blue-50 rounded-2xl p-5 text-center">
+                        <div class="text-3xl font-bold text-blue-700 mb-1">0</div>
+                        <div class="text-sm font-semibold text-slate-600">Błędów ludzkich</div>
+                        <div class="text-xs text-slate-400 mt-1">przy tworzeniu kampanii</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Kontekst systemowy -->
+            <div class="mb-16">
+                <span class="text-blue-500 font-mono text-sm tracking-widest uppercase mb-3 block">05 - Kontekst systemowy</span>
+                <h2 class="text-3xl font-bold mb-8 italic">Automatyzacja działa tylko przy spójnej architekturze kont.</h2>
+                <div class="prose-custom">
+                    <p>Autorskie narzędzie GSheets + API mogło działać precyzyjnie tylko dlatego, że konta reklamowe miały ujednoliconą strukturę i spójną taksonomię nazewnictwa. Gdy kampanie nazywają się inaczej na każdym rynku, każdy skrypt musi obsługiwać wyjątki - i prędzej czy później się wykrzacza.</p>
+                    <p>Przed wdrożeniem automatyzacji przeprojektowałem architekturę kont: jeden standard taksonomiczny dla wszystkich rynków (kraj - platforma - typ kampanii - audience). Automatyzacja opierała się na tej logice - wiedziała dokładnie, gdzie ma tworzyć kampanie i jak je nazwać.</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
+                    <div class="bento-card rounded-2xl overflow-hidden">
+                        <div class="p-4 pb-2">
+                            <div class="font-bold text-sm text-slate-800">Ujednolicona architektura kont</div>
+                            <div class="text-xs text-slate-500 font-mono">Podstawa dla automatyzacji - jeden standard</div>
+                        </div>
+                        <img src="screenshots/vasco-account-arch-1.webp" alt="Architektura kont reklamowych - struktura kampanii" class="w-full" loading="lazy">
+                    </div>
+                    <div class="bento-card rounded-2xl overflow-hidden">
+                        <div class="p-4 pb-2">
+                            <div class="font-bold text-sm text-slate-800">Taksonomia zestawów reklam</div>
+                            <div class="text-xs text-slate-500 font-mono">Spójna logika na wszystkich rynkach</div>
+                        </div>
+                        <img src="screenshots/vasco-account-arch-2.webp" alt="Taksonomia zestawów reklam" class="w-full" loading="lazy">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Wnioski -->
+            <div class="mb-16 bg-slate-900 text-white rounded-3xl p-10">
+                <span class="text-blue-400 font-mono text-sm tracking-widest uppercase mb-3 block">06 - Wnioski</span>
+                <h2 class="text-3xl font-bold mb-8 italic text-white">Co z tego wynika dla Twojej organizacji?</h2>
+                <div class="space-y-6">
+                    <div class="flex items-start gap-4">
+                        <div class="w-8 h-8 rounded-full bg-blue-600 flex items-center justify-center flex-shrink-0 mt-0.5 text-white font-bold text-sm">1</div>
+                        <div>
+                            <h3 class="text-lg font-bold text-white mb-1 mt-0">Gotowe narzędzia mają luki - autorskie je zamykają.</h3>
+                            <p class="text-slate-300 text-sm leading-relaxed mb-0">Smartly to świetna platforma, ale nie obsługuje wszystkich scenariuszy. Zamiast szukać idealnego narzędzia all-in-one, efektywniejsze jest złożenie kilku narzędzi i uzupełnienie luk autorskim kodem. Elastyczność wygrywa z funkcjonalnością katalogową.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-4">
+                        <div class="w-8 h-8 rounded-full bg-blue-600 flex items-center justify-center flex-shrink-0 mt-0.5 text-white font-bold text-sm">2</div>
+                        <div>
+                            <h3 class="text-lg font-bold text-white mb-1 mt-0">Powtarzalna praca to praca dla systemu, nie dla człowieka.</h3>
+                            <p class="text-slate-300 text-sm leading-relaxed mb-0">Jeśli zadanie da się opisać jako ciąg kroków - można je zautomatyzować. Promocja posta była idealnym kandydatem: zawsze te same pola, zawsze ta sama logika, zero decyzji merytorycznych. Taka praca nie powinna zajmować czasu specjalisty.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-4">
+                        <div class="w-8 h-8 rounded-full bg-blue-600 flex items-center justify-center flex-shrink-0 mt-0.5 text-white font-bold text-sm">3</div>
+                        <div>
+                            <h3 class="text-lg font-bold text-white mb-1 mt-0">Automatyzacja wymaga porządku w architekturze.</h3>
+                            <p class="text-slate-300 text-sm leading-relaxed mb-0">System automatyzacji jest tak dobry, jak spójna jest struktura kont, na których działa. Niespójna nomenklatura, różna logika per rynek, brak standardów taksonomicznych - to nie są estetyczne problemy. To blokery dla każdej formy automatyzacji.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-4">
+                        <div class="w-8 h-8 rounded-full bg-blue-600 flex items-center justify-center flex-shrink-0 mt-0.5 text-white font-bold text-sm">4</div>
+                        <div>
+                            <h3 class="text-lg font-bold text-white mb-1 mt-0">Skala bez automatyzacji to pułapka wzrostu.</h3>
+                            <p class="text-slate-300 text-sm leading-relaxed mb-0">Każdy nowy rynek bez automatyzacji to kolejne godziny pracy manualnej. W pewnym momencie skalowanie staje się niemożliwe bez proporcjonalnego wzrostu zespołu. Automatyzacja fundamentalna to nie luksus - to warunek konieczny skalowania powyżej pewnego progu.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CTA -->
+            <div class="text-center border-t border-gray-200 pt-16">
+                <span class="text-blue-500 font-mono text-sm tracking-widest uppercase mb-4 block">Następny krok</span>
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 italic">Ile godzin tygodniowo przepala Twój zespół na manualnej pracy?</h2>
+                <p class="text-slate-600 text-lg max-w-xl mx-auto mb-8">Audyt operacyjny i propozycja automatyzacji - w ciągu tygodnia wiesz, co można wyeliminować i jak.</p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="index.html#audit" class="bg-blue-600 text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-blue-700 transition-all">Zamów Audyt</a>
+                    <a href="audyt-paid-media.html" class="border border-gray-300 text-slate-800 px-8 py-4 rounded-full font-bold text-lg hover:bg-gray-100 transition-all">Pobierz darmową checklistę →</a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <footer class="py-12 bg-slate-900 text-white border-t border-white/10">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center text-slate-400 text-sm font-medium gap-4">
+            <div>
+                <a href="index.html" class="text-lg font-bold tracking-tighter italic text-white">DAWID<span class="text-blue-400">RUBIN</span></a>
+            </div>
+            <div>&copy; <script>document.write(new Date().getFullYear())</script> Dawid Rubin. Wszelkie prawa zastrzeżone.</div>
+            <div class="flex gap-6">
+                <a href="index.html" class="hover:text-white transition-colors">Strona główna</a>
+                <a href="audyt-paid-media.html" class="hover:text-white transition-colors">Pobierz PDF</a>
+                <a href="index.html#audit" class="hover:text-white transition-colors">Kontakt</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenuBtn.addEventListener('click', () => { mobileMenu.classList.toggle('hidden'); });
+        const csMobileBtn = document.getElementById('cs-mobile-btn');
+        const csMobileSubmenu = document.getElementById('cs-mobile-submenu');
+        const csMobileArrow = document.getElementById('cs-mobile-arrow');
+        if (csMobileBtn) {
+            csMobileBtn.addEventListener('click', () => {
+                csMobileSubmenu.classList.toggle('hidden');
+                csMobileArrow.classList.toggle('rotate-180');
+            });
+        }
+    </script>
+</body>
+</html>
