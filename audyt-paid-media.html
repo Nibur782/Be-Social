@@ -335,7 +335,7 @@
                 <input type="hidden" name="access_key" value="13dd45e3-f82b-48cf-a929-e3bab6c0b0b2">
                 <input type="hidden" name="subject" value="Nowy lead - PDF Audyt Paid Media (dawidrubin.pl)">
                 <input type="hidden" name="from_name" value="dawidrubin.pl - formularz PDF">
-                <input type="hidden" name="redirect" value="false">
+                <!-- Przy wysyłce przez fetch/JS nie ustawiaj pola "redirect" — Web3Forms: redirect tylko dla zwykłego POST z przeglądarki. -->
                 <!-- Honeypot anti-spam -->
                 <input type="checkbox" name="botcheck" class="hidden" style="display:none" tabindex="-1" autocomplete="off">
 
@@ -512,32 +512,45 @@
             submitBtn.disabled = true;
             submitLabel.textContent = 'Wysyłanie...';
 
-            const accessKey = form.querySelector('input[name="access_key"]').value;
-            const useBackend = accessKey && accessKey !== '13dd45e3-f82b-48cf-a929-e3bab6c0b0b2';
+            const accessKey = (form.querySelector('input[name="access_key"]').value || '').trim();
+            const useBackend = accessKey.length > 0;
 
             if (!useBackend) {
-                // Tryb dev/preview - bez Web3Forms. Po prostu pobieramy PDF.
-                console.warn('Web3Forms access_key nie skonfigurowany. Lead NIE zostanie wysłany. Pobieranie PDF działa.');
+                console.warn('Web3Forms: brak access_key w HTML — PDF bez wysyłki leada.');
                 showSuccess();
                 return;
             }
 
             try {
                 const formData = new FormData(form);
+                const payload = Object.fromEntries(formData.entries());
+                payload.message = [
+                    'Pobranie checklisty PDF Audyt Paid Media.',
+                    'Imię: ' + (payload.imie || ''),
+                    'Firma: ' + (payload.firma || '(nie podano)'),
+                    'E-mail: ' + (payload.email || ''),
+                    'Zgoda: ' + (payload.zgoda || '')
+                ].join('\n');
+
                 const response = await fetch('https://api.web3forms.com/submit', {
                     method: 'POST',
-                    body: formData
+                    headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+                    body: JSON.stringify(payload)
                 });
                 const data = await response.json();
-                if (data.success) {
+                if (response.ok && data.success) {
                     showSuccess();
                 } else {
-                    throw new Error(data.message || 'Wysyłka nie powiodła się.');
+                    const msg = data.message || (data.body && data.body.message) || 'Wysyłka nie powiodła się.';
+                    throw new Error(msg);
                 }
             } catch (err) {
                 submitBtn.disabled = false;
                 submitLabel.textContent = 'Pobierz darmową checklistę';
-                formError.textContent = 'Wystąpił błąd. Spróbuj ponownie lub napisz na kontakt@dawidrubin.pl';
+                const detail = err && err.message ? err.message : '';
+                formError.textContent = detail
+                    ? 'Wystąpił błąd: ' + detail + ' Jeśli się powtarza, napisz na kontakt@dawidrubin.pl'
+                    : 'Wystąpił błąd. Spróbuj ponownie lub napisz na kontakt@dawidrubin.pl';
                 formError.classList.remove('hidden');
                 console.error(err);
             }
