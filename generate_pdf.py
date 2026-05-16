@@ -637,28 +637,30 @@ def make_pdf(output_path):
         if cat_idx < len(CATEGORIES) - 1:
             story.append(PageBreak())
 
-    # === STRONA KONCOWA ===
+    # === STRONA KONCOWA - agresywny lead magnet trigger ===
     story.append(PageBreak())
-    story.append(Spacer(1, 30 * mm))
+    story.append(Spacer(1, 24 * mm))
     story.append(Paragraph("CO DALEJ", style_kicker))
-    story.append(Paragraph("Znalazłeś luki. Co teraz?", style_centered_h2))
+    story.append(Paragraph("Nie konfiguruj tego sam.", style_centered_h2))
     story.append(Spacer(1, 8))
     story.append(Paragraph(
         "Jeśli większość punktów z priorytetem P1 jest „do poprawy” lub „nie wiem” – "
         "Twoja konfiguracja przepala średnio 20–40% budżetu reklamowego miesięcznie. "
-        "Im większe konto, tym większe straty w wartościach absolutnych.",
+        "Server-Side GTM, taksonomia Ad Setów, multi-touch attribution, Conversions API: "
+        "samodzielne wdrożenie to 60–120 godzin pracy z ryzykiem błędu na każdym etapie.",
         style_centered_body
     ))
-    story.append(Spacer(1, 20))
+    story.append(Spacer(1, 18))
 
     cta_data = [[Paragraph(
         "<para alignment='center'>"
         "<font size='10' color='#93C5FD'><b>OFERTA DLA E-COMMERCE</b></font><br/><br/>"
-        "<font size='18' color='#FFFFFF'><b>Pełny audyt Paid Media</b></font><br/><br/>"
-        "<font size='10' color='#DBEAFE'>Diagnoza wszystkich 30 punktów + plan naprawy<br/>"
-        "i wdrożenie krytycznych zmian w 2 tygodnie.</font><br/><br/>"
+        "<font size='22' color='#FFFFFF'><b>Pełny audyt Paid Media</b></font><br/>"
+        "<font size='28' color='#FFFFFF'><b>od 2 900 PLN netto</b></font><br/><br/>"
+        "<font size='10' color='#DBEAFE'>Znajdę i zamknę luki, przez które tracisz budżet.<br/>"
+        "Diagnoza wszystkich 30 punktów + plan naprawy + wdrożenie krytycznych zmian w 2 tygodnie.</font><br/><br/>"
         "<font size='9' color='#93C5FD'>Realizacja na realnych danych – nie z teorii.<br/>"
-        "8+ lat doświadczenia, 20+ rynków, portfolio: Vasco Electronics, Biedronka, Domodi."
+        "8+ lat doświadczenia, 20+ rynków, portfolio: Vasco Electronics, Biedronka, Domodi, Dentsu."
         "</font></para>",
         ParagraphStyle("cta", parent=styles["Normal"], fontName=FONT_NAME, fontSize=10,
                        textColor=colors.white, leading=14)
@@ -670,17 +672,48 @@ def make_pdf(output_path):
         ("ALIGN", (0, 0), (-1, -1), "CENTER"),
         ("LEFTPADDING", (0, 0), (-1, -1), 20),
         ("RIGHTPADDING", (0, 0), (-1, -1), 20),
-        ("TOPPADDING", (0, 0), (-1, -1), 28),
-        ("BOTTOMPADDING", (0, 0), (-1, -1), 28),
+        ("TOPPADDING", (0, 0), (-1, -1), 26),
+        ("BOTTOMPADDING", (0, 0), (-1, -1), 26),
         ("ROUNDEDCORNERS", [10, 10, 10, 10]),
     ]))
     story.append(cta)
-    story.append(Spacer(1, 16))
+    story.append(Spacer(1, 14))
+
+    # Dwa CTA boxy obok siebie - audyt + sesja
+    cta2_data = [[
+        Paragraph(
+            "<para alignment='center'><font size='9' color='#1D4ED8'><b>ŚCIEŻKA SZYBKA</b></font><br/>"
+            "<font size='12' color='#0F172A'><b>Wypełnij brief audytu</b></font><br/>"
+            "<font size='9' color='#475569'>~3 minuty · wycena w 24h</font><br/>"
+            "<font size='10' color='#1D4ED8'><b><a href='https://dawidrubin.pl/brief-audyt.html' color='#1D4ED8'>dawidrubin.pl/brief-audyt</a></b></font></para>",
+            ParagraphStyle("cta_a", parent=styles["Normal"], fontName=FONT_NAME, fontSize=10, leading=14)
+        ),
+        Paragraph(
+            "<para alignment='center'><font size='9' color='#1D4ED8'><b>ŚCIEŻKA OSTROŻNA</b></font><br/>"
+            "<font size='12' color='#0F172A'><b>Umów bezpłatną sesję (15 min)</b></font><br/>"
+            "<font size='9' color='#475569'>Bez sprzedaży · bez zobowiązań</font><br/>"
+            "<font size='10' color='#1D4ED8'><b><a href='https://dawidrubin.pl/umow-rozmowe.html' color='#1D4ED8'>dawidrubin.pl/umow-rozmowe</a></b></font></para>",
+            ParagraphStyle("cta_b", parent=styles["Normal"], fontName=FONT_NAME, fontSize=10, leading=14)
+        ),
+    ]]
+    cta2 = Table(cta2_data, colWidths=[83 * mm, 83 * mm], hAlign='CENTER')
+    cta2.setStyle(TableStyle([
+        ("BACKGROUND", (0, 0), (-1, -1), BLUE_LIGHT),
+        ("BOX", (0, 0), (0, 0), 1, BLUE),
+        ("BOX", (1, 0), (1, 0), 1, BLUE),
+        ("VALIGN", (0, 0), (-1, -1), "MIDDLE"),
+        ("ALIGN", (0, 0), (-1, -1), "CENTER"),
+        ("LEFTPADDING", (0, 0), (-1, -1), 14),
+        ("RIGHTPADDING", (0, 0), (-1, -1), 14),
+        ("TOPPADDING", (0, 0), (-1, -1), 18),
+        ("BOTTOMPADDING", (0, 0), (-1, -1), 18),
+    ]))
+    story.append(cta2)
+    story.append(Spacer(1, 12))
 
     story.append(Paragraph(
-        "<para alignment='center'><font color='#475569'>Zamów audyt na stronie </font>"
-        "<font color='#1D4ED8'><b>dawidrubin.pl/#audit</b></font></para>",
-        ParagraphStyle("link", parent=styles["Normal"], fontName=FONT_NAME, fontSize=11, leading=14)
+        "<para alignment='center'><font size='9' color='#94A3B8'>Wszystkie linki w PDF są klikalne. Skopiuj URL do przeglądarki, jeśli nie działają.</font></para>",
+        ParagraphStyle("hint", parent=styles["Normal"], fontName=FONT_NAME, fontSize=9, leading=12)
     ))
 
     story.append(Spacer(1, 30))
