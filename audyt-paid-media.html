@@ -108,6 +108,15 @@
         }
         .form-highlight { animation: pulse-border 3s ease-in-out infinite; }
         #success-message { display: none; }
+        /* FAQ accordion */
+        .faq-item summary::-webkit-details-marker { display: none; }
+        .faq-item summary::marker { content: ""; }
+        .faq-item summary { cursor: pointer; list-style: none; user-select: none; }
+        .faq-item .faq-icon { transition: transform .25s ease; flex-shrink: 0; }
+        .faq-item[open] .faq-icon { transform: rotate(45deg); }
+        .faq-item[open] summary h3 { color: #1D4ED8; }
+        .faq-item .faq-body { animation: faq-slide .25s ease-out; }
+        @keyframes faq-slide { from { opacity: 0; transform: translateY(-4px); } to { opacity: 1; transform: translateY(0); } }
     </style>
 </head>
 <body class="antialiased">
@@ -477,23 +486,43 @@
     <section class="py-20 px-6 bg-white border-t border-gray-100">
         <div class="max-w-2xl mx-auto">
             <h2 class="text-2xl font-bold mb-8 text-center">Pytania</h2>
-            <div class="space-y-4">
-                <div class="border border-gray-200 rounded-2xl p-6">
-                    <h3 class="font-bold mb-2 text-slate-900">Czy PDF jest naprawdę darmowy?</h3>
-                    <p class="text-slate-600 text-sm">Tak. Podajesz e-mail, dostajesz PDF. Bez ukrytych kosztów, bez wymuszonych subskrypcji. Jeśli nie chcesz dalszych wiadomości - jeden klik i usuwamy Cię z listy.</p>
-                </div>
-                <div class="border border-gray-200 rounded-2xl p-6">
-                    <h3 class="font-bold mb-2 text-slate-900">Dla kogo jest ta checklista?</h3>
-                    <p class="text-slate-600 text-sm">Dla właścicieli e-commerce, CMO, liderów marketingu i specjalistów Paid Media, którzy chcą sprawdzić, czy ich obecna konfiguracja ma luki. Minimalne wymagania: budżet reklamowy 10 000+ PLN/mies.</p>
-                </div>
-                <div class="border border-gray-200 rounded-2xl p-6">
-                    <h3 class="font-bold mb-2 text-slate-900">Czy mogę ją przetworzyć z moim zespołem?</h3>
-                    <p class="text-slate-600 text-sm">Tak - do tego właśnie służy. PDF ma format gotowy do druku i kolumnę „Status” do odhaczania punktów podczas wewnętrznego audytu.</p>
-                </div>
-                <div class="border border-gray-200 rounded-2xl p-6">
-                    <h3 class="font-bold mb-2 text-slate-900">Co jeśli znajdę problemy i nie wiem, jak je naprawić?</h3>
-                    <p class="text-slate-600 text-sm">To moment, w którym możemy porozmawiać. <a href="umow-rozmowe" class="text-blue-600 font-semibold hover:underline">Umów bezpłatną sesję wstępną (15 min)</a> albo od razu <a href="brief-audyt" class="text-blue-600 font-semibold hover:underline">zamów pełny audyt od 2 900 PLN</a> - w 2 tygodnie dostarczam diagnozę i plan naprawy.</p>
-                </div>
+            <div class="space-y-3">
+                <details class="faq-item border border-gray-200 rounded-2xl">
+                    <summary class="flex items-center justify-between gap-4 p-6">
+                        <h3 class="font-bold text-slate-900 m-0">Czy PDF jest naprawdę darmowy?</h3>
+                        <svg class="faq-icon w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/></svg>
+                    </summary>
+                    <div class="faq-body px-6 pb-6 -mt-2">
+                        <p class="text-slate-600 text-sm">Tak. Podajesz e-mail, dostajesz PDF. Bez ukrytych kosztów, bez wymuszonych subskrypcji. Jeśli nie chcesz dalszych wiadomości - jeden klik i usuwamy Cię z listy.</p>
+                    </div>
+                </details>
+                <details class="faq-item border border-gray-200 rounded-2xl">
+                    <summary class="flex items-center justify-between gap-4 p-6">
+                        <h3 class="font-bold text-slate-900 m-0">Dla kogo jest ta checklista?</h3>
+                        <svg class="faq-icon w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/></svg>
+                    </summary>
+                    <div class="faq-body px-6 pb-6 -mt-2">
+                        <p class="text-slate-600 text-sm">Dla właścicieli e-commerce, CMO, liderów marketingu i specjalistów Paid Media, którzy chcą sprawdzić, czy ich obecna konfiguracja ma luki. Minimalne wymagania: budżet reklamowy 10 000+ PLN/mies.</p>
+                    </div>
+                </details>
+                <details class="faq-item border border-gray-200 rounded-2xl">
+                    <summary class="flex items-center justify-between gap-4 p-6">
+                        <h3 class="font-bold text-slate-900 m-0">Czy mogę ją przetworzyć z moim zespołem?</h3>
+                        <svg class="faq-icon w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/></svg>
+                    </summary>
+                    <div class="faq-body px-6 pb-6 -mt-2">
+                        <p class="text-slate-600 text-sm">Tak - do tego właśnie służy. PDF ma format gotowy do druku i kolumnę „Status” do odhaczania punktów podczas wewnętrznego audytu.</p>
+                    </div>
+                </details>
+                <details class="faq-item border border-gray-200 rounded-2xl">
+                    <summary class="flex items-center justify-between gap-4 p-6">
+                        <h3 class="font-bold text-slate-900 m-0">Co jeśli znajdę problemy i nie wiem, jak je naprawić?</h3>
+                        <svg class="faq-icon w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/></svg>
+                    </summary>
+                    <div class="faq-body px-6 pb-6 -mt-2">
+                        <p class="text-slate-600 text-sm">To moment, w którym możemy porozmawiać. <a href="umow-rozmowe" class="text-blue-600 font-semibold hover:underline">Umów bezpłatną sesję wstępną (15 min)</a> albo od razu <a href="brief-audyt" class="text-blue-600 font-semibold hover:underline">zamów pełny audyt od 2 900 PLN</a> - w 2 tygodnie dostarczam diagnozę i plan naprawy.</p>
+                    </div>
+                </details>
             </div>
         </div>
     </section>
