@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#1D4ED8">
+
+    <title>Brief projektu - strona, kampanie, automatyzacje, tracking | Dawid Rubin</title>
+    <meta name="description" content="Opisz w briefie co chcesz wdrożyć - stronę, kampanie reklamowe, automatyzacje lub tracking. Wstępną wycenę zobaczysz od razu, finalną propozycję otrzymasz mailem w 24h.">
+    <meta name="robots" content="noindex, follow">
+    <link rel="canonical" href="https://dawidrubin.pl/brief-projekt.html">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #F8FAFC; color: #0F172A; }
+        .vasco-blue { color: #1D4ED8; }
+        .bg-vasco-blue { background-color: #1D4ED8; }
+        .check-card { transition: all 0.2s ease; }
+        .check-card:hover { border-color: #93C5FD; background: #EFF6FF; }
+        .check-card input:checked + .check-card-body { border-color: #1D4ED8; background: #DBEAFE; }
+        input:checked + .check-card-body .check-icon { opacity: 1; }
+        .check-icon { opacity: 0; transition: opacity 0.2s; }
+        .step-indicator.active { background-color: #1D4ED8; color: white; }
+        .field-error { color: #DC2626; font-size: 0.75rem; margin-top: 0.25rem; display: none; }
+        .field-error.show { display: block; }
+    </style>
+</head>
+<body class="antialiased">
+
+    <nav class="fixed w-full z-50 bg-white/90 backdrop-blur-md border-b border-gray-200 shadow-sm">
+        <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+            <a href="index.html" class="text-xl font-bold tracking-tighter italic">DAWID<span class="vasco-blue">RUBIN</span></a>
+            <a href="index.html" class="text-sm text-slate-500 hover:text-blue-600 transition-colors font-mono">← Powrót na stronę główną</a>
+        </div>
+    </nav>
+
+    <section class="pt-28 pb-16 px-6">
+        <div class="max-w-3xl mx-auto">
+
+            <!-- Header -->
+            <div class="text-center mb-10">
+                <span class="text-blue-500 font-mono text-sm tracking-widest uppercase mb-3 block">Brief projektu - 4 kroki, ~4 min</span>
+                <h1 class="text-3xl md:text-5xl font-bold mb-4 leading-tight">Opowiedz mi <span class="vasco-blue">co potrzebujesz wdrożyć</span> - resztę ułożymy razem.</h1>
+                <p class="text-slate-600 leading-relaxed max-w-xl mx-auto">Wstępna wycena pojawi się od razu po wypełnieniu briefu. Konkretna propozycja zakresu i harmonogramu trafi do Ciebie mailem w ciągu 24h.</p>
+            </div>
+
+            <!-- Progress bar -->
+            <div class="flex items-center justify-between max-w-md mx-auto mb-12">
+                <div class="flex items-center flex-1">
+                    <div class="w-9 h-9 rounded-full step-indicator active flex items-center justify-center text-sm font-bold border-2 border-blue-600 bg-white text-blue-700" data-step="1">1</div>
+                    <div class="step-line h-0.5 flex-1 mx-2 bg-gray-200" data-line="1-2"></div>
+                </div>
+                <div class="flex items-center flex-1">
+                    <div class="w-9 h-9 rounded-full step-indicator flex items-center justify-center text-sm font-bold border-2 border-gray-300 bg-white text-slate-500" data-step="2">2</div>
+                    <div class="step-line h-0.5 flex-1 mx-2 bg-gray-200" data-line="2-3"></div>
+                </div>
+                <div class="flex items-center flex-1">
+                    <div class="w-9 h-9 rounded-full step-indicator flex items-center justify-center text-sm font-bold border-2 border-gray-300 bg-white text-slate-500" data-step="3">3</div>
+                    <div class="step-line h-0.5 flex-1 mx-2 bg-gray-200" data-line="3-4"></div>
+                </div>
+                <div class="w-9 h-9 rounded-full step-indicator flex items-center justify-center text-sm font-bold border-2 border-gray-300 bg-white text-slate-500" data-step="4">4</div>
+            </div>
+
+            <!-- Form -->
+            <form id="brief-form" method="POST" class="bg-white border border-gray-200 rounded-3xl p-8 md:p-10 shadow-sm">
+                <input type="hidden" name="access_key" value="13dd45e3-f82b-48cf-a929-e3bab6c0b0b2">
+                <input type="hidden" name="subject" value="Nowy brief projektu (dawidrubin.pl)">
+                <input type="hidden" name="from_name" value="dawidrubin.pl - brief projektu">
+                <input type="checkbox" name="botcheck" class="hidden" style="display:none" tabindex="-1" autocomplete="off">
+                <input type="hidden" name="_quote_low" id="meta-quote-low">
+                <input type="hidden" name="_quote_high" id="meta-quote-high">
+
+                <!-- STEP 1: Co wdrożyć -->
+                <div class="wizard-step" id="step-1">
+                    <span class="text-blue-500 font-mono text-xs tracking-widest uppercase mb-2 block">Krok 1 z 4</span>
+                    <h2 class="text-2xl font-bold mb-2">Co chcesz wdrożyć?</h2>
+                    <p class="text-slate-500 text-sm mb-6">Możesz wybrać kilka obszarów - cały projekt poprowadzę z jednego kontaktu.</p>
+
+                    <div class="space-y-3 mb-3">
+                        <label class="block cursor-pointer">
+                            <input type="checkbox" name="project_type" value="Strona internetowa" data-base="4000" id="check-strona" class="sr-only">
+                            <div class="check-card check-card-body p-4 rounded-2xl border-2 border-gray-200 bg-white flex items-start gap-3">
+                                <div class="w-6 h-6 rounded-md border-2 border-gray-300 flex items-center justify-center flex-shrink-0 mt-0.5">
+                                    <svg class="check-icon w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg>
+                                </div>
+                                <div>
+                                    <div class="font-bold text-slate-900">Strona internetowa / sklep e-commerce</div>
+                                    <div class="text-sm text-slate-500">Pełna realizacja strony - od prostej wizytówki po sklep z integracjami</div>
+                                </div>
+                            </div>
+                        </label>
+
+                        <!-- Sub-options for strona - revealed when checked -->
+                        <div id="strona-subtype" class="hidden ml-9 mr-1 pl-4 border-l-2 border-blue-200 space-y-2 mt-1 mb-2">
+                            <p class="text-xs font-semibold text-slate-600 uppercase tracking-wider mt-3 mb-1">Jaki zakres strony?</p>
+                            <label class="block cursor-pointer">
+                                <input type="radio" name="strona_scope" value="Prosta wizytówka (1 strona, formularz kontaktowy, bez integracji)" data-base="1500" class="sr-only strona-scope">
+                                <div class="check-card check-card-body p-3 rounded-xl border-2 border-gray-200 bg-white flex items-start gap-3">
+                                    <div class="w-5 h-5 rounded-full border-2 border-gray-300 flex items-center justify-center flex-shrink-0 mt-0.5">
+                                        <div class="check-icon w-2.5 h-2.5 rounded-full bg-blue-600"></div>
+                                    </div>
+                                    <div>
+                                        <div class="font-semibold text-slate-800 text-sm">Prosta wizytówka</div>
+                                        <div class="text-xs text-slate-500">1 strona, formularz kontaktowy, bez integracji ani podstron</div>
+                                    </div>
+                                </div>
+                            </label>
+                            <label class="block cursor-pointer">
+                                <input type="radio" name="strona_scope" value="Strona wielosekcyjna (kilka podstron, blog opcjonalnie)" data-base="4000" class="sr-only strona-scope" checked>
+                                <div class="check-card check-card-body p-3 rounded-xl border-2 border-gray-200 bg-white flex items-start gap-3">
+                                    <div class="w-5 h-5 rounded-full border-2 border-gray-300 flex items-center justify-center flex-shrink-0 mt-0.5">
+                                        <div class="check-icon w-2.5 h-2.5 rounded-full bg-blue-600"></div>
+                                    </div>
+                                    <div>
+                                        <div class="font-semibold text-slate-800 text-sm">Strona wielosekcyjna</div>
+                                        <div class="text-xs text-slate-500">Kilka podstron, blog opcjonalnie, podstawowe formularze, SEO</div>
+                                    </div>
+                                </div>
+                            </label>
+                            <label class="block cursor-pointer">
+                                <input type="radio" name="strona_scope" value="Sklep / aplikacja z integracjami (płatności, kalendarz, mailing)" data-base="8000" class="sr-only strona-scope">
+                                <div class="check-card check-card-body p-3 rounded-xl border-2 border-gray-200 bg-white flex items-start gap-3">
+                                    <div class="w-5 h-5 rounded-full border-2 border-gray-300 flex items-center justify-center flex-shrink-0 mt-0.5">
+                                        <div class="check-icon w-2.5 h-2.5 rounded-full bg-blue-600"></div>
+                                    </div>
+                                    <div>
+                                        <div class="font-semibold text-slate-800 text-sm">Sklep / aplikacja z integracjami</div>
+                                        <div class="text-xs text-slate-500">Płatności (Stripe), kalendarz (Google), mailing, system rezerwacji - jak Dietologicznie.pl</div>
+                                    </div>
+                                </div>
+                            </label>
+                        </div>
+
+                        <label class="block cursor-pointer">
+                            <input type="checkbox" name="project_type" value="Uruchomienie kampanii reklamowych" data-base="3000" class="sr-only">
+                            <div class="check-card check-card-body p-4 rounded-2xl border-2 border-gray-200 bg-white flex items-start gap-3">
+                                <div class="w-6 h-6 rounded-md border-2 border-gray-300 flex items-center justify-center flex-shrink-0 mt-0.5">
+                                    <svg class="check-icon w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg>
+                                </div>
+                                <div>
+                                    <div class="font-bold text-slate-900">Uruchomienie kampanii reklamowych</div>
+                                    <div class="text-sm text-slate-500">Setup Meta / Google / TikTok / LinkedIn Ads - struktura kont, kreacje, targetowanie, optymalizacja startowa</div>
+                                </div>
+                            </div>
+                        </label>
+
+                        <label class="block cursor-pointer">
+                            <input type="checkbox" name="project_type" value="Automatyzacje procesów + AI" data-base="4000" class="sr-only">
+                            <div class="check-card check-card-body p-4 rounded-2xl border-2 border-gray-200 bg-white flex items-start gap-3">
+                                <div class="w-6 h-6 rounded-md border-2 border-gray-300 flex items-center justify-center flex-shrink-0 mt-0.5">
+                                    <svg class="check-icon w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg>
+                                </div>
+                                <div>
+                                    <div class="font-bold text-slate-900">Automatyzacje procesów + AI</div>
+                                    <div class="text-sm text-slate-500">Make, Zapier, custom skrypty, integracje API, Custom GPT, automatyzacja raportów i powtarzalnych zadań</div>
+                                </div>
+                            </div>
+                        </label>
+
+                        <label class="block cursor-pointer">
+                            <input type="checkbox" name="project_type" value="Wdrożenie trackingu i analityki" data-base="2500" class="sr-only">
+                            <div class="check-card check-card-body p-4 rounded-2xl border-2 border-gray-200 bg-white flex items-start gap-3">
+                                <div class="w-6 h-6 rounded-md border-2 border-gray-300 flex items-center justify-center flex-shrink-0 mt-0.5">
+                                    <svg class="check-icon w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg>
+                                </div>
+                                <div>
+                                    <div class="font-bold text-slate-900">Wdrożenie trackingu i analityki</div>
+                                    <div class="text-sm text-slate-500">GA4, Google Tag Manager, Conversions API, server-side tracking, naprawa pomiarów</div>
+                                </div>
+                            </div>
+                        </label>
+                    </div>
+                    <p class="field-error" id="err-project">Wybierz przynajmniej jeden obszar projektu.</p>
+                </div>
+
+                <!-- STEP 2: Skala -->
+                <div class="wizard-step hidden" id="step-2">
+                    <span class="text-blue-500 font-mono text-xs tracking-widest uppercase mb-2 block">Krok 2 z 4</span>
+                    <h2 class="text-2xl font-bold mb-2">Dla jakiego biznesu wdrażamy?</h2>
+                    <p class="text-slate-500 text-sm mb-6">Skala wpływa zarówno na zakres prac, jak i wycenę.</p>
+
+                    <div class="space-y-3 mb-3">
+                        <label class="block cursor-pointer">
+                            <input type="radio" name="scale" value="Mały biznes lokalny" data-multiplier="0.8" class="sr-only">
+                            <div class="check-card check-card-body p-4 rounded-2xl border-2 border-gray-200 bg-white flex items-start gap-3">
+                                <div class="w-6 h-6 rounded-full border-2 border-gray-300 flex items-center justify-center flex-shrink-0 mt-0.5">
+                                    <div class="check-icon w-3 h-3 rounded-full bg-blue-600"></div>
+                                </div>
+                                <div>
+                                    <div class="font-bold text-slate-900">Mały biznes lokalny</div>
+                                    <div class="text-sm text-slate-500">Mechanik, salon, gabinet, lokalny sklep · Pierwsza poważna obecność online</div>
+                                </div>
+                            </div>
+                        </label>
+
+                        <label class="block cursor-pointer">
+                            <input type="radio" name="scale" value="Usługodawca / solo-biznes / mały e-commerce" data-multiplier="1.0" class="sr-only">
+                            <div class="check-card check-card-body p-4 rounded-2xl border-2 border-gray-200 bg-white flex items-start gap-3">
+                                <div class="w-6 h-6 rounded-full border-2 border-gray-300 flex items-center justify-center flex-shrink-0 mt-0.5">
+                                    <div class="check-icon w-3 h-3 rounded-full bg-blue-600"></div>
+                                </div>
+                                <div>
+                                    <div class="font-bold text-slate-900">Usługodawca / solo-biznes / mały e-commerce</div>
+                                    <div class="text-sm text-slate-500">Coach, freelancer, dietetyk, startujący sklep online · Działasz, chcesz rosnąć</div>
+                                </div>
+                            </div>
+                        </label>
+
+                        <label class="block cursor-pointer">
+                            <input type="radio" name="scale" value="Średni e-commerce / wzrost organizacji" data-multiplier="1.3" class="sr-only">
+                            <div class="check-card check-card-body p-4 rounded-2xl border-2 border-gray-200 bg-white flex items-start gap-3">
+                                <div class="w-6 h-6 rounded-full border-2 border-gray-300 flex items-center justify-center flex-shrink-0 mt-0.5">
+                                    <div class="check-icon w-3 h-3 rounded-full bg-blue-600"></div>
+                                </div>
+                                <div>
+                                    <div class="font-bold text-slate-900">Średni e-commerce / wzrost organizacji</div>
+                                    <div class="text-sm text-slate-500">Sklep online z 1-3 rynkami · Zespół 3-15 osób · Skalujesz aktywnie</div>
+                                </div>
+                            </div>
+                        </label>
+
+                        <label class="block cursor-pointer">
+                            <input type="radio" name="scale" value="Duży e-commerce / multi-market / agencja" data-multiplier="1.8" class="sr-only">
+                            <div class="check-card check-card-body p-4 rounded-2xl border-2 border-gray-200 bg-white flex items-start gap-3">
+                                <div class="w-6 h-6 rounded-full border-2 border-gray-300 flex items-center justify-center flex-shrink-0 mt-0.5">
+                                    <div class="check-icon w-3 h-3 rounded-full bg-blue-600"></div>
+                                </div>
+                                <div>
+                                    <div class="font-bold text-slate-900">Duży e-commerce / multi-market / agencja</div>
+                                    <div class="text-sm text-slate-500">5+ rynków, zespół 15+ osób, agencja marketingowa - kompleksowe wdrożenia</div>
+                                </div>
+                            </div>
+                        </label>
+                    </div>
+                    <p class="field-error" id="err-scale">Wybierz skalę biznesu.</p>
+                </div>
+
+                <!-- STEP 3: Szczegóły -->
+                <div class="wizard-step hidden" id="step-3">
+                    <span class="text-blue-500 font-mono text-xs tracking-widest uppercase mb-2 block">Krok 3 z 4</span>
+                    <h2 class="text-2xl font-bold mb-2">Szczegóły projektu</h2>
+                    <p class="text-slate-500 text-sm mb-6">Im więcej napiszesz, tym lepszą propozycję dostaniesz mailem.</p>
+
+                    <div class="space-y-5">
+                        <div>
+                            <label class="block text-sm font-semibold text-slate-700 mb-2">Branża i kontekst biznesu <span class="text-red-500">*</span></label>
+                            <input type="text" name="industry" placeholder="np. e-commerce sport, gabinet dietetyczny, B2B SaaS" class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition-all" required>
+                            <p class="field-error" id="err-industry">Podaj branżę.</p>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-semibold text-slate-700 mb-2">Główny cel projektu <span class="text-red-500">*</span></label>
+                            <textarea name="main_goal" rows="3" placeholder="np. chcę uruchomić sklep online z możliwością rezerwacji wizyt i płatności online. Albo: chcę wreszcie zacząć mierzyć skąd przychodzą leady i ile kosztują." class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition-all" required></textarea>
+                            <p class="field-error" id="err-goal">Opisz cel projektu.</p>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-semibold text-slate-700 mb-2">Funkcje "must-have" - bez czego projekt nie ma sensu</label>
+                            <textarea name="must_have" rows="2" placeholder="np. integracja z BLIK + Apple Pay, blog z SEO, mailing po wizycie, automatyczne przypomnienia SMS" class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition-all"></textarea>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-semibold text-slate-700 mb-2">Czy masz coś podobnego do "inspiracji"?</label>
+                            <input type="text" name="inspiration" placeholder="Link do strony / sklepu, który Ci się podoba (opcjonalnie)" class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition-all">
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-sm font-semibold text-slate-700 mb-2">Kiedy ma być gotowe?</label>
+                                <select name="deadline" class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition-all bg-white">
+                                    <option value="">Wybierz...</option>
+                                    <option>Jak najszybciej (do 2 tyg)</option>
+                                    <option>Klasyczny timing (1-2 mies)</option>
+                                    <option>Mam czas (2-4 mies)</option>
+                                    <option>Bez deadline'u</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-semibold text-slate-700 mb-2">Twój budżet na projekt</label>
+                                <select name="budget" class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition-all bg-white">
+                                    <option value="">Wybierz...</option>
+                                    <option>Poniżej 5 000 zł</option>
+                                    <option>5 - 10 000 zł</option>
+                                    <option>10 - 25 000 zł</option>
+                                    <option>25 - 50 000 zł</option>
+                                    <option>Powyżej 50 000 zł</option>
+                                    <option>Nie wiem - zaufam wycenie</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- STEP 4: Kontakt + wycena -->
+                <div class="wizard-step hidden" id="step-4">
+                    <span class="text-blue-500 font-mono text-xs tracking-widest uppercase mb-2 block">Krok 4 z 4 - ostatni!</span>
+                    <h2 class="text-2xl font-bold mb-2">Wstępna wycena na bazie Twoich odpowiedzi</h2>
+
+                    <div class="bg-gradient-to-br from-blue-600 to-blue-800 text-white rounded-3xl p-6 md:p-8 my-6">
+                        <div class="text-xs font-mono tracking-widest uppercase text-blue-200 mb-2">Wstępna wycena projektu</div>
+                        <div class="text-3xl md:text-5xl font-bold mb-2">
+                            <span id="pricing-low">—</span> - <span id="pricing-high">—</span> <span class="text-2xl">zł netto</span>
+                        </div>
+                        <p class="text-blue-100 text-sm leading-relaxed">
+                            Finalną wycenę z propozycją zakresu prac i harmonogramem <strong class="text-white">otrzymasz mailem w ciągu 24h</strong>. Bez zobowiązań - decydujesz po przeczytaniu propozycji.
+                        </p>
+                    </div>
+
+                    <p class="text-slate-500 text-sm mb-4">Zostaw kontakt, żebym mógł odesłać Ci propozycję:</p>
+
+                    <div class="space-y-4">
+                        <div>
+                            <label class="block text-sm font-semibold text-slate-700 mb-2">Imię i nazwisko <span class="text-red-500">*</span></label>
+                            <input type="text" name="name" placeholder="Jan Kowalski" class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition-all" required>
+                            <p class="field-error" id="err-name">Podaj swoje imię.</p>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-semibold text-slate-700 mb-2">Email <span class="text-red-500">*</span></label>
+                            <input type="email" name="email" placeholder="ty@firma.pl" class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition-all" required>
+                            <p class="field-error" id="err-email">Podaj poprawny adres email.</p>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-semibold text-slate-700 mb-2">Telefon <span class="text-slate-400 text-xs">(opcjonalnie)</span></label>
+                            <input type="tel" name="phone" placeholder="+48 600 000 000" class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition-all">
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-semibold text-slate-700 mb-2">Nazwa firmy</label>
+                            <input type="text" name="company" placeholder="np. Twoja Marka Sp. z o.o." class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition-all">
+                        </div>
+                    </div>
+
+                    <div class="mt-6 text-xs text-slate-500 leading-relaxed">
+                        Wysyłając brief wyrażasz zgodę na kontakt mailowy w celu przedstawienia oferty. Dane wykorzystam wyłącznie do przygotowania wyceny i kontaktu. Bez listy mailingowej, bez spamowania.
+                    </div>
+                </div>
+
+                <!-- Buttons -->
+                <div class="flex flex-col-reverse sm:flex-row gap-3 sm:justify-between mt-10 pt-6 border-t border-gray-100">
+                    <button type="button" id="btn-prev" class="hidden px-6 py-3 border border-gray-300 rounded-full text-slate-700 hover:bg-gray-50 transition-all font-semibold">← Wstecz</button>
+                    <div class="sm:ml-auto flex flex-col sm:flex-row gap-3">
+                        <button type="button" id="btn-next" class="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-full font-bold transition-all shadow-lg shadow-blue-600/20">Dalej →</button>
+                        <button type="submit" id="btn-submit" class="hidden bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-full font-bold transition-all shadow-lg shadow-blue-600/20">
+                            <span id="submit-label">Wyślij brief i otrzymaj wycenę</span>
+                            <span id="submit-spinner" class="hidden">Wysyłanie...</span>
+                        </button>
+                    </div>
+                </div>
+            </form>
+
+            <!-- Success state -->
+            <div id="success" class="hidden bg-white border-2 border-green-300 rounded-3xl p-8 md:p-10 shadow-sm text-center">
+                <div class="w-16 h-16 rounded-full bg-green-100 flex items-center justify-center mx-auto mb-6">
+                    <svg class="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg>
+                </div>
+                <h2 class="text-3xl font-bold mb-3">Brief wysłany. Dzięki!</h2>
+                <p class="text-slate-600 mb-6 max-w-md mx-auto">Otrzymałem Twoje zgłoszenie. <strong class="text-slate-800">Propozycję zakresu i harmonogram dostaniesz mailem w ciągu 24h</strong> (zwykle szybciej).</p>
+                <p class="text-slate-500 text-sm mb-8">W międzyczasie - zobacz jak buduję podobne projekty.</p>
+                <div class="flex flex-col sm:flex-row gap-3 justify-center">
+                    <a href="index.html" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-full font-bold transition-all">Strona główna</a>
+                    <a href="case-study-dietologicznie.html" class="border border-gray-300 text-slate-800 px-6 py-3 rounded-full font-bold hover:bg-gray-50 transition-all">Case study Dietologicznie</a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <footer class="py-8 bg-slate-900 text-white border-t border-white/10 mt-auto">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center text-slate-400 text-sm font-medium gap-3">
+            <a href="index.html" class="text-lg font-bold tracking-tighter italic text-white">DAWID<span class="text-blue-400">RUBIN</span></a>
+            <div>&copy; <script>document.write(new Date().getFullYear())</script> Dawid Rubin</div>
+            <a href="mailto:kontakt@dawidrubin.pl" class="hover:text-white transition-colors">kontakt@dawidrubin.pl</a>
+        </div>
+    </footer>
+
+    <script>
+        const TOTAL_STEPS = 4;
+        let currentStep = 1;
+
+        const form = document.getElementById('brief-form');
+        const btnPrev = document.getElementById('btn-prev');
+        const btnNext = document.getElementById('btn-next');
+        const btnSubmit = document.getElementById('btn-submit');
+
+        function showStep(n) {
+            document.querySelectorAll('.wizard-step').forEach(el => el.classList.add('hidden'));
+            document.getElementById('step-' + n).classList.remove('hidden');
+
+            document.querySelectorAll('.step-indicator').forEach(el => {
+                const s = parseInt(el.dataset.step);
+                el.classList.remove('active', 'border-blue-600', 'text-blue-700');
+                el.classList.add('border-gray-300', 'text-slate-500');
+                if (s < n) {
+                    el.classList.remove('border-gray-300', 'text-slate-500');
+                    el.classList.add('border-blue-600', 'text-blue-700');
+                } else if (s === n) {
+                    el.classList.add('active');
+                    el.classList.remove('border-gray-300', 'text-slate-500');
+                    el.classList.add('border-blue-600');
+                }
+            });
+            document.querySelectorAll('.step-line').forEach(el => {
+                const [from] = el.dataset.line.split('-').map(Number);
+                if (from < n) { el.classList.remove('bg-gray-200'); el.classList.add('bg-blue-600'); } else { el.classList.remove('bg-blue-600'); el.classList.add('bg-gray-200'); }
+            });
+
+            btnPrev.classList.toggle('hidden', n === 1);
+            btnNext.classList.toggle('hidden', n === TOTAL_STEPS);
+            btnSubmit.classList.toggle('hidden', n !== TOTAL_STEPS);
+
+            if (n === TOTAL_STEPS) updatePricingPreview();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function showError(id, show) {
+            const el = document.getElementById(id);
+            if (el) el.classList.toggle('show', show);
+        }
+
+        function validateStep(n) {
+            let valid = true;
+            if (n === 1) {
+                const checked = document.querySelectorAll('input[name="project_type"]:checked').length;
+                if (!checked) { showError('err-project', true); valid = false; } else { showError('err-project', false); }
+            }
+            if (n === 2) {
+                const scale = document.querySelector('input[name="scale"]:checked');
+                if (!scale) { showError('err-scale', true); valid = false; } else { showError('err-scale', false); }
+            }
+            if (n === 3) {
+                const industry = form.industry.value.trim();
+                const goal = form.main_goal.value.trim();
+                if (!industry) { showError('err-industry', true); valid = false; } else { showError('err-industry', false); }
+                if (!goal) { showError('err-goal', true); valid = false; } else { showError('err-goal', false); }
+            }
+            if (n === 4) {
+                const name = form.name.value.trim();
+                const email = form.email.value.trim();
+                const emailRx = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!name) { showError('err-name', true); valid = false; } else { showError('err-name', false); }
+                if (!emailRx.test(email)) { showError('err-email', true); valid = false; } else { showError('err-email', false); }
+            }
+            return valid;
+        }
+
+        // Reveal sub-options when "Strona" is checked
+        const stronaCheck = document.getElementById('check-strona');
+        const stronaSubtype = document.getElementById('strona-subtype');
+        if (stronaCheck && stronaSubtype) {
+            stronaCheck.addEventListener('change', () => {
+                stronaSubtype.classList.toggle('hidden', !stronaCheck.checked);
+            });
+        }
+
+        function updatePricingPreview() {
+            const projects = document.querySelectorAll('input[name="project_type"]:checked');
+            const scaleEl = document.querySelector('input[name="scale"]:checked');
+            if (!projects.length || !scaleEl) return;
+
+            let base = 0;
+            projects.forEach(p => {
+                // Special case: if "Strona" checked, use selected sub-scope base instead
+                if (p.id === 'check-strona') {
+                    const stronaScope = document.querySelector('input[name="strona_scope"]:checked');
+                    base += stronaScope ? parseInt(stronaScope.dataset.base) : parseInt(p.dataset.base);
+                } else {
+                    base += parseInt(p.dataset.base);
+                }
+            });
+            const multiplier = parseFloat(scaleEl.dataset.multiplier);
+            const calc = base * multiplier;
+            const low = Math.round(calc * 0.75 / 500) * 500;
+            const high = Math.round(calc * 1.25 / 500) * 500;
+
+            document.getElementById('pricing-low').textContent = low.toLocaleString('pl-PL').replace(/ /g, ' ');
+            document.getElementById('pricing-high').textContent = high.toLocaleString('pl-PL').replace(/ /g, ' ');
+            document.getElementById('meta-quote-low').value = low;
+            document.getElementById('meta-quote-high').value = high;
+        }
+
+        btnNext.addEventListener('click', () => {
+            if (!validateStep(currentStep)) return;
+            currentStep++;
+            showStep(currentStep);
+        });
+
+        btnPrev.addEventListener('click', () => {
+            currentStep--;
+            showStep(currentStep);
+        });
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            if (!validateStep(4)) return;
+
+            const submitLabel = document.getElementById('submit-label');
+            const submitSpinner = document.getElementById('submit-spinner');
+            btnSubmit.disabled = true;
+            submitLabel.classList.add('hidden');
+            submitSpinner.classList.remove('hidden');
+
+            const accessKey = form.querySelector('input[name="access_key"]').value;
+            const isPlaceholder = accessKey === '13dd45e3-f82b-48cf-a929-e3bab6c0b0b2';
+
+            if (isPlaceholder) {
+                console.warn('Web3Forms access_key nie skonfigurowany. Brief NIE zostanie wysłany na maila. Aby aktywować, wklej swój prawdziwy klucz z https://web3forms.com/');
+                showSuccess();
+                return;
+            }
+
+            try {
+                const formData = new FormData(form);
+                const response = await fetch('https://api.web3forms.com/submit', { method: 'POST', body: formData });
+                const data = await response.json();
+                if (data.success) {
+                    showSuccess();
+                } else {
+                    throw new Error(data.message || 'Wystąpił błąd przy wysyłce');
+                }
+            } catch (err) {
+                console.error(err);
+                alert('Coś poszło nie tak przy wysyłce. Napisz bezpośrednio na kontakt@dawidrubin.pl - obsłużę ręcznie. Przepraszam za niedogodność!');
+                btnSubmit.disabled = false;
+                submitLabel.classList.remove('hidden');
+                submitSpinner.classList.add('hidden');
+            }
+        });
+
+        function showSuccess() {
+            form.classList.add('hidden');
+            document.getElementById('success').classList.remove('hidden');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>

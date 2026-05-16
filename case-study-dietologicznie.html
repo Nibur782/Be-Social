@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#1D4ED8">
+
+    <title>Case Study: Dietologicznie.pl - start online dla dietetyka bez budżetu reklamowego | Dawid Rubin</title>
+    <meta name="description" content="Jak postawiłem online gabinet dietetyczny od zera - strona z kalendarzem Google, płatności Stripe, profil Google Business i ZnanyLekarz. Bez prowizji platform, bez płatnego planu, bez budżetu reklamowego.">
+    <meta name="author" content="Dawid Rubin">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <link rel="canonical" href="https://dawidrubin.pl/case-study-dietologicznie.html">
+
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="Dawid Rubin - Marketing dla firm każdej skali">
+    <meta property="og:url" content="https://dawidrubin.pl/case-study-dietologicznie.html">
+    <meta property="og:title" content="Dietologicznie.pl - start online dla dietetyka bez budżetu reklamowego">
+    <meta property="og:description" content="Strona z kalendarzem Google, płatności Stripe, profil Google Business i ZnanyLekarz - kompletny start bez prowizji i bez płatnych planów.">
+    <meta property="og:image" content="https://dawidrubin.pl/screenshots/dieto-kaja-hero.webp">
+    <meta property="og:locale" content="pl_PL">
+    <meta property="article:author" content="Dawid Rubin">
+    <meta property="article:section" content="Case Study Web Development">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Dietologicznie.pl - start online dla dietetyka bez budżetu reklamowego">
+    <meta name="twitter:description" content="Strona z kalendarzem Google, Stripe, Google Business, ZnanyLekarz - od zera, bez prowizji, bez płatnych planów.">
+    <meta name="twitter:image" content="https://dawidrubin.pl/screenshots/dieto-kaja-hero.webp">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "Strona główna", "item": "https://dawidrubin.pl/" },
+            { "@type": "ListItem", "position": 2, "name": "Realizacje", "item": "https://dawidrubin.pl/#results" },
+            { "@type": "ListItem", "position": 3, "name": "Dietologicznie.pl - ekosystem online", "item": "https://dawidrubin.pl/case-study-dietologicznie.html" }
+          ]
+        },
+        {
+          "@type": "Article",
+          "headline": "Dietologicznie.pl - start online dla dietetyka bez budżetu reklamowego",
+          "alternativeHeadline": "Strona z kalendarzem Google, Stripe, profil Google Business i ZnanyLekarz",
+          "author": { "@type": "Person", "name": "Dawid Rubin", "url": "https://dawidrubin.pl/" },
+          "publisher": { "@type": "Person", "name": "Dawid Rubin", "url": "https://dawidrubin.pl/" },
+          "datePublished": "2026-05-14",
+          "dateModified": "2026-05-14",
+          "image": "https://dawidrubin.pl/screenshots/dieto-kaja-hero.webp",
+          "description": "Realizacja pełnego startu online dla młodego dietetyka klinicznego z Wrocławia. Bez dużego budżetu reklamowego: strona internetowa z embedowanym kalendarzem Google i płatnościami Stripe, profil Google Business dla widoczności lokalnej oraz profil ZnanyLekarz jako dodatkowy kanał - bez płatnych planów i bez prowizji od wizyt.",
+          "inLanguage": "pl-PL",
+          "isPartOf": { "@type": "WebSite", "name": "Dawid Rubin - Marketing dla firm każdej skali", "url": "https://dawidrubin.pl/" },
+          "about": ["Strony internetowe", "Stripe", "Google Calendar", "Google Business Profile", "ZnanyLekarz", "Marketing dla gabinetów medycznych", "Start online dla usługodawcy", "Next.js"],
+          "mainEntityOfPage": "https://dawidrubin.pl/case-study-dietologicznie.html"
+        }
+      ]
+    }
+    </script>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #F8FAFC; color: #0F172A; }
+        .vasco-blue { color: #1D4ED8; }
+        .bg-vasco-blue { background-color: #1D4ED8; }
+        .bento-card { background: #FFFFFF; border: 1px solid #E2E8F0; transition: all 0.3s ease; box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.05); }
+        .prose-custom p { margin-bottom: 1.25rem; line-height: 1.8; color: #475569; }
+        .prose-custom h3 { font-size: 1.35rem; font-weight: 700; margin-bottom: 0.75rem; margin-top: 2rem; color: #0F172A; }
+    </style>
+</head>
+<body class="antialiased">
+
+    <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 bg-white/90 backdrop-blur-md border-b border-gray-200 shadow-sm">
+        <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+            <a href="index.html" class="text-xl font-bold tracking-tighter italic">DAWID<span class="vasco-blue">RUBIN</span></a>
+            <div class="hidden lg:flex items-center gap-8 text-sm font-semibold text-slate-600">
+                <a href="index.html#about" class="hover:text-blue-600 transition-all">O mnie</a>
+                <a href="index.html#services" class="hover:text-blue-600 transition-all">Usługi</a>
+                <a href="index.html#process" class="hover:text-blue-600 transition-all">Proces</a>
+                <div class="relative group/cs">
+                    <button class="flex items-center gap-1 hover:text-blue-600 transition-all cursor-pointer">
+                        Case Study
+                        <svg class="w-3.5 h-3.5 transition-transform duration-200 group-hover/cs:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"/></svg>
+                    </button>
+                    <div class="absolute top-full left-1/2 -translate-x-1/2 pt-3 opacity-0 invisible group-hover/cs:opacity-100 group-hover/cs:visible transition-all duration-200 z-50">
+                        <div class="bg-white rounded-2xl shadow-xl border border-gray-100 py-2" style="min-width: 280px;">
+                            <a href="case-study-wkreceni-w-rowery.html" class="flex items-center gap-3 px-4 py-3 hover:bg-green-50 hover:text-green-700 transition-colors text-slate-700">
+                                <span class="text-green-600 font-bold text-sm w-12 flex-shrink-0">↗</span>
+                                <span class="text-sm font-medium">Wkręceni w Rowery - sezonowe Ads</span>
+                            </a>
+                            <a href="case-study-dietologicznie.html" class="flex items-center gap-3 px-4 py-3 hover:bg-green-50 hover:text-green-700 transition-colors text-slate-700 bg-green-50/40">
+                                <span class="text-green-600 font-bold text-sm w-12 flex-shrink-0">↗</span>
+                                <span class="text-sm font-medium">Dietologicznie.pl - ekosystem</span>
+                            </a>
+                            <div class="h-px bg-gray-100 mx-4 my-1"></div>
+                            <a href="case-study-globalny-wzrost.html" class="flex items-center gap-3 px-4 py-3 hover:bg-blue-50 hover:text-blue-700 transition-colors text-slate-700">
+                                <span class="text-blue-600 font-bold text-sm w-12 flex-shrink-0">+64%</span>
+                                <span class="text-sm font-medium">Globalny wzrost sprzedaży</span>
+                            </a>
+                            <a href="case-study-automatyzacja.html" class="flex items-center gap-3 px-4 py-3 hover:bg-blue-50 hover:text-blue-700 transition-colors text-slate-700">
+                                <span class="text-blue-600 font-bold text-sm w-12 flex-shrink-0">80%</span>
+                                <span class="text-sm font-medium">Oszczędność czasu</span>
+                            </a>
+                            <a href="case-study-vasco-usa.html" class="flex items-center gap-3 px-4 py-3 hover:bg-blue-50 hover:text-blue-700 transition-colors text-slate-700">
+                                <span class="text-blue-600 font-bold text-sm w-12 flex-shrink-0">+466%</span>
+                                <span class="text-sm font-medium">Wzrost sprzedaży USA</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <a href="metodologia.html" class="hover:text-blue-600 transition-all">Metodologia</a>
+                <a href="audyt-paid-media.html" class="text-blue-600 hover:text-blue-800 transition-all border-b border-blue-300 hover:border-blue-600 pb-0.5">Pobierz PDF</a>
+            </div>
+            <div class="flex items-center gap-4">
+                <a href="index.html#audit" class="hidden md:inline-block bg-vasco-blue hover:bg-blue-700 text-white px-5 py-2.5 rounded-full text-sm font-semibold transition-all">Porozmawiajmy</a>
+                <button id="mobile-menu-btn" class="lg:hidden p-2 text-slate-600 hover:text-blue-600 focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                </button>
+            </div>
+        </div>
+        <div id="mobile-menu" class="hidden lg:hidden bg-white border-b border-gray-200">
+            <div class="flex flex-col px-6 py-4 space-y-4 text-sm font-semibold text-slate-600">
+                <a href="index.html#about" class="hover:text-blue-600 transition-all">O mnie</a>
+                <a href="index.html#services" class="hover:text-blue-600 transition-all">Usługi</a>
+                <a href="index.html#process" class="hover:text-blue-600 transition-all">Proces</a>
+                <div>
+                    <button id="cs-mobile-btn" class="flex items-center justify-between w-full text-left hover:text-blue-600 transition-all">
+                        Case Study
+                        <svg id="cs-mobile-arrow" class="w-4 h-4 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"/></svg>
+                    </button>
+                    <div id="cs-mobile-submenu" class="hidden mt-3 space-y-2 border-l-2 border-blue-100 pl-4">
+                        <a href="case-study-wkreceni-w-rowery.html" class="flex items-center gap-2 text-sm text-slate-500 hover:text-green-600 transition-all py-1"><span class="text-green-500 font-bold">↗</span> Wkręceni w Rowery</a>
+                        <a href="case-study-dietologicznie.html" class="flex items-center gap-2 text-sm text-slate-500 hover:text-green-600 transition-all py-1"><span class="text-green-500 font-bold">↗</span> Dietologicznie.pl</a>
+                        <a href="case-study-globalny-wzrost.html" class="flex items-center gap-2 text-sm text-slate-500 hover:text-blue-600 transition-all py-1"><span class="text-blue-500 font-bold">+64%</span> Globalny wzrost</a>
+                        <a href="case-study-automatyzacja.html" class="flex items-center gap-2 text-sm text-slate-500 hover:text-blue-600 transition-all py-1"><span class="text-blue-500 font-bold">80%</span> Oszczędność czasu</a>
+                        <a href="case-study-vasco-usa.html" class="flex items-center gap-2 text-sm text-slate-500 hover:text-blue-600 transition-all py-1"><span class="text-blue-500 font-bold">+466%</span> Wzrost USA</a>
+                    </div>
+                </div>
+                <a href="metodologia.html" class="hover:text-blue-600 transition-all">Metodologia</a>
+                <a href="audyt-paid-media.html" class="text-blue-600 hover:text-blue-800 transition-all">Pobierz PDF</a>
+                <a href="index.html#audit" class="inline-block text-center bg-vasco-blue text-white px-5 py-3 rounded-full mt-4 transition-all">Porozmawiajmy</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="pt-32 pb-16 px-6 bg-white border-b border-gray-100">
+        <div class="max-w-5xl mx-auto">
+            <div class="flex flex-wrap items-center gap-3 mb-6">
+                <a href="index.html" class="text-sm text-slate-500 hover:text-blue-600 transition-colors font-mono">← Strona główna</a>
+                <span class="text-slate-300">/</span>
+                <span class="text-sm text-slate-500 font-mono">Realizacje</span>
+                <span class="bg-green-100 text-green-700 text-xs font-bold px-3 py-1 rounded-full">Dietologicznie.pl</span>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 items-center">
+                <div class="md:col-span-2">
+                    <span class="text-blue-500 font-mono text-sm tracking-widest uppercase mb-4 block">Case Study - Start online dla usługodawcy</span>
+                    <h1 class="text-4xl md:text-5xl font-bold leading-tight mb-6">
+                        Pełen start online <span class="vasco-blue">bez budżetu reklamowego.</span>
+                    </h1>
+                    <p class="text-lg text-slate-600 leading-relaxed mb-6">
+                        Kaja przyszła do mnie chcąc zacząć prowadzić konsultacje dietetyczne online. <strong class="text-slate-800">Nie wiedziała od czego zacząć i nie miała dużego budżetu reklamowego.</strong> Postawiliśmy razem stronę z kalendarzem Google i płatnościami Stripe, założyliśmy profil Google Business i ZnanyLekarz - wszystko bez prowizji od wizyt i bez płatnych planów na zewnętrznych platformach.
+                    </p>
+                    <a href="https://dietologicznie.pl" target="_blank" rel="noopener" class="inline-flex items-center gap-2 text-blue-600 font-semibold hover:text-blue-800 transition-colors group">
+                        Zobacz stronę na żywo
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-4 h-4 group-hover:translate-x-1 transition-transform">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                        </svg>
+                    </a>
+                </div>
+                <div class="md:col-span-1">
+                    <div class="rounded-3xl overflow-hidden border border-gray-200 shadow-lg aspect-[3/4]">
+                        <img src="screenshots/dieto-kaja-hero.webp" alt="Kaja Komczyńska - dietetyk kliniczny, marka Dietologicznie" class="w-full h-full object-cover" loading="eager">
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex flex-wrap gap-6 text-sm font-mono text-slate-500 border-t border-gray-100 pt-6 mt-10">
+                <span>Klient: <strong class="text-slate-700">Dietologicznie / Kaja Komczyńska</strong></span>
+                <span>Branża: <strong class="text-slate-700">Zdrowie / Dietetyka</strong></span>
+                <span>Zakres: <strong class="text-slate-700">Strona + płatności + Google Business + ZnanyLekarz</strong></span>
+                <span>Status: <strong class="text-slate-700">Live</strong></span>
+            </div>
+        </div>
+    </section>
+
+    <!-- KPI bar -->
+    <section class="py-12 bg-vasco-blue text-white">
+        <div class="max-w-5xl mx-auto px-6">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center divide-y md:divide-y-0 md:divide-x divide-white/20">
+                <div class="pt-6 md:pt-0">
+                    <div class="text-4xl font-bold mb-1">0 zł</div>
+                    <div class="text-xs font-semibold tracking-widest uppercase text-blue-200">Prowizji od wizyty</div>
+                </div>
+                <div class="pt-6 md:pt-0">
+                    <div class="text-4xl font-bold mb-1">0 zł</div>
+                    <div class="text-xs font-semibold tracking-widest uppercase text-blue-200">Płatnych planów</div>
+                </div>
+                <div class="pt-6 md:pt-0">
+                    <div class="text-4xl font-bold mb-1">100%</div>
+                    <div class="text-xs font-semibold tracking-widest uppercase text-blue-200">Online od zera</div>
+                </div>
+                <div class="pt-6 md:pt-0">
+                    <div class="text-4xl font-bold mb-1">5⭐</div>
+                    <div class="text-xs font-semibold tracking-widest uppercase text-blue-200">Opinii Google</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main content -->
+    <section class="py-20 px-6">
+        <div class="max-w-4xl mx-auto">
+
+            <!-- Kontekst -->
+            <div class="mb-16">
+                <span class="text-blue-500 font-mono text-sm tracking-widest uppercase mb-3 block">01 - Kontekst</span>
+                <h2 class="text-3xl font-bold mb-8 italic">Świeżo po studiach, bez budżetu reklamowego, bez infrastruktury - "od czego w ogóle zacząć?"</h2>
+                <div class="prose-custom">
+                    <p>Kaja Komczyńska to dietetyk kliniczny z Wrocławia - absolwentka Uniwersytetu Medycznego we Wrocławiu, specjalizuje się w insulinooporności, PCOS, dietach eliminacyjnych i kompleksowej opiece nad pacjentem. Skończyła studia i postanowiła zacząć prowadzić konsultacje dietetyczne online - ale na samym starcie pojawiło się pytanie, które dopada większość specjalistów: <strong class="text-slate-800">"OK, ale jak właściwie do mnie trafią pacjenci?"</strong></p>
+                    <p>Bez doświadczenia z marketingiem, bez wcześniejszej bazy klientów, bez większego budżetu reklamowego do dyspozycji. Trzeba było zacząć od zera - tak, żeby zbudować widoczność i operacyjny system przyjmowania pacjentów <strong class="text-slate-800">nie wydając równocześnie pieniędzy, których jeszcze nie ma</strong>.</p>
+                </div>
+
+                <div class="bento-card rounded-3xl p-8 my-8 border-l-4 border-blue-600">
+                    <h3 class="text-lg font-bold mb-3 text-blue-700 mt-0">Założenia startowe</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed mb-2"><strong class="text-slate-700">Brak budżetu reklamowego:</strong> żadnych płatnych kampanii Meta/Google na start. Widoczność musi pochodzić z bezpłatnych kanałów - SEO, Google Maps, dowód społeczny.</p>
+                    <p class="text-slate-600 text-sm leading-relaxed mb-2"><strong class="text-slate-700">Brak płatnych planów na platformach:</strong> ZnanyLekarz - tak, ale tylko w darmowym zakresie (bez prowizji od wizyty, bez płatnego "premium" za widoczność).</p>
+                    <p class="text-slate-600 text-sm leading-relaxed mb-0"><strong class="text-slate-700">Pełna autonomia operacyjna:</strong> pacjent rezerwuje i opłaca wizytę bezpośrednio u Kai - bez pośredników biorących prowizję od każdej transakcji.</p>
+                </div>
+            </div>
+
+            <!-- Problem - co musi działać razem -->
+            <div class="mb-16">
+                <span class="text-blue-500 font-mono text-sm tracking-widest uppercase mb-3 block">02 - Wyzwanie</span>
+                <h2 class="text-3xl font-bold mb-8 italic">Cztery niezależne kanały - każdy ze swoją rolą, wszystkie w wersji bezpłatnej.</h2>
+                <div class="prose-custom">
+                    <p>Skoro nie ma budżetu reklamowego, musimy zbudować widoczność i operacyjność z elementów, za które się nie płaci stałych opłat. Cztery filary - każdy odpowiada za inny etap drogi pacjenta:</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 my-8">
+                    <div class="bento-card rounded-2xl p-6">
+                        <div class="text-blue-600 font-mono text-xs font-bold uppercase tracking-widest mb-3">Element 1 · Konwersja</div>
+                        <h4 class="font-bold mb-2">Strona internetowa</h4>
+                        <p class="text-slate-600 text-sm">Strona w Next.js z osadzonym kalendarzem Google i Stripe Checkout. Pacjent rezerwuje termin i opłaca wizytę bezpośrednio - bez wychodzenia poza dietologicznie.pl.</p>
+                    </div>
+                    <div class="bento-card rounded-2xl p-6">
+                        <div class="text-blue-600 font-mono text-xs font-bold uppercase tracking-widest mb-3">Element 2 · Widoczność lokalna</div>
+                        <h4 class="font-bold mb-2">Google Business Profile</h4>
+                        <p class="text-slate-600 text-sm">Pierwszy bezpłatny kanał pozyskiwania pacjentów. Profil w Mapach Google z opisem, zdjęciami, kategoriami i opiniami - dla zapytań typu "dietetyk Wrocław".</p>
+                    </div>
+                    <div class="bento-card rounded-2xl p-6">
+                        <div class="text-blue-600 font-mono text-xs font-bold uppercase tracking-widest mb-3">Element 3 · Płatności</div>
+                        <h4 class="font-bold mb-2">Stripe Checkout</h4>
+                        <p class="text-slate-600 text-sm">Blik, karta, Apple Pay, Google Pay. Pacjent płaci bezpośrednio do gabinetu - bez prowizji platformy pośredniczącej, tylko standardowa opłata Stripe (~1,4% + 0,25 zł).</p>
+                    </div>
+                    <div class="bento-card rounded-2xl p-6">
+                        <div class="text-blue-600 font-mono text-xs font-bold uppercase tracking-widest mb-3">Element 4 · Dodatkowy kanał</div>
+                        <h4 class="font-bold mb-2">Profil ZnanyLekarz (free)</h4>
+                        <p class="text-slate-600 text-sm">Wyłącznie w darmowej wersji - jako dodatkowy kanał widoczności i miejsce na opinie. Bez płatnego planu, bez integracji ze stroną - by nie generować kosztów na starcie.</p>
+                    </div>
+                </div>
+
+                <div class="bento-card rounded-3xl p-8 my-8 border-l-4 border-amber-400">
+                    <h3 class="text-lg font-bold mb-3 text-amber-700 mt-0">Świadoma decyzja: kalendarz i płatności na własnej stronie, nie na ZnanyLekarz</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed mb-2">Domyślny ruch dla młodego specjalisty to całość procesu na ZnanyLekarz - wygodnie, znajomo, "wszystko w jednym". Ale to oznacza prowizję od każdej wizyty albo płatny plan dla rezerwacji online.</p>
+                    <p class="text-slate-600 text-sm leading-relaxed mb-0">Decyzja: <strong class="text-slate-800">kalendarz i płatności trzymamy u siebie</strong>. ZnanyLekarz wykorzystujemy jako bezpłatny kanał widoczności i zbierania opinii. Procesu transakcyjnego nie podłączamy - bo to byłaby pierwsza linijka cyklicznych kosztów do dźwigania na samym starcie.</p>
+                </div>
+            </div>
+
+            <!-- Rozwiązanie -->
+            <div class="mb-16">
+                <span class="text-blue-500 font-mono text-sm tracking-widest uppercase mb-3 block">03 - Rozwiązanie</span>
+                <h2 class="text-3xl font-bold mb-8 italic">Strona, która jednocześnie sprzedaje, rezerwuje termin i przyjmuje płatność.</h2>
+
+                <h3 class="text-xl font-bold mb-4 mt-8">Strona internetowa - Next.js, szybka i przygotowana pod SEO</h3>
+                <div class="prose-custom">
+                    <p>Stronę zbudowałem w Next.js - z naciskiem na szybkość ładowania (kluczowe dla rankingu w Google i utrzymania pacjenta na stronie) i pełną optymalizację mobilną. Obrazy w formacie webp, lazy loading, statyczne generowanie tam, gdzie tylko można. Pacjent na telefonie wchodzi na stronę i widzi treść w pierwszej sekundzie - bez ładowania, bez skakania layoutu.</p>
+                    <p>Struktura strony prowadzi pacjenta jednym ciągiem: kim jest dietetyk, jakie ma kwalifikacje, w czym pomaga, ile to kosztuje, jak zarezerwować. Bez zbędnych zakładek, bez ścieżek prowadzących na zewnątrz. Decyzja w 30 sekund od wejścia.</p>
+                </div>
+
+                <div class="bento-card rounded-3xl overflow-hidden mb-8 mt-6">
+                    <div class="p-6 pb-4 flex items-center justify-between flex-wrap gap-3">
+                        <div>
+                            <div class="font-bold text-slate-800 mb-1">Hero strony dietologicznie.pl</div>
+                            <p class="text-slate-500 text-xs font-mono uppercase">Live preview - widok desktop</p>
+                        </div>
+                        <a href="https://dietologicznie.pl" target="_blank" rel="noopener" class="inline-flex items-center gap-2 text-blue-600 text-xs font-bold hover:text-blue-800 transition-colors">
+                            Otwórz na żywo
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-3.5 h-3.5"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" /></svg>
+                        </a>
+                    </div>
+                    <img src="screenshots/dieto-strona.webp" alt="Strona główna dietologicznie.pl - hero z portretem Kai Komczyńskiej i headlinem 'Dietetyk kliniczny Wrocław - dietetyka oparta na logice i wiedzy medycznej'" class="w-full border-t border-gray-100" loading="lazy">
+                </div>
+
+                <h3 class="text-xl font-bold mb-4 mt-10">Kalendarz Google osadzony na stronie</h3>
+                <div class="prose-custom">
+                    <p>Zamiast przekierowywać pacjenta do zewnętrznego systemu rezerwacji, dostępne terminy żyją bezpośrednio w kalendarzu Google Kai - i są wyświetlane na stronie. Kaja widzi rezerwacje w swoim domyślnym Google Calendar (komórka + laptop, bez dodatkowych aplikacji do nauki), a pacjent widzi tylko wolne sloty.</p>
+                    <p>Co to znaczy w praktyce: <strong class="text-slate-800">jeden kalendarz, zero dublowania.</strong> Jeśli Kaja zablokuje termin na cokolwiek (lekarz, urlop, prywatne) w swoim Google Calendar - automatycznie znika ze strony jako dostępny. Bez ręcznej synchronizacji, bez ryzyka podwójnej rezerwacji.</p>
+                </div>
+
+                <h3 class="text-xl font-bold mb-4 mt-10">Stripe Checkout - rezerwacja od razu opłacona</h3>
+                <div class="prose-custom">
+                    <p>Po wybraniu terminu pacjent przechodzi do Stripe Checkout - Blik, karta, Apple Pay, Google Pay. Płatność potwierdzona = wizyta zarezerwowana. Webhook Stripe rejestruje opłatę po stronie aplikacji i blokuje wybrany slot w kalendarzu Google.</p>
+                    <p>Co istotne: <strong class="text-slate-800">żadnych dodatkowych prowizji</strong> poza standardową opłatą Stripe (~1,4% + 0,25 zł od transakcji). Cała reszta trafia bezpośrednio do gabinetu - bez 15-20% prowizji platformy rezerwacyjnej. Płatność z góry załatwia też drugi problem: praktycznie eliminuje "no-show'y", bo pacjent zostawił już pieniądze.</p>
+                </div>
+
+                <h3 class="text-xl font-bold mb-4 mt-10">Google Business Profile - bezpłatna widoczność lokalna</h3>
+                <div class="prose-custom">
+                    <p>Skoro nie ma budżetu na płatne kampanie, Google Business musi pracować jako podstawowy kanał widoczności. Założyłem i skonfigurowałem profil w Google Business - z pełnym opisem usług, godzinami, kategoriami, zdjęciami i ustawioną prośbą o opinię po wizycie. Pojawia się w Mapach Google na zapytania typu "dietetyk Wrocław", "dieta insulinooporność Wrocław".</p>
+                    <p>Profil linkuje bezpośrednio na stronę dietologicznie.pl - cały ruch wpada na własny kanał Kai, nie na zewnętrzną platformę.</p>
+                </div>
+
+                <h3 class="text-xl font-bold mb-4 mt-10">ZnanyLekarz - jako dodatkowy bezpłatny kanał, bez integracji</h3>
+                <div class="prose-custom">
+                    <p>Profil na ZnanyLekarz założyliśmy w wersji darmowej - jako trzeci kanał widoczności obok strony i Google Business. Pacjenci szukający dietetyka mogą trafić na Kaję także tam, zobaczyć opinie, kwalifikacje, opis.</p>
+                    <p>Świadomie <strong class="text-slate-800">nie podłączamy ZnanyLekarz do procesu transakcyjnego</strong>. Płatny plan z rezerwacjami online wymagałby stałej opłaty miesięcznej, której na starcie nie chcemy generować. Kaja kontaktuje się z pacjentami z ZnanyLekarz przez wiadomości i kieruje ich na stronę - rezerwacja i płatność idą tak samo, jak dla każdego innego pacjenta.</p>
+                </div>
+            </div>
+
+            <!-- Architektura przepływu -->
+            <div class="mb-16">
+                <span class="text-blue-500 font-mono text-sm tracking-widest uppercase mb-3 block">04 - Architektura przepływu</span>
+                <h2 class="text-3xl font-bold mb-8 italic">Pełna ścieżka pacjenta - od Google do potwierdzonej wizyty.</h2>
+
+                <div class="space-y-4 mb-8">
+                    <div class="flex items-start gap-4 bg-white rounded-2xl border border-gray-200 p-6">
+                        <div class="w-10 h-10 rounded-full bg-blue-100 text-blue-700 flex items-center justify-center font-bold flex-shrink-0">1</div>
+                        <div>
+                            <h4 class="font-bold mb-1">Pacjent wyszukuje "dietetyk Wrocław" w Google</h4>
+                            <p class="text-slate-600 text-sm">Trafia na profil Google Business (Mapy), kartę w wynikach wyszukiwania albo profil na ZnanyLekarz. Wszystkie kanały kierują na dietologicznie.pl.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-4 bg-white rounded-2xl border border-gray-200 p-6">
+                        <div class="w-10 h-10 rounded-full bg-blue-100 text-blue-700 flex items-center justify-center font-bold flex-shrink-0">2</div>
+                        <div>
+                            <h4 class="font-bold mb-1">Czyta ofertę i wybiera pakiet na stronie</h4>
+                            <p class="text-slate-600 text-sm">3 pakiety (jednorazowa wizyta / kompleksowa opieka / dla par) z jasnymi cenami i opisem co dokładnie jest w środku.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-4 bg-white rounded-2xl border border-gray-200 p-6">
+                        <div class="w-10 h-10 rounded-full bg-blue-100 text-blue-700 flex items-center justify-center font-bold flex-shrink-0">3</div>
+                        <div>
+                            <h4 class="font-bold mb-1">Wybiera termin z kalendarza Google embedded</h4>
+                            <p class="text-slate-600 text-sm">Strona pokazuje dostępne sloty bezpośrednio z kalendarza Google Kai. Pacjent klika preferowany termin - bez wychodzenia na zewnątrz.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-4 bg-white rounded-2xl border border-gray-200 p-6">
+                        <div class="w-10 h-10 rounded-full bg-blue-100 text-blue-700 flex items-center justify-center font-bold flex-shrink-0">4</div>
+                        <div>
+                            <h4 class="font-bold mb-1">Płatność przez Stripe Checkout</h4>
+                            <p class="text-slate-600 text-sm">Blik, karta, Apple Pay lub Google Pay. Pacjent płaci od razu po wyborze terminu - sekundy zamiast minut.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-4 bg-white rounded-2xl border border-gray-200 p-6">
+                        <div class="w-10 h-10 rounded-full bg-blue-100 text-blue-700 flex items-center justify-center font-bold flex-shrink-0">5</div>
+                        <div>
+                            <h4 class="font-bold mb-1">Termin blokowany w kalendarzu, mail potwierdzający do pacjenta</h4>
+                            <p class="text-slate-600 text-sm">Webhook Stripe potwierdza płatność, slot znika z dostępnych terminów na stronie i ląduje w Google Calendar Kai. Pacjent dostaje mail z potwierdzeniem i linkiem do spotkania.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-4 bg-white rounded-2xl border border-gray-200 p-6">
+                        <div class="w-10 h-10 rounded-full bg-blue-100 text-blue-700 flex items-center justify-center font-bold flex-shrink-0">6</div>
+                        <div>
+                            <h4 class="font-bold mb-1">Wizyta wpada gotowa do realizacji</h4>
+                            <p class="text-slate-600 text-sm">Opłacona z góry, w kalendarzu Kai, bez prowizji platform, bez ręcznej obsługi rezerwacji. Pacjent przychodzi - dietetyk pracuje.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Wnioski -->
+            <div class="mb-16 bg-slate-900 text-white rounded-3xl p-10">
+                <span class="text-blue-400 font-mono text-sm tracking-widest uppercase mb-3 block">05 - Wnioski</span>
+                <h2 class="text-3xl font-bold mb-8 italic text-white">Co z tego wynika dla Twojego biznesu?</h2>
+                <div class="space-y-6">
+                    <div class="flex items-start gap-4">
+                        <div class="w-8 h-8 rounded-full bg-blue-600 flex items-center justify-center flex-shrink-0 mt-0.5 text-white font-bold text-sm">1</div>
+                        <div>
+                            <h3 class="text-lg font-bold text-white mb-1 mt-0">Brak budżetu reklamowego to nie wymówka, żeby nie zaczynać.</h3>
+                            <p class="text-slate-300 text-sm leading-relaxed mb-0">Pierwszy ruch nie musi kosztować Cię setek złotych miesięcznie na Meta/Google Ads. Google Business + porządna strona z mocnym lokalnym SEO + obecność na branżowych katalogach (typu ZnanyLekarz) to bezpłatne kanały, które dla lokalnego usługodawcy często wystarczają, by zacząć przyjmować pacjentów.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-4">
+                        <div class="w-8 h-8 rounded-full bg-blue-600 flex items-center justify-center flex-shrink-0 mt-0.5 text-white font-bold text-sm">2</div>
+                        <div>
+                            <h3 class="text-lg font-bold text-white mb-1 mt-0">Korzystaj z darmowych planów - dopóki masz powód, żeby nie płacić.</h3>
+                            <p class="text-slate-300 text-sm leading-relaxed mb-0">ZnanyLekarz, Booksy, Treatwell mają wartość w bezpłatnych wersjach - widoczność, profil, opinie. Płatny plan ma sens dopiero, gdy widzisz konkretny zwrot. Na starcie: zakładaj profil, używaj go jako kanału ekspozycji, ale proces transakcyjny trzymaj u siebie - bez prowizji od każdej wizyty.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-4">
+                        <div class="w-8 h-8 rounded-full bg-blue-600 flex items-center justify-center flex-shrink-0 mt-0.5 text-white font-bold text-sm">3</div>
+                        <div>
+                            <h3 class="text-lg font-bold text-white mb-1 mt-0">Kalendarz Google + Stripe = w pełni samoobsługowa rezerwacja.</h3>
+                            <p class="text-slate-300 text-sm leading-relaxed mb-0">Nie potrzeba drogich systemów rezerwacyjnych ani dedykowanych aplikacji. Kalendarz Google embedowany na stronie + Stripe Checkout = pacjent rezerwuje i płaci sam, a Ty widzisz wizytę w tym samym kalendarzu, którego używasz na co dzień. Zero podwójnego prowadzenia.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-4">
+                        <div class="w-8 h-8 rounded-full bg-blue-600 flex items-center justify-center flex-shrink-0 mt-0.5 text-white font-bold text-sm">4</div>
+                        <div>
+                            <h3 class="text-lg font-bold text-white mb-1 mt-0">Płatność z góry załatwia problem no-show'ów.</h3>
+                            <p class="text-slate-300 text-sm leading-relaxed mb-0">Pacjent, który już zapłacił 220 zł, prawie zawsze przychodzi. Jeśli zrezygnuje - mamy regulamin zwrotów i to jego decyzja, nie Twoja strata. Dla lokalnego usługodawcy, gdzie każda godzina ma policzalną wartość, prepayment to różnica między "kalendarzem pełnym terminów" a "kalendarzem pełnym zrealizowanych wizyt".</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CTA -->
+            <div class="text-center border-t border-gray-200 pt-16">
+                <span class="text-blue-500 font-mono text-sm tracking-widest uppercase mb-4 block">Następny krok</span>
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 italic">Chcesz mieć własny system rezerwacji bez prowizji platform?</h2>
+                <p class="text-slate-600 text-lg max-w-xl mx-auto mb-8">Niezależnie czy prowadzisz gabinet, salon, czy świadczysz inne usługi - mogę zbudować Ci podobny ekosystem dopasowany do Twojej branży.</p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="index.html#audit" class="bg-blue-600 text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-blue-700 transition-all">Porozmawiajmy o Twoim biznesie</a>
+                    <a href="https://dietologicznie.pl" target="_blank" rel="noopener" class="border border-gray-300 text-slate-800 px-8 py-4 rounded-full font-bold text-lg hover:bg-gray-100 transition-all">Zobacz stronę na żywo →</a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <footer class="py-12 bg-slate-900 text-white border-t border-white/10">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center text-slate-400 text-sm font-medium gap-4">
+            <div>
+                <a href="index.html" class="text-lg font-bold tracking-tighter italic text-white">DAWID<span class="text-blue-400">RUBIN</span></a>
+            </div>
+            <div>&copy; <script>document.write(new Date().getFullYear())</script> Dawid Rubin. Wszelkie prawa zastrzeżone.</div>
+            <div class="flex gap-6">
+                <a href="index.html" class="hover:text-white transition-colors">Strona główna</a>
+                <a href="https://www.linkedin.com/in/dawidrubin" target="_blank" rel="noopener" class="hover:text-white transition-colors">LinkedIn</a>
+                <a href="audyt-paid-media.html" class="hover:text-white transition-colors">Pobierz PDF</a>
+                <a href="mailto:kontakt@dawidrubin.pl" class="hover:text-white transition-colors">Kontakt</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenuBtn.addEventListener('click', () => { mobileMenu.classList.toggle('hidden'); });
+        const csMobileBtn = document.getElementById('cs-mobile-btn');
+        const csMobileSubmenu = document.getElementById('cs-mobile-submenu');
+        const csMobileArrow = document.getElementById('cs-mobile-arrow');
+        if (csMobileBtn) {
+            csMobileBtn.addEventListener('click', () => {
+                csMobileSubmenu.classList.toggle('hidden');
+                csMobileArrow.classList.toggle('rotate-180');
+            });
+        }
+    </script>
+</body>
+</html>
