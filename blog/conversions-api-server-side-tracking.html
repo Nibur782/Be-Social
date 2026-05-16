@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/svg+xml" href="/brands/logo-dr-mark.svg">
+    <link rel="apple-touch-icon" href="/brands/logo-dr-mark.svg">
+    <meta name="theme-color" content="#1D4ED8">
+    <title>Conversions API i Server-Side Tracking - po co i jak wdrożyć | Dawid Rubin</title>
+    <meta name="description" content="Po iOS 14.5 pixel browser-side traci 30-50% sygnału. CAPI i sGTM odzyskują dane i poprawiają jakość atrybucji o 15-30%. Pełna instrukcja wdrożenia bez developera lub z minimalnym jego udziałem. Z konkretnymi ustawieniami EMQ i deduplikacji.">
+    <meta name="author" content="Dawid Rubin">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+    <link rel="canonical" href="https://dawidrubin.pl/blog/conversions-api-server-side-tracking">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://dawidrubin.pl/blog/conversions-api-server-side-tracking">
+    <meta property="og:title" content="Conversions API i Server-Side Tracking - po co i jak wdrożyć">
+    <meta property="og:description" content="Po iOS 14.5 pixel traci 30-50% sygnału. CAPI i sGTM odzyskują dane. Pełna instrukcja.">
+    <meta property="og:image" content="https://dawidrubin.pl/og/og-home.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:locale" content="pl_PL">
+    <meta property="article:author" content="Dawid Rubin">
+    <meta property="article:published_time" content="2026-05-16">
+    <meta property="article:section" content="Tracking">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Conversions API i Server-Side Tracking">
+    <meta name="twitter:description" content="Po iOS 14.5 pixel traci 30-50% sygnału. CAPI odzyskuje dane.">
+    <meta name="twitter:image" content="https://dawidrubin.pl/og/og-home.jpg">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        { "@type": "BreadcrumbList", "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Strona główna", "item": "https://dawidrubin.pl/" },
+          { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://dawidrubin.pl/blog" },
+          { "@type": "ListItem", "position": 3, "name": "Conversions API i Server-Side Tracking", "item": "https://dawidrubin.pl/blog/conversions-api-server-side-tracking" }
+        ]},
+        { "@type": "BlogPosting", "headline": "Conversions API i Server-Side Tracking - po co i jak wdrożyć",
+          "author": { "@type": "Person", "name": "Dawid Rubin", "url": "https://dawidrubin.pl/" },
+          "publisher": { "@type": "Person", "name": "Dawid Rubin", "url": "https://dawidrubin.pl/" },
+          "datePublished": "2026-05-16", "dateModified": "2026-05-16",
+          "image": "https://dawidrubin.pl/og/og-home.jpg",
+          "description": "Pełna instrukcja wdrożenia Conversions API i Server-Side Google Tag Manager (sGTM) dla Meta Ads, Google Ads, TikTok. Z konkretnymi ustawieniami EMQ i deduplikacji.",
+          "inLanguage": "pl-PL",
+          "isPartOf": { "@type": "Blog", "name": "Blog Dawida Rubina", "url": "https://dawidrubin.pl/blog" },
+          "about": ["Conversions API", "CAPI", "Server-Side Tracking", "sGTM", "Event Match Quality", "iOS 14.5", "Privacy"],
+          "keywords": "Conversions API, CAPI, Server-Side Tracking, sGTM, server-side GTM, Event Match Quality, iOS 14.5, deduplikacja",
+          "wordCount": 2600,
+          "mainEntityOfPage": "https://dawidrubin.pl/blog/conversions-api-server-side-tracking"
+        },
+        { "@type": "FAQPage", "mainEntity": [
+          { "@type": "Question", "name": "Czym jest Conversions API (CAPI)?", "acceptedAnswer": { "@type": "Answer", "text": "Conversions API (CAPI) to mechanizm, w którym konwersje wysyłane są bezpośrednio z Twojego serwera do platformy reklamowej (Meta, Google, TikTok), pomijając przeglądarkę użytkownika. Klasyczny pixel browser-side wysyła zdarzenia z przeglądarki, gdzie podlega blokom: iOS ITP, adblockom, opt-outom prywatności. CAPI omija te bloki - wysyła dane z backend, gdzie nikt ich nie blokuje." } },
+          { "@type": "Question", "name": "Czym jest Server-Side Tracking (sGTM)?", "acceptedAnswer": { "@type": "Answer", "text": "Server-Side Google Tag Manager (sGTM) to GTM zainstalowany na Twoim serwerze (a nie w przeglądarce użytkownika). Działa jako proxy - przeglądarka wysyła zdarzenia do Twojego sGTM, sGTM filtruje, wzbogaca i przekazuje dalej do platform reklamowych (Meta, Google, TikTok) przez CAPI. To architektura, w której masz pełną kontrolę nad danymi i obejściem blokad prywatności." } },
+          { "@type": "Question", "name": "Czy potrzebuję developera, żeby wdrożyć CAPI?", "acceptedAnswer": { "@type": "Answer", "text": "Dla podstawowego CAPI - nie. Większość platform e-commerce (Shopify, WooCommerce, Magento) ma gotowe integracje CAPI dla Meta i Google. Stagger Integrator, Stape.io, GTM Server-Side hosted services - wszystkie pozwalają wdrożyć CAPI bez developera. Dla zaawansowanego sGTM z custom triggers, deduplikacją server-side i wzbogaceniem danych - tak, potrzeba developera lub specjalisty tracking." } },
+          { "@type": "Question", "name": "Co to jest Event Match Quality (EMQ) i jaki powinien być?", "acceptedAnswer": { "@type": "Answer", "text": "Event Match Quality (EMQ) to wskaźnik 0-10 jakości danych użytkownika wysyłanych z CAPI. Liczy się na podstawie: email (hashed), telefon (hashed), imię, nazwisko, miasto, kod pocztowy, IP, user agent, fbp/fbc cookies. Cel: EMQ ≥ 7.0 dla zdarzeń purchase. EMQ poniżej 5 oznacza, że Meta nie potrafi dopasować większości zdarzeń CAPI do użytkowników, co zaniża wartość atrybucji." } },
+          { "@type": "Question", "name": "Czy CAPI zwiększa konwersje, czy tylko ich pomiar?", "acceptedAnswer": { "@type": "Answer", "text": "CAPI nie generuje nowych konwersji - tylko poprawia pomiar już istniejących. Ale poprawiony pomiar = więcej danych dla algorytmu = lepsza optymalizacja kampanii = więcej konwersji per budżet. W praktyce wdrożenie CAPI z EMQ ≥ 7.0 daje 15-30% wyższy ROAS w ciągu 4-8 tygodni od uruchomienia - nie dzięki nowym konwersjom, ale dzięki temu, że algorytm widzi pełen obraz i optymalizuje pod właściwych użytkowników." } }
+        ]}
+      ]
+    }
+    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #F8FAFC; color: #0F172A; }
+        .vasco-blue { color: #1D4ED8; }
+        .bg-vasco-blue { background-color: #1D4ED8; }
+        .prose-custom p { margin-bottom: 1.25rem; line-height: 1.8; color: #334155; font-size: 1.05rem; }
+        .prose-custom h2 { font-size: 1.875rem; font-weight: 700; margin-top: 3rem; margin-bottom: 1rem; color: #0F172A; line-height: 1.3; }
+        .prose-custom h3 { font-size: 1.35rem; font-weight: 700; margin-bottom: 0.75rem; margin-top: 2rem; color: #0F172A; }
+        .prose-custom ul, .prose-custom ol { margin-bottom: 1.25rem; padding-left: 1.5rem; }
+        .prose-custom ul li, .prose-custom ol li { margin-bottom: 0.5rem; line-height: 1.7; color: #334155; }
+        .prose-custom ul li { list-style: disc; } .prose-custom ol li { list-style: decimal; }
+        .prose-custom strong { color: #0F172A; }
+        .prose-custom a { color: #1D4ED8; text-decoration: underline; }
+        .prose-custom a:hover { color: #1E3A8A; }
+        .prose-custom code { background: #F1F5F9; padding: 2px 6px; border-radius: 4px; font-size: 0.9em; color: #1E3A8A; }
+        .toc a { color: #475569; } .toc a:hover { color: #1D4ED8; }
+        .faq-item summary::-webkit-details-marker { display: none; }
+        .faq-item summary::marker { content: ""; }
+        .faq-item summary { cursor: pointer; list-style: none; user-select: none; }
+        .faq-item .faq-icon { transition: transform .25s ease; flex-shrink: 0; }
+        .faq-item[open] .faq-icon { transform: rotate(45deg); }
+        .faq-item[open] summary h3 { color: #1D4ED8; }
+    </style>
+</head>
+<body class="antialiased">
+
+    <nav class="fixed w-full z-50 bg-white/90 backdrop-blur-md border-b border-gray-200 shadow-sm">
+        <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+            <a href="/" class="text-xl font-bold tracking-tighter italic"><img src="/brands/logo-dr-mark.svg" width="32" height="32" alt="" aria-hidden="true" class="w-8 h-8 inline-block align-middle mr-2"><span class="align-middle">DAWID<span class="vasco-blue">RUBIN</span></span></a>
+            <div class="hidden md:flex items-center gap-6 text-sm font-semibold text-slate-600">
+                <a href="/#services" class="hover:text-blue-600 transition-colors">Usługi</a>
+                <a href="/#results" class="hover:text-blue-600 transition-colors">Realizacje</a>
+                <a href="/blog" class="text-blue-600 border-b border-blue-300 pb-0.5">Blog</a>
+                <a href="/audyt-paid-media" class="hover:text-blue-600 transition-colors">Pobierz PDF</a>
+                <a href="/umow-rozmowe" class="bg-vasco-blue hover:bg-blue-700 text-white px-5 py-2.5 rounded-full transition-colors">Porozmawiajmy</a>
+            </div>
+            <a href="/blog" class="md:hidden text-sm text-slate-500 hover:text-blue-600 font-mono">← Blog</a>
+        </div>
+    </nav>
+
+    <article>
+        <header class="pt-32 pb-12 px-6 bg-white border-b border-gray-100">
+            <div class="max-w-3xl mx-auto">
+                <div class="flex flex-wrap items-center gap-3 mb-6 text-sm">
+                    <a href="/" class="text-slate-500 hover:text-blue-600 font-mono">← Strona główna</a>
+                    <span class="text-slate-300">/</span>
+                    <a href="/blog" class="text-slate-500 hover:text-blue-600 font-mono">Blog</a>
+                    <span class="text-slate-300">/</span>
+                    <span class="bg-pink-100 text-pink-700 text-xs font-bold px-3 py-1 rounded-full">Tracking</span>
+                </div>
+                <h1 class="text-3xl md:text-5xl font-bold leading-tight mb-6">Conversions API i Server-Side Tracking - <span class="vasco-blue">po co i jak wdrożyć</span></h1>
+                <p class="text-xl text-slate-600 leading-relaxed mb-6">Po iOS 14.5 pixel browser-side traci 30-50% sygnału konwersji. Conversions API (CAPI) i Server-Side Tracking (sGTM) odzyskują te dane, poprawiają Event Match Quality, a w rezultacie - jakość atrybucji o 15-30% i ROAS o tyle samo. Pełna instrukcja wdrożenia od zera, z konkretnymi ustawieniami i deduplikacją.</p>
+                <div class="flex flex-wrap gap-4 text-sm text-slate-500 font-mono">
+                    <span>Autor: <strong class="text-slate-700">Dawid Rubin</strong></span>
+                    <span>Publikacja: <strong class="text-slate-700">16 maja 2026</strong></span>
+                    <span>Czas czytania: <strong class="text-slate-700">18 min</strong></span>
+                </div>
+            </div>
+        </header>
+
+        <section class="py-12 px-6">
+            <div class="max-w-3xl mx-auto">
+
+                <nav class="toc bg-blue-50 border border-blue-100 rounded-2xl p-6 mb-10">
+                    <h2 class="text-sm font-bold tracking-widest uppercase text-blue-700 mb-3">Spis treści</h2>
+                    <ol class="space-y-1.5 text-sm">
+                        <li><a href="#problem" class="hover:underline">1. Problem - co się stało po iOS 14.5</a></li>
+                        <li><a href="#czym-capi" class="hover:underline">2. Czym jest Conversions API (CAPI)</a></li>
+                        <li><a href="#czym-sgtm" class="hover:underline">3. Czym jest Server-Side GTM (sGTM)</a></li>
+                        <li><a href="#capi-vs-sgtm" class="hover:underline">4. CAPI vs sGTM - co i kiedy</a></li>
+                        <li><a href="#wdrozenie" class="hover:underline">5. Wdrożenie CAPI - 4 ścieżki</a></li>
+                        <li><a href="#emq" class="hover:underline">6. Event Match Quality - jak osiągnąć 7+</a></li>
+                        <li><a href="#deduplikacja" class="hover:underline">7. Deduplikacja - klucz do poprawnych danych</a></li>
+                        <li><a href="#walidacja" class="hover:underline">8. Walidacja i monitoring</a></li>
+                        <li><a href="#faq" class="hover:underline">9. FAQ</a></li>
+                    </ol>
+                </nav>
+
+                <div class="prose-custom">
+
+                    <h2 id="problem">1. Problem - co się stało po iOS 14.5</h2>
+                    <p>W kwietniu 2021 Apple wprowadził <strong>App Tracking Transparency</strong> (ATT) w iOS 14.5. Każda aplikacja, która chce trackować użytkownika między aplikacjami, musi prosić o jego zgodę dialogiem systemowym. <strong>72-85% użytkowników klika „Ask App Not To Track"</strong>.</p>
+                    <p>Efekt dla marketingu:</p>
+                    <ul>
+                        <li><strong>Facebook / Instagram</strong> tracą sygnał z ok. 35-50% użytkowników iOS</li>
+                        <li><strong>Wszystkie platformy z piksel browser-side</strong> dotknięte (Meta, TikTok, Snap, Pinterest, Reddit)</li>
+                        <li><strong>iOS ITP (Intelligent Tracking Prevention)</strong> blokuje third-party cookies całkowicie</li>
+                        <li><strong>Safari ETP</strong> i <strong>Chrome (Privacy Sandbox)</strong> robią to samo w przeglądarce</li>
+                    </ul>
+                    <p>W rezultacie klasyczny piksel Meta widzi tylko 50-70% rzeczywistych konwersji. Algorytm Meta uczy się na <strong>częściowych danych</strong>, optymalizuje błędnie, ROAS spada. To samo dotyczy Google Ads, TikTok i innych platform.</p>
+
+                    <h2 id="czym-capi">2. Czym jest Conversions API (CAPI)</h2>
+                    <p>Conversions API to mechanizm, w którym <strong>konwersje wysyłane są bezpośrednio z Twojego serwera do platformy reklamowej</strong>, pomijając przeglądarkę użytkownika.</p>
+                    <p>Architektura:</p>
+                    <ul>
+                        <li><strong>Klasyczny pixel browser-side</strong>: użytkownik kupuje → przeglądarka wysyła event do Meta → Meta loguje konwersję</li>
+                        <li><strong>CAPI server-side</strong>: użytkownik kupuje → Twój serwer wysyła event do Meta API (przez HTTPS POST) → Meta loguje konwersję</li>
+                    </ul>
+                    <p>Bo wysyłka idzie z serwera, nie z przeglądarki - <strong>iOS ATT, adblockery, ITP, ETP nie mają nic do gadania</strong>. Dane docierają zawsze.</p>
+
+                    <h3>Platformy z CAPI:</h3>
+                    <ul>
+                        <li><strong>Meta Conversions API</strong> - dla Facebook / Instagram Ads</li>
+                        <li><strong>Google Ads API + Enhanced Conversions</strong> - dla Google Ads (od 2021)</li>
+                        <li><strong>TikTok Events API</strong> - dla TikTok Ads</li>
+                        <li><strong>Snapchat Conversions API</strong></li>
+                        <li><strong>Pinterest Conversions API</strong></li>
+                        <li><strong>LinkedIn Conversions API</strong></li>
+                    </ul>
+
+                    <h2 id="czym-sgtm">3. Czym jest Server-Side GTM (sGTM)</h2>
+                    <p>Server-Side Google Tag Manager to <strong>Twój własny GTM hostowany na serwerze</strong>, działający jako proxy między przeglądarką użytkownika a platformami reklamowymi. Architektura:</p>
+                    <ol>
+                        <li>Przeglądarka użytkownika wysyła event do Twojego sGTM (zwykle na subdomenę typu `gtm.twojadomena.pl`)</li>
+                        <li>sGTM odbiera, waliduje, wzbogaca dane (np. dodaje user ID z bazy, hash emaila, IP)</li>
+                        <li>sGTM przekazuje do Meta CAPI, Google Ads, TikTok Events API jednocześnie</li>
+                        <li>Każda platforma loguje konwersję ze swoich kanałów</li>
+                    </ol>
+
+                    <h3>Przewaga sGTM nad standardowym CAPI:</h3>
+                    <ul>
+                        <li><strong>First-party cookies zamiast third-party</strong> - sGTM jest na Twojej domenie, więc cookies są first-party (nie blokowane)</li>
+                        <li><strong>Bypass adblocków</strong> - sGTM URL nie jest na liście znanych trackerów</li>
+                        <li><strong>Wzbogacenie danych</strong> - dodajesz dane z CRM, bazy klientów, analityki przed wysłaniem do platform</li>
+                        <li><strong>Jedno źródło prawdy</strong> - wszystkie platformy dostają te same, ustandaryzowane dane</li>
+                        <li><strong>Mniejsze obciążenie strony</strong> - jeden tag w przeglądarce, reszta na serwerze (szybsze ładowanie)</li>
+                    </ul>
+
+                    <h2 id="capi-vs-sgtm" >4. CAPI vs sGTM - co i kiedy</h2>
+
+                    <h3>Sam CAPI (bez sGTM)</h3>
+                    <p>Wystarczy dla: małych e-commerce z gotową integracją (Shopify, WooCommerce z pluginem CAPI), startujących biznesów, sytuacji „pixel działa OK, chcę go uzupełnić”. Daje 80-90% korzyści sGTM przy 20% pracy wdrożeniowej.</p>
+
+                    <h3>sGTM z CAPI</h3>
+                    <p>Konieczny dla: średnich i dużych e-commerce z budżetami 30k+ PLN/mies., biznesów multi-market (jedna konfiguracja dla wielu rynków), wymagających pełnej kontroli nad danymi (RODO, dane wrażliwe), z developerem do dyspozycji. Inwestycja w sGTM zwraca się na średnich budżetach w 2-4 miesiące.</p>
+
+                    <h2 id="wdrozenie">5. Wdrożenie CAPI - 4 ścieżki</h2>
+
+                    <h3>Ścieżka 1: Native integration (Shopify, WooCommerce)</h3>
+                    <p>Najprostsza. Shopify ma <strong>natywną Facebook &amp; Instagram Sales Channel</strong> z wbudowanym CAPI. Konfiguracja:</p>
+                    <ol>
+                        <li>Zainstaluj Facebook &amp; Instagram app w Shopify</li>
+                        <li>Połącz z Business Manager Meta</li>
+                        <li>W ustawieniach włącz „Conversions API" oraz „Maximum Data Sharing"</li>
+                        <li>Czekaj 24-48h, sprawdź EMQ w Events Manager</li>
+                    </ol>
+                    <p>Czas wdrożenia: 30 minut. Wymagany developer: 0.</p>
+
+                    <h3>Ścieżka 2: Plugin / hosted CAPI (Stape.io, Stagger)</h3>
+                    <p>Dla platform bez native integration (Magento, PrestaShop, custom). Stape.io oferuje <strong>hosted sGTM z gotowymi tagami CAPI</strong>:</p>
+                    <ol>
+                        <li>Załóż konto Stape.io (~30-50 USD/mies za małe konto)</li>
+                        <li>Wskazujesz subdomenę typu `gtm.twojadomena.pl`</li>
+                        <li>Stape dostarcza container ID do GTM web</li>
+                        <li>Konfigurujesz tagi w GTM (Meta CAPI, Google Ads, TikTok)</li>
+                    </ol>
+                    <p>Czas wdrożenia: 4-8h. Wymagany developer: ewentualnie do DNS subdomeny.</p>
+
+                    <h3>Ścieżka 3: Self-hosted sGTM (Google Cloud)</h3>
+                    <p>Pełna kontrola, najtaniej długoterminowo. Google oferuje <strong>App Engine flex z dedicated sGTM image</strong> za ok. 50-150 USD/mies (zależnie od ruchu):</p>
+                    <ol>
+                        <li>Załóż projekt Google Cloud</li>
+                        <li>Wdróż sGTM Server Container w App Engine</li>
+                        <li>Konfiguruj DNS subdomeny</li>
+                        <li>Połącz z GTM web container i platformami reklamowymi</li>
+                    </ol>
+                    <p>Czas wdrożenia: 1-2 dni. Wymagany developer: tak (DevOps / Cloud).</p>
+
+                    <h3>Ścieżka 4: Custom server-side endpoint</h3>
+                    <p>Dla zaawansowanych - własny endpoint w aplikacji, który łapie konwersje (np. webhook z payment provider) i wysyła do CAPI. Pełna kontrola, ale wymaga rozwoju aplikacji. Sensowne dla SaaS i niestandardowych aplikacji.</p>
+
+                    <h2 id="emq">6. Event Match Quality - jak osiągnąć 7+</h2>
+                    <p>EMQ to wskaźnik 0-10 określający, jak dobrze platformy dopasowują zdarzenia CAPI do użytkowników. Cel: <strong>EMQ ≥ 7.0 dla zdarzeń purchase</strong>. EMQ poniżej 5 oznacza, że Meta nie dopasowuje większości zdarzeń, więc atrybucja jest błędna.</p>
+
+                    <h3>Parametry wpływające na EMQ:</h3>
+                    <ul>
+                        <li><strong>Email (hashed SHA-256)</strong> - +2.0 do EMQ (najwyższa waga)</li>
+                        <li><strong>Telefon (hashed)</strong> - +1.5 do EMQ</li>
+                        <li><strong>Imię + nazwisko (hashed)</strong> - +1.0</li>
+                        <li><strong>Miasto + kod pocztowy</strong> - +0.5</li>
+                        <li><strong>IP użytkownika</strong> - +0.5</li>
+                        <li><strong>User agent</strong> - +0.3</li>
+                        <li><strong>fbp + fbc cookies</strong> - +1.0 (browser ID)</li>
+                        <li><strong>Click ID (fbclid, gclid)</strong> - +0.5</li>
+                    </ul>
+
+                    <h3>Jak zdobyć dane:</h3>
+                    <ul>
+                        <li>Email + telefon - z formularza zakupu (musi być required)</li>
+                        <li>Adres + kod pocztowy - z dostawy</li>
+                        <li>IP + user agent - z requestu HTTP</li>
+                        <li>fbp / fbc - z cookies pierwszej wizyty (Meta pixel je ustawia)</li>
+                        <li>External ID (jeśli zalogowany użytkownik) - +1.0 do EMQ</li>
+                    </ul>
+
+                    <h3>Hashowanie:</h3>
+                    <p>WSZYSTKIE dane osobowe muszą być hashed SHA-256 przed wysłaniem do CAPI. Email → lowercase, trim, SHA-256. Telefon → tylko cyfry (+48...), SHA-256. Imię → lowercase, trim, SHA-256. Bez tego naruszasz RODO i platformy mogą zawiesić konto.</p>
+
+                    <h2 id="deduplikacja">7. Deduplikacja - klucz do poprawnych danych</h2>
+                    <p>Gdy działa pixel browser-side ORAZ CAPI, to samo zdarzenie purchase wysyłane jest dwa razy. Bez deduplikacji <strong>Meta liczy 2x więcej konwersji niż faktycznie</strong>, atrybucja kłamie, ROAS jest fałszywie wysoki.</p>
+
+                    <h3>Mechanizm deduplikacji Meta:</h3>
+                    <ul>
+                        <li>Każde zdarzenie musi mieć <strong>unique `event_id`</strong> (UUID lub order ID)</li>
+                        <li>Pixel browser-side wysyła event_id w paramerze `eventID` w `fbq()` call</li>
+                        <li>CAPI wysyła ten sam event_id w parametrze `event_id` w API request</li>
+                        <li>Meta dedupliuje na podstawie pary `event_name + event_id` w oknie 48h</li>
+                    </ul>
+
+                    <h3>Konfiguracja w GTM (web):</h3>
+                    <p>Pole „Event ID" w tagu Meta Pixel ustaw na: <code>{{Event ID}}</code> gdzie `{{Event ID}}` to zmienna z order ID (np. z dataLayer).</p>
+
+                    <h3>Konfiguracja w sGTM / backend:</h3>
+                    <p>W payload CAPI ustaw `event_id` na ten sam ID, który leci do pixela web. Najczęściej: order ID z systemu e-commerce.</p>
+
+                    <h3>Walidacja:</h3>
+                    <p>W Events Manager Meta → Test Events → wyślij testowy zakup. Powinieneś zobaczyć JEDEN event z dwoma źródłami: „Browser + Server". Jeśli widzisz dwa osobne eventy - deduplikacja nie działa.</p>
+
+                    <h2 id="walidacja">8. Walidacja i monitoring</h2>
+
+                    <h3>Tygodniowy checklist:</h3>
+                    <ul>
+                        <li>EMQ ≥ 7.0 dla wszystkich kluczowych zdarzeń (Events Manager → Overview)</li>
+                        <li>Status zdarzeń: „Browser + Server" (nie samo „Browser" lub samo „Server")</li>
+                        <li>Liczba zdarzeń z CAPI w stosunku do Pixel: 80-120% (jeśli CAPI ma znacznie mniej - błąd w wysyłce; jeśli znacznie więcej - deduplikacja nie działa)</li>
+                        <li>Dataset Quality w Test Events: minimum „Good"</li>
+                    </ul>
+
+                    <h3>Co miesiąc:</h3>
+                    <ul>
+                        <li>Porównaj liczbę purchase w Events Manager vs Shopify / Magento / CRM. Różnica powinna być &lt; 10%.</li>
+                        <li>Sprawdź czy nowe zdarzenia (nowe produkty, nowe rynki) mają CAPI</li>
+                        <li>Audyt parametrów: czy email, telefon, adres są wysyłane (nie pomijane)</li>
+                    </ul>
+
+                    <h3>Najczęstsze problemy:</h3>
+                    <ul>
+                        <li><strong>EMQ poniżej 5</strong> - brak hashowania, brak email/telefon, brak fbp cookie</li>
+                        <li><strong>Brak deduplikacji</strong> - event_id niezgodny między pixel a CAPI</li>
+                        <li><strong>Zdarzenia tylko browser</strong> - CAPI nie wysyła, błąd w konfiguracji / endpointzie</li>
+                        <li><strong>RODO compliance</strong> - dane wysyłane bez hashowania, naruszenie</li>
+                    </ul>
+
+                </div>
+
+                <div class="mt-16 border-t border-gray-200 pt-12">
+                    <div class="bg-gradient-to-br from-blue-700 via-blue-600 to-blue-800 rounded-3xl p-8 md:p-12 text-white shadow-xl text-center">
+                        <span class="text-blue-200 font-mono text-sm tracking-widest uppercase mb-4 block">Conversions API nie działa u Ciebie?</span>
+                        <h2 class="text-3xl md:text-4xl font-bold mb-5 italic leading-tight">15 minut wystarczy, by ocenić Twój tracking setup.</h2>
+                        <p class="text-blue-100 text-lg leading-relaxed mb-8 max-w-2xl mx-auto">Bezpłatna sesja wstępna. Sprawdzimy razem Twój Events Manager, EMQ i deduplikację - powiem, co poprawić, by tracking odzyskał 30-50% sygnału. Bez sprzedaży.</p>
+                        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                            <a href="/umow-rozmowe" class="bg-white text-blue-700 px-8 py-4 rounded-full font-bold text-lg hover:bg-blue-50 transition-all shadow-lg">Umów bezpłatną sesję (15 min) →</a>
+                            <a href="/brief-audyt" class="border-2 border-white/40 text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-white/10 transition-all">Zamów audyt trackingu</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="faq" class="mt-16">
+                    <h2 class="text-3xl font-bold mb-6 italic">Często zadawane pytania</h2>
+                    <div class="space-y-3">
+                        <details class="faq-item bg-white border border-gray-200 rounded-2xl"><summary class="flex items-center justify-between gap-4 p-6"><h3 class="font-bold text-slate-900 m-0">Czym jest Conversions API (CAPI)?</h3><svg class="faq-icon w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/></svg></summary><div class="px-6 pb-6 -mt-2"><p class="text-slate-600 text-sm leading-relaxed">Mechanizm, w którym konwersje wysyłane są bezpośrednio z Twojego serwera do platformy reklamowej, pomijając przeglądarkę. Omija bloki iOS ATT, adblockery, ITP - dane docierają zawsze.</p></div></details>
+                        <details class="faq-item bg-white border border-gray-200 rounded-2xl"><summary class="flex items-center justify-between gap-4 p-6"><h3 class="font-bold text-slate-900 m-0">Czym jest Server-Side Tracking (sGTM)?</h3><svg class="faq-icon w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/></svg></summary><div class="px-6 pb-6 -mt-2"><p class="text-slate-600 text-sm leading-relaxed">Google Tag Manager zainstalowany na Twoim serwerze. Działa jako proxy - przeglądarka wysyła zdarzenia do Twojego sGTM, sGTM filtruje i przekazuje do Meta, Google, TikTok przez CAPI. Pełna kontrola nad danymi.</p></div></details>
+                        <details class="faq-item bg-white border border-gray-200 rounded-2xl"><summary class="flex items-center justify-between gap-4 p-6"><h3 class="font-bold text-slate-900 m-0">Czy potrzebuję developera, żeby wdrożyć CAPI?</h3><svg class="faq-icon w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/></svg></summary><div class="px-6 pb-6 -mt-2"><p class="text-slate-600 text-sm leading-relaxed">Dla podstawowego CAPI - nie. Shopify, WooCommerce mają gotowe integracje. Stape.io, GTM Server-Side hosted - bez developera. Dla zaawansowanego sGTM z custom triggers - tak, specjalista tracking.</p></div></details>
+                        <details class="faq-item bg-white border border-gray-200 rounded-2xl"><summary class="flex items-center justify-between gap-4 p-6"><h3 class="font-bold text-slate-900 m-0">Co to jest Event Match Quality (EMQ) i jaki powinien być?</h3><svg class="faq-icon w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/></svg></summary><div class="px-6 pb-6 -mt-2"><p class="text-slate-600 text-sm leading-relaxed">Wskaźnik 0-10 jakości danych użytkownika w CAPI. Cel: EMQ ≥ 7.0 dla purchase. EMQ poniżej 5 = Meta nie dopasowuje większości zdarzeń, atrybucja zaniżona.</p></div></details>
+                        <details class="faq-item bg-white border border-gray-200 rounded-2xl"><summary class="flex items-center justify-between gap-4 p-6"><h3 class="font-bold text-slate-900 m-0">Czy CAPI zwiększa konwersje, czy tylko ich pomiar?</h3><svg class="faq-icon w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/></svg></summary><div class="px-6 pb-6 -mt-2"><p class="text-slate-600 text-sm leading-relaxed">CAPI nie generuje nowych konwersji - poprawia pomiar. Ale poprawiony pomiar = więcej danych dla algorytmu = lepsza optymalizacja. Wdrożenie CAPI z EMQ ≥ 7.0 daje 15-30% wyższy ROAS w 4-8 tygodni.</p></div></details>
+                    </div>
+                </div>
+
+                <div class="mt-16">
+                    <h2 class="text-2xl font-bold mb-6">Może Cię też zainteresować</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <a href="/blog/atrybucja-multi-touch-last-click" class="block bg-white border border-gray-200 rounded-2xl p-6 hover:border-blue-500 transition-colors"><span class="text-xs font-mono uppercase tracking-widest text-pink-600 mb-2 block">Atrybucja</span><h3 class="font-bold leading-snug">Atrybucja multi-touch - last-click kłamie</h3></a>
+                        <a href="/blog/meta-advantage-plus-czy-warto" class="block bg-white border border-gray-200 rounded-2xl p-6 hover:border-blue-500 transition-colors"><span class="text-xs font-mono uppercase tracking-widest text-blue-600 mb-2 block">Meta Ads</span><h3 class="font-bold leading-snug">Meta Advantage+ - czy warto</h3></a>
+                        <a href="/blog/google-performance-max-jak-dziala" class="block bg-white border border-gray-200 rounded-2xl p-6 hover:border-blue-500 transition-colors"><span class="text-xs font-mono uppercase tracking-widest text-blue-600 mb-2 block">Google Ads</span><h3 class="font-bold leading-snug">Performance Max - jak działa</h3></a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </article>
+
+    <footer class="py-12 bg-slate-900 text-white border-t border-white/10 mt-12">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center text-slate-400 text-sm font-medium gap-4">
+            <a href="/" class="text-lg font-bold tracking-tighter italic text-white">DAWID<span class="text-blue-400">RUBIN</span></a>
+            <div>&copy; <script>document.write(new Date().getFullYear())</script> Dawid Rubin. Wszelkie prawa zastrzeżone.</div>
+            <div class="flex gap-6"><a href="/" class="hover:text-white transition-colors">Strona główna</a><a href="/blog" class="hover:text-white transition-colors">Blog</a><a href="/audyt-paid-media" class="hover:text-white transition-colors">Pobierz PDF</a><a href="mailto:kontakt@dawidrubin.pl" class="hover:text-white transition-colors">Kontakt</a></div>
+        </div>
+    </footer>
+
+</body>
+</html>

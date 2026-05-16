@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/svg+xml" href="/brands/logo-dr-mark.svg">
+    <link rel="apple-touch-icon" href="/brands/logo-dr-mark.svg">
+    <meta name="theme-color" content="#1D4ED8">
+
+    <title>Pozycjonowanie w dobie AI: SEO vs GEO - co się zmienia i jak działać | Dawid Rubin</title>
+    <meta name="description" content="Generative Engine Optimization (GEO) wchodzi na rynek. Czym różni się od klasycznego SEO, dlaczego JSON-LD wraca z mocą, jak optymalizować pod Perplexity, ChatGPT, Gemini i AI Overviews. Praktyczny przewodnik z konkretami.">
+    <meta name="author" content="Dawid Rubin">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+    <link rel="canonical" href="https://dawidrubin.pl/blog/seo-vs-geo-pozycjonowanie-ai">
+
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://dawidrubin.pl/blog/seo-vs-geo-pozycjonowanie-ai">
+    <meta property="og:title" content="SEO vs GEO - pozycjonowanie w dobie AI">
+    <meta property="og:description" content="Czym różni się GEO od SEO, jak optymalizować pod Perplexity, ChatGPT, Gemini i AI Overviews.">
+    <meta property="og:image" content="https://dawidrubin.pl/og/og-home.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:locale" content="pl_PL">
+    <meta property="article:author" content="Dawid Rubin">
+    <meta property="article:published_time" content="2026-05-16">
+    <meta property="article:section" content="SEO / GEO">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="SEO vs GEO - pozycjonowanie w dobie AI">
+    <meta name="twitter:description" content="Czym różni się GEO od SEO, jak optymalizować pod AI search.">
+    <meta name="twitter:image" content="https://dawidrubin.pl/og/og-home.jpg">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        { "@type": "BreadcrumbList", "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Strona główna", "item": "https://dawidrubin.pl/" },
+          { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://dawidrubin.pl/blog" },
+          { "@type": "ListItem", "position": 3, "name": "SEO vs GEO", "item": "https://dawidrubin.pl/blog/seo-vs-geo-pozycjonowanie-ai" }
+        ]},
+        { "@type": "BlogPosting", "headline": "Pozycjonowanie w dobie AI: SEO vs GEO - co się zmienia i jak działać",
+          "author": { "@type": "Person", "name": "Dawid Rubin", "url": "https://dawidrubin.pl/" },
+          "publisher": { "@type": "Person", "name": "Dawid Rubin", "url": "https://dawidrubin.pl/" },
+          "datePublished": "2026-05-16", "dateModified": "2026-05-16",
+          "image": "https://dawidrubin.pl/og/og-home.jpg",
+          "description": "Generative Engine Optimization (GEO) wchodzi na rynek. Czym różni się od klasycznego SEO, jak optymalizować pod Perplexity, ChatGPT, Gemini i AI Overviews.",
+          "inLanguage": "pl-PL",
+          "isPartOf": { "@type": "Blog", "name": "Blog Dawida Rubina", "url": "https://dawidrubin.pl/blog" },
+          "about": ["SEO", "GEO", "Generative Engine Optimization", "AI Search", "Perplexity", "ChatGPT Search", "AI Overviews", "JSON-LD"],
+          "keywords": "SEO vs GEO, Generative Engine Optimization, AI search, Perplexity, ChatGPT Search, AI Overviews, JSON-LD, pozycjonowanie AI",
+          "wordCount": 2400,
+          "mainEntityOfPage": "https://dawidrubin.pl/blog/seo-vs-geo-pozycjonowanie-ai"
+        },
+        { "@type": "FAQPage", "mainEntity": [
+          { "@type": "Question", "name": "Czym jest GEO (Generative Engine Optimization)?", "acceptedAnswer": { "@type": "Answer", "text": "GEO to dyscyplina optymalizacji treści pod kątem cytowania przez generatywne wyszukiwarki AI - ChatGPT Search, Perplexity, Gemini, Claude, AI Overviews Google. W przeciwieństwie do SEO, gdzie celem jest pozycja w rankingu niebieskich linków, w GEO celem jest być źródłem cytowanym przez AI w wygenerowanej odpowiedzi. Wymaga innej struktury treści, struktur danych (JSON-LD) i sygnałów wiarygodności (E-E-A-T)." } },
+          { "@type": "Question", "name": "Czy GEO zastępuje SEO?", "acceptedAnswer": { "@type": "Answer", "text": "Nie - uzupełnia. SEO nadal działa dla zapytań transakcyjnych, lokalnych i nawigacyjnych (60-80% wyszukiwań). GEO obejmuje rosnący segment zapytań informacyjnych i porównawczych, które AI przejmuje. W praktyce dobra strategia łączy oba - większość technicznych fundamentów (E-E-A-T, struktura, schema) jest wspólna, różnice tkwią w formacie treści i sposobie cytowalności." } },
+          { "@type": "Question", "name": "Jakie czynniki ranking się liczą w GEO?", "acceptedAnswer": { "@type": "Answer", "text": "Cztery główne grupy: 1) Struktura danych - JSON-LD (Article, FAQPage, HowTo, Organization, Person, Review) musi być bogata i poprawna. 2) Cytowalność - krótkie, jednoznaczne fragmenty z konkretnymi liczbami, datami, statystykami. 3) E-E-A-T - autor z imieniem i kompetencjami (nie „Admin”), publikacja na zaufanej domenie. 4) Świeżość - daty publikacji i modyfikacji aktualne, treści odświeżane co 6-12 miesięcy." } },
+          { "@type": "Question", "name": "Jak sprawdzić, czy AI cytuje moją stronę?", "acceptedAnswer": { "@type": "Answer", "text": "Trzy metody: 1) Wpisuj zapytania związane z Twoją branżą w Perplexity, ChatGPT Search, Gemini - patrz na cytowane źródła (zwykle widoczne jako linki w odpowiedzi). 2) Sprawdzaj Search Console - zakładka Performance pokazuje impresje z Google AI Overviews jako osobny segment. 3) Narzędzia (płatne) jak Otterly, AthenaHQ, Profound trackują pozycje w AI search dla wybranych słów kluczowych." } },
+          { "@type": "Question", "name": "Czy hreflang, sitemap i robots.txt nadal mają znaczenie w GEO?", "acceptedAnswer": { "@type": "Answer", "text": "Tak - klasyczne podstawy technicznego SEO są bazą dla GEO. Bez poprawnego robots.txt, sitemap.xml i hreflang AI crawlerzy (GPTBot, PerplexityBot, ClaudeBot) nie indeksują strony. JSON-LD jest dodatkową warstwą na wierzchu. Dodatkowo warto wskazać AI botom dostęp w robots.txt: większość firm pozwala (User-agent: GPTBot, Allow: /), bo to oznacza większą widoczność w AI search." } }
+        ]}
+      ]
+    }
+    </script>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #F8FAFC; color: #0F172A; }
+        .vasco-blue { color: #1D4ED8; }
+        .bg-vasco-blue { background-color: #1D4ED8; }
+        .prose-custom p { margin-bottom: 1.25rem; line-height: 1.8; color: #334155; font-size: 1.05rem; }
+        .prose-custom h2 { font-size: 1.875rem; font-weight: 700; margin-top: 3rem; margin-bottom: 1rem; color: #0F172A; line-height: 1.3; }
+        .prose-custom h3 { font-size: 1.35rem; font-weight: 700; margin-bottom: 0.75rem; margin-top: 2rem; color: #0F172A; }
+        .prose-custom ul, .prose-custom ol { margin-bottom: 1.25rem; padding-left: 1.5rem; }
+        .prose-custom ul li { margin-bottom: 0.5rem; line-height: 1.7; color: #334155; list-style: disc; }
+        .prose-custom ol li { margin-bottom: 0.5rem; line-height: 1.7; color: #334155; list-style: decimal; }
+        .prose-custom strong { color: #0F172A; }
+        .prose-custom a { color: #1D4ED8; text-decoration: underline; }
+        .prose-custom a:hover { color: #1E3A8A; }
+        .prose-custom blockquote { border-left: 4px solid #1D4ED8; padding-left: 1rem; margin: 1.5rem 0; font-style: italic; color: #475569; }
+        .prose-custom code { background: #F1F5F9; padding: 2px 6px; border-radius: 4px; font-size: 0.9em; color: #1E3A8A; }
+        .toc a { color: #475569; }
+        .toc a:hover { color: #1D4ED8; }
+        .faq-item summary::-webkit-details-marker { display: none; }
+        .faq-item summary::marker { content: ""; }
+        .faq-item summary { cursor: pointer; list-style: none; user-select: none; }
+        .faq-item .faq-icon { transition: transform .25s ease; flex-shrink: 0; }
+        .faq-item[open] .faq-icon { transform: rotate(45deg); }
+        .faq-item[open] summary h3 { color: #1D4ED8; }
+    </style>
+</head>
+<body class="antialiased">
+
+    <nav class="fixed w-full z-50 bg-white/90 backdrop-blur-md border-b border-gray-200 shadow-sm">
+        <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+            <a href="/" class="text-xl font-bold tracking-tighter italic"><img src="/brands/logo-dr-mark.svg" width="32" height="32" alt="" aria-hidden="true" class="w-8 h-8 inline-block align-middle mr-2"><span class="align-middle">DAWID<span class="vasco-blue">RUBIN</span></span></a>
+            <div class="hidden md:flex items-center gap-6 text-sm font-semibold text-slate-600">
+                <a href="/#services" class="hover:text-blue-600 transition-colors">Usługi</a>
+                <a href="/#results" class="hover:text-blue-600 transition-colors">Realizacje</a>
+                <a href="/blog" class="text-blue-600 border-b border-blue-300 pb-0.5">Blog</a>
+                <a href="/audyt-paid-media" class="hover:text-blue-600 transition-colors">Pobierz PDF</a>
+                <a href="/umow-rozmowe" class="bg-vasco-blue hover:bg-blue-700 text-white px-5 py-2.5 rounded-full transition-colors">Porozmawiajmy</a>
+            </div>
+            <a href="/blog" class="md:hidden text-sm text-slate-500 hover:text-blue-600 font-mono">← Blog</a>
+        </div>
+    </nav>
+
+    <article>
+        <header class="pt-32 pb-12 px-6 bg-white border-b border-gray-100">
+            <div class="max-w-3xl mx-auto">
+                <div class="flex flex-wrap items-center gap-3 mb-6 text-sm">
+                    <a href="/" class="text-slate-500 hover:text-blue-600 transition-colors font-mono">← Strona główna</a>
+                    <span class="text-slate-300">/</span>
+                    <a href="/blog" class="text-slate-500 hover:text-blue-600 transition-colors font-mono">Blog</a>
+                    <span class="text-slate-300">/</span>
+                    <span class="bg-purple-100 text-purple-700 text-xs font-bold px-3 py-1 rounded-full">SEO / GEO</span>
+                </div>
+                <h1 class="text-3xl md:text-5xl font-bold leading-tight mb-6">Pozycjonowanie w dobie AI: <span class="vasco-blue">SEO vs GEO</span> - co się zmienia i jak działać</h1>
+                <p class="text-xl text-slate-600 leading-relaxed mb-6">Generative Engine Optimization wchodzi na rynek. Czym różni się od klasycznego SEO, dlaczego JSON-LD wraca z mocą, jak optymalizować pod Perplexity, ChatGPT, Gemini i AI Overviews. Praktyczny przewodnik z technicznymi szczegółami i checklistą wdrożeniową.</p>
+                <div class="flex flex-wrap gap-4 text-sm text-slate-500 font-mono">
+                    <span>Autor: <strong class="text-slate-700">Dawid Rubin</strong></span>
+                    <span>Publikacja: <strong class="text-slate-700">16 maja 2026</strong></span>
+                    <span>Czas czytania: <strong class="text-slate-700">14 min</strong></span>
+                </div>
+            </div>
+        </header>
+
+        <section class="py-12 px-6">
+            <div class="max-w-3xl mx-auto">
+
+                <nav class="toc bg-blue-50 border border-blue-100 rounded-2xl p-6 mb-10">
+                    <h2 class="text-sm font-bold tracking-widest uppercase text-blue-700 mb-3">Spis treści</h2>
+                    <ol class="space-y-1.5 text-sm">
+                        <li><a href="#czym-jest" class="hover:underline">1. Czym jest GEO i dlaczego się pojawiło</a></li>
+                        <li><a href="#seo-vs-geo" class="hover:underline">2. SEO vs GEO - kluczowe różnice</a></li>
+                        <li><a href="#czynniki" class="hover:underline">3. Czynniki rankingowe w GEO</a></li>
+                        <li><a href="#jsonld" class="hover:underline">4. JSON-LD - serce GEO</a></li>
+                        <li><a href="#tresc" class="hover:underline">5. Jak pisać treści cytowane przez AI</a></li>
+                        <li><a href="#bots" class="hover:underline">6. AI crawlerzy - kogo wpuścić i jak</a></li>
+                        <li><a href="#mierzenie" class="hover:underline">7. Jak mierzyć obecność w AI search</a></li>
+                        <li><a href="#checklist" class="hover:underline">8. Checklista wdrożeniowa GEO</a></li>
+                        <li><a href="#faq" class="hover:underline">9. FAQ</a></li>
+                    </ol>
+                </nav>
+
+                <div class="prose-custom">
+
+                    <h2 id="czym-jest">1. Czym jest GEO i dlaczego się pojawiło</h2>
+                    <p>GEO (Generative Engine Optimization) to dyscyplina optymalizacji treści pod kątem <strong>cytowania przez generatywne wyszukiwarki AI</strong>: ChatGPT Search, Perplexity, Google AI Overviews, Gemini, Claude, You.com, Brave Search z AI. Termin jako pierwsze opublikowali badacze Princeton i Georgia Tech w 2023 - od tego czasu wszedł do mainstream'u jako odpowiedź na zmianę paradygmatu wyszukiwania.</p>
+                    <p>Geneza: w klasycznym SEO celem jest <strong>pozycja w rankingu niebieskich linków</strong>. Użytkownik klika, trafia na stronę, czyta. W generatywnym wyszukiwaniu użytkownik dostaje <strong>od razu wygenerowaną odpowiedź</strong> - z cytatami źródeł, ale często bez kliknięcia. Strona, która jest cytowana, dostaje ułamek dawnego ruchu, ale zachowuje obecność (brand mention) i autorytet (potwierdzony przez AI).</p>
+                    <p>To zmiana fundamentalna. <strong>Walka przesuwa się z „kto zajmie pozycję 1” na „kto będzie zacytowany przez AI”</strong> - i to wymaga zupełnie innej struktury treści, danych i sygnałów.</p>
+
+                    <h2 id="seo-vs-geo">2. SEO vs GEO - kluczowe różnice</h2>
+
+                    <h3>Cel</h3>
+                    <p>SEO: pozycja 1-10 w SERP. GEO: bycie zacytowanym w wygenerowanej odpowiedzi AI.</p>
+
+                    <h3>Format treści</h3>
+                    <p>SEO: długie poradniki (2000-5000 słów), zoptymalizowane pod intent zapytania, z gęstym keyword density. GEO: <strong>krótkie, jednoznaczne odpowiedzi</strong> na konkretne pytania, z liczbami, datami i konkretnymi nazwami. AI rzadko cytuje całe akapity - cytuje fragmenty 1-3 zdaniowe.</p>
+
+                    <h3>Sygnały wiarygodności</h3>
+                    <p>SEO: linki przychodzące, dwell time, CTR z SERP. GEO: <strong>E-E-A-T na sterydach</strong> - autor z imieniem i kompetencjami, publikacja na zaufanej domenie, cytaty z autorytetów branżowych, daty publikacji i modyfikacji, schema Person i Organization.</p>
+
+                    <h3>Struktura strony</h3>
+                    <p>SEO: jeden H1, hierarchia H2-H6, paragraf-akapit-zdanie. GEO: <strong>jasna struktura odpowiedzi-pytań</strong> - FAQ schema, HowTo schema, sekcje z konkretnymi pytaniami jako H2/H3, krótkie odpowiedzi tuż pod każdym pytaniem.</p>
+
+                    <h3>JSON-LD</h3>
+                    <p>SEO: opcjonalne, dodaje rich snippets w SERP. GEO: <strong>obowiązkowe</strong>. AI crawlery przetwarzają JSON-LD jako główne źródło ustrukturyzowanej informacji o stronie - autor, organizacja, FAQ, lista, recenzje, produkty.</p>
+
+                    <h3>Słowa kluczowe</h3>
+                    <p>SEO: keyword research, density 1-2%, długie ogony. GEO: <strong>semantyczna gęstość</strong> - AI rozpoznaje koncepty, nie konkretne frazy. Liczy się pełne pokrycie tematu, używanie synonimów i pokrewnych pojęć.</p>
+
+                    <h2 id="czynniki">3. Czynniki rankingowe w GEO</h2>
+                    <p>Na podstawie badań Princeton/Georgia Tech (2023) i obserwacji praktyki - czynniki, które mają największy wpływ na cytowalność przez AI:</p>
+
+                    <h3>1. Struktura danych (JSON-LD) - 25-30% wagi</h3>
+                    <p>Bogata, poprawna struktura JSON-LD z odpowiednimi typami (Article, FAQPage, HowTo, Organization, Person, Review, Product, ItemList). AI crawlerzy przetwarzają to jako primary input.</p>
+
+                    <h3>2. Cytowalność - 20-25% wagi</h3>
+                    <p>Krótkie, samowystarczalne fragmenty z konkretami: liczbami („+466% YoY”), datami („w 2024 roku”), nazwami („Vasco Electronics”), statystykami („30-50% spadek sygnału po iOS 14.5”). AI cytuje konkrety, nie ogólniki.</p>
+
+                    <h3>3. E-E-A-T - 20-25% wagi</h3>
+                    <p>Experience, Expertise, Authoritativeness, Trustworthiness. Autor z imieniem i kompetencjami (nie „Admin” / „Redakcja”), schema Person z `knowsAbout`, `hasOccupation`, `sameAs` do LinkedIn. Organization schema z weryfikowalną historią.</p>
+
+                    <h3>4. Świeżość - 10-15% wagi</h3>
+                    <p>`datePublished` i `dateModified` w JSON-LD i meta tagach. AI preferuje świeże źródła (zwłaszcza Perplexity i ChatGPT Search). Odświeżaj kluczowe treści co 6-12 miesięcy.</p>
+
+                    <h3>5. Sygnały zewnętrzne - 10-15% wagi</h3>
+                    <p>Linki z innych zaufanych źródeł, cytowania w mediach branżowych, wpisy w Wikipedii (jeśli relevantne), aktywność autora na LinkedIn / Twitter / specjalistycznych forach.</p>
+
+                    <h2 id="jsonld">4. JSON-LD - serce GEO</h2>
+                    <p>JSON-LD (JavaScript Object Notation for Linked Data) to format ustrukturyzowanych danych. Wbudowany w `<script type="application/ld+json">` w sekcji `<head>` strony. AI crawlerzy traktują go jako <strong>najbardziej wiarygodne źródło informacji</strong> o stronie - bo jest jednoznaczny, ustrukturyzowany i podlega walidacji schematycznej.</p>
+
+                    <h3>Minimum schema dla bloga:</h3>
+                    <ul>
+                        <li><strong>BlogPosting</strong> - dla każdego artykułu (z autorem, datą, opisem, słowami kluczowymi)</li>
+                        <li><strong>Person</strong> - dla autora (imię, opis, sameAs do LinkedIn)</li>
+                        <li><strong>Organization</strong> - dla wydawcy / firmy</li>
+                        <li><strong>BreadcrumbList</strong> - dla nawigacji</li>
+                        <li><strong>FAQPage</strong> - dla sekcji FAQ na końcu artykułu</li>
+                        <li><strong>Article</strong> z polami `wordCount`, `about`, `keywords`</li>
+                    </ul>
+
+                    <h3>Dodatkowo dla strony firmowej:</h3>
+                    <ul>
+                        <li><strong>ProfessionalService</strong> lub <strong>LocalBusiness</strong> z `areaServed`, `priceRange`, `hasOfferCatalog`</li>
+                        <li><strong>ItemList</strong> z linkami do case studies / portfolio</li>
+                        <li><strong>Review</strong> z testimonialami klientów (z prawdziwymi imionami)</li>
+                        <li><strong>HowTo</strong> dla artykułów instruktażowych</li>
+                        <li><strong>Product</strong> dla e-commerce</li>
+                    </ul>
+
+                    <h3>Walidacja:</h3>
+                    <p>Każda strona z JSON-LD powinna przejść:</p>
+                    <ul>
+                        <li><a href="https://search.google.com/test/rich-results" rel="nofollow">Google Rich Results Test</a></li>
+                        <li><a href="https://validator.schema.org/" rel="nofollow">Schema.org Validator</a></li>
+                    </ul>
+
+                    <h2 id="tresc">5. Jak pisać treści cytowane przez AI</h2>
+
+                    <h3>Format Q&amp;A</h3>
+                    <p>AI cytuje fragmenty odpowiadające bezpośrednio na pytanie. Struktura: pytanie jako H2/H3, odpowiedź w pierwszym zdaniu pod pytaniem (1-3 zdania, jednoznaczna, z konkretem), reszta jako rozwinięcie.</p>
+
+                    <h3>Konkretne liczby i daty</h3>
+                    <p>„System straci 30-50% sygnału po iOS 14.5” bije „System może stracić dużo sygnału po iOS 14.5”. „Audyt diagnostyczny od 1 200 PLN netto, raport w 5 dni roboczych” bije „Audyt nie jest drogi i robi się szybko”.</p>
+
+                    <h3>Listy uporządkowane</h3>
+                    <p>AI preferuje listy z numeracją (ordered list, `&lt;ol&gt;`) bo łatwo je cytować jako kroki, etapy lub punkty. Każdy element listy ma być jednym, samowystarczalnym zdaniem.</p>
+
+                    <h3>Krótkie zdania, jasne akapity</h3>
+                    <p>Idealnie: 15-25 słów na zdanie, 2-4 zdania na akapit. Skomplikowane konstrukcje są źle wycinane przez AI - krótkie zdania trafiają do cytatów.</p>
+
+                    <h3>Definicje na początku sekcji</h3>
+                    <p>Jeśli artykuł o „Performance Max”, pierwsze zdanie sekcji „Czym jest PMax” musi być <strong>definicją</strong>: „Performance Max (PMax) to typ kampanii w Google Ads, który automatycznie...”. AI cytuje definicje dosłownie.</p>
+
+                    <h2 id="bots">6. AI crawlerzy - kogo wpuścić i jak</h2>
+                    <p>AI używają własnych crawlerów do indeksowania internetu. Domyślnie wielu nie respektuje klasycznego Googlebot - trzeba dodać ich osobno w `robots.txt`:</p>
+                    <ul>
+                        <li><strong>GPTBot</strong> (OpenAI) - dla ChatGPT i ChatGPT Search</li>
+                        <li><strong>OAI-SearchBot</strong> (OpenAI) - dedykowany pod ChatGPT Search</li>
+                        <li><strong>PerplexityBot</strong> - dla Perplexity</li>
+                        <li><strong>ClaudeBot</strong> i <strong>anthropic-ai</strong> - dla Claude</li>
+                        <li><strong>Google-Extended</strong> - kontroluje wykorzystanie treści w Gemini i AI Overviews (osobno od standardowego Googlebot)</li>
+                        <li><strong>CCBot</strong> (Common Crawl) - dataset wykorzystywany przez wiele AI</li>
+                    </ul>
+                    <p>Dla większości firm <strong>warto wpuścić wszystkie</strong>:</p>
+                    <blockquote>User-agent: *<br/>Allow: /</blockquote>
+                    <p>Wykluczenia mają sens tylko dla treści, które chcesz chronić (płatne, zastrzeżone). Większość firm zarabia więcej na obecności w AI search, niż traci na „darmowym wykorzystaniu treści”.</p>
+
+                    <h2 id="mierzenie">7. Jak mierzyć obecność w AI search</h2>
+
+                    <h3>1. Manualne sprawdzanie</h3>
+                    <p>Najprostsza metoda. Wpisuj zapytania związane z Twoją branżą w Perplexity, ChatGPT Search, Gemini, Claude. Sprawdzaj, czy Twoja strona jest cytowana (zwykle widoczne jako linki w odpowiedzi lub w sekcji „sources”). Notuj wyniki w arkuszu - co miesiąc.</p>
+
+                    <h3>2. Google Search Console</h3>
+                    <p>Search Console (od 2024) raportuje impresje z Google AI Overviews jako osobny segment. Patrz na zakładkę „Performance → Search appearance → AI Overviews” (jeśli dostępna dla Twojej domeny).</p>
+
+                    <h3>3. Narzędzia płatne</h3>
+                    <p>Otterly.ai, AthenaHQ, Profound, Peec AI - trackują pozycje w ChatGPT, Perplexity, Gemini dla wybranych zapytań. Koszt: 50-500 USD/mies. Sensowne dla firm, które rzeczywiście inwestują w GEO.</p>
+
+                    <h3>4. Brand mention monitoring</h3>
+                    <p>Google Alerts, Brand24, Mention - na nazwę Twojej firmy w internecie. Cytowania w AI często prowadzą do organicznego ruchu i wzmianek na innych stronach.</p>
+
+                    <h2 id="checklist">8. Checklista wdrożeniowa GEO</h2>
+                    <p>Praktyczne minimum dla każdej strony, która chce być cytowana przez AI:</p>
+                    <ol>
+                        <li>JSON-LD: BlogPosting + FAQPage + Person + Organization + BreadcrumbList na każdej kluczowej stronie</li>
+                        <li>JSON-LD walidowane bez błędów w Rich Results Test</li>
+                        <li>Autor podpisany imieniem i nazwiskiem (nie „Redakcja”), z linkiem do LinkedIn / strony</li>
+                        <li>`datePublished` i `dateModified` na każdej stronie - aktualne</li>
+                        <li>FAQ sekcja na końcu każdego ważnego artykułu z 4-7 pytaniami</li>
+                        <li>Struktura H1-H2-H3 jasna i hierarchiczna</li>
+                        <li>Konkretne liczby, daty, nazwy w treści (zamiast ogólników)</li>
+                        <li>robots.txt z dostępem dla GPTBot, PerplexityBot, ClaudeBot, Google-Extended, CCBot</li>
+                        <li>Strona dostępna bez JavaScript (AI crawlery często nie renderują JS)</li>
+                        <li>Sitemap.xml aktualny, wskazany w robots.txt</li>
+                        <li>SSL (https://), szybkość ładowania (LCP poniżej 2.5s)</li>
+                        <li>Strona z definicjami / glosariuszem branżowym (świetnie cytowana przez AI)</li>
+                    </ol>
+
+                </div>
+
+                <div class="mt-16 border-t border-gray-200 pt-12">
+                    <div class="bg-gradient-to-br from-blue-700 via-blue-600 to-blue-800 rounded-3xl p-8 md:p-12 text-white shadow-xl text-center">
+                        <span class="text-blue-200 font-mono text-sm tracking-widest uppercase mb-4 block">Strona przygotowana pod AI search?</span>
+                        <h2 class="text-3xl md:text-4xl font-bold mb-5 italic leading-tight">15 minut wystarczy, by ocenić Twój GEO readiness.</h2>
+                        <p class="text-blue-100 text-lg leading-relaxed mb-8 max-w-2xl mx-auto">Bezpłatna sesja wstępna. Pokażesz mi swoją domenę - sprawdzę JSON-LD, strukturę, sygnały E-E-A-T i powiem, co poprawić, żeby AI Cię cytowało. Bez sprzedaży.</p>
+                        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                            <a href="/umow-rozmowe" class="bg-white text-blue-700 px-8 py-4 rounded-full font-bold text-lg hover:bg-blue-50 transition-all shadow-lg">Umów bezpłatną sesję (15 min) →</a>
+                            <a href="/brief-audyt" class="border-2 border-white/40 text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-white/10 transition-all">Zamów audyt SEO + GEO</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="faq" class="mt-16">
+                    <h2 class="text-3xl font-bold mb-6 italic">Często zadawane pytania</h2>
+                    <div class="space-y-3">
+                        <details class="faq-item bg-white border border-gray-200 rounded-2xl"><summary class="flex items-center justify-between gap-4 p-6"><h3 class="font-bold text-slate-900 m-0">Czym jest GEO (Generative Engine Optimization)?</h3><svg class="faq-icon w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/></svg></summary><div class="px-6 pb-6 -mt-2"><p class="text-slate-600 text-sm leading-relaxed">GEO to dyscyplina optymalizacji treści pod kątem cytowania przez generatywne wyszukiwarki AI - ChatGPT Search, Perplexity, Gemini, Claude, AI Overviews. W GEO celem jest być źródłem cytowanym przez AI w wygenerowanej odpowiedzi, nie pozycja w klasycznym rankingu linków.</p></div></details>
+                        <details class="faq-item bg-white border border-gray-200 rounded-2xl"><summary class="flex items-center justify-between gap-4 p-6"><h3 class="font-bold text-slate-900 m-0">Czy GEO zastępuje SEO?</h3><svg class="faq-icon w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/></svg></summary><div class="px-6 pb-6 -mt-2"><p class="text-slate-600 text-sm leading-relaxed">Nie - uzupełnia. SEO nadal działa dla zapytań transakcyjnych, lokalnych i nawigacyjnych. GEO obejmuje rosnący segment zapytań informacyjnych i porównawczych, które AI przejmuje. Dobra strategia łączy oba - większość fundamentów (E-E-A-T, schema) jest wspólna.</p></div></details>
+                        <details class="faq-item bg-white border border-gray-200 rounded-2xl"><summary class="flex items-center justify-between gap-4 p-6"><h3 class="font-bold text-slate-900 m-0">Jakie czynniki ranking się liczą w GEO?</h3><svg class="faq-icon w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/></svg></summary><div class="px-6 pb-6 -mt-2"><p class="text-slate-600 text-sm leading-relaxed">Cztery grupy: 1) Struktura danych (JSON-LD). 2) Cytowalność - krótkie fragmenty z liczbami, datami, nazwami. 3) E-E-A-T - autor z imieniem i kompetencjami. 4) Świeżość - daty publikacji aktualne, treści odświeżane co 6-12 miesięcy.</p></div></details>
+                        <details class="faq-item bg-white border border-gray-200 rounded-2xl"><summary class="flex items-center justify-between gap-4 p-6"><h3 class="font-bold text-slate-900 m-0">Jak sprawdzić, czy AI cytuje moją stronę?</h3><svg class="faq-icon w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/></svg></summary><div class="px-6 pb-6 -mt-2"><p class="text-slate-600 text-sm leading-relaxed">Trzy metody: 1) Wpisuj zapytania w Perplexity, ChatGPT Search, Gemini - patrz na cytowane źródła. 2) Sprawdzaj Search Console - zakładka AI Overviews. 3) Narzędzia płatne (Otterly, AthenaHQ, Profound) trackują pozycje dla wybranych słów kluczowych.</p></div></details>
+                        <details class="faq-item bg-white border border-gray-200 rounded-2xl"><summary class="flex items-center justify-between gap-4 p-6"><h3 class="font-bold text-slate-900 m-0">Czy hreflang, sitemap i robots.txt nadal mają znaczenie w GEO?</h3><svg class="faq-icon w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/></svg></summary><div class="px-6 pb-6 -mt-2"><p class="text-slate-600 text-sm leading-relaxed">Tak - klasyczne podstawy SEO są bazą dla GEO. Bez poprawnego robots.txt, sitemap.xml i hreflang AI crawlerzy nie indeksują strony. JSON-LD jest dodatkową warstwą. Warto wskazać AI botom dostęp w robots.txt - większość firm pozwala, bo oznacza większą widoczność w AI search.</p></div></details>
+                    </div>
+                </div>
+
+                <div class="mt-16">
+                    <h2 class="text-2xl font-bold mb-6">Może Cię też zainteresować</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <a href="/blog/google-ads-przezytek-czy-nie" class="block bg-white border border-gray-200 rounded-2xl p-6 hover:border-blue-500 transition-colors"><span class="text-xs font-mono uppercase tracking-widest text-amber-600 mb-2 block">Strategia</span><h3 class="font-bold leading-snug">Czy Google Ads to przeżytek?</h3></a>
+                        <a href="/blog/wizytowka-google-jak-zalozyc-konfigurowac" class="block bg-white border border-gray-200 rounded-2xl p-6 hover:border-blue-500 transition-colors"><span class="text-xs font-mono uppercase tracking-widest text-green-600 mb-2 block">Lokalny marketing</span><h3 class="font-bold leading-snug">Wizytówka Google - jak założyć</h3></a>
+                        <a href="/blog/ai-w-marketingu-chatgpt-custom-gpt" class="block bg-white border border-gray-200 rounded-2xl p-6 hover:border-blue-500 transition-colors"><span class="text-xs font-mono uppercase tracking-widest text-purple-600 mb-2 block">AI</span><h3 class="font-bold leading-snug">AI w marketingu - 7 zastosowań</h3></a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </article>
+
+    <footer class="py-12 bg-slate-900 text-white border-t border-white/10 mt-12">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center text-slate-400 text-sm font-medium gap-4">
+            <a href="/" class="text-lg font-bold tracking-tighter italic text-white">DAWID<span class="text-blue-400">RUBIN</span></a>
+            <div>&copy; <script>document.write(new Date().getFullYear())</script> Dawid Rubin. Wszelkie prawa zastrzeżone.</div>
+            <div class="flex gap-6"><a href="/" class="hover:text-white transition-colors">Strona główna</a><a href="/blog" class="hover:text-white transition-colors">Blog</a><a href="/audyt-paid-media" class="hover:text-white transition-colors">Pobierz PDF</a><a href="mailto:kontakt@dawidrubin.pl" class="hover:text-white transition-colors">Kontakt</a></div>
+        </div>
+    </footer>
+
+</body>
+</html>

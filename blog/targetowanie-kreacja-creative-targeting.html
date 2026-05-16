@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/svg+xml" href="/brands/logo-dr-mark.svg">
+    <link rel="apple-touch-icon" href="/brands/logo-dr-mark.svg">
+    <meta name="theme-color" content="#1D4ED8">
+
+    <title>Targetowanie kreacją - dlaczego kreacja jest dziś ważniejsza niż grupy odbiorców | Dawid Rubin</title>
+    <meta name="description" content="Po deathwatchu cookie-based targetowania kreacja przejęła rolę głównego filtra. Co robi dobry hook, jak budować creative testing framework, ile wariantów rozsądnie testować. Praktyka z 8+ lat na Meta Ads, Google Ads, TikTok.">
+    <meta name="author" content="Dawid Rubin">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+    <link rel="canonical" href="https://dawidrubin.pl/blog/targetowanie-kreacja-creative-targeting">
+
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://dawidrubin.pl/blog/targetowanie-kreacja-creative-targeting">
+    <meta property="og:title" content="Targetowanie kreacją - dlaczego kreacja jest dziś ważniejsza niż grupy odbiorców">
+    <meta property="og:description" content="Po deathwatchu cookie targetowania kreacja przejęła rolę głównego filtra. Praktyka z 8+ lat.">
+    <meta property="og:image" content="https://dawidrubin.pl/og/og-home.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:locale" content="pl_PL">
+    <meta property="article:author" content="Dawid Rubin">
+    <meta property="article:published_time" content="2026-05-16">
+    <meta property="article:section" content="Kreacja">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Targetowanie kreacją - dlaczego kreacja jest dziś ważniejsza">
+    <meta name="twitter:description" content="Co robi dobry hook, jak budować creative testing framework.">
+    <meta name="twitter:image" content="https://dawidrubin.pl/og/og-home.jpg">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        { "@type": "BreadcrumbList", "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Strona główna", "item": "https://dawidrubin.pl/" },
+          { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://dawidrubin.pl/blog" },
+          { "@type": "ListItem", "position": 3, "name": "Targetowanie kreacją", "item": "https://dawidrubin.pl/blog/targetowanie-kreacja-creative-targeting" }
+        ]},
+        { "@type": "BlogPosting", "headline": "Targetowanie kreacją - dlaczego kreacja jest dziś ważniejsza niż grupy odbiorców",
+          "author": { "@type": "Person", "name": "Dawid Rubin", "url": "https://dawidrubin.pl/" },
+          "publisher": { "@type": "Person", "name": "Dawid Rubin", "url": "https://dawidrubin.pl/" },
+          "datePublished": "2026-05-16", "dateModified": "2026-05-16",
+          "image": "https://dawidrubin.pl/og/og-home.jpg",
+          "description": "Jak po deathwatchu cookie-based targetowania kreacja przejęła rolę głównego filtra. Co robi dobry hook, jak budować creative testing framework, ile wariantów rozsądnie testować.",
+          "inLanguage": "pl-PL",
+          "isPartOf": { "@type": "Blog", "name": "Blog Dawida Rubina", "url": "https://dawidrubin.pl/blog" },
+          "about": ["Creative targeting", "Kreacja reklamowa", "Hook rate", "Creative testing", "UGC"],
+          "keywords": "targetowanie kreacją, creative targeting, hook rate, kreacja reklamowa, UGC, paid social, creative testing",
+          "wordCount": 2200,
+          "mainEntityOfPage": "https://dawidrubin.pl/blog/targetowanie-kreacja-creative-targeting"
+        },
+        { "@type": "FAQPage", "mainEntity": [
+          { "@type": "Question", "name": "Czym jest targetowanie kreacją?", "acceptedAnswer": { "@type": "Answer", "text": "Targetowanie kreacją (creative targeting) to podejście, w którym o tym, kto zobaczy reklamę, decyduje nie precyzyjny audience na poziomie ad managera, ale sama kreacja - jej obraz, hook, język i CTA. Algorytm pokazuje reklamę szerokiej grupie, a sama kreacja filtruje, kto się zatrzymuje i kupuje. To naturalny efekt zaniku cookie-based targetowania i wzrostu mocy algorytmów typu Advantage+ i Performance Max." } },
+          { "@type": "Question", "name": "Ile kreacji powinno działać jednocześnie?", "acceptedAnswer": { "@type": "Answer", "text": "Dla Meta Advantage+: 10-30 unikalnych kreacji na kampanię. Dla klasycznych Meta Ads ABO/CBO: 3-5 kreacji na ad set, ale po 4-8 ad setów = 12-40 kreacji total. Dla TikTok Ads: 5-10 kreacji na grupę, refresh co 7-14 dni z powodu szybkiego creative fatigue. Dla Google Performance Max: 5-20 obrazów + 0-5 wideo na asset group." } },
+          { "@type": "Question", "name": "Jak długo żyje dobra kreacja?", "acceptedAnswer": { "@type": "Answer", "text": "Średnio 2-4 tygodnie intensywnej emisji, zanim wskaźniki (CTR, hook rate, ROAS) zaczną spadać z powodu creative fatigue. Top 5% kreacji - tzw. evergreen winners - może żyć 3-6 miesięcy. Sygnały zużycia: frequency > 3.5, spadek CTR o 30% w stosunku do pierwszego tygodnia, wzrost CPM o 25% przy stałym audience." } },
+          { "@type": "Question", "name": "Czy UGC jest skuteczniejszy niż profesjonalna produkcja?", "acceptedAnswer": { "@type": "Answer", "text": "W większości branż - tak. UGC (user-generated content) z 8 na 10 testów wygrywa z polished produkcją przy hook rate i CPA. Powód: użytkownicy social media skanują feed i ignorują „reklamy” - UGC nie wygląda na reklamę, więc nie aktywuje filtra mentalnego. Dla brandów premium (luksus, beauty) profesjonalna produkcja nadal pełni rolę brandową, ale dla performance UGC zwykle bije ją po efektywności." } },
+          { "@type": "Question", "name": "Co to jest hook i jak go testować?", "acceptedAnswer": { "@type": "Answer", "text": "Hook to pierwsze 3 sekundy reklamy - moment, w którym widz decyduje, czy zatrzymać scroll. Mierzony jako hook rate: % osób, które obejrzały minimum 3 sekundy / total impressions. Dobre hooki: 30%+ w Meta Ads, 25%+ w TikTok Ads. Test: stwórz tę samą kreację z 3-5 różnymi hookami (problem, social proof, statystyka, demonstracja, urgency), porównaj hook rate po 5-7 dniach." } }
+        ]}
+      ]
+    }
+    </script>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #F8FAFC; color: #0F172A; }
+        .vasco-blue { color: #1D4ED8; }
+        .bg-vasco-blue { background-color: #1D4ED8; }
+        .prose-custom p { margin-bottom: 1.25rem; line-height: 1.8; color: #334155; font-size: 1.05rem; }
+        .prose-custom h2 { font-size: 1.875rem; font-weight: 700; margin-top: 3rem; margin-bottom: 1rem; color: #0F172A; line-height: 1.3; }
+        .prose-custom h3 { font-size: 1.35rem; font-weight: 700; margin-bottom: 0.75rem; margin-top: 2rem; color: #0F172A; }
+        .prose-custom ul, .prose-custom ol { margin-bottom: 1.25rem; padding-left: 1.5rem; }
+        .prose-custom ul li { margin-bottom: 0.5rem; line-height: 1.7; color: #334155; list-style: disc; }
+        .prose-custom ol li { margin-bottom: 0.5rem; line-height: 1.7; color: #334155; list-style: decimal; }
+        .prose-custom strong { color: #0F172A; }
+        .prose-custom a { color: #1D4ED8; text-decoration: underline; }
+        .prose-custom a:hover { color: #1E3A8A; }
+        .prose-custom blockquote { border-left: 4px solid #1D4ED8; padding-left: 1rem; margin: 1.5rem 0; font-style: italic; color: #475569; }
+        .toc a { color: #475569; }
+        .toc a:hover { color: #1D4ED8; }
+        .faq-item summary::-webkit-details-marker { display: none; }
+        .faq-item summary::marker { content: ""; }
+        .faq-item summary { cursor: pointer; list-style: none; user-select: none; }
+        .faq-item .faq-icon { transition: transform .25s ease; flex-shrink: 0; }
+        .faq-item[open] .faq-icon { transform: rotate(45deg); }
+        .faq-item[open] summary h3 { color: #1D4ED8; }
+    </style>
+</head>
+<body class="antialiased">
+
+    <nav class="fixed w-full z-50 bg-white/90 backdrop-blur-md border-b border-gray-200 shadow-sm">
+        <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+            <a href="/" class="text-xl font-bold tracking-tighter italic"><img src="/brands/logo-dr-mark.svg" width="32" height="32" alt="" aria-hidden="true" class="w-8 h-8 inline-block align-middle mr-2"><span class="align-middle">DAWID<span class="vasco-blue">RUBIN</span></span></a>
+            <div class="hidden md:flex items-center gap-6 text-sm font-semibold text-slate-600">
+                <a href="/#services" class="hover:text-blue-600 transition-colors">Usługi</a>
+                <a href="/#results" class="hover:text-blue-600 transition-colors">Realizacje</a>
+                <a href="/blog" class="text-blue-600 border-b border-blue-300 pb-0.5">Blog</a>
+                <a href="/audyt-paid-media" class="hover:text-blue-600 transition-colors">Pobierz PDF</a>
+                <a href="/umow-rozmowe" class="bg-vasco-blue hover:bg-blue-700 text-white px-5 py-2.5 rounded-full transition-colors">Porozmawiajmy</a>
+            </div>
+            <a href="/blog" class="md:hidden text-sm text-slate-500 hover:text-blue-600 font-mono">← Blog</a>
+        </div>
+    </nav>
+
+    <article>
+        <header class="pt-32 pb-12 px-6 bg-white border-b border-gray-100">
+            <div class="max-w-3xl mx-auto">
+                <div class="flex flex-wrap items-center gap-3 mb-6 text-sm">
+                    <a href="/" class="text-slate-500 hover:text-blue-600 transition-colors font-mono">← Strona główna</a>
+                    <span class="text-slate-300">/</span>
+                    <a href="/blog" class="text-slate-500 hover:text-blue-600 transition-colors font-mono">Blog</a>
+                    <span class="text-slate-300">/</span>
+                    <span class="bg-blue-100 text-blue-700 text-xs font-bold px-3 py-1 rounded-full">Kreacja</span>
+                </div>
+                <h1 class="text-3xl md:text-5xl font-bold leading-tight mb-6">Targetowanie kreacją - <span class="vasco-blue">dlaczego kreacja jest dziś ważniejsza niż grupy odbiorców</span></h1>
+                <p class="text-xl text-slate-600 leading-relaxed mb-6">Cookie-based targetowanie umiera. Algorytmy Advantage+ i Performance Max przejęły decyzję, kogo szukać. W rezultacie to <strong>kreacja</strong> - nie ad set - decyduje, kto się zatrzyma, kto kliknie i kto kupi. Jak budować kreacje, które działają w nowych warunkach, jak je testować i jak nie spalić budżetu na rotację dla samej rotacji.</p>
+                <div class="flex flex-wrap gap-4 text-sm text-slate-500 font-mono">
+                    <span>Autor: <strong class="text-slate-700">Dawid Rubin</strong></span>
+                    <span>Publikacja: <strong class="text-slate-700">16 maja 2026</strong></span>
+                    <span>Czas czytania: <strong class="text-slate-700">12 min</strong></span>
+                </div>
+            </div>
+        </header>
+
+        <section class="py-12 px-6">
+            <div class="max-w-3xl mx-auto">
+
+                <nav class="toc bg-blue-50 border border-blue-100 rounded-2xl p-6 mb-10">
+                    <h2 class="text-sm font-bold tracking-widest uppercase text-blue-700 mb-3">Spis treści</h2>
+                    <ol class="space-y-1.5 text-sm">
+                        <li><a href="#zmiana" class="hover:underline">1. Co się zmieniło - od cookie do kreacji</a></li>
+                        <li><a href="#czym-jest" class="hover:underline">2. Czym jest „targetowanie kreacją”</a></li>
+                        <li><a href="#anatomia" class="hover:underline">3. Anatomia skutecznej kreacji - 5 części</a></li>
+                        <li><a href="#hook" class="hover:underline">4. Hook - pierwsze 3 sekundy</a></li>
+                        <li><a href="#framework" class="hover:underline">5. Creative testing framework</a></li>
+                        <li><a href="#ugc" class="hover:underline">6. UGC vs produkcja - co kiedy wygrywa</a></li>
+                        <li><a href="#ile" class="hover:underline">7. Ile kreacji, jak rotować, kiedy zwolnić</a></li>
+                        <li><a href="#faq" class="hover:underline">8. FAQ</a></li>
+                    </ol>
+                </nav>
+
+                <div class="prose-custom">
+
+                    <h2 id="zmiana">1. Co się zmieniło - od cookie do kreacji</h2>
+                    <p>Jeszcze 5 lat temu „targetowanie” znaczyło: wybierasz w ad managerze interesy, demografię, lookalike z piksela i custom audiences z CRM. Algorytm dostarczał reklamę dokładnie temu, kogo wskazałeś. Kreacja była drugorzędna - decydowała czy ktoś kliknie, ale nie KTO ją zobaczy.</p>
+                    <p>Od 2020-2021 trzy rzeczy zniszczyły ten model:</p>
+                    <ul>
+                        <li><strong>iOS 14.5 (kwiecień 2021)</strong> - opt-in na tracking sprawił, że Meta straciła sygnał z 30-50% użytkowników. Lookalike przestały działać tak precyzyjnie.</li>
+                        <li><strong>Death of third-party cookies</strong> - Chrome (powoli, ale konsekwentnie), Safari ITP, Firefox ETP. Custom audiences oparte na pikselu kurczą się rok do roku.</li>
+                        <li><strong>AI-first kampanie</strong> - Advantage+, Performance Max, Generate Demand - wszystkie odbierają media buyerowi decyzję o targetowaniu. Algorytm sam wybiera audience.</li>
+                    </ul>
+                    <p>W rezultacie <strong>jedyne, co naprawdę kontrolujesz, to kreacja</strong>. Algorytm pokazuje ją szerokiej grupie, a sama kreacja filtruje, kto się zatrzymuje. Nie wybierasz ludzi - kreacja wybiera ludzi za Ciebie.</p>
+
+                    <h2 id="czym-jest">2. Czym jest „targetowanie kreacją”</h2>
+                    <p>Targetowanie kreacją (creative targeting) to <strong>strategia, w której kreacja sama określa target audience przez swój obraz, język i hook</strong>. Algorytm pokazuje reklamę szerokiej grupie - ale kreacja przyciąga tylko tych, dla których jest robiona.</p>
+                    <p>Przykład: e-commerce kosmetyków antystarzeniowych. Dawniej: ad set targetował kobiety 35-55 lat zainteresowane „skin care”. Dzisiaj: ad set jest broad (Polska, kobiety 18-65), ale kreacja jest skonstruowana tak, że <strong>tylko kobieta 35+ przejmująca się oznakami starzenia kliknie</strong>: w wideo widać dojrzałą kobietę, ona mówi o swoim problemie, używa słów „pierwsze zmarszczki”, „suchość po 40-tce”. Młodsza kobieta widzi to i scrolluje dalej - bo to nie jej problem. Mężczyzna - tym bardziej.</p>
+                    <p>Efekt: <strong>algorytm uczy się, kto reaguje, i automatycznie zawęża dystrybucję do osób przypominających reagujących</strong>. Po 7-14 dniach kampania pokazuje się w 80%+ docelowej grupie - mimo że media buyer nie ustawił żadnego targetowania.</p>
+
+                    <h2 id="anatomia">3. Anatomia skutecznej kreacji - 5 części</h2>
+                    <p>Każda kreacja, niezależnie od platformy, składa się z pięciu elementów. Każdy z nich można testować osobno.</p>
+
+                    <h3>1. Hook (sekundy 0-3)</h3>
+                    <p>Pierwszy obraz / pierwsze słowo. Decyduje o stop scroll. Najmocniejszy element kreacji - poprawa hook rate o 5 punktów procentowych potrafi obniżyć CPA o 20-30%.</p>
+
+                    <h3>2. Problem / sytuacja (sekundy 3-10)</h3>
+                    <p>Wprowadzenie problemu, który widz rozpoznaje jako swój. „Twój sklep ma porzucone koszyki?”, „Bolą Cię plecy po długim siedzeniu?”, „Tracisz budżet reklamowy?”. Bez tego widz nie ma powodu, by oglądać dalej.</p>
+
+                    <h3>3. Rozwiązanie / demonstracja (sekundy 10-25)</h3>
+                    <p>Pokazujesz produkt w akcji lub mówisz o korzyściach. Najlepiej działa <strong>demonstracja</strong> - widz widzi, jak produkt rozwiązuje pokazany problem.</p>
+
+                    <h3>4. Dowód społeczny (sekundy 25-40)</h3>
+                    <p>Liczby, opinie, testimonial. „Ponad 5 000 zadowolonych klientów”, „4.8/5 z 2 300 opinii”, krótki cytat klienta. Buduje zaufanie potrzebne do decyzji.</p>
+
+                    <h3>5. Call to action (ostatnie sekundy + statyczna nakładka)</h3>
+                    <p>Konkretne wezwanie do akcji - z urgency lub bez. „Zamów teraz”, „Sprawdź ofertę”, „Pobierz darmowy PDF”. Najlepiej działa, gdy CTA jest jednoznaczne i pasuje do landing page.</p>
+
+                    <h2 id="hook">4. Hook - pierwsze 3 sekundy</h2>
+                    <p>Hook to <strong>jedyna część kreacji, którą zobaczy każdy</strong>. Reszta - tylko ci, którzy nie zescrollowali. Dlatego inwestowanie w hook ma najwyższy ROI z całej kreacji.</p>
+
+                    <h3>Typy hooków, które działają:</h3>
+                    <ul>
+                        <li><strong>Bezpośredni problem</strong> - „Twoje konto Meta Ads pali budżet?” (działa, gdy problem jest powszechny i niesłyszany)</li>
+                        <li><strong>Statystyka / liczba</strong> - „3x więcej leadów dzięki...” (działa, gdy liczba jest zaskakująca i konkretna)</li>
+                        <li><strong>Social proof</strong> - „Ponad 2 000 firm korzysta z...” (działa dla brandów z masą - dla nowych mniej skuteczne)</li>
+                        <li><strong>Testimonial wideo</strong> - „Wcześniej myślałam, że... aż...” (działa bardzo mocno - prawdziwa osoba, prawdziwa twarz)</li>
+                        <li><strong>Demonstracja efektu</strong> - „Patrz, co się stało, gdy...” (działa najlepiej dla produktów wizualnych: kosmetyki, fitness, dieta)</li>
+                        <li><strong>Pytanie kontrowersyjne</strong> - „Dlaczego Twoja agencja Ci to ukrywa?” (działa, ale rezerwuj do specyficznych case'ów - łatwo przekroczyć granicę)</li>
+                        <li><strong>Urgency</strong> - „Tylko ten weekend...” (działa krótkoterminowo, nie nadużywać)</li>
+                    </ul>
+
+                    <h3>Jak mierzyć hook rate:</h3>
+                    <p>Meta Ads pokazuje „3-sec video plays / impressions” - to jest hook rate. Dobry hook: 30%+ w Meta, 25%+ w TikTok. Słaby: poniżej 15%. Test: 3-5 wersji kreacji z różnym hookiem, ten sam middle i CTA. Po 5-7 dniach widzisz, który hook ma najwyższy hook rate przy podobnym CPA.</p>
+
+                    <h2 id="framework">5. Creative testing framework</h2>
+                    <p>Bez systematycznego testowania kreacji marnujesz budżet. Ramka, którą stosuję u klientów:</p>
+
+                    <h3>Faza 1: Concept testing (1-2 tygodnie)</h3>
+                    <p>Testuj 5-10 fundamentalnie różnych konceptów - nie 5 wariantów tej samej idei. Różne: <strong>komunikat główny, format, hook, ton</strong>. Cel: znaleźć 2-3 koncepty z najwyższym hook rate i ROAS.</p>
+
+                    <h3>Faza 2: Iteration (2-4 tygodnie)</h3>
+                    <p>Bierzesz top 2-3 koncepty i robisz <strong>warianty</strong> - inny hook, inny CTA, inny social proof, inny background music, różne osoby na wideo. Cel: znaleźć top wariant każdego konceptu.</p>
+
+                    <h3>Faza 3: Scale & maintain</h3>
+                    <p>Top warianty zostają jako evergreen. Co miesiąc dodajesz 3-5 nowych konceptów do testów, by mieć rotację gotową na creative fatigue.</p>
+
+                    <h2 id="ugc">6. UGC vs produkcja - co kiedy wygrywa</h2>
+                    <p>UGC (user-generated content) to kreacja wyglądająca jak nagranie zwykłego użytkownika - pionowy kadr 9:16, niesterylne tło, prawdziwa twarz, prosty język. W 8 na 10 testów w paid social UGC <strong>bije polished produkcję</strong> przy hook rate i CPA. Powody:</p>
+                    <ul>
+                        <li>Użytkownik Instagrama / TikToka skanuje feed - „reklamy” są mentalnie filtrowane. UGC nie wygląda na reklamę.</li>
+                        <li>Prawdziwa osoba buduje zaufanie szybciej niż aktor.</li>
+                        <li>UGC jest tańsze w produkcji - można zrobić 10 wariantów w cenie jednego pro-spota.</li>
+                    </ul>
+                    <p>Kiedy produkcja wygrywa: brandy premium/luksusowe (Hermès, Apple, Dior - tu UGC degraduje brand), kreacje brandowe / awareness (nie performance), reklamy TV / OOH (poza paid social).</p>
+
+                    <h3>Jak budować UGC niedrogo:</h3>
+                    <ul>
+                        <li><strong>Sieci UGC creators</strong> - Insense, Trend.io, Backstage. Płacisz creators 200-500 PLN za jeden 30-sekundowy spot.</li>
+                        <li><strong>Klienci-ambasadorzy</strong> - obecni klienci nagrywają sami za zniżkę / produkt. Najtaniej, najmocniejsze społecznie.</li>
+                        <li><strong>Pracownicy</strong> - własny zespół opowiada o produkcie. Dobrze działa dla B2B i usług.</li>
+                    </ul>
+
+                    <h2 id="ile">7. Ile kreacji, jak rotować, kiedy zwolnić</h2>
+
+                    <h3>Sweet spot per platforma:</h3>
+                    <ul>
+                        <li><strong>Meta Advantage+</strong>: 10-30 unikalnych kreacji w kampanii</li>
+                        <li><strong>Meta klasyczne (ABO/CBO)</strong>: 3-5 kreacji na ad set, 4-8 ad setów = 12-40 total</li>
+                        <li><strong>TikTok Ads</strong>: 5-10 kreacji na grupę, szybka rotacja (refresh co 7-14 dni)</li>
+                        <li><strong>Google PMax</strong>: 5-20 obrazów + 0-5 wideo na asset group</li>
+                        <li><strong>YouTube</strong>: 3-7 wideo na grupę</li>
+                    </ul>
+
+                    <h3>Kiedy zwolnić kreację:</h3>
+                    <p>Sygnały creative fatigue:</p>
+                    <ul>
+                        <li>Frequency &gt; 3.5 dla nowych odbiorców</li>
+                        <li>Hook rate spadek o 25% w stosunku do pierwszego tygodnia</li>
+                        <li>CTR spadek o 30%+</li>
+                        <li>CPM wzrost o 25%+ przy stałym audience</li>
+                        <li>ROAS spadek o 20%+ przy niezmienionej ofercie</li>
+                    </ul>
+                    <p>Zasada: <strong>refresh 30-50% kreacji co miesiąc</strong>. Trzymaj 3-5 evergreen winners (nie ruszać), reszta to bieżąca rotacja.</p>
+
+                </div>
+
+                <div class="mt-16 border-t border-gray-200 pt-12">
+                    <div class="bg-gradient-to-br from-blue-700 via-blue-600 to-blue-800 rounded-3xl p-8 md:p-12 text-white shadow-xl text-center">
+                        <span class="text-blue-200 font-mono text-sm tracking-widest uppercase mb-4 block">Twoje kreacje działają?</span>
+                        <h2 class="text-3xl md:text-4xl font-bold mb-5 italic leading-tight">Bezpłatna sesja: ocenimy Twój creative output i system testowania.</h2>
+                        <p class="text-blue-100 text-lg leading-relaxed mb-8 max-w-2xl mx-auto">15 minut. Pokazujesz mi aktualne kreacje i sposób, w jaki je rotujesz - mówię, co poprawić, by hook rate skoczył o 5-10 punktów procentowych. Bez sprzedaży.</p>
+                        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                            <a href="/umow-rozmowe" class="bg-white text-blue-700 px-8 py-4 rounded-full font-bold text-lg hover:bg-blue-50 transition-all shadow-lg">Umów bezpłatną sesję (15 min) →</a>
+                            <a href="/brief-audyt" class="border-2 border-white/40 text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-white/10 transition-all">Zamów audyt Paid Media</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="faq" class="mt-16">
+                    <h2 class="text-3xl font-bold mb-6 italic">Często zadawane pytania</h2>
+                    <div class="space-y-3">
+                        <details class="faq-item bg-white border border-gray-200 rounded-2xl">
+                            <summary class="flex items-center justify-between gap-4 p-6"><h3 class="font-bold text-slate-900 m-0">Czym jest targetowanie kreacją?</h3><svg class="faq-icon w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/></svg></summary>
+                            <div class="px-6 pb-6 -mt-2"><p class="text-slate-600 text-sm leading-relaxed">Podejście, w którym o tym, kto zobaczy reklamę, decyduje nie precyzyjny audience na poziomie ad managera, ale sama kreacja - jej obraz, hook, język i CTA. Algorytm pokazuje reklamę szerokiej grupie, a sama kreacja filtruje, kto się zatrzymuje i kupuje.</p></div>
+                        </details>
+                        <details class="faq-item bg-white border border-gray-200 rounded-2xl">
+                            <summary class="flex items-center justify-between gap-4 p-6"><h3 class="font-bold text-slate-900 m-0">Ile kreacji powinno działać jednocześnie?</h3><svg class="faq-icon w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/></svg></summary>
+                            <div class="px-6 pb-6 -mt-2"><p class="text-slate-600 text-sm leading-relaxed">Dla Meta Advantage+: 10-30 unikalnych kreacji na kampanię. Dla klasycznych Meta Ads: 3-5 kreacji na ad set, po 4-8 ad setów = 12-40 kreacji total. Dla TikTok Ads: 5-10 kreacji na grupę, refresh co 7-14 dni. Dla Google PMax: 5-20 obrazów + 0-5 wideo na asset group.</p></div>
+                        </details>
+                        <details class="faq-item bg-white border border-gray-200 rounded-2xl">
+                            <summary class="flex items-center justify-between gap-4 p-6"><h3 class="font-bold text-slate-900 m-0">Jak długo żyje dobra kreacja?</h3><svg class="faq-icon w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/></svg></summary>
+                            <div class="px-6 pb-6 -mt-2"><p class="text-slate-600 text-sm leading-relaxed">Średnio 2-4 tygodnie intensywnej emisji, zanim wskaźniki zaczną spadać z powodu creative fatigue. Top 5% kreacji - tzw. evergreen winners - może żyć 3-6 miesięcy. Sygnały zużycia: frequency &gt; 3.5, spadek CTR o 30%, wzrost CPM o 25%.</p></div>
+                        </details>
+                        <details class="faq-item bg-white border border-gray-200 rounded-2xl">
+                            <summary class="flex items-center justify-between gap-4 p-6"><h3 class="font-bold text-slate-900 m-0">Czy UGC jest skuteczniejszy niż profesjonalna produkcja?</h3><svg class="faq-icon w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/></svg></summary>
+                            <div class="px-6 pb-6 -mt-2"><p class="text-slate-600 text-sm leading-relaxed">W większości branż - tak. UGC z 8 na 10 testów wygrywa z polished produkcją przy hook rate i CPA. Powód: użytkownicy social media skanują feed i ignorują „reklamy” - UGC nie wygląda na reklamę. Dla brandów premium profesjonalna produkcja nadal pełni rolę brandową, ale dla performance UGC zwykle bije ją po efektywności.</p></div>
+                        </details>
+                        <details class="faq-item bg-white border border-gray-200 rounded-2xl">
+                            <summary class="flex items-center justify-between gap-4 p-6"><h3 class="font-bold text-slate-900 m-0">Co to jest hook i jak go testować?</h3><svg class="faq-icon w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/></svg></summary>
+                            <div class="px-6 pb-6 -mt-2"><p class="text-slate-600 text-sm leading-relaxed">Hook to pierwsze 3 sekundy reklamy - moment, w którym widz decyduje, czy zatrzymać scroll. Mierzony jako hook rate: % osób, które obejrzały minimum 3 sekundy / total impressions. Dobre hooki: 30%+ w Meta Ads, 25%+ w TikTok. Test: stwórz tę samą kreację z 3-5 różnymi hookami, porównaj hook rate po 5-7 dniach.</p></div>
+                        </details>
+                    </div>
+                </div>
+
+                <div class="mt-16">
+                    <h2 class="text-2xl font-bold mb-6">Może Cię też zainteresować</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <a href="/blog/meta-advantage-plus-czy-warto" class="block bg-white border border-gray-200 rounded-2xl p-6 hover:border-blue-500 transition-colors"><span class="text-xs font-mono uppercase tracking-widest text-blue-600 mb-2 block">Meta Ads</span><h3 class="font-bold leading-snug">Meta Advantage+ - czy warto w 2026</h3></a>
+                        <a href="/blog/ai-w-marketingu-chatgpt-custom-gpt" class="block bg-white border border-gray-200 rounded-2xl p-6 hover:border-blue-500 transition-colors"><span class="text-xs font-mono uppercase tracking-widest text-purple-600 mb-2 block">AI</span><h3 class="font-bold leading-snug">AI w marketingu - 7 zastosowań ChatGPT</h3></a>
+                        <a href="/blog/atrybucja-multi-touch-last-click" class="block bg-white border border-gray-200 rounded-2xl p-6 hover:border-blue-500 transition-colors"><span class="text-xs font-mono uppercase tracking-widest text-pink-600 mb-2 block">Atrybucja</span><h3 class="font-bold leading-snug">Atrybucja multi-touch - last-click kłamie</h3></a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </article>
+
+    <footer class="py-12 bg-slate-900 text-white border-t border-white/10 mt-12">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center text-slate-400 text-sm font-medium gap-4">
+            <a href="/" class="text-lg font-bold tracking-tighter italic text-white">DAWID<span class="text-blue-400">RUBIN</span></a>
+            <div>&copy; <script>document.write(new Date().getFullYear())</script> Dawid Rubin. Wszelkie prawa zastrzeżone.</div>
+            <div class="flex gap-6"><a href="/" class="hover:text-white transition-colors">Strona główna</a><a href="/blog" class="hover:text-white transition-colors">Blog</a><a href="/audyt-paid-media" class="hover:text-white transition-colors">Pobierz PDF</a><a href="mailto:kontakt@dawidrubin.pl" class="hover:text-white transition-colors">Kontakt</a></div>
+        </div>
+    </footer>
+
+</body>
+</html>
