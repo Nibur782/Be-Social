@@ -223,8 +223,19 @@
         .animate-pulse-glow { animation: pulse-glow 3s infinite ease-in-out; }
         .swiper-slide { height: auto !important; }
         .swiper-wrapper { align-items: flex-start; }
-        .brand-logo img { filter: grayscale(100%); opacity: 0.55; transition: filter .4s ease, opacity .4s ease, transform .4s ease; }
-        .brand-logo:hover img { filter: grayscale(0%); opacity: 1; transform: translateY(-2px); }
+        /* Loga marek - kolorowe, równa wysokość, lekkie powiększenie na hover */
+        .brand-logo { display: flex; align-items: center; justify-content: center; height: 56px; }
+        .brand-logo img { filter: none; opacity: 1; height: 40px; width: auto; max-width: 170px; object-fit: contain; transition: transform .25s ease, opacity .25s ease; }
+        .brand-logo:hover img { transform: translateY(-2px) scale(1.04); }
+        /* FAQ accordion */
+        .faq-item summary::-webkit-details-marker { display: none; }
+        .faq-item summary::marker { content: ""; }
+        .faq-item summary { cursor: pointer; list-style: none; user-select: none; }
+        .faq-item .faq-icon { transition: transform .25s ease; flex-shrink: 0; }
+        .faq-item[open] .faq-icon { transform: rotate(45deg); }
+        .faq-item[open] summary h3 { color: #1D4ED8; }
+        .faq-item .faq-body { animation: faq-slide .25s ease-out; }
+        @keyframes faq-slide { from { opacity: 0; transform: translateY(-4px); } to { opacity: 1; transform: translateY(0); } }
     </style>
 </head>
 <body class="antialiased">
@@ -373,22 +384,22 @@
             <p class="text-center text-xs font-mono uppercase tracking-widest text-slate-500 mb-10 font-bold">Pracowałem z takimi markami jak:</p>
             <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-x-8 gap-y-10 items-center justify-items-center">
                 <a href="https://vasco-electronics.pl/" target="_blank" rel="noopener noreferrer" aria-label="Vasco Electronics" title="Vasco Electronics" class="brand-logo group">
-                    <img src="brands/vasco.svg" alt="Vasco Electronics" loading="lazy" width="160" height="40" class="max-h-10 w-auto object-contain">
+                    <img src="brands/vasco.svg" alt="Vasco Electronics" loading="lazy" width="160" height="40">
                 </a>
                 <a href="https://www.dentsu.com/pl/pl" target="_blank" rel="noopener noreferrer" aria-label="Dentsu" title="Dentsu" class="brand-logo group">
-                    <img src="brands/dentsu.png" alt="Dentsu" loading="lazy" width="1080" height="231" class="max-h-9 w-auto object-contain">
+                    <img src="brands/dentsu.png" alt="Dentsu" loading="lazy" width="1080" height="231">
                 </a>
                 <a href="https://www.biedronka.pl/pl" target="_blank" rel="noopener noreferrer" aria-label="Biedronka" title="Biedronka" class="brand-logo group">
-                    <img src="brands/biedronka.png" alt="Biedronka" loading="lazy" width="900" height="420" class="max-h-12 w-auto object-contain">
+                    <img src="brands/biedronka.png" alt="Biedronka" loading="lazy" width="900" height="420">
                 </a>
                 <a href="https://domodi.pl/" target="_blank" rel="noopener noreferrer" aria-label="Domodi" title="Domodi" class="brand-logo group">
-                    <img src="brands/domodi.png" alt="Domodi" loading="lazy" width="496" height="101" class="max-h-9 w-auto object-contain">
+                    <img src="brands/domodi.png" alt="Domodi" loading="lazy" width="496" height="101">
                 </a>
                 <a href="https://lashboom.de/" target="_blank" rel="noopener noreferrer" aria-label="Lashboom" title="Lashboom" class="brand-logo group">
-                    <img src="brands/lashboom.svg" alt="Lashboom" loading="lazy" width="160" height="40" class="max-h-10 w-auto object-contain">
+                    <img src="brands/lashboom.svg" alt="Lashboom" loading="lazy" width="160" height="40">
                 </a>
                 <a href="https://sklep.arkana.pl/" target="_blank" rel="noopener noreferrer" aria-label="Arkana Cosmetics" title="Arkana Cosmetics" class="brand-logo group">
-                    <img src="brands/arkana.png" alt="Arkana Cosmetics" loading="lazy" width="468" height="106" class="max-h-10 w-auto object-contain">
+                    <img src="brands/arkana.png" alt="Arkana Cosmetics" loading="lazy" width="468" height="106">
                 </a>
             </div>
         </div>
@@ -733,25 +744,8 @@
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-4 h-4 group-hover:translate-x-1 transition-transform"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" /></svg>
                         </a>
                     </div>
-                    <div class="md:w-1/2 rounded-2xl overflow-hidden border border-gray-200 shadow-lg aspect-[4/3] bg-gradient-to-br from-blue-50 via-white to-slate-50 flex items-center justify-center p-12">
-                        <div class="grid grid-cols-2 gap-4 w-full">
-                            <div class="bg-white rounded-xl p-4 border border-gray-200 shadow-sm text-center">
-                                <div class="text-blue-600 font-bold text-2xl mb-1">WWW</div>
-                                <div class="text-xs text-slate-500 font-mono uppercase">Strona</div>
-                            </div>
-                            <div class="bg-white rounded-xl p-4 border border-gray-200 shadow-sm text-center">
-                                <div class="text-blue-600 font-bold text-2xl mb-1">GMB</div>
-                                <div class="text-xs text-slate-500 font-mono uppercase">Wizytówka</div>
-                            </div>
-                            <div class="bg-white rounded-xl p-4 border border-gray-200 shadow-sm text-center">
-                                <div class="text-blue-600 font-bold text-2xl mb-1">Ads</div>
-                                <div class="text-xs text-slate-500 font-mono uppercase">Meta + Google</div>
-                            </div>
-                            <div class="bg-white rounded-xl p-4 border border-gray-200 shadow-sm text-center">
-                                <div class="text-blue-600 font-bold text-2xl mb-1">AI</div>
-                                <div class="text-xs text-slate-500 font-mono uppercase">Mentoring zespołu</div>
-                            </div>
-                        </div>
+                    <div class="md:w-1/2 rounded-2xl overflow-hidden border border-gray-200 shadow-lg">
+                        <img src="screenshots/pracownia-strona.webp" alt="Strona główna pracowniarachunkowosci.pl - hero z headlinem &bdquo;Księgowość, która daje zarządowi liczby do decyzji&rdquo;" width="1440" height="770" class="w-full h-auto block" loading="lazy">
                     </div>
                 </div>
             </div>
@@ -1037,31 +1031,61 @@
                 <h2 class="text-3xl md:text-4xl font-bold italic">Często zadawane pytania</h2>
             </div>
             
-            <div class="space-y-4">
-                <div class="bg-white border border-gray-200 rounded-2xl p-6 shadow-sm scroll-animate opacity-0 translate-y-8 transition-all duration-700 delay-100">
-                    <h3 class="text-lg font-bold mb-2 text-slate-900">Czy pracujesz tylko z dużymi firmami i e-commerce?</h3>
-                    <p class="text-slate-600 text-sm leading-relaxed">Nie. Pomagam firmom każdej skali - od mechanika samochodowego stawiającego pierwsze kroki w internecie, przez gabinety i usługodawców, po sklepy e-commerce obsługujące kilkadziesiąt rynków. Zakres i narzędzia dobieram pod konkretne potrzeby i budżet.</p>
-                </div>
-                <div class="bg-white border border-gray-200 rounded-2xl p-6 shadow-sm scroll-animate opacity-0 translate-y-8 transition-all duration-700 delay-200">
-                    <h3 class="text-lg font-bold mb-2 text-slate-900">Od czego zacząć? Co jest pierwszym krokiem?</h3>
-                    <p class="text-slate-600 text-sm leading-relaxed">Najlepiej od bezpłatnej 15-minutowej rozmowy wstępnej. Opowiadasz mi o swojej firmie i aktualnej sytuacji, ja mówię co według mnie warto zrobić najpierw. Bez zobowiązań - jeśli widzę, że nie mogę pomóc, powiem to wprost i zasugeruję gdzie szukać.</p>
-                </div>
-                <div class="bg-white border border-gray-200 rounded-2xl p-6 shadow-sm scroll-animate opacity-0 translate-y-8 transition-all duration-700 delay-300">
-                    <h3 class="text-lg font-bold mb-2 text-slate-900">Czy mogę zlecić tylko jedną konkretną usługę?</h3>
-                    <p class="text-slate-600 text-sm leading-relaxed">Tak. Możesz zamówić sam audyt kont, zlecić zbudowanie strony z integracjami, wdrożenie automatyzacji dla swojego biznesu lub uruchomienie kampanii - bez konieczności wchodzenia w długoterminową umowę czy brania całości usług.</p>
-                </div>
-                <div class="bg-white border border-gray-200 rounded-2xl p-6 shadow-sm scroll-animate opacity-0 translate-y-8 transition-all duration-700 delay-400">
-                    <h3 class="text-lg font-bold mb-2 text-slate-900">Czy zastępujesz agencję reklamową?</h3>
-                    <p class="text-slate-600 text-sm leading-relaxed">Mogę zastąpić agencję w całości - kampanie, tracking, raportowanie i strategia jako jeden punkt kontaktowy. Mogę też działać jako zewnętrzny konsultant obok istniejącej agencji lub wewnętrznego zespołu, poprawiając wyniki bez zmiany całej struktury.</p>
-                </div>
-                <div class="bg-white border border-gray-200 rounded-2xl p-6 shadow-sm scroll-animate opacity-0 translate-y-8 transition-all duration-700 delay-500">
-                    <h3 class="text-lg font-bold mb-2 text-slate-900">Ile to kosztuje?</h3>
-                    <p class="text-slate-600 text-sm leading-relaxed">Audyt diagnostyczny od 1 200 PLN netto (raport w 5 dni). Pełny audyt Paid Media dla e-commerce od 2 900 PLN netto. Projekt jednorazowy (strona, kampanie, automatyzacja) od 1 500 PLN netto. Stały Partner (abonament) od 2 500 PLN netto/miesiąc. Wycena finalna po wypełnieniu briefu - dostarczana w 24 godziny.</p>
-                </div>
-                <div class="bg-white border border-gray-200 rounded-2xl p-6 shadow-sm scroll-animate opacity-0 translate-y-8 transition-all duration-700 delay-500">
-                    <h3 class="text-lg font-bold mb-2 text-slate-900">Jak szybko można zacząć?</h3>
-                    <p class="text-slate-600 text-sm leading-relaxed">Bezpłatna sesja wstępna - terminy w kalendarzu zwykle w ciągu 2-5 dni. Audyt: raport w 5 dni roboczych od briefu. Projekt jednorazowy: start w 1-2 tygodnie od podpisania zakresu. Stała współpraca: onboarding w ciągu 1 tygodnia.</p>
-                </div>
+            <div class="space-y-3">
+                <details class="faq-item bg-white border border-gray-200 rounded-2xl shadow-sm scroll-animate opacity-0 translate-y-8 transition-all duration-700 delay-100">
+                    <summary class="flex items-center justify-between gap-4 p-6">
+                        <h3 class="text-lg font-bold text-slate-900 m-0">Czy pracujesz tylko z dużymi firmami i e-commerce?</h3>
+                        <svg class="faq-icon w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/></svg>
+                    </summary>
+                    <div class="faq-body px-6 pb-6 -mt-2">
+                        <p class="text-slate-600 text-sm leading-relaxed">Nie. Pomagam firmom każdej skali - od mechanika samochodowego stawiającego pierwsze kroki w internecie, przez gabinety i usługodawców, po sklepy e-commerce obsługujące kilkadziesiąt rynków. Zakres i narzędzia dobieram pod konkretne potrzeby i budżet.</p>
+                    </div>
+                </details>
+                <details class="faq-item bg-white border border-gray-200 rounded-2xl shadow-sm scroll-animate opacity-0 translate-y-8 transition-all duration-700 delay-200">
+                    <summary class="flex items-center justify-between gap-4 p-6">
+                        <h3 class="text-lg font-bold text-slate-900 m-0">Od czego zacząć? Co jest pierwszym krokiem?</h3>
+                        <svg class="faq-icon w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/></svg>
+                    </summary>
+                    <div class="faq-body px-6 pb-6 -mt-2">
+                        <p class="text-slate-600 text-sm leading-relaxed">Najlepiej od bezpłatnej 15-minutowej rozmowy wstępnej. Opowiadasz mi o swojej firmie i aktualnej sytuacji, ja mówię co według mnie warto zrobić najpierw. Bez zobowiązań - jeśli widzę, że nie mogę pomóc, powiem to wprost i zasugeruję gdzie szukać.</p>
+                    </div>
+                </details>
+                <details class="faq-item bg-white border border-gray-200 rounded-2xl shadow-sm scroll-animate opacity-0 translate-y-8 transition-all duration-700 delay-300">
+                    <summary class="flex items-center justify-between gap-4 p-6">
+                        <h3 class="text-lg font-bold text-slate-900 m-0">Czy mogę zlecić tylko jedną konkretną usługę?</h3>
+                        <svg class="faq-icon w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/></svg>
+                    </summary>
+                    <div class="faq-body px-6 pb-6 -mt-2">
+                        <p class="text-slate-600 text-sm leading-relaxed">Tak. Możesz zamówić sam audyt kont, zlecić zbudowanie strony z integracjami, wdrożenie automatyzacji dla swojego biznesu lub uruchomienie kampanii - bez konieczności wchodzenia w długoterminową umowę czy brania całości usług.</p>
+                    </div>
+                </details>
+                <details class="faq-item bg-white border border-gray-200 rounded-2xl shadow-sm scroll-animate opacity-0 translate-y-8 transition-all duration-700 delay-400">
+                    <summary class="flex items-center justify-between gap-4 p-6">
+                        <h3 class="text-lg font-bold text-slate-900 m-0">Czy zastępujesz agencję reklamową?</h3>
+                        <svg class="faq-icon w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/></svg>
+                    </summary>
+                    <div class="faq-body px-6 pb-6 -mt-2">
+                        <p class="text-slate-600 text-sm leading-relaxed">Mogę zastąpić agencję w całości - kampanie, tracking, raportowanie i strategia jako jeden punkt kontaktowy. Mogę też działać jako zewnętrzny konsultant obok istniejącej agencji lub wewnętrznego zespołu, poprawiając wyniki bez zmiany całej struktury.</p>
+                    </div>
+                </details>
+                <details class="faq-item bg-white border border-gray-200 rounded-2xl shadow-sm scroll-animate opacity-0 translate-y-8 transition-all duration-700 delay-500">
+                    <summary class="flex items-center justify-between gap-4 p-6">
+                        <h3 class="text-lg font-bold text-slate-900 m-0">Ile to kosztuje?</h3>
+                        <svg class="faq-icon w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/></svg>
+                    </summary>
+                    <div class="faq-body px-6 pb-6 -mt-2">
+                        <p class="text-slate-600 text-sm leading-relaxed">Audyt diagnostyczny od 1 200 PLN netto (raport w 5 dni). Pełny audyt Paid Media dla e-commerce od 2 900 PLN netto. Projekt jednorazowy (strona, kampanie, automatyzacja) od 1 500 PLN netto. Stały Partner (abonament) od 2 500 PLN netto/miesiąc. Wycena finalna po wypełnieniu briefu - dostarczana w 24 godziny.</p>
+                    </div>
+                </details>
+                <details class="faq-item bg-white border border-gray-200 rounded-2xl shadow-sm scroll-animate opacity-0 translate-y-8 transition-all duration-700 delay-500">
+                    <summary class="flex items-center justify-between gap-4 p-6">
+                        <h3 class="text-lg font-bold text-slate-900 m-0">Jak szybko można zacząć?</h3>
+                        <svg class="faq-icon w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/></svg>
+                    </summary>
+                    <div class="faq-body px-6 pb-6 -mt-2">
+                        <p class="text-slate-600 text-sm leading-relaxed">Bezpłatna sesja wstępna - terminy w kalendarzu zwykle w ciągu 2-5 dni. Audyt: raport w 5 dni roboczych od briefu. Projekt jednorazowy: start w 1-2 tygodnie od podpisania zakresu. Stała współpraca: onboarding w ciągu 1 tygodnia.</p>
+                    </div>
+                </details>
             </div>
         </div>
     </section>
