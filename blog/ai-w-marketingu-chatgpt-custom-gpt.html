@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/svg+xml" href="/brands/logo-dr-mark.svg">
+    <link rel="apple-touch-icon" href="/brands/logo-dr-mark.svg">
+    <meta name="theme-color" content="#1D4ED8">
+    <title>AI w marketingu - 7 praktycznych zastosowań ChatGPT i Custom GPTs | Dawid Rubin</title>
+    <meta name="description" content="7 sprawdzonych use casów AI w marketingu - od generowania briefów kreacji, przez analizę feedbacku, po Custom GPTs uczone na danych firmy. Z konkretnymi promptami, ramami i przykładami z praktyki z lokalnymi i e-commerce klientami.">
+    <meta name="author" content="Dawid Rubin">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+    <link rel="canonical" href="https://dawidrubin.pl/blog/ai-w-marketingu-chatgpt-custom-gpt">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://dawidrubin.pl/blog/ai-w-marketingu-chatgpt-custom-gpt">
+    <meta property="og:title" content="AI w marketingu - 7 praktycznych zastosowań ChatGPT i Custom GPTs">
+    <meta property="og:description" content="7 sprawdzonych use casów AI - z konkretnymi promptami i przykładami z praktyki.">
+    <meta property="og:image" content="https://dawidrubin.pl/og/og-home.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:locale" content="pl_PL">
+    <meta property="article:author" content="Dawid Rubin">
+    <meta property="article:published_time" content="2026-05-16">
+    <meta property="article:section" content="AI">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="AI w marketingu - 7 praktycznych zastosowań ChatGPT">
+    <meta name="twitter:description" content="7 sprawdzonych use casów AI w marketingu.">
+    <meta name="twitter:image" content="https://dawidrubin.pl/og/og-home.jpg">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        { "@type": "BreadcrumbList", "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Strona główna", "item": "https://dawidrubin.pl/" },
+          { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://dawidrubin.pl/blog" },
+          { "@type": "ListItem", "position": 3, "name": "AI w marketingu", "item": "https://dawidrubin.pl/blog/ai-w-marketingu-chatgpt-custom-gpt" }
+        ]},
+        { "@type": "BlogPosting", "headline": "AI w marketingu - 7 praktycznych zastosowań ChatGPT i Custom GPTs",
+          "author": { "@type": "Person", "name": "Dawid Rubin", "url": "https://dawidrubin.pl/" },
+          "publisher": { "@type": "Person", "name": "Dawid Rubin", "url": "https://dawidrubin.pl/" },
+          "datePublished": "2026-05-16", "dateModified": "2026-05-16",
+          "image": "https://dawidrubin.pl/og/og-home.jpg",
+          "description": "7 sprawdzonych use casów AI w marketingu - generowanie briefów, analiza feedbacku, Custom GPTs uczone na danych firmy. Z promptami i przykładami z praktyki.",
+          "inLanguage": "pl-PL",
+          "isPartOf": { "@type": "Blog", "name": "Blog Dawida Rubina", "url": "https://dawidrubin.pl/blog" },
+          "about": ["AI", "ChatGPT", "Custom GPTs", "AI w marketingu", "Claude", "Prompt engineering", "Automatyzacja"],
+          "keywords": "AI w marketingu, ChatGPT marketing, Custom GPTs, Claude, prompt engineering, automatyzacja marketingu",
+          "wordCount": 2400,
+          "mainEntityOfPage": "https://dawidrubin.pl/blog/ai-w-marketingu-chatgpt-custom-gpt"
+        },
+        { "@type": "FAQPage", "mainEntity": [
+          { "@type": "Question", "name": "Czym jest Custom GPT i czy potrzebuję konta ChatGPT Plus?", "acceptedAnswer": { "@type": "Answer", "text": "Custom GPT to skonfigurowana wersja ChatGPT z własnym systemowym promptem, plikami referencyjnymi (knowledge base) i wybranymi narzędziami (web search, code interpreter, DALL-E). Tworzenie własnych Custom GPTs wymaga konta ChatGPT Plus (20 USD/mies) lub Team/Enterprise. Korzystanie z cudzych Custom GPTs z biblioteki też wymaga Plusa. Alternatywą bez ChatGPT Plus są Claude Projects (Anthropic) lub Gems (Google Gemini)." } },
+          { "@type": "Question", "name": "Czy AI zastąpi marketera/agencję?", "acceptedAnswer": { "@type": "Answer", "text": "Nie - przyspieszy go. AI w 2026 znakomicie wykonuje zadania powtarzalne i pierwsze szkice: kopie, opisy produktów, analizy danych, podsumowania. Wciąż słabo radzi sobie z: strategią (wymaga rozumienia biznesu), kreatywnym konceptem (działa zachowawczo), decyzjami opartymi na intuicji rynkowej. Marketer z AI jest 3-5x szybszy niż marketer bez AI - to przewaga, nie zastąpienie. Agencje, które nie używają AI, w 2026 są o 30-50% droższe od konkurencji bez wyraźnej przewagi jakościowej." } },
+          { "@type": "Question", "name": "Jaki AI model jest najlepszy do marketingu w 2026?", "acceptedAnswer": { "@type": "Answer", "text": "Dla większości zadań marketingowych w 2026 sprawdzają się: ChatGPT (GPT-4o, o3) - dla kompleksowych analiz, Custom GPTs i integracji z plikami; Claude (Sonnet/Opus 4.x) - dla długich tekstów, analiz feedbacku, edycji tekstów polskich (najlepszy w PL); Gemini Pro - dla zadań z dużymi tabelami i integracji z Google Workspace; Perplexity - dla research z aktualnymi źródłami. Praktyka: większość zespołów używa 2-3 narzędzi w zależności od zadania." } },
+          { "@type": "Question", "name": "Jak zacząć z AI w marketingu bez doświadczenia?", "acceptedAnswer": { "@type": "Answer", "text": "Trzy kroki: 1) Załóż ChatGPT Plus (20 USD/mies) lub Claude Pro - musisz mieć dostęp do najlepszych modeli, free tier to półśrodek. 2) Wybierz JEDNO powtarzalne zadanie z Twojej pracy (np. pisanie opisów produktów, generowanie wariantów reklam) i zbuduj wokół niego prompt template. 3) Iteruj prompt przez 2-4 tygodnie, aż wynik jest „good enough" w pierwszym strzale w 80% przypadków. Potem dopisuj kolejne use casy. Próba użycia AI do wszystkiego naraz = porzucenie projektu po tygodniu." } },
+          { "@type": "Question", "name": "Czy treści generowane przez AI psują SEO?", "acceptedAnswer": { "@type": "Answer", "text": "Same w sobie - nie. Google oficjalnie (od 2022) potwierdza, że nie karze treści AI per se. Karze treści SŁABE - niezależnie czy generowane przez AI czy człowieka. Treść AI z edycją, faktami, własnym doświadczeniem i unikalną perspektywą działa równie dobrze jak czysta human-written. Treść AI bez edycji, z generycznym językiem, bez konkretów, bez E-E-A-T - karze i Google, i czytelnicy. Reguła: AI generuje pierwszy szkic w 30%, człowiek edytuje pozostałe 70%." } }
+        ]}
+      ]
+    }
+    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #F8FAFC; color: #0F172A; }
+        .vasco-blue { color: #1D4ED8; }
+        .bg-vasco-blue { background-color: #1D4ED8; }
+        .prose-custom p { margin-bottom: 1.25rem; line-height: 1.8; color: #334155; font-size: 1.05rem; }
+        .prose-custom h2 { font-size: 1.875rem; font-weight: 700; margin-top: 3rem; margin-bottom: 1rem; color: #0F172A; line-height: 1.3; }
+        .prose-custom h3 { font-size: 1.35rem; font-weight: 700; margin-bottom: 0.75rem; margin-top: 2rem; color: #0F172A; }
+        .prose-custom ul, .prose-custom ol { margin-bottom: 1.25rem; padding-left: 1.5rem; }
+        .prose-custom ul li, .prose-custom ol li { margin-bottom: 0.5rem; line-height: 1.7; color: #334155; }
+        .prose-custom ul li { list-style: disc; } .prose-custom ol li { list-style: decimal; }
+        .prose-custom strong { color: #0F172A; }
+        .prose-custom a { color: #1D4ED8; text-decoration: underline; }
+        .prose-custom a:hover { color: #1E3A8A; }
+        .prose-custom code, .prompt-box { background: #F1F5F9; padding: 2px 6px; border-radius: 4px; font-size: 0.9em; color: #1E3A8A; }
+        .prompt-box { display: block; padding: 16px; margin: 1rem 0; line-height: 1.5; white-space: pre-wrap; border-left: 4px solid #1D4ED8; font-family: 'Courier New', monospace; font-size: 0.85rem; color: #1E3A8A; }
+        .toc a { color: #475569; } .toc a:hover { color: #1D4ED8; }
+        .faq-item summary::-webkit-details-marker { display: none; }
+        .faq-item summary::marker { content: ""; }
+        .faq-item summary { cursor: pointer; list-style: none; user-select: none; }
+        .faq-item .faq-icon { transition: transform .25s ease; flex-shrink: 0; }
+        .faq-item[open] .faq-icon { transform: rotate(45deg); }
+        .faq-item[open] summary h3 { color: #1D4ED8; }
+    </style>
+</head>
+<body class="antialiased">
+
+    <nav class="fixed w-full z-50 bg-white/90 backdrop-blur-md border-b border-gray-200 shadow-sm">
+        <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+            <a href="/" class="text-xl font-bold tracking-tighter italic"><img src="/brands/logo-dr-mark.svg" width="32" height="32" alt="" aria-hidden="true" class="w-8 h-8 inline-block align-middle mr-2"><span class="align-middle">DAWID<span class="vasco-blue">RUBIN</span></span></a>
+            <div class="hidden md:flex items-center gap-6 text-sm font-semibold text-slate-600">
+                <a href="/#services" class="hover:text-blue-600 transition-colors">Usługi</a>
+                <a href="/#results" class="hover:text-blue-600 transition-colors">Realizacje</a>
+                <a href="/blog" class="text-blue-600 border-b border-blue-300 pb-0.5">Blog</a>
+                <a href="/audyt-paid-media" class="hover:text-blue-600 transition-colors">Pobierz PDF</a>
+                <a href="/umow-rozmowe" class="bg-vasco-blue hover:bg-blue-700 text-white px-5 py-2.5 rounded-full transition-colors">Porozmawiajmy</a>
+            </div>
+            <a href="/blog" class="md:hidden text-sm text-slate-500 hover:text-blue-600 font-mono">← Blog</a>
+        </div>
+    </nav>
+
+    <article>
+        <header class="pt-32 pb-12 px-6 bg-white border-b border-gray-100">
+            <div class="max-w-3xl mx-auto">
+                <div class="flex flex-wrap items-center gap-3 mb-6 text-sm">
+                    <a href="/" class="text-slate-500 hover:text-blue-600 font-mono">← Strona główna</a>
+                    <span class="text-slate-300">/</span>
+                    <a href="/blog" class="text-slate-500 hover:text-blue-600 font-mono">Blog</a>
+                    <span class="text-slate-300">/</span>
+                    <span class="bg-purple-100 text-purple-700 text-xs font-bold px-3 py-1 rounded-full">AI</span>
+                </div>
+                <h1 class="text-3xl md:text-5xl font-bold leading-tight mb-6">AI w marketingu - <span class="vasco-blue">7 praktycznych zastosowań ChatGPT i Custom GPTs</span></h1>
+                <p class="text-xl text-slate-600 leading-relaxed mb-6">7 sprawdzonych use casów AI w pracy marketera - od generowania briefów kreacji, przez analizę feedbacku, po Custom GPTs uczone na danych firmy. Z konkretnymi promptami, frameworkami i przykładami z praktyki z mentoringu klientów (Pracownia Rachunkowości, lokalne biznesy, e-commerce).</p>
+                <div class="flex flex-wrap gap-4 text-sm text-slate-500 font-mono">
+                    <span>Autor: <strong class="text-slate-700">Dawid Rubin</strong></span>
+                    <span>Publikacja: <strong class="text-slate-700">16 maja 2026</strong></span>
+                    <span>Czas czytania: <strong class="text-slate-700">15 min</strong></span>
+                </div>
+            </div>
+        </header>
+
+        <section class="py-12 px-6">
+            <div class="max-w-3xl mx-auto">
+
+                <nav class="toc bg-blue-50 border border-blue-100 rounded-2xl p-6 mb-10">
+                    <h2 class="text-sm font-bold tracking-widest uppercase text-blue-700 mb-3">Spis treści</h2>
+                    <ol class="space-y-1.5 text-sm">
+                        <li><a href="#1" class="hover:underline">1. Generowanie briefów kreacji</a></li>
+                        <li><a href="#2" class="hover:underline">2. Pisanie wariantów copy</a></li>
+                        <li><a href="#3" class="hover:underline">3. Analiza feedbacku i opinii</a></li>
+                        <li><a href="#4" class="hover:underline">4. Custom GPT jako brand voice assistant</a></li>
+                        <li><a href="#5" class="hover:underline">5. Analiza danych z GA4 i Meta Ads</a></li>
+                        <li><a href="#6" class="hover:underline">6. Research konkurencji</a></li>
+                        <li><a href="#7" class="hover:underline">7. Custom GPT jako personal assistant zespołu</a></li>
+                        <li><a href="#zasady" class="hover:underline">Zasady działania z AI w marketingu</a></li>
+                        <li><a href="#faq" class="hover:underline">FAQ</a></li>
+                    </ol>
+                </nav>
+
+                <div class="prose-custom">
+
+                    <h2 id="1">1. Generowanie briefów kreacji reklamowych</h2>
+                    <p>Klasyczny pain point każdego media buyera: trzeba odbrieftować creator/grafikiowi 5-10 nowych kreacji miesięcznie. Bez briefu - dostajesz to, co creator akurat ma w głowie. Pisanie 10 briefów ręcznie - 4-6 godzin tygodniowo.</p>
+                    <p>AI rozwiązuje to w 15 minut. Wzór:</p>
+                    <code class="prompt-box">Jesteś senior creative strategist dla performance marketingu. Wygeneruj 5 briefów kreacji video (15-30s) do Meta Advantage+ dla [BRANŻA + PRODUKT].
+
+Każdy brief w formacie:
+- Koncept (1 zdanie)
+- Hook (pierwsze 3s - konkretne słowa lub obraz)
+- Główny komunikat (3-10s)
+- Demonstracja (10-20s)
+- Social proof / liczba
+- CTA
+
+Dodaj wymagania techniczne: format 9:16, długość, kolory marki, lokalizacja audio (PL/EN).
+
+Skup się na: konkretnym problemie odbiorcy, prostym języku, jednym CTA. Nikomu nie używaj generycznych fraz typu „odkryj nasze produkty" lub „premium quality".</code>
+                    <p>Po pierwszym output edytuj prompt: dodaj konkrety o produkcie, persona klienta, ton brandu. Po 3-4 iteracjach masz prompt template, który generuje briefy na poziomie senior strategistów w 5 minut.</p>
+
+                    <h2 id="2">2. Pisanie wariantów copy reklamowego</h2>
+                    <p>Meta Advantage+, Google Performance Max, Demand Gen - wszystkie wymagają 5-20 wariantów copy. Pisanie ręcznie - męczące i powtarzalne.</p>
+                    <code class="prompt-box">Napisz 15 wariantów primary text do reklamy Meta Ads dla [PRODUKT].
+
+Każdy wariant max 90 znaków, w języku polskim, z konkretnym hookiem.
+
+Mix tych typów:
+- 3x bezpośredni problem
+- 3x statystyka / liczba
+- 3x social proof
+- 3x korzyść funkcjonalna
+- 3x emocjonalny benefit
+
+Unikaj: superlatywów bez dowodu („najlepszy", „premium"), wykrzykników, generycznych fraz.
+
+Targetuj: kobiety 25-45, świadome zdrowia, mieszkające w miastach.
+
+Kontekst: [WKLEJ OPIS PRODUKTU I OFERTĘ]</code>
+                    <p>Po wygenerowaniu wybierasz 5-7 najlepszych, edytujesz, wrzucasz do testów. Zaoszczędzony czas: 80% w stosunku do pisania ręcznie.</p>
+
+                    <h2 id="3">3. Analiza feedbacku i opinii klientów</h2>
+                    <p>E-commerce z 500+ opinii rocznie. CMO chce wiedzieć: o czym najczęściej narzekają klienci, co chwalą, co poprawić. Ręczne czytanie - kilka godzin co miesiąc. Z AI - 10 minut.</p>
+                    <code class="prompt-box">Załączam listę 200 opinii klientów z naszego sklepu.
+
+Wykonaj analizę:
+1. Top 5 powodów pozytywnych opinii (z konkretnymi cytatami)
+2. Top 5 najczęstszych skarg (z cytatami i liczbą wystąpień)
+3. Sentyment ogólny: % pozytywnych vs negatywnych vs neutralnych
+4. Powtarzające się sugestie ulepszeń produktu
+5. Powtarzające się sugestie ulepszeń procesu (dostawa, obsługa, strona)
+6. Rekomendacje konkretnych działań do podjęcia w 30 dni
+7. 3 pomysły na wykorzystanie pozytywnych opinii w kampaniach reklamowych
+
+Pomocnik: rozdzielaj feedback dotyczący produktu od feedbacku dotyczącego procesu/obsługi.</code>
+                    <p>Output: gotowy raport zarządczy. Możesz go zmodyfikować, dorzucić swój wniosek, zaprezentować zarządowi. Z AI: 10 minut. Bez AI: 2-3h analizy + 1-2h pisania.</p>
+
+                    <h2 id="4">4. Custom GPT jako brand voice assistant</h2>
+                    <p>Problem: zespół marketingowy (lub freelancerzy) piszą w różnych tonach. Brand voice się rozjeżdża między kanałami. Rozwiązanie: Custom GPT skonfigurowany pod brand.</p>
+                    <p>Jak skonfigurować Custom GPT (ChatGPT Plus):</p>
+                    <ol>
+                        <li>ChatGPT → „Explore GPTs" → „Create"</li>
+                        <li>W „Instructions" wklej brand voice guidelines: persona marki, ton (formalny/przyjazny), słowa kluczowe do używania, słowa zakazane, długość zdań</li>
+                        <li>W „Knowledge" wgraj: brand book (PDF), 20-50 najlepszych dotychczas napisanych tekstów (przykład „dobrego" output), guidelines RODO/compliance</li>
+                        <li>Konfiguruj capabilities: Web Browsing (do faktów), Code Interpreter (do analiz), DALL-E (do prostych grafik)</li>
+                    </ol>
+                    <p>Po stworzeniu zespół ma jednego punktu wyjścia. Każdy nowy tekst (mail, post, post na bloga, opis produktu) przechodzi przez Custom GPT na finishing edit. Brand voice spójny.</p>
+
+                    <h2 id="5">5. Analiza danych z GA4 i Meta Ads</h2>
+                    <p>Eksport CSV z GA4 (np. ścieżki konwersji, top landing pages, source/medium). Wklej do ChatGPT (GPT-4o lub o3 z Code Interpreter) i pytaj:</p>
+                    <code class="prompt-box">Załączam eksport z GA4 - ścieżki konwersji za ostatnie 30 dni dla naszego e-commerce.
+
+Wykonaj:
+1. Top 5 ścieżek konwersji według liczby konwersji
+2. Top 5 ścieżek według wartości konwersji (sumarycznie)
+3. Średnia długość ścieżki (liczba styków przed konwersją)
+4. Które kanały najczęściej startują ścieżkę (assist), które kończą (last-click)
+5. Anomalie: ścieżki o nietypowo wysokiej/niskiej wartości
+6. Rekomendacje: gdzie zwiększyć budżet, gdzie zmniejszyć
+7. Pytania do dalszej eksploracji (które dane warto wyciągnąć dodatkowo)</code>
+                    <p>Code Interpreter (Python sandbox) uruchamia analizę na pliku CSV i daje wnioski z wykresami. Dla średnich e-commerce takie analizy co tydzień - kosztowały 4-8h analityka miesięcznie. Z AI: 30 minut.</p>
+
+                    <h2 id="6">6. Research konkurencji i analiza rynku</h2>
+                    <p>Klasyczne narzędzia (SimilarWeb, SEMrush, Ahrefs) dają dane - AI dodaje interpretację.</p>
+                    <code class="prompt-box">Działamy w branży [BRANŻA] w Polsce. Top 5 konkurentów: [LISTA].
+
+Wejdź na ich strony, przeanalizuj i odpowiedz:
+1. Jak każdy się pozycjonuje (USP w 1 zdaniu)
+2. Jaki ma tone of voice (formalny / przyjazny / techniczny)
+3. Jakie kategorie produktów / usług oferuje
+4. Co robi DOBRZE, czego my nie mamy
+5. Co robi SŁABO, gdzie my możemy się różnić
+6. 3 luki rynkowe, których żaden z nich nie wypełnia
+7. Rekomendacje pozycjonowania dla naszej marki, by się wyróżnić</code>
+                    <p>Perplexity / ChatGPT z web search wykona ten research w 5 minut. Output: punkt startowy strategii, którą człowiek dopracowuje na podstawie swojej wiedzy o rynku.</p>
+
+                    <h2 id="7">7. Custom GPT jako personal assistant zespołu</h2>
+                    <p>Najgłębszy use case - Custom GPT uczony na danych Twojej firmy. Działa jak juniorzy w zespole, który wie wszystko o firmie i odpowiada na pytania w sekundę.</p>
+                    <p>Konfiguracja (jeden raz, 2-4h pracy):</p>
+                    <ul>
+                        <li>Stwórz Custom GPT „Asystent [NAZWA FIRMY]"</li>
+                        <li>Wgraj jako Knowledge: prezentacje produktowe, FAQ wewnętrzne, dokumentację procesów, historię klientów, najlepsze praktyki branżowe, pricing</li>
+                        <li>W Instructions: rola asystenta, zakres pomocy, format odpowiedzi (zwięzły z konkretami), zakaz wymyślania faktów</li>
+                        <li>Udostępnij linkiem zespołowi (w ChatGPT Team: workspace shared)</li>
+                    </ul>
+                    <p>Praktyczne use case'y w Pracowni Rachunkowości (mój klient):</p>
+                    <ul>
+                        <li>Pracownik pisze maila do klienta o rocznym rozliczeniu - pyta Custom GPT „jak to wyjaśnić prosto" → dostaje gotowy szkic</li>
+                        <li>Nowy pracownik onboarding - zamiast pytać 5 osób, pyta Custom GPT „jak działa proces wystawiania faktury u nas"</li>
+                        <li>Spotkanie z klientem - pyta Custom GPT „co już mu obiecaliśmy" (na podstawie historii)</li>
+                    </ul>
+                    <p>Efekt mierzalny: 30-50% szybsza obsługa rutynowych zapytań klientów, krótszy onboarding nowych osób.</p>
+
+                    <h2 id="zasady">Zasady działania z AI w marketingu</h2>
+
+                    <h3>1. AI generuje 30%, człowiek edytuje 70%</h3>
+                    <p>Czysty output AI bez edycji to słaba treść. AI daje pierwszy szkic, ramę, wariantów do wyboru - człowiek wybiera, edytuje, dorzuca konkretów, dopasowuje do brand voice.</p>
+
+                    <h3>2. Zawsze sprawdzaj fakty</h3>
+                    <p>AI halucynuje, zwłaszcza przy datach, liczbach, statystykach. Każdy fakt z AI musi być zweryfikowany - jeśli AI cytuje, że „badanie z 2024 pokazało", sprawdź czy to badanie istnieje.</p>
+
+                    <h3>3. Iteracja promptów &gt; jednorazowy strzał</h3>
+                    <p>Pierwszy prompt rzadko daje świetny wynik. Iteracja 5-10 razy z różnymi instrukcjami daje 3-5x lepsze wyniki. Zapisuj prompt templates, które działają.</p>
+
+                    <h3>4. Bezpieczeństwo danych</h3>
+                    <p>Wklejasz dane klientów do AI? Wybieraj enterprise plan (ChatGPT Enterprise, Claude for Work) lub używaj API z opt-out z treningu. Nigdy nie wklejaj danych wrażliwych (RODO) do free tier.</p>
+
+                    <h3>5. Stwórz prompt library</h3>
+                    <p>Zespół powinien mieć wspólny dokument (Notion, Google Doc) z 20-50 sprawdzonych promptów dla powtarzalnych zadań. To największa dźwignia produktywności w zespole marketingowym 2026.</p>
+
+                </div>
+
+                <div class="mt-16 border-t border-gray-200 pt-12">
+                    <div class="bg-gradient-to-br from-blue-700 via-blue-600 to-blue-800 rounded-3xl p-8 md:p-12 text-white shadow-xl text-center">
+                        <span class="text-blue-200 font-mono text-sm tracking-widest uppercase mb-4 block">Mentoring AI dla Twojego zespołu</span>
+                        <h2 class="text-3xl md:text-4xl font-bold mb-5 italic leading-tight">Bezpłatna sesja: ocenimy, gdzie AI da Ci największą dźwignię.</h2>
+                        <p class="text-blue-100 text-lg leading-relaxed mb-8 max-w-2xl mx-auto">15 minut. Opowiadasz mi o codziennej pracy zespołu - pokażę 3-5 konkretnych miejsc, gdzie AI zwróci czas w 2-4 tygodnie. Bez sprzedaży.</p>
+                        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                            <a href="/umow-rozmowe" class="bg-white text-blue-700 px-8 py-4 rounded-full font-bold text-lg hover:bg-blue-50 transition-all shadow-lg">Umów bezpłatną sesję (15 min) →</a>
+                            <a href="/brief-projekt" class="border-2 border-white/40 text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-white/10 transition-all">Wyślij brief projektu</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="faq" class="mt-16">
+                    <h2 class="text-3xl font-bold mb-6 italic">Często zadawane pytania</h2>
+                    <div class="space-y-3">
+                        <details class="faq-item bg-white border border-gray-200 rounded-2xl"><summary class="flex items-center justify-between gap-4 p-6"><h3 class="font-bold text-slate-900 m-0">Czym jest Custom GPT i czy potrzebuję konta ChatGPT Plus?</h3><svg class="faq-icon w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/></svg></summary><div class="px-6 pb-6 -mt-2"><p class="text-slate-600 text-sm leading-relaxed">Custom GPT to skonfigurowana wersja ChatGPT z własnym systemowym promptem, plikami referencyjnymi i narzędziami. Tworzenie wymaga ChatGPT Plus (20 USD/mies). Alternatywą są Claude Projects (Anthropic) lub Gems (Google Gemini).</p></div></details>
+                        <details class="faq-item bg-white border border-gray-200 rounded-2xl"><summary class="flex items-center justify-between gap-4 p-6"><h3 class="font-bold text-slate-900 m-0">Czy AI zastąpi marketera/agencję?</h3><svg class="faq-icon w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/></svg></summary><div class="px-6 pb-6 -mt-2"><p class="text-slate-600 text-sm leading-relaxed">Nie - przyspieszy go. AI znakomicie wykonuje zadania powtarzalne i pierwsze szkice. Wciąż słabo radzi sobie ze strategią, kreatywnym konceptem, decyzjami opartymi na intuicji. Marketer z AI jest 3-5x szybszy niż bez AI.</p></div></details>
+                        <details class="faq-item bg-white border border-gray-200 rounded-2xl"><summary class="flex items-center justify-between gap-4 p-6"><h3 class="font-bold text-slate-900 m-0">Jaki AI model jest najlepszy do marketingu w 2026?</h3><svg class="faq-icon w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/></svg></summary><div class="px-6 pb-6 -mt-2"><p class="text-slate-600 text-sm leading-relaxed">ChatGPT (GPT-4o, o3) dla kompleksowych analiz i Custom GPTs, Claude (Sonnet/Opus 4.x) dla długich tekstów i polskich edycji, Gemini Pro dla integracji z Google Workspace, Perplexity dla researchu. Większość zespołów używa 2-3 narzędzi.</p></div></details>
+                        <details class="faq-item bg-white border border-gray-200 rounded-2xl"><summary class="flex items-center justify-between gap-4 p-6"><h3 class="font-bold text-slate-900 m-0">Jak zacząć z AI w marketingu bez doświadczenia?</h3><svg class="faq-icon w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/></svg></summary><div class="px-6 pb-6 -mt-2"><p class="text-slate-600 text-sm leading-relaxed">Trzy kroki: 1) Załóż ChatGPT Plus lub Claude Pro. 2) Wybierz JEDNO powtarzalne zadanie i zbuduj prompt template. 3) Iteruj 2-4 tygodnie, aż wynik jest „good enough" w 80% przypadków. Potem dopisuj kolejne use casy.</p></div></details>
+                        <details class="faq-item bg-white border border-gray-200 rounded-2xl"><summary class="flex items-center justify-between gap-4 p-6"><h3 class="font-bold text-slate-900 m-0">Czy treści generowane przez AI psują SEO?</h3><svg class="faq-icon w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/></svg></summary><div class="px-6 pb-6 -mt-2"><p class="text-slate-600 text-sm leading-relaxed">Same w sobie nie. Google karze treści SŁABE - niezależnie czy AI czy human. Treść AI z edycją, faktami i unikalną perspektywą działa równie dobrze jak human-written. Reguła: AI generuje pierwszy szkic 30%, człowiek edytuje 70%.</p></div></details>
+                    </div>
+                </div>
+
+                <div class="mt-16">
+                    <h2 class="text-2xl font-bold mb-6">Może Cię też zainteresować</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <a href="/blog/seo-vs-geo-pozycjonowanie-ai" class="block bg-white border border-gray-200 rounded-2xl p-6 hover:border-blue-500 transition-colors"><span class="text-xs font-mono uppercase tracking-widest text-purple-600 mb-2 block">SEO / GEO</span><h3 class="font-bold leading-snug">SEO vs GEO - pozycjonowanie w dobie AI</h3></a>
+                        <a href="/blog/targetowanie-kreacja-creative-targeting" class="block bg-white border border-gray-200 rounded-2xl p-6 hover:border-blue-500 transition-colors"><span class="text-xs font-mono uppercase tracking-widest text-blue-600 mb-2 block">Kreacja</span><h3 class="font-bold leading-snug">Targetowanie kreacją</h3></a>
+                        <a href="/blog/google-ads-przezytek-czy-nie" class="block bg-white border border-gray-200 rounded-2xl p-6 hover:border-blue-500 transition-colors"><span class="text-xs font-mono uppercase tracking-widest text-amber-600 mb-2 block">Strategia</span><h3 class="font-bold leading-snug">Czy Google Ads to przeżytek?</h3></a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </article>
+
+    <footer class="py-12 bg-slate-900 text-white border-t border-white/10 mt-12">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center text-slate-400 text-sm font-medium gap-4">
+            <a href="/" class="text-lg font-bold tracking-tighter italic text-white">DAWID<span class="text-blue-400">RUBIN</span></a>
+            <div>&copy; <script>document.write(new Date().getFullYear())</script> Dawid Rubin. Wszelkie prawa zastrzeżone.</div>
+            <div class="flex gap-6"><a href="/" class="hover:text-white transition-colors">Strona główna</a><a href="/blog" class="hover:text-white transition-colors">Blog</a><a href="/audyt-paid-media" class="hover:text-white transition-colors">Pobierz PDF</a><a href="mailto:kontakt@dawidrubin.pl" class="hover:text-white transition-colors">Kontakt</a></div>
+        </div>
+    </footer>
+
+</body>
+</html>

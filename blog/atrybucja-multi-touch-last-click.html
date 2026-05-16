@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/svg+xml" href="/brands/logo-dr-mark.svg">
+    <link rel="apple-touch-icon" href="/brands/logo-dr-mark.svg">
+    <meta name="theme-color" content="#1D4ED8">
+    <title>Atrybucja multi-touch dla e-commerce - dlaczego last-click kłamie | Dawid Rubin</title>
+    <meta name="description" content="Last-click przypisuje sprzedaż ostatniemu pikselowi, ignorując 4-12 styków z marką wcześniej. Jak budować modele multi-touch w GA4, czytać dane między platformami i nie wyłączyć kampanii, która naprawdę sprzedaje.">
+    <meta name="author" content="Dawid Rubin">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+    <link rel="canonical" href="https://dawidrubin.pl/blog/atrybucja-multi-touch-last-click">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://dawidrubin.pl/blog/atrybucja-multi-touch-last-click">
+    <meta property="og:title" content="Atrybucja multi-touch dla e-commerce - dlaczego last-click kłamie">
+    <meta property="og:description" content="Last-click ignoruje 4-12 styków przed konwersją. Jak budować modele multi-touch w GA4.">
+    <meta property="og:image" content="https://dawidrubin.pl/og/og-home.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:locale" content="pl_PL">
+    <meta property="article:author" content="Dawid Rubin">
+    <meta property="article:published_time" content="2026-05-16">
+    <meta property="article:section" content="Atrybucja">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Atrybucja multi-touch - dlaczego last-click kłamie">
+    <meta name="twitter:description" content="Last-click ignoruje 4-12 styków przed konwersją.">
+    <meta name="twitter:image" content="https://dawidrubin.pl/og/og-home.jpg">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        { "@type": "BreadcrumbList", "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Strona główna", "item": "https://dawidrubin.pl/" },
+          { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://dawidrubin.pl/blog" },
+          { "@type": "ListItem", "position": 3, "name": "Atrybucja multi-touch", "item": "https://dawidrubin.pl/blog/atrybucja-multi-touch-last-click" }
+        ]},
+        { "@type": "BlogPosting", "headline": "Atrybucja multi-touch dla e-commerce - dlaczego last-click kłamie",
+          "author": { "@type": "Person", "name": "Dawid Rubin", "url": "https://dawidrubin.pl/" },
+          "publisher": { "@type": "Person", "name": "Dawid Rubin", "url": "https://dawidrubin.pl/" },
+          "datePublished": "2026-05-16", "dateModified": "2026-05-16",
+          "image": "https://dawidrubin.pl/og/og-home.jpg",
+          "description": "Dlaczego last-click attribution kłamie o wkładzie kanałów. Jak budować modele multi-touch w GA4, jak weryfikować dane geo-liftem i jak nie wyłączyć kampanii, która sprzedaje.",
+          "inLanguage": "pl-PL",
+          "isPartOf": { "@type": "Blog", "name": "Blog Dawida Rubina", "url": "https://dawidrubin.pl/blog" },
+          "about": ["Atrybucja", "Multi-touch attribution", "Last-click", "GA4", "Data-driven attribution", "MER", "Geo-lift"],
+          "keywords": "atrybucja multi-touch, last-click attribution, GA4 atrybucja, MER, geo-lift, atrybucja e-commerce",
+          "wordCount": 2500,
+          "mainEntityOfPage": "https://dawidrubin.pl/blog/atrybucja-multi-touch-last-click"
+        },
+        { "@type": "FAQPage", "mainEntity": [
+          { "@type": "Question", "name": "Czym różni się atrybucja multi-touch od last-click?", "acceptedAnswer": { "@type": "Answer", "text": "Last-click przypisuje 100% wartości konwersji ostatniemu kliknięciu przed zakupem - ignorując wszystkie wcześniejsze styki z marką. Atrybucja multi-touch rozdziela wartość konwersji między wszystkie kanały, które brały udział w ścieżce (impresje YouTube, kliknięcia z Reels, mailing, organic search, brand search). Daje to znacznie pełniejszy obraz, ale wymaga lepszego trackingu i modelu rozkładu (np. data-driven attribution Google)." } },
+          { "@type": "Question", "name": "Ile styków z marką ma średnia ścieżka konwersji?", "acceptedAnswer": { "@type": "Answer", "text": "Dla e-commerce w 2026 średnio 4-12 styków przed zakupem (różni się per branża i ASP). Dla zakupów impulsywnych do 100 PLN: 2-4 styki. Dla średniego e-commerce 100-500 PLN: 5-8. Dla zakupów premium 500+ PLN: 8-15. Dla B2B SaaS: 15-30 styków w trakcie 4-12 tygodni. Last-click widzi tylko jeden z tych styków - resztę ignoruje, choć każdy mógł być krytyczny dla decyzji." } },
+          { "@type": "Question", "name": "Czy GA4 ma dobre modele atrybucji?", "acceptedAnswer": { "@type": "Answer", "text": "GA4 oferuje 7 modeli atrybucji (last-click, first-click, linear, position-based, time-decay, data-driven, ads-preferred). Najlepszy: data-driven attribution (DDA) - używa machine learning na danych Twojej strony do rozdziału wartości. Wymaga minimum 600 konwersji w 30 dni, by aktywować. Poniżej tego progu GA4 nie ma wystarczająco danych do ML - lepiej position-based jako kompromis. Last-click w GA4 jest deprecated jako default - Google sugeruje DDA dla wszystkich kont." } },
+          { "@type": "Question", "name": "Czym jest MER i dlaczego jest ważniejszy od ROAS?", "acceptedAnswer": { "@type": "Answer", "text": "MER (Marketing Efficiency Ratio) = total revenue / total ad spend (wszystkich kanałów). To metryka, której platformy reklamowe nie mogą zhakować atrybucją - bo nie zależy od ich raportowania. ROAS w Meta Ads Manager pokazuje 6x, ale jeśli Meta przejmuje sprzedaż, która i tak by miała miejsce (np. retargeting użytkowników z bezpośredniego ruchu), MER nie rośnie. Dla większości e-commerce ROAS poszczególnych platform sumarycznie pokazuje 1.5-2x więcej niż faktyczny incremental revenue." } },
+          { "@type": "Question", "name": "Jak zrobić geo-lift test?", "acceptedAnswer": { "@type": "Answer", "text": "Geo-lift test to porównanie sprzedaży w grupie kontrolnej (rynek bez kampanii) z grupą testową (rynek z kampanią), trzymając resztę zmiennych stałą. Krok po kroku: 1) Wybierz 2 podobne rynki/regiony (np. Polska Centralna vs Polska Południowa) - podobny mix demograficzny, podobny baseline sprzedaży. 2) Włącz kampanie tylko w jednym, drugi zostaje bez. 3) Po 4-8 tygodniach porównaj % wzrostu sprzedaży w obu. 4) Różnica to incremental wkład kampanii. Najtańszy i najbardziej wiarygodny sposób walidacji atrybucji." } }
+        ]}
+      ]
+    }
+    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #F8FAFC; color: #0F172A; }
+        .vasco-blue { color: #1D4ED8; }
+        .bg-vasco-blue { background-color: #1D4ED8; }
+        .prose-custom p { margin-bottom: 1.25rem; line-height: 1.8; color: #334155; font-size: 1.05rem; }
+        .prose-custom h2 { font-size: 1.875rem; font-weight: 700; margin-top: 3rem; margin-bottom: 1rem; color: #0F172A; line-height: 1.3; }
+        .prose-custom h3 { font-size: 1.35rem; font-weight: 700; margin-bottom: 0.75rem; margin-top: 2rem; color: #0F172A; }
+        .prose-custom ul, .prose-custom ol { margin-bottom: 1.25rem; padding-left: 1.5rem; }
+        .prose-custom ul li, .prose-custom ol li { margin-bottom: 0.5rem; line-height: 1.7; color: #334155; }
+        .prose-custom ul li { list-style: disc; } .prose-custom ol li { list-style: decimal; }
+        .prose-custom strong { color: #0F172A; }
+        .prose-custom a { color: #1D4ED8; text-decoration: underline; }
+        .prose-custom a:hover { color: #1E3A8A; }
+        .prose-custom code { background: #F1F5F9; padding: 2px 6px; border-radius: 4px; font-size: 0.9em; color: #1E3A8A; }
+        .toc a { color: #475569; } .toc a:hover { color: #1D4ED8; }
+        .faq-item summary::-webkit-details-marker { display: none; }
+        .faq-item summary::marker { content: ""; }
+        .faq-item summary { cursor: pointer; list-style: none; user-select: none; }
+        .faq-item .faq-icon { transition: transform .25s ease; flex-shrink: 0; }
+        .faq-item[open] .faq-icon { transform: rotate(45deg); }
+        .faq-item[open] summary h3 { color: #1D4ED8; }
+    </style>
+</head>
+<body class="antialiased">
+
+    <nav class="fixed w-full z-50 bg-white/90 backdrop-blur-md border-b border-gray-200 shadow-sm">
+        <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+            <a href="/" class="text-xl font-bold tracking-tighter italic"><img src="/brands/logo-dr-mark.svg" width="32" height="32" alt="" aria-hidden="true" class="w-8 h-8 inline-block align-middle mr-2"><span class="align-middle">DAWID<span class="vasco-blue">RUBIN</span></span></a>
+            <div class="hidden md:flex items-center gap-6 text-sm font-semibold text-slate-600">
+                <a href="/#services" class="hover:text-blue-600 transition-colors">Usługi</a>
+                <a href="/#results" class="hover:text-blue-600 transition-colors">Realizacje</a>
+                <a href="/blog" class="text-blue-600 border-b border-blue-300 pb-0.5">Blog</a>
+                <a href="/audyt-paid-media" class="hover:text-blue-600 transition-colors">Pobierz PDF</a>
+                <a href="/umow-rozmowe" class="bg-vasco-blue hover:bg-blue-700 text-white px-5 py-2.5 rounded-full transition-colors">Porozmawiajmy</a>
+            </div>
+            <a href="/blog" class="md:hidden text-sm text-slate-500 hover:text-blue-600 font-mono">← Blog</a>
+        </div>
+    </nav>
+
+    <article>
+        <header class="pt-32 pb-12 px-6 bg-white border-b border-gray-100">
+            <div class="max-w-3xl mx-auto">
+                <div class="flex flex-wrap items-center gap-3 mb-6 text-sm">
+                    <a href="/" class="text-slate-500 hover:text-blue-600 font-mono">← Strona główna</a>
+                    <span class="text-slate-300">/</span>
+                    <a href="/blog" class="text-slate-500 hover:text-blue-600 font-mono">Blog</a>
+                    <span class="text-slate-300">/</span>
+                    <span class="bg-pink-100 text-pink-700 text-xs font-bold px-3 py-1 rounded-full">Atrybucja</span>
+                </div>
+                <h1 class="text-3xl md:text-5xl font-bold leading-tight mb-6">Atrybucja multi-touch dla e-commerce - <span class="vasco-blue">dlaczego last-click kłamie</span></h1>
+                <p class="text-xl text-slate-600 leading-relaxed mb-6">Last-click przypisuje 100% wartości konwersji ostatniemu pikselowi, ignorując 4-12 styków z marką wcześniej. Jak budować modele multi-touch w GA4, jak czytać dane między platformami, jak walidować geo-liftem i jak nie wyłączyć kampanii, która naprawdę sprzedaje (a tylko wygląda na niedziałającą). Z praktyki na rynku 27 krajów.</p>
+                <div class="flex flex-wrap gap-4 text-sm text-slate-500 font-mono">
+                    <span>Autor: <strong class="text-slate-700">Dawid Rubin</strong></span>
+                    <span>Publikacja: <strong class="text-slate-700">16 maja 2026</strong></span>
+                    <span>Czas czytania: <strong class="text-slate-700">16 min</strong></span>
+                </div>
+            </div>
+        </header>
+
+        <section class="py-12 px-6">
+            <div class="max-w-3xl mx-auto">
+
+                <nav class="toc bg-blue-50 border border-blue-100 rounded-2xl p-6 mb-10">
+                    <h2 class="text-sm font-bold tracking-widest uppercase text-blue-700 mb-3">Spis treści</h2>
+                    <ol class="space-y-1.5 text-sm">
+                        <li><a href="#problem" class="hover:underline">1. Problem last-click - na czym polega kłamstwo</a></li>
+                        <li><a href="#sciezka" class="hover:underline">2. Anatomia realnej ścieżki konwersji</a></li>
+                        <li><a href="#modele" class="hover:underline">3. Modele atrybucji - przegląd</a></li>
+                        <li><a href="#dda" class="hover:underline">4. Data-Driven Attribution w GA4</a></li>
+                        <li><a href="#mer" class="hover:underline">5. MER - metryka, której platformy nie zhakują</a></li>
+                        <li><a href="#geo-lift" class="hover:underline">6. Geo-lift - złoty standard walidacji</a></li>
+                        <li><a href="#bledy" class="hover:underline">7. 6 błędów, które kosztują budżet</a></li>
+                        <li><a href="#faq" class="hover:underline">8. FAQ</a></li>
+                    </ol>
+                </nav>
+
+                <div class="prose-custom">
+
+                    <h2 id="problem">1. Problem last-click - na czym polega kłamstwo</h2>
+                    <p>Wyobraź sobie typową ścieżkę zakupu kosmetyków online:</p>
+                    <ol>
+                        <li>Użytkownik widzi reklamę Reels Meta z influencerem - nie klika</li>
+                        <li>3 dni później widzi reklamę YouTube Demand Gen - obejrzał 15 sekund, nie klika</li>
+                        <li>Dwa dni później widzi post organic na Instagramie marki - lajkuje</li>
+                        <li>Tydzień później szuka „[produkt] opinie" w Google - czyta porównanie blogowe</li>
+                        <li>Tego samego dnia wpisuje markę bezpośrednio w Google → trafia na stronę</li>
+                        <li>Klika brand Search ad → kupuje za 350 PLN</li>
+                    </ol>
+                    <p>Last-click attribution mówi: <strong>brand Search wygenerował 350 PLN sprzedaży</strong>. Reels, YouTube, organic Instagram, blog - 0 PLN. Wniosek tradycyjnego marketera: „Brand Search rocks, wyłącz Reels, ROAS spadł".</p>
+                    <p>Realnie: <strong>bez Reels, YouTube i Instagrama ta osoba nigdy nie wpisałaby marki w Google</strong>. Każdy ze styków był krytyczny. Wyłączenie Reels w przyszłym miesiącu - i sprzedaż brandowa zacznie wysychać. Wtedy marketer zwala winę na „rynek się zmienił", a w rzeczywistości sam zerwał lejek.</p>
+
+                    <h2 id="sciezka">2. Anatomia realnej ścieżki konwersji</h2>
+                    <p>Dla typowych e-commerce w 2026, średnia ścieżka konwersji:</p>
+                    <ul>
+                        <li><strong>Impulsywne zakupy (do 100 PLN)</strong>: 2-4 styki, czas decyzji do 1 dnia</li>
+                        <li><strong>Średnie e-commerce (100-500 PLN)</strong>: 5-8 styków, 3-14 dni</li>
+                        <li><strong>Premium / luksus (500+ PLN)</strong>: 8-15 styków, 1-4 tygodnie</li>
+                        <li><strong>B2B SaaS / consulting</strong>: 15-30 styków, 4-12 tygodni</li>
+                        <li><strong>B2B enterprise</strong>: 30-50+ styków, 3-12 miesięcy</li>
+                    </ul>
+
+                    <h3>Typowe style styków w e-commerce:</h3>
+                    <ul>
+                        <li><strong>Top of funnel (TOF)</strong>: Reels, YouTube, TikTok, organic social, influencer - budują świadomość</li>
+                        <li><strong>Middle of funnel (MOF)</strong>: porównania, recenzje blogowe, opinie Google, organic search - rozważanie</li>
+                        <li><strong>Bottom of funnel (BOF)</strong>: brand search, retargeting Display/Meta, direct - decyzja</li>
+                    </ul>
+                    <p>Last-click widzi tylko BOF. Wszystkie inwestycje w TOF i MOF wyglądają jak „strata budżetu". To prowadzi do <strong>spirali śmierci lejka</strong>: wycofujesz z TOF → przestaje napływać nowy ruch → BOF spada → cały biznes się kurczy.</p>
+
+                    <h2 id="modele">3. Modele atrybucji - przegląd</h2>
+
+                    <h3>Last-click</h3>
+                    <p>100% wartości do ostatniego kliknięcia. <strong>Najprostszy, najbardziej kłamliwy</strong>. Premiuje kanały konwersyjne (brand search, retargeting), karze top-of-funnel.</p>
+
+                    <h3>First-click</h3>
+                    <p>100% wartości do pierwszego kliknięcia. Odwrotność last-click. Premiuje TOF, karze BOF. <strong>Równie błędny</strong>, tylko w drugą stronę.</p>
+
+                    <h3>Linear</h3>
+                    <p>Równy rozdział wartości między wszystkie styki. Mniej zafałszowany niż last-click, ale niesprawiedliwy: pierwszy styk i ostatni są tak samo wartościowe jak pomocniczy w środku.</p>
+
+                    <h3>Position-based (40/20/40)</h3>
+                    <p>40% wartości do pierwszego styku, 40% do ostatniego, 20% rozdzielone między pomocnicze. Sensowny kompromis - premiuje brand awareness i finalizację. <strong>Dobry default</strong> dla kont bez wystarczająco danych do data-driven.</p>
+
+                    <h3>Time-decay</h3>
+                    <p>Styki bliższe konwersji mają większą wagę. Algorytm wykładniczego zaniku (zwykle półokres 7 dni). Dobry dla krótkich cykli decyzyjnych (impulsywne zakupy). Słaby dla B2B, gdzie pierwszy styk może być sprzed 3 miesięcy.</p>
+
+                    <h3>Data-driven attribution (DDA)</h3>
+                    <p><strong>Najlepszy dostępny model</strong>. Google używa machine learning na danych Twojej strony do indywidualnego rozdziału wartości - patrzy które ścieżki kończyły się konwersją, które nie, i waży kanały. Wymaga minimum 600 konwersji w 30 dni, by aktywować. Poniżej - GA4 sugeruje position-based.</p>
+
+                    <h2 id="dda">4. Data-Driven Attribution w GA4</h2>
+
+                    <h3>Jak włączyć DDA</h3>
+                    <ol>
+                        <li>GA4 → Admin → Property → Attribution Settings</li>
+                        <li>Wybierz „Data-driven model" (jeśli niedostępny - konto nie ma wystarczająco konwersji)</li>
+                        <li>Conversion window: 30 dni (standard), 90 dni dla B2B</li>
+                        <li>Apply do wszystkich konwersji</li>
+                    </ol>
+                    <p>Po włączeniu raporty Conversions, Acquisition i Monetization używają DDA. Stare raporty (last-click) nadal dostępne w komparatorach.</p>
+
+                    <h3>Jak czytać DDA</h3>
+                    <p>Każdy kanał ma teraz <strong>fractional value</strong> - np. Reels 0.3 konwersji zamiast 0 (last-click), brand search 0.45 zamiast 1.0. Suma = liczba konwersji, ale rozdzielona realistycznie.</p>
+                    <p>Praktyczne odczytania:</p>
+                    <ul>
+                        <li>Kanał z wysokim DDA value, niskim last-click value → <strong>assist kanał</strong>, krytyczny dla lejka, nie wyłączaj</li>
+                        <li>Kanał z wysokim DDA, wysokim last-click → kanał konwersyjny i pomocniczy, skaluj</li>
+                        <li>Niski DDA, niski last-click → kanał nieefektywny, wycinaj</li>
+                        <li>Wysoki last-click, niski DDA → kanał, który <strong>kanibalizuje</strong> (zbiera konwersje, które i tak by się zdarzyły)</li>
+                    </ul>
+
+                    <h2 id="mer">5. MER - metryka, której platformy nie zhakują</h2>
+                    <p><strong>Marketing Efficiency Ratio (MER)</strong> = total revenue / total ad spend across all channels. Wzór:</p>
+                    <p><code>MER = total revenue z całego sklepu / suma wydatków na wszystkie kanały reklamowe</code></p>
+                    <p>Dlaczego to ważne: ROAS w Meta Ads pokazuje 6x, w Google Ads 8x. Suma „ROAS" sugeruje, że każde 1 PLN wydatku zwraca 7 PLN. Ale w rzeczywistości <strong>oba systemy przypisują sobie te same konwersje</strong> (Meta przez 7-day click, Google przez data-driven attribution). Sumarycznie liczą 1.5-2x więcej niż realnie się wydarzyło.</p>
+                    <p>MER tego nie da się oszukać - bierzesz revenue ze swojego e-commerce (Shopify, Magento, custom) i dzielisz przez sumę wydatków. Realny incremental revenue.</p>
+
+                    <h3>Typowe wartości MER:</h3>
+                    <ul>
+                        <li><strong>Słaby</strong>: MER &lt; 2.0 (1 PLN wydatku zwraca mniej niż 2 PLN revenue - po marży zwykle stratny)</li>
+                        <li><strong>OK</strong>: MER 2.5-3.5 (zdrowe e-commerce z marżą 30-40%)</li>
+                        <li><strong>Dobry</strong>: MER 4-5 (mocne marki z dobrym retention)</li>
+                        <li><strong>Świetny</strong>: MER 6+ (top-tier brand)</li>
+                    </ul>
+
+                    <h3>Jak MER czytać:</h3>
+                    <p>Trzymaj historię MER tydzień po tygodniu. Jeśli włączasz nową kampanię i widzisz: ROAS w Meta Ads 5x (świetnie), ale MER spada z 3.5 do 3.0 → <strong>nowa kampania kanibalizuje istniejący ruch, nie przynosi incremental</strong>. Decyzja: wyłącz.</p>
+
+                    <h2 id="geo-lift">6. Geo-lift - złoty standard walidacji</h2>
+                    <p>Geo-lift to <strong>najbardziej wiarygodna metoda mierzenia incremental wkładu kampanii</strong>. Stosujesz, gdy chcesz wiedzieć: czy konkretna kampania / kanał faktycznie zarabiają, czy tylko zbierają konwersje, które i tak by się zdarzyły.</p>
+
+                    <h3>Jak zrobić geo-lift test (uproszczony):</h3>
+                    <ol>
+                        <li><strong>Wybierz 2 podobne rynki / regiony</strong>: np. Polska Centralna (test) vs Polska Południowa (kontrola). Podobny mix demograficzny, podobny baseline sprzedaży w ostatnich 8 tygodniach.</li>
+                        <li><strong>Mierz baseline 4 tygodnie</strong>: revenue i orders na każdym rynku per tydzień. Upewnij się, że oba rynki rosną/spadają proporcjonalnie.</li>
+                        <li><strong>Włącz kampanie tylko w test rynku</strong>: kontrola zostaje bez nowej kampanii.</li>
+                        <li><strong>Mierz 4-8 tygodni</strong>: revenue na obu rynkach.</li>
+                        <li><strong>Porównaj % wzrostu</strong>: test rynek +25%, kontrola rynek +8% (bo np. sezon) → incremental lift = 25% - 8% = <strong>17%</strong>.</li>
+                        <li><strong>Przelicz na revenue</strong>: 17% × baseline revenue rynku test = realny incremental wkład kampanii.</li>
+                    </ol>
+
+                    <h3>Zaawansowane geo-lift z synthetic control:</h3>
+                    <p>Dla większych firm z wielu rynków: zamiast jednego rynku kontrolnego, użyj <strong>syntetycznej kontroli</strong> - ważoną kombinację 3-5 podobnych rynków jako baseline. Google ma dla tego open-source toolkit (CausalImpact). Dokładniejsze, ale wymaga statystyka / data analyst.</p>
+
+                    <h2 id="bledy">7. 6 błędów, które kosztują budżet</h2>
+                    <ol>
+                        <li><strong>Patrzenie tylko na ROAS w Ads Manager</strong> - to atrybucja dostawcy reklam, premiuje sam siebie. Krzyżuj z GA4 i Shopify.</li>
+                        <li><strong>Last-click jako default</strong> - przegrana strategia, premiuje BOF, niszczy TOF. Przełącz na DDA lub position-based.</li>
+                        <li><strong>Wyłączanie TOF kampanii „bo nie konwertują"</strong> - bez TOF nowych klientów, BOF wysycha w 3-6 miesięcy.</li>
+                        <li><strong>Sumowanie ROAS z różnych platform</strong> - jedna konwersja może być policzona przez Meta, Google i TikTok jednocześnie. Realna kontrybucja: 50-70% sumy.</li>
+                        <li><strong>Brak MER w cotygodniowym raporcie</strong> - jedyna metryka, której platformy nie zhakują. Powinna być na top of dashboard.</li>
+                        <li><strong>Brak geo-lift dla większych zmian budżetu</strong> - przesuwasz 100k PLN/mies z Display do Reels? Nie zgaduj - zmierz geo-liftem.</li>
+                    </ol>
+
+                </div>
+
+                <div class="mt-16 border-t border-gray-200 pt-12">
+                    <div class="bg-gradient-to-br from-blue-700 via-blue-600 to-blue-800 rounded-3xl p-8 md:p-12 text-white shadow-xl text-center">
+                        <span class="text-blue-200 font-mono text-sm tracking-widest uppercase mb-4 block">Twoja atrybucja kłamie?</span>
+                        <h2 class="text-3xl md:text-4xl font-bold mb-5 italic leading-tight">15 minut wystarczy, by ocenić Twój setup atrybucji.</h2>
+                        <p class="text-blue-100 text-lg leading-relaxed mb-8 max-w-2xl mx-auto">Bezpłatna sesja wstępna. Sprawdzimy razem Twój GA4, MER i sposób raportowania - powiem, gdzie tracisz pieniądze przez błędną atrybucję. Bez sprzedaży.</p>
+                        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                            <a href="/umow-rozmowe" class="bg-white text-blue-700 px-8 py-4 rounded-full font-bold text-lg hover:bg-blue-50 transition-all shadow-lg">Umów bezpłatną sesję (15 min) →</a>
+                            <a href="/brief-audyt" class="border-2 border-white/40 text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-white/10 transition-all">Zamów audyt analityki</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="faq" class="mt-16">
+                    <h2 class="text-3xl font-bold mb-6 italic">Często zadawane pytania</h2>
+                    <div class="space-y-3">
+                        <details class="faq-item bg-white border border-gray-200 rounded-2xl"><summary class="flex items-center justify-between gap-4 p-6"><h3 class="font-bold text-slate-900 m-0">Czym różni się atrybucja multi-touch od last-click?</h3><svg class="faq-icon w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/></svg></summary><div class="px-6 pb-6 -mt-2"><p class="text-slate-600 text-sm leading-relaxed">Last-click przypisuje 100% wartości ostatniemu kliknięciu, ignorując wcześniejsze styki. Multi-touch rozdziela wartość między wszystkie kanały, które brały udział w ścieżce. Daje pełniejszy obraz, ale wymaga lepszego trackingu i modelu rozkładu.</p></div></details>
+                        <details class="faq-item bg-white border border-gray-200 rounded-2xl"><summary class="flex items-center justify-between gap-4 p-6"><h3 class="font-bold text-slate-900 m-0">Ile styków z marką ma średnia ścieżka konwersji?</h3><svg class="faq-icon w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/></svg></summary><div class="px-6 pb-6 -mt-2"><p class="text-slate-600 text-sm leading-relaxed">Dla e-commerce 2026: 4-12 styków średnio. Impulsywne zakupy do 100 PLN: 2-4. Średnie 100-500 PLN: 5-8. Premium 500+: 8-15. B2B SaaS: 15-30 w 4-12 tygodni. Last-click widzi tylko jeden z tych styków.</p></div></details>
+                        <details class="faq-item bg-white border border-gray-200 rounded-2xl"><summary class="flex items-center justify-between gap-4 p-6"><h3 class="font-bold text-slate-900 m-0">Czy GA4 ma dobre modele atrybucji?</h3><svg class="faq-icon w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/></svg></summary><div class="px-6 pb-6 -mt-2"><p class="text-slate-600 text-sm leading-relaxed">GA4 oferuje 7 modeli. Najlepszy: data-driven attribution (DDA) - ML na danych Twojej strony. Wymaga minimum 600 konwersji w 30 dni. Poniżej - position-based jako kompromis. Last-click jest deprecated jako default.</p></div></details>
+                        <details class="faq-item bg-white border border-gray-200 rounded-2xl"><summary class="flex items-center justify-between gap-4 p-6"><h3 class="font-bold text-slate-900 m-0">Czym jest MER i dlaczego jest ważniejszy od ROAS?</h3><svg class="faq-icon w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/></svg></summary><div class="px-6 pb-6 -mt-2"><p class="text-slate-600 text-sm leading-relaxed">MER = total revenue / total ad spend wszystkich kanałów. To metryka, której platformy nie zhakują atrybucją. ROAS w Ads Manager pokazuje wkład danej platformy, MER - realny incremental. Sumy ROAS różnych platform są zwykle 1.5-2x wyższe niż faktyczna kontrybucja.</p></div></details>
+                        <details class="faq-item bg-white border border-gray-200 rounded-2xl"><summary class="flex items-center justify-between gap-4 p-6"><h3 class="font-bold text-slate-900 m-0">Jak zrobić geo-lift test?</h3><svg class="faq-icon w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/></svg></summary><div class="px-6 pb-6 -mt-2"><p class="text-slate-600 text-sm leading-relaxed">Wybierz 2 podobne rynki, włącz kampanię w jednym (test), drugi zostaje bez (kontrola). Po 4-8 tygodniach porównaj % wzrostu w obu - różnica to incremental lift. Najtańszy i najbardziej wiarygodny sposób walidacji.</p></div></details>
+                    </div>
+                </div>
+
+                <div class="mt-16">
+                    <h2 class="text-2xl font-bold mb-6">Może Cię też zainteresować</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <a href="/blog/conversions-api-server-side-tracking" class="block bg-white border border-gray-200 rounded-2xl p-6 hover:border-blue-500 transition-colors"><span class="text-xs font-mono uppercase tracking-widest text-pink-600 mb-2 block">Tracking</span><h3 class="font-bold leading-snug">Conversions API i Server-Side Tracking</h3></a>
+                        <a href="/blog/google-performance-max-jak-dziala" class="block bg-white border border-gray-200 rounded-2xl p-6 hover:border-blue-500 transition-colors"><span class="text-xs font-mono uppercase tracking-widest text-blue-600 mb-2 block">Google Ads</span><h3 class="font-bold leading-snug">Performance Max - jak działa</h3></a>
+                        <a href="/blog/meta-advantage-plus-czy-warto" class="block bg-white border border-gray-200 rounded-2xl p-6 hover:border-blue-500 transition-colors"><span class="text-xs font-mono uppercase tracking-widest text-blue-600 mb-2 block">Meta Ads</span><h3 class="font-bold leading-snug">Meta Advantage+ - czy warto</h3></a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </article>
+
+    <footer class="py-12 bg-slate-900 text-white border-t border-white/10 mt-12">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center text-slate-400 text-sm font-medium gap-4">
+            <a href="/" class="text-lg font-bold tracking-tighter italic text-white">DAWID<span class="text-blue-400">RUBIN</span></a>
+            <div>&copy; <script>document.write(new Date().getFullYear())</script> Dawid Rubin. Wszelkie prawa zastrzeżone.</div>
+            <div class="flex gap-6"><a href="/" class="hover:text-white transition-colors">Strona główna</a><a href="/blog" class="hover:text-white transition-colors">Blog</a><a href="/audyt-paid-media" class="hover:text-white transition-colors">Pobierz PDF</a><a href="mailto:kontakt@dawidrubin.pl" class="hover:text-white transition-colors">Kontakt</a></div>
+        </div>
+    </footer>
+
+</body>
+</html>

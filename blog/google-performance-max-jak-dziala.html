@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/svg+xml" href="/brands/logo-dr-mark.svg">
+    <link rel="apple-touch-icon" href="/brands/logo-dr-mark.svg">
+    <meta name="theme-color" content="#1D4ED8">
+
+    <title>Performance Max w Google Ads - jak działa i kiedy warto | Dawid Rubin</title>
+    <meta name="description" content="Co PMax robi pod maską, jak go karmić sygnałami, jak nie dać mu zjeść kanałów brandowych. Ścieżka konfiguracji od asset groups po feed e-commerce i raportowanie. Praktyka, nie teoria z Google Help.">
+    <meta name="author" content="Dawid Rubin">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+    <link rel="canonical" href="https://dawidrubin.pl/blog/google-performance-max-jak-dziala">
+
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://dawidrubin.pl/blog/google-performance-max-jak-dziala">
+    <meta property="og:title" content="Performance Max w Google Ads - jak działa i kiedy warto">
+    <meta property="og:description" content="Co PMax robi pod maską, jak go karmić sygnałami, jak nie dać mu zjeść brandu. Praktyka, nie teoria.">
+    <meta property="og:image" content="https://dawidrubin.pl/og/og-home.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:locale" content="pl_PL">
+    <meta property="article:author" content="Dawid Rubin">
+    <meta property="article:published_time" content="2026-05-16">
+    <meta property="article:section" content="Google Ads">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Performance Max w Google Ads - jak działa i kiedy warto">
+    <meta name="twitter:description" content="Co PMax robi pod maską, jak go karmić sygnałami, jak nie dać mu zjeść brandu.">
+    <meta name="twitter:image" content="https://dawidrubin.pl/og/og-home.jpg">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "Strona główna", "item": "https://dawidrubin.pl/" },
+            { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://dawidrubin.pl/blog" },
+            { "@type": "ListItem", "position": 3, "name": "Performance Max w Google Ads", "item": "https://dawidrubin.pl/blog/google-performance-max-jak-dziala" }
+          ]
+        },
+        {
+          "@type": "BlogPosting",
+          "headline": "Performance Max w Google Ads - jak działa i kiedy warto",
+          "author": { "@type": "Person", "name": "Dawid Rubin", "url": "https://dawidrubin.pl/" },
+          "publisher": { "@type": "Person", "name": "Dawid Rubin", "url": "https://dawidrubin.pl/" },
+          "datePublished": "2026-05-16",
+          "dateModified": "2026-05-16",
+          "image": "https://dawidrubin.pl/og/og-home.jpg",
+          "description": "Co Performance Max w Google Ads robi pod maską, jak go karmić sygnałami, jak nie dać mu zjeść kanałów brandowych. Pełna ścieżka konfiguracji.",
+          "inLanguage": "pl-PL",
+          "isPartOf": { "@type": "Blog", "name": "Blog Dawida Rubina", "url": "https://dawidrubin.pl/blog" },
+          "about": ["Performance Max", "Google Ads", "PMax", "Asset Groups", "Audience Signals", "Merchant Center"],
+          "keywords": "Performance Max, PMax, Google Ads, asset groups, audience signals, kampanie e-commerce, Google Shopping",
+          "wordCount": 2500,
+          "mainEntityOfPage": "https://dawidrubin.pl/blog/google-performance-max-jak-dziala"
+        },
+        {
+          "@type": "FAQPage",
+          "mainEntity": [
+            { "@type": "Question", "name": "Czy Performance Max zastępuje Smart Shopping?", "acceptedAnswer": { "@type": "Answer", "text": "Tak - Google zamknął Smart Shopping i Local Campaigns w 2023, automatycznie migrując kampanie do Performance Max. PMax pokrywa Search, Display, YouTube, Discover, Gmail i Maps w jednym typie kampanii, podczas gdy Smart Shopping ograniczał się do Shopping + Display. PMax jest następcą, ale wymaga więcej input (asset groups, audience signals)." } },
+            { "@type": "Question", "name": "Czy PMax zjada kanibalnie kampanie brandowe?", "acceptedAnswer": { "@type": "Answer", "text": "Tak, jeśli nie wykluczysz brand keywords. PMax bardzo chętnie przejmuje ruch brandowy (najtańsze i najwygodniejsze konwersje), pokazując fałszywie wysoki ROAS. Rozwiązanie: dodać brand jako negative keywords list do PMax (od listopada 2023 oficjalnie wspierane), zostawić osobną Search Brand Campaign na słowa brandowe. To kluczowa konfiguracja - bez niej PMax zawyża ROI." } },
+            { "@type": "Question", "name": "Ile asset groups potrzebuję w jednej kampanii PMax?", "acceptedAnswer": { "@type": "Answer", "text": "Sweet spot: 1-3 asset groups w jednej kampanii PMax. Każdy asset group reprezentuje jedną oś tematyczną lub kategorię produktową (np. „Kobiety - buty”, „Mężczyźni - akcesoria”). Więcej niż 3 - algorytm rozprasza budżet i nie ma czego uczyć się w żadnym z nich. Dla e-commerce z 5+ kategoriami: lepiej osobne kampanie PMax na kategorię, nie wiele asset groups w jednej." } },
+            { "@type": "Question", "name": "Jakiego budżetu wymaga PMax?", "acceptedAnswer": { "@type": "Answer", "text": "Google formalnie nie podaje minimum, ale praktyka: minimum 50-100 PLN dziennie na PMax dla małego e-commerce, 500-2000 PLN/dzień dla średniego, 5000+ PLN/dzień dla dużego multi-market. Bardziej niż konkretna kwota - liczy się relacja: minimum 10-15x docelowy CPA jako budżet dzienny, by algorytm wszedł w fazę nauki i ją przeszedł." } },
+            { "@type": "Question", "name": "Czy PMax działa bez feed produktów?", "acceptedAnswer": { "@type": "Answer", "text": "Tak, ale gorzej. PMax bez feed (np. dla biznesów usługowych, lead gen, B2B) działa tylko na Search, Display i YouTube, bez Shopping. Konwersje są droższe (brak najtańszego placementu Shopping), CPA wyższe o 30-60%. Dla usług sensowniej rozważyć klasyczne Search + Display lub Generate Demand zamiast PMax." } }
+          ]
+        }
+      ]
+    }
+    </script>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #F8FAFC; color: #0F172A; }
+        .vasco-blue { color: #1D4ED8; }
+        .bg-vasco-blue { background-color: #1D4ED8; }
+        .prose-custom p { margin-bottom: 1.25rem; line-height: 1.8; color: #334155; font-size: 1.05rem; }
+        .prose-custom h2 { font-size: 1.875rem; font-weight: 700; margin-top: 3rem; margin-bottom: 1rem; color: #0F172A; line-height: 1.3; }
+        .prose-custom h3 { font-size: 1.35rem; font-weight: 700; margin-bottom: 0.75rem; margin-top: 2rem; color: #0F172A; }
+        .prose-custom ul, .prose-custom ol { margin-bottom: 1.25rem; padding-left: 1.5rem; }
+        .prose-custom ul li { margin-bottom: 0.5rem; line-height: 1.7; color: #334155; list-style: disc; }
+        .prose-custom ol li { margin-bottom: 0.5rem; line-height: 1.7; color: #334155; list-style: decimal; }
+        .prose-custom strong { color: #0F172A; }
+        .prose-custom a { color: #1D4ED8; text-decoration: underline; }
+        .prose-custom a:hover { color: #1E3A8A; }
+        .prose-custom blockquote { border-left: 4px solid #1D4ED8; padding-left: 1rem; margin: 1.5rem 0; font-style: italic; color: #475569; }
+        .toc a { color: #475569; }
+        .toc a:hover { color: #1D4ED8; }
+        .faq-item summary::-webkit-details-marker { display: none; }
+        .faq-item summary::marker { content: ""; }
+        .faq-item summary { cursor: pointer; list-style: none; user-select: none; }
+        .faq-item .faq-icon { transition: transform .25s ease; flex-shrink: 0; }
+        .faq-item[open] .faq-icon { transform: rotate(45deg); }
+        .faq-item[open] summary h3 { color: #1D4ED8; }
+    </style>
+</head>
+<body class="antialiased">
+
+    <nav class="fixed w-full z-50 bg-white/90 backdrop-blur-md border-b border-gray-200 shadow-sm">
+        <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+            <a href="/" class="text-xl font-bold tracking-tighter italic"><img src="/brands/logo-dr-mark.svg" width="32" height="32" alt="" aria-hidden="true" class="w-8 h-8 inline-block align-middle mr-2"><span class="align-middle">DAWID<span class="vasco-blue">RUBIN</span></span></a>
+            <div class="hidden md:flex items-center gap-6 text-sm font-semibold text-slate-600">
+                <a href="/#services" class="hover:text-blue-600 transition-colors">Usługi</a>
+                <a href="/#results" class="hover:text-blue-600 transition-colors">Realizacje</a>
+                <a href="/blog" class="text-blue-600 border-b border-blue-300 pb-0.5">Blog</a>
+                <a href="/audyt-paid-media" class="hover:text-blue-600 transition-colors">Pobierz PDF</a>
+                <a href="/umow-rozmowe" class="bg-vasco-blue hover:bg-blue-700 text-white px-5 py-2.5 rounded-full transition-colors">Porozmawiajmy</a>
+            </div>
+            <a href="/blog" class="md:hidden text-sm text-slate-500 hover:text-blue-600 font-mono">← Blog</a>
+        </div>
+    </nav>
+
+    <article>
+        <header class="pt-32 pb-12 px-6 bg-white border-b border-gray-100">
+            <div class="max-w-3xl mx-auto">
+                <div class="flex flex-wrap items-center gap-3 mb-6 text-sm">
+                    <a href="/" class="text-slate-500 hover:text-blue-600 transition-colors font-mono">← Strona główna</a>
+                    <span class="text-slate-300">/</span>
+                    <a href="/blog" class="text-slate-500 hover:text-blue-600 transition-colors font-mono">Blog</a>
+                    <span class="text-slate-300">/</span>
+                    <span class="bg-blue-100 text-blue-700 text-xs font-bold px-3 py-1 rounded-full">Google Ads</span>
+                </div>
+                <h1 class="text-3xl md:text-5xl font-bold leading-tight mb-6">Performance Max w Google Ads - <span class="vasco-blue">jak działa i kiedy warto</span></h1>
+                <p class="text-xl text-slate-600 leading-relaxed mb-6">Co PMax robi pod maską, jak go karmić sygnałami, jak nie dać mu zjeść kanałów brandowych. Pełna ścieżka konfiguracji od asset groups, przez Merchant Center i feed, po raportowanie i bid strategy. Praktyka z budżetów multi-market - bez teorii z Google Help Center.</p>
+                <div class="flex flex-wrap gap-4 text-sm text-slate-500 font-mono">
+                    <span>Autor: <strong class="text-slate-700">Dawid Rubin</strong></span>
+                    <span>Publikacja: <strong class="text-slate-700">16 maja 2026</strong></span>
+                    <span>Czas czytania: <strong class="text-slate-700">15 min</strong></span>
+                </div>
+            </div>
+        </header>
+
+        <section class="py-12 px-6">
+            <div class="max-w-3xl mx-auto">
+
+                <nav class="toc bg-blue-50 border border-blue-100 rounded-2xl p-6 mb-10">
+                    <h2 class="text-sm font-bold tracking-widest uppercase text-blue-700 mb-3">Spis treści</h2>
+                    <ol class="space-y-1.5 text-sm">
+                        <li><a href="#czym-jest" class="hover:underline">1. Czym właściwie jest Performance Max</a></li>
+                        <li><a href="#pod-maska" class="hover:underline">2. Co PMax robi pod maską - 6 kanałów w jednym</a></li>
+                        <li><a href="#kiedy-warto" class="hover:underline">3. Kiedy PMax ma sens, a kiedy nie</a></li>
+                        <li><a href="#konfiguracja" class="hover:underline">4. Konfiguracja od zera krok po kroku</a></li>
+                        <li><a href="#asset-groups" class="hover:underline">5. Asset groups - serce kampanii</a></li>
+                        <li><a href="#audience-signals" class="hover:underline">6. Audience signals - jak karmić algorytm</a></li>
+                        <li><a href="#brand-cannibalization" class="hover:underline">7. Brand cannibalization - jak nie dać sobie zjeść brandu</a></li>
+                        <li><a href="#raportowanie" class="hover:underline">8. Raportowanie - co naprawdę widzisz</a></li>
+                        <li><a href="#faq" class="hover:underline">9. FAQ</a></li>
+                    </ol>
+                </nav>
+
+                <div class="prose-custom">
+
+                    <h2 id="czym-jest">1. Czym właściwie jest Performance Max</h2>
+                    <p>Performance Max (PMax) to <strong>typ kampanii w Google Ads</strong>, który automatycznie rozprowadza budżet po wszystkich kanałach Google jednocześnie - Search, Display, YouTube, Discover, Gmail, Shopping (przez Merchant Center) i Maps. Z perspektywy konfiguracji: zamiast osobnych kampanii Search, Display, YouTube i Shopping, masz <strong>jedną kampanię z jednym budżetem</strong>, którą algorytm rozdziela między kanały na podstawie sygnałów konwersji.</p>
+                    <p>Filozofia jest identyczna jak w Meta Advantage+: <strong>oddaj algorytmowi decyzje, gdzie pokazać reklamę</strong>. Twoja rola sprowadza się do dostarczenia trzech rzeczy:</p>
+                    <ul>
+                        <li><strong>Asset groups</strong> - zestawy materiałów reklamowych (nagłówki, opisy, obrazy, logo, wideo) zorganizowane wokół jednej osi tematycznej</li>
+                        <li><strong>Audience signals</strong> - „podpowiedzi” dla algorytmu, kogo szukać (custom audiences, lookalike, in-market segments)</li>
+                        <li><strong>Konwersje + Merchant Center feed</strong> (dla e-commerce) - dane wejściowe, na których algorytm uczy się</li>
+                    </ul>
+                    <p>W 2023 Google zamknął Smart Shopping i Local Campaigns, automatycznie migrując je do PMax. To oznacza, że dla wielu e-commerce <strong>PMax to dziś jedyny typ kampanii zakupowej</strong> obejmujący Shopping.</p>
+
+                    <h2 id="pod-maska">2. Co PMax robi pod maską - 6 kanałów w jednym</h2>
+                    <p>Jeden budżet PMax dystrybuuje się między:</p>
+                    <ol>
+                        <li><strong>Google Search</strong> - reklamy tekstowe na zapytania konwersyjne (z auto-generowanych asset combinations)</li>
+                        <li><strong>Google Shopping</strong> - reklamy produktowe z feed Merchant Center (zwykle 50-70% budżetu dla e-commerce z dobrym feedem)</li>
+                        <li><strong>Google Display Network (GDN)</strong> - banery na partnerskich stronach</li>
+                        <li><strong>YouTube</strong> - reklamy wideo w treściach YouTube i Shorts</li>
+                        <li><strong>Discover</strong> - feed Google Discover na Androidzie/iOS</li>
+                        <li><strong>Gmail</strong> - reklamy w skrzynce Promotions</li>
+                        <li><strong>Maps</strong> - reklamy w aplikacji Map (jeśli masz location extensions)</li>
+                    </ol>
+                    <p>Realny rozkład wydatków w e-commerce z poprawnym feed: Shopping 50-70%, Search 15-25%, YouTube/Display 10-15%, reszta marginalna. Dla biznesów <strong>bez feed</strong> (lead gen, B2B, usługi): Search 40-50%, Display 30-40%, YouTube 15-25%.</p>
+
+                    <h2 id="kiedy-warto">3. Kiedy PMax ma sens, a kiedy nie</h2>
+
+                    <h3>PMax wymiata, gdy:</h3>
+                    <ul>
+                        <li><strong>E-commerce z 50+ konwersjami tygodniowo i dobrym feed Merchant Center</strong> - to scenariusz, do którego PMax został zaprojektowany</li>
+                        <li><strong>Wielokategorie produktów</strong> - PMax sam dobiera, które produkty mają największy potencjał w danym momencie</li>
+                        <li><strong>Stabilny ROAS w klasycznych Search/Shopping</strong> - jeśli klasyczne kampanie radzą sobie dobrze, PMax zwykle daje dodatkowe 15-25% wolumenu z tym samym ROAS</li>
+                        <li><strong>Wysokojakościowe assets (kreacje, wideo)</strong> - PMax używa wideo w YouTube/Discover, więc dobre wideo daje przewagę</li>
+                    </ul>
+
+                    <h3>PMax nie ma sensu, gdy:</h3>
+                    <ul>
+                        <li><strong>Bardzo mały budżet</strong> (poniżej 50 PLN/dzień dla e-commerce) - PMax nie wyjdzie z fazy nauki</li>
+                        <li><strong>Bardzo mały lub stary feed produktów</strong> - bez aktualnego feed PMax dryfuje w stronę Display/YouTube, gdzie konwersje są droższe</li>
+                        <li><strong>B2B z 4-12 tygodniowym cyklem zakupu</strong> - PMax optymalizuje na konwersje, długi cykl = za mało sygnału</li>
+                        <li><strong>Zero kreacji wideo / słaby branding</strong> - YouTube/Discord placement bez wideo lecą jako statyczne, niska efektywność</li>
+                        <li><strong>Wysokie ryzyko brand cannibalization</strong> - jeśli masz duży trafik brandowy, PMax bez wykluczeń go zjada</li>
+                    </ul>
+
+                    <h2 id="konfiguracja">4. Konfiguracja od zera krok po kroku</h2>
+
+                    <h3>Krok 1: Połącz Merchant Center</h3>
+                    <p>Dla e-commerce - Google Merchant Center musi być zweryfikowany, feed pełen (minimum 50% produktów ze statusem „Active”), z poprawnym mapowaniem kategorii Google Product Taxonomy. Feed musi się odświeżać minimum raz dziennie, najlepiej co kilka godzin.</p>
+
+                    <h3>Krok 2: Cel kampanii</h3>
+                    <p>Wybierz „Sales” (dla e-commerce) lub „Leads” (dla lead gen). NIE wybieraj „Brand awareness” - PMax to performance, nie brand.</p>
+
+                    <h3>Krok 3: Bid strategy</h3>
+                    <p>Trzy opcje:</p>
+                    <ul>
+                        <li><strong>Maximize conversions</strong> - dla startu, gdy konto jeszcze się uczy; algorytm priorytetyzuje wolumen, nie efektywność</li>
+                        <li><strong>Maximize conversion value</strong> - dla e-commerce z różną wartością koszyka; algorytm szuka wysokomarżowych transakcji</li>
+                        <li><strong>Target ROAS</strong> - dla dojrzałych kont z minimum 30+ konwersji w ostatnich 30 dniach; ustaw ROAS na poziomie 10-15% poniżej obecnego (zbyt wysoki tROAS zatrzymuje wzrost)</li>
+                    </ul>
+
+                    <h3>Krok 4: Budżet</h3>
+                    <p>Reguła: minimum 10-15x docelowy CPA. Jeśli średni CPA to 100 PLN, ustaw 1000-1500 PLN/dzień. Niższy budżet = algorytm w wiecznym learning.</p>
+
+                    <h3>Krok 5: Lokalizacja i języki</h3>
+                    <p>Lokalizacja: <strong>People in or regularly in your targeted locations</strong> (nie „People interested in” - to zaśmieca konwersje turystami i przypadkowymi userami). Język: wybierz języki, w których jest Twoja strona i feed.</p>
+
+                    <h3>Krok 6: Final URL expansion</h3>
+                    <p>Włącz, ale dodaj ograniczenia: wyklucz strony, na które PMax NIE powinien wysyłać ruchu (np. blog, kariera, polityka prywatności). PMax wgląda na całą stronę i może dryfować w stronę low-intent pages.</p>
+
+                    <h2 id="asset-groups">5. Asset groups - serce kampanii</h2>
+                    <p>Asset group to zestaw materiałów reklamowych zorganizowanych wokół jednej osi tematycznej. Algorytm miksuje assets z każdej grupy, by stworzyć reklamy dla różnych kanałów. Jedna kampania PMax może mieć 1-100 asset groups (limit), ale praktyczny sweet spot to <strong>1-3 asset groups na kampanię</strong>.</p>
+
+                    <h3>Co zawiera asset group:</h3>
+                    <ul>
+                        <li><strong>Headlines</strong> - 5 krótkich (max 30 znaków), zalecane 15</li>
+                        <li><strong>Long headlines</strong> - 1-5 (max 90 znaków), zalecane 5</li>
+                        <li><strong>Descriptions</strong> - 1-5 (max 90 znaków), zalecane 4-5</li>
+                        <li><strong>Images</strong> - min. 1, zalecane 5-20 (różne formaty: 1.91:1, 1:1, 4:5)</li>
+                        <li><strong>Logo</strong> - min. 1 (1:1), zalecane 2-3</li>
+                        <li><strong>Videos</strong> - 0+ (PMax wygeneruje slideshow, jeśli ich brakuje, ale lepiej mieć własne)</li>
+                        <li><strong>Call to action</strong> - z dropdown listy (Shop now, Sign up, Learn more itd.)</li>
+                    </ul>
+
+                    <h3>Strategia asset groups dla e-commerce z kilkoma kategoriami:</h3>
+                    <p>Opcja A (zalecana dla większości): osobna kampania PMax na kategorię, z 1-2 asset groups w każdej. Plusy: pełna kontrola budżetu na kategorię, brak konkurencji wewnętrznej między kategoriami. Minus: więcej kont do prowadzenia.</p>
+                    <p>Opcja B: jedna kampania PMax z 3-5 asset groups (po jednym na kategorię). Plus: łatwiejsze zarządzanie. Minus: algorytm sam decyduje, która kategoria dostaje budżet - tracisz kontrolę.</p>
+
+                    <h2 id="audience-signals">6. Audience signals - jak karmić algorytm</h2>
+                    <p>Audience signals NIE są twardym targetowaniem - to <strong>podpowiedzi</strong> dla algorytmu, kogo szukać w pierwszej kolejności. Algorytm i tak rozszerza poza signals, ale dobry sygnał znacznie przyspiesza fazę nauki.</p>
+
+                    <h3>Jakie sygnały dodać:</h3>
+                    <ul>
+                        <li><strong>Customer match</strong> - lista istniejących klientów z CRM (najsilniejszy sygnał)</li>
+                        <li><strong>Website visitors</strong> - lista użytkowników, którzy odwiedzili konkretne strony konwersyjne (oferta, koszyk)</li>
+                        <li><strong>Custom segments</strong> - oparte na search behavior (Google Search history) lub URLs, które ludzie odwiedzają</li>
+                        <li><strong>Demographics</strong> - jeśli wiesz, że Twoi klienci to konkretna grupa wiekowa/płciowa, daj sygnał</li>
+                        <li><strong>In-market segments</strong> - segmenty Google z ludzi szukających podobnych produktów</li>
+                    </ul>
+
+                    <p><strong>Im konkretniejsze i bardziej specyficzne dla Twojej oferty signals, tym szybciej PMax wchodzi w „learning complete”.</strong> Zwykle 1-2 tygodnie z dobrymi signals vs 4-6 tygodni z słabymi.</p>
+
+                    <h2 id="brand-cannibalization">7. Brand cannibalization - jak nie dać sobie zjeść brandu</h2>
+                    <p>To <strong>największa pułapka PMax</strong> i powód, dla którego wiele kampanii pokazuje fałszywie wysoki ROAS. Bez wykluczeń PMax bardzo chętnie targetuje słowa brandowe (Twoje słowa kluczowe związane z marką), bo to najtańsze konwersje. Efekt: PMax pokazuje 8x ROAS, ale w rzeczywistości przejmuje ruch, który i tak by konwertował na klasycznej kampanii brandowej za 1/4 ceny.</p>
+
+                    <h3>Jak zapobiegać:</h3>
+                    <ol>
+                        <li><strong>Stwórz dedykowaną Search Brand Campaign</strong> z pełną listą słów brandowych (Twoja marka, jej warianty, błędy ortograficzne, marka + produkt). Ustaw tROAS bardzo niski (np. tROAS 1000% - czyli 10x ROAS).</li>
+                        <li><strong>Dodaj brand keywords jako negative keywords w PMax</strong>. Od listopada 2023 Google oficjalnie wspiera negative keywords na poziomie kampanii PMax (wcześniej trzeba było prosić Google support).</li>
+                        <li><strong>Monitoruj raport „Insights → Search terms”</strong> - sprawdzaj, czy PMax nie wkrada się na brand keywords. Jeśli widzisz tam Twoją markę - lista negatives nie zadziałała, popraw konfigurację.</li>
+                    </ol>
+
+                    <h2 id="raportowanie">8. Raportowanie - co naprawdę widzisz</h2>
+                    <p>Największa frustracja PMax: <strong>brak granularnego raportowania</strong>. Google nie pokazuje, ile budżetu poszło na Search vs Shopping vs YouTube, ani które dokładnie placementy wygenerowały konwersje. Asset reporting pokazuje tylko „Best/Good/Low” performance dla każdego assetu - bez konkretnych liczb.</p>
+
+                    <h3>Co da się wyciągnąć:</h3>
+                    <ul>
+                        <li><strong>Insights → Audience insights</strong> - jakie segmenty audience PMax znalazł jako najbardziej konwertujące</li>
+                        <li><strong>Insights → Search terms insights</strong> - słowa kluczowe, na których PMax pokazał reklamy (z opóźnieniem 3-7 dni)</li>
+                        <li><strong>Asset Group performance</strong> - który asset group działa najlepiej (przydatne, jeśli masz kilka asset groups w kampanii)</li>
+                        <li><strong>Listing Group performance</strong> (Merchant Center) - który produkt z feed sprzedaje najlepiej</li>
+                    </ul>
+
+                    <h3>Co da się policzyć poza Google Ads:</h3>
+                    <p>Najważniejsze - <strong>incremental revenue z PMax mierzony zewnętrznie</strong>. Włącz PMax, wyłącz na 2-4 tygodnie, porównaj total revenue. Różnica to realny wkład, niezależny od atrybucji Google. (Więcej: <a href="/blog/atrybucja-multi-touch-last-click">Atrybucja multi-touch - dlaczego last-click kłamie</a>).</p>
+
+                </div>
+
+                <div class="mt-16 border-t border-gray-200 pt-12">
+                    <div class="bg-gradient-to-br from-blue-700 via-blue-600 to-blue-800 rounded-3xl p-8 md:p-12 text-white shadow-xl text-center">
+                        <span class="text-blue-200 font-mono text-sm tracking-widest uppercase mb-4 block">Masz Google Ads i nie wiesz, czy PMax ma sens?</span>
+                        <h2 class="text-3xl md:text-4xl font-bold mb-5 italic leading-tight">15 minut wystarczy, by ocenić Twoje konto.</h2>
+                        <p class="text-blue-100 text-lg leading-relaxed mb-8 max-w-2xl mx-auto">Bezpłatna sesja wstępna. Pokazujesz mi swoje konto - powiem, czy PMax ma sens, czy zjada Ci brand, jak go konfigurować. Bez sprzedaży. Bez zobowiązań.</p>
+                        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                            <a href="/umow-rozmowe" class="bg-white text-blue-700 px-8 py-4 rounded-full font-bold text-lg hover:bg-blue-50 transition-all shadow-lg">Umów bezpłatną sesję (15 min) →</a>
+                            <a href="/brief-audyt" class="border-2 border-white/40 text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-white/10 transition-all">Zamów pełny audyt Google Ads</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="faq" class="mt-16">
+                    <h2 class="text-3xl font-bold mb-6 italic">Często zadawane pytania</h2>
+                    <div class="space-y-3">
+                        <details class="faq-item bg-white border border-gray-200 rounded-2xl">
+                            <summary class="flex items-center justify-between gap-4 p-6"><h3 class="font-bold text-slate-900 m-0">Czy Performance Max zastępuje Smart Shopping?</h3><svg class="faq-icon w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/></svg></summary>
+                            <div class="px-6 pb-6 -mt-2"><p class="text-slate-600 text-sm leading-relaxed">Tak - Google zamknął Smart Shopping i Local Campaigns w 2023, automatycznie migrując kampanie do Performance Max. PMax pokrywa Search, Display, YouTube, Discover, Gmail i Maps w jednym typie kampanii, podczas gdy Smart Shopping ograniczał się do Shopping + Display.</p></div>
+                        </details>
+                        <details class="faq-item bg-white border border-gray-200 rounded-2xl">
+                            <summary class="flex items-center justify-between gap-4 p-6"><h3 class="font-bold text-slate-900 m-0">Czy PMax zjada kanibalnie kampanie brandowe?</h3><svg class="faq-icon w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/></svg></summary>
+                            <div class="px-6 pb-6 -mt-2"><p class="text-slate-600 text-sm leading-relaxed">Tak, jeśli nie wykluczysz brand keywords. PMax bardzo chętnie przejmuje ruch brandowy, pokazując fałszywie wysoki ROAS. Rozwiązanie: dodać brand jako negative keywords list do PMax, zostawić osobną Search Brand Campaign na słowa brandowe.</p></div>
+                        </details>
+                        <details class="faq-item bg-white border border-gray-200 rounded-2xl">
+                            <summary class="flex items-center justify-between gap-4 p-6"><h3 class="font-bold text-slate-900 m-0">Ile asset groups potrzebuję w jednej kampanii PMax?</h3><svg class="faq-icon w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/></svg></summary>
+                            <div class="px-6 pb-6 -mt-2"><p class="text-slate-600 text-sm leading-relaxed">Sweet spot: 1-3 asset groups w jednej kampanii PMax. Każdy asset group reprezentuje jedną oś tematyczną lub kategorię produktową. Dla e-commerce z 5+ kategoriami: lepiej osobne kampanie PMax na kategorię.</p></div>
+                        </details>
+                        <details class="faq-item bg-white border border-gray-200 rounded-2xl">
+                            <summary class="flex items-center justify-between gap-4 p-6"><h3 class="font-bold text-slate-900 m-0">Jakiego budżetu wymaga PMax?</h3><svg class="faq-icon w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/></svg></summary>
+                            <div class="px-6 pb-6 -mt-2"><p class="text-slate-600 text-sm leading-relaxed">Google formalnie nie podaje minimum, ale praktyka: minimum 50-100 PLN dziennie dla małego e-commerce, 500-2000 PLN/dzień dla średniego, 5000+ PLN/dzień dla dużego multi-market. Bardziej niż konkretna kwota - liczy się relacja: minimum 10-15x docelowy CPA jako budżet dzienny.</p></div>
+                        </details>
+                        <details class="faq-item bg-white border border-gray-200 rounded-2xl">
+                            <summary class="flex items-center justify-between gap-4 p-6"><h3 class="font-bold text-slate-900 m-0">Czy PMax działa bez feed produktów?</h3><svg class="faq-icon w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/></svg></summary>
+                            <div class="px-6 pb-6 -mt-2"><p class="text-slate-600 text-sm leading-relaxed">Tak, ale gorzej. PMax bez feed (np. dla biznesów usługowych, lead gen, B2B) działa tylko na Search, Display i YouTube, bez Shopping. Konwersje są droższe o 30-60%. Dla usług sensowniej rozważyć klasyczne Search + Display lub Generate Demand zamiast PMax.</p></div>
+                        </details>
+                    </div>
+                </div>
+
+                <div class="mt-16">
+                    <h2 class="text-2xl font-bold mb-6">Może Cię też zainteresować</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <a href="/blog/meta-advantage-plus-czy-warto" class="block bg-white border border-gray-200 rounded-2xl p-6 hover:border-blue-500 transition-colors">
+                            <span class="text-xs font-mono uppercase tracking-widest text-blue-600 mb-2 block">Meta Ads</span>
+                            <h3 class="font-bold leading-snug">Meta Advantage+ - czy warto w 2026</h3>
+                        </a>
+                        <a href="/blog/google-ads-przezytek-czy-nie" class="block bg-white border border-gray-200 rounded-2xl p-6 hover:border-blue-500 transition-colors">
+                            <span class="text-xs font-mono uppercase tracking-widest text-amber-600 mb-2 block">Strategia</span>
+                            <h3 class="font-bold leading-snug">Czy Google Ads to przeżytek?</h3>
+                        </a>
+                        <a href="/blog/atrybucja-multi-touch-last-click" class="block bg-white border border-gray-200 rounded-2xl p-6 hover:border-blue-500 transition-colors">
+                            <span class="text-xs font-mono uppercase tracking-widest text-pink-600 mb-2 block">Atrybucja</span>
+                            <h3 class="font-bold leading-snug">Atrybucja multi-touch - dlaczego last-click kłamie</h3>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </article>
+
+    <footer class="py-12 bg-slate-900 text-white border-t border-white/10 mt-12">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center text-slate-400 text-sm font-medium gap-4">
+            <a href="/" class="text-lg font-bold tracking-tighter italic text-white">DAWID<span class="text-blue-400">RUBIN</span></a>
+            <div>&copy; <script>document.write(new Date().getFullYear())</script> Dawid Rubin. Wszelkie prawa zastrzeżone.</div>
+            <div class="flex gap-6">
+                <a href="/" class="hover:text-white transition-colors">Strona główna</a>
+                <a href="/blog" class="hover:text-white transition-colors">Blog</a>
+                <a href="/audyt-paid-media" class="hover:text-white transition-colors">Pobierz PDF</a>
+                <a href="mailto:kontakt@dawidrubin.pl" class="hover:text-white transition-colors">Kontakt</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

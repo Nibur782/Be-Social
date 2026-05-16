@@ -223,9 +223,13 @@
         .animate-pulse-glow { animation: pulse-glow 3s infinite ease-in-out; }
         .swiper-slide { height: auto !important; }
         .swiper-wrapper { align-items: flex-start; }
-        /* Loga marek - kolorowe, równa wysokość, lekkie powiększenie na hover */
-        .brand-logo { display: flex; align-items: center; justify-content: center; height: 56px; }
-        .brand-logo img { filter: none; opacity: 1; height: 40px; width: auto; max-width: 170px; object-fit: contain; transition: transform .25s ease, opacity .25s ease; }
+        /* Loga marek - kolorowe, optycznie wyrównane, hover lift */
+        .brand-logo { display: flex; align-items: center; justify-content: center; height: 72px; width: 100%; max-width: 200px; }
+        .brand-logo img { filter: none; opacity: 1; width: auto; object-fit: contain; transition: transform .25s ease, opacity .25s ease; }
+        /* Loga w formie poziomego napisu (vasco, dentsu, domodi, lashboom, arkana) */
+        .brand-logo--text img { height: 32px; max-width: 180px; }
+        /* Loga z piktogramem + napisem (biedronka) - wyzsze ze wzgledu na proporcje */
+        .brand-logo--icon img { height: 56px; max-width: 180px; }
         .brand-logo:hover img { transform: translateY(-2px) scale(1.04); }
         /* FAQ accordion */
         .faq-item summary::-webkit-details-marker { display: none; }
@@ -298,6 +302,7 @@
                     </div>
                 </div>
 
+                <a href="blog" class="hover:text-blue-600 transition-all">Blog</a>
                 <a href="metodologia" class="hover:text-blue-600 transition-all">Metodologia</a>
                 <a href="audyt-paid-media" class="text-blue-600 hover:text-blue-800 transition-all border-b border-blue-300 hover:border-blue-600 pb-0.5">Pobierz PDF</a>
             </div>
@@ -383,22 +388,22 @@
         <div class="max-w-7xl mx-auto px-6">
             <p class="text-center text-xs font-mono uppercase tracking-widest text-slate-500 mb-10 font-bold">Pracowałem z takimi markami jak:</p>
             <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-x-8 gap-y-10 items-center justify-items-center">
-                <a href="https://vasco-electronics.pl/" target="_blank" rel="noopener noreferrer" aria-label="Vasco Electronics" title="Vasco Electronics" class="brand-logo group">
+                <a href="https://vasco-electronics.pl/" target="_blank" rel="noopener noreferrer" aria-label="Vasco Electronics" title="Vasco Electronics" class="brand-logo brand-logo--text group">
                     <img src="brands/vasco.svg" alt="Vasco Electronics" loading="lazy" width="160" height="40">
                 </a>
-                <a href="https://www.dentsu.com/pl/pl" target="_blank" rel="noopener noreferrer" aria-label="Dentsu" title="Dentsu" class="brand-logo group">
+                <a href="https://www.dentsu.com/pl/pl" target="_blank" rel="noopener noreferrer" aria-label="Dentsu" title="Dentsu" class="brand-logo brand-logo--text group">
                     <img src="brands/dentsu.png" alt="Dentsu" loading="lazy" width="1080" height="231">
                 </a>
-                <a href="https://www.biedronka.pl/pl" target="_blank" rel="noopener noreferrer" aria-label="Biedronka" title="Biedronka" class="brand-logo group">
+                <a href="https://www.biedronka.pl/pl" target="_blank" rel="noopener noreferrer" aria-label="Biedronka" title="Biedronka" class="brand-logo brand-logo--icon group">
                     <img src="brands/biedronka.png" alt="Biedronka" loading="lazy" width="900" height="420">
                 </a>
-                <a href="https://domodi.pl/" target="_blank" rel="noopener noreferrer" aria-label="Domodi" title="Domodi" class="brand-logo group">
+                <a href="https://domodi.pl/" target="_blank" rel="noopener noreferrer" aria-label="Domodi" title="Domodi" class="brand-logo brand-logo--text group">
                     <img src="brands/domodi.png" alt="Domodi" loading="lazy" width="496" height="101">
                 </a>
-                <a href="https://lashboom.de/" target="_blank" rel="noopener noreferrer" aria-label="Lashboom" title="Lashboom" class="brand-logo group">
+                <a href="https://lashboom.de/" target="_blank" rel="noopener noreferrer" aria-label="Lashboom" title="Lashboom" class="brand-logo brand-logo--text group">
                     <img src="brands/lashboom.svg" alt="Lashboom" loading="lazy" width="160" height="40">
                 </a>
-                <a href="https://sklep.arkana.pl/" target="_blank" rel="noopener noreferrer" aria-label="Arkana Cosmetics" title="Arkana Cosmetics" class="brand-logo group">
+                <a href="https://sklep.arkana.pl/" target="_blank" rel="noopener noreferrer" aria-label="Arkana Cosmetics" title="Arkana Cosmetics" class="brand-logo brand-logo--text group">
                     <img src="brands/arkana.png" alt="Arkana Cosmetics" loading="lazy" width="468" height="106">
                 </a>
             </div>
