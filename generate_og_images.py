@@ -241,6 +241,14 @@ CARDS = [
         "background_image": None,
     },
     {
+        "out": "og-case-pracownia-rachunkowosci.jpg",
+        "title": "Pracownia Rachunkowości — pełen ekosystem",
+        "subtitle": "Strona, wizytówka Google, kampanie Meta i Google Ads, mentoring AI. Lokalne biuro rachunkowe od zera do online.",
+        "accent_text": "DAWIDRUBIN.PL / CASE STUDY",
+        "badge": "Case",
+        "background_image": None,
+    },
+    {
         "out": "og-case-wkreceni.jpg",
         "title": "Wkręceni w Rowery - sezonowe kampanie",
         "subtitle": "Lokalny biznes rowerowy: kampanie sezonowe, strona, integracje. Pełen ekosystem marketingowy.",
