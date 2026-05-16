@@ -225,18 +225,29 @@
                                 <span class="text-sm font-medium">Dietologicznie.pl - ekosystem</span>
                             </a>
                             <div class="h-px bg-gray-100 mx-4 my-1"></div>
-                            <a href="case-study-globalny-wzrost.html" class="flex items-center gap-3 px-4 py-3 hover:bg-blue-50 hover:text-blue-700 transition-colors text-slate-700">
-                                <span class="text-blue-600 font-bold text-sm w-12 flex-shrink-0">+64%</span>
-                                <span class="text-sm font-medium">Globalny wzrost sprzedaży</span>
-                            </a>
-                            <a href="case-study-automatyzacja.html" class="flex items-center gap-3 px-4 py-3 hover:bg-blue-50 hover:text-blue-700 transition-colors text-slate-700">
-                                <span class="text-blue-600 font-bold text-sm w-12 flex-shrink-0">80%</span>
-                                <span class="text-sm font-medium">Oszczędność czasu</span>
-                            </a>
-                            <a href="case-study-vasco-usa.html" class="flex items-center gap-3 px-4 py-3 hover:bg-blue-50 hover:text-blue-700 transition-colors text-slate-700">
-                                <span class="text-blue-600 font-bold text-sm w-12 flex-shrink-0">+466%</span>
-                                <span class="text-sm font-medium">Wzrost sprzedaży USA</span>
-                            </a>
+                            <div class="relative group/vasco">
+                                <button type="button" class="flex items-center gap-3 px-4 py-3 hover:bg-blue-50 hover:text-blue-700 transition-colors text-slate-700 w-full text-left">
+                                    <span class="text-blue-600 font-bold text-sm w-12 flex-shrink-0">VASCO</span>
+                                    <span class="text-sm font-medium flex-1">Vasco Electronics</span>
+                                    <svg class="w-3.5 h-3.5 transition-transform duration-200 group-hover/vasco:translate-x-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/></svg>
+                                </button>
+                                <div class="absolute top-0 left-full pl-2 opacity-0 invisible group-hover/vasco:opacity-100 group-hover/vasco:visible transition-all duration-200 z-50">
+                                    <div class="bg-white rounded-2xl shadow-xl border border-gray-100 py-2" style="min-width: 260px;">
+                                        <a href="case-study-globalny-wzrost.html" class="flex items-center gap-3 px-4 py-3 hover:bg-blue-50 hover:text-blue-700 transition-colors text-slate-700">
+                                            <span class="text-blue-600 font-bold text-sm w-12 flex-shrink-0">+64%</span>
+                                            <span class="text-sm font-medium">Globalny wzrost sprzedaży</span>
+                                        </a>
+                                        <a href="case-study-automatyzacja.html" class="flex items-center gap-3 px-4 py-3 hover:bg-blue-50 hover:text-blue-700 transition-colors text-slate-700">
+                                            <span class="text-blue-600 font-bold text-sm w-12 flex-shrink-0">80%</span>
+                                            <span class="text-sm font-medium">Oszczędność czasu</span>
+                                        </a>
+                                        <a href="case-study-vasco-usa.html" class="flex items-center gap-3 px-4 py-3 hover:bg-blue-50 hover:text-blue-700 transition-colors text-slate-700">
+                                            <span class="text-blue-600 font-bold text-sm w-12 flex-shrink-0">+466%</span>
+                                            <span class="text-sm font-medium">Wzrost sprzedaży USA</span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -272,18 +283,29 @@
                         <a href="case-study-wkreceni-w-rowery.html" class="flex items-center gap-2 text-sm text-slate-500 hover:text-green-600 transition-all mobile-link py-1">
                             <span class="text-green-500 font-bold">↗</span> Wkręceni w Rowery
                         </a>
+                        <a href="case-study-pracownia-rachunkowosci.html" class="flex items-center gap-2 text-sm text-slate-500 hover:text-green-600 transition-all mobile-link py-1">
+                            <span class="text-green-500 font-bold">↗</span> Pracownia Rachunkowości
+                        </a>
                         <a href="case-study-dietologicznie.html" class="flex items-center gap-2 text-sm text-slate-500 hover:text-green-600 transition-all mobile-link py-1">
                             <span class="text-green-500 font-bold">↗</span> Dietologicznie.pl
                         </a>
-                        <a href="case-study-globalny-wzrost.html" class="flex items-center gap-2 text-sm text-slate-500 hover:text-blue-600 transition-all mobile-link py-1">
-                            <span class="text-blue-500 font-bold">+64%</span> Globalny wzrost
-                        </a>
-                        <a href="case-study-automatyzacja.html" class="flex items-center gap-2 text-sm text-slate-500 hover:text-blue-600 transition-all mobile-link py-1">
-                            <span class="text-blue-500 font-bold">80%</span> Oszczędność czasu
-                        </a>
-                        <a href="case-study-vasco-usa.html" class="flex items-center gap-2 text-sm text-slate-500 hover:text-blue-600 transition-all mobile-link py-1">
-                            <span class="text-blue-500 font-bold">+466%</span> Wzrost USA
-                        </a>
+                        <div>
+                            <button id="vasco-mobile-btn" type="button" class="flex items-center justify-between w-full text-left text-sm text-slate-700 font-semibold py-1 hover:text-blue-600 transition-all">
+                                <span class="flex items-center gap-2"><span class="text-blue-500 font-bold">VASCO</span> Vasco Electronics</span>
+                                <svg id="vasco-mobile-arrow" class="w-4 h-4 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"/></svg>
+                            </button>
+                            <div id="vasco-mobile-submenu" class="hidden mt-2 space-y-2 border-l-2 border-blue-100 pl-4">
+                                <a href="case-study-globalny-wzrost.html" class="flex items-center gap-2 text-sm text-slate-500 hover:text-blue-600 transition-all mobile-link py-1">
+                                    <span class="text-blue-500 font-bold">+64%</span> Globalny wzrost
+                                </a>
+                                <a href="case-study-automatyzacja.html" class="flex items-center gap-2 text-sm text-slate-500 hover:text-blue-600 transition-all mobile-link py-1">
+                                    <span class="text-blue-500 font-bold">80%</span> Oszczędność czasu
+                                </a>
+                                <a href="case-study-vasco-usa.html" class="flex items-center gap-2 text-sm text-slate-500 hover:text-blue-600 transition-all mobile-link py-1">
+                                    <span class="text-blue-500 font-bold">+466%</span> Wzrost USA
+                                </a>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <a href="metodologia.html" class="hover:text-blue-600 transition-all mobile-link">Metodologia</a>
@@ -1126,6 +1148,17 @@
             csMobileBtn.addEventListener('click', () => {
                 csMobileSubmenu.classList.toggle('hidden');
                 csMobileArrow.classList.toggle('rotate-180');
+            });
+        }
+
+        // Vasco Electronics nested submenu toggle (mobile)
+        const vascoMobileBtn = document.getElementById('vasco-mobile-btn');
+        const vascoMobileSubmenu = document.getElementById('vasco-mobile-submenu');
+        const vascoMobileArrow = document.getElementById('vasco-mobile-arrow');
+        if (vascoMobileBtn) {
+            vascoMobileBtn.addEventListener('click', () => {
+                vascoMobileSubmenu.classList.toggle('hidden');
+                vascoMobileArrow.classList.toggle('rotate-180');
             });
         }
 
