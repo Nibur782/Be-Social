@@ -29,4 +29,23 @@ Allow: /
 User-agent: CCBot
 Allow: /
 
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: Bytespider
+Allow: /
+
+User-agent: Meta-ExternalAgent
+Allow: /
+
+User-agent: Meta-ExternalFetcher
+Allow: /
+
+User-agent: cohere-ai
+Allow: /
+
+User-agent: Diffbot
+Allow: /
+
 Sitemap: https://dawidrubin.pl/sitemap.xml
