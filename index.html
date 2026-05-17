@@ -36,11 +36,17 @@
     <meta name="twitter:image" content="https://dawidrubin.pl/og/og-home.jpg">
     <meta name="twitter:image:alt" content="Dawid Rubin - konsultant marketingowy. Kampanie, strony, automatyzacje, audyty, strategia.">
 
-    <!-- Strukturyzacja (Person + ProfessionalService + WebSite + FAQPage) - zoptymalizowane pod AI Search i Google -->
+    <!-- Strukturyzacja (Person + ProfessionalService + WebSite + FAQPage + BreadcrumbList) - zoptymalizowane pod AI Search i Google -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@graph": [
+        {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "Strona główna", "item": "https://dawidrubin.pl/" }
+          ]
+        },
         {
           "@type": "Person",
           "@id": "https://dawidrubin.pl/#person",
