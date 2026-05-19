@@ -593,12 +593,14 @@
         }
 
         function showSuccess() {
+            const emailEl = form.querySelector('input[name="email"]');
             window.dataLayer = window.dataLayer || [];
             window.dataLayer.push({
                 event: 'generate_lead',
                 form_name: 'pdf_download_audyt_paid_media',
                 form_destination: 'kontakt@dawidrubin.pl',
-                file_name: 'audyt-paid-media-checklista.pdf'
+                file_name: 'audyt-paid-media-checklista.pdf',
+                user_email: emailEl ? emailEl.value : undefined
             });
             form.style.display = 'none';
             successMsg.style.display = 'block';
