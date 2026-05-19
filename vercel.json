@@ -3,12 +3,6 @@
   "trailingSlash": false,
   "redirects": [
     { "source": "/index", "destination": "/", "permanent": true },
-    { "source": "/index.html", "destination": "/", "permanent": true },
-    {
-      "source": "/:path*",
-      "has": [{ "type": "host", "value": "www.dawidrubin.pl" }],
-      "destination": "https://dawidrubin.pl/:path*",
-      "permanent": true
-    }
+    { "source": "/index.html", "destination": "/", "permanent": true }
   ]
 }
