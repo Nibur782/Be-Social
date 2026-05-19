@@ -584,6 +584,12 @@
         });
 
         function showSuccess() {
+            window.dataLayer = window.dataLayer || [];
+            window.dataLayer.push({
+                event: 'generate_lead',
+                form_name: 'brief_projekt',
+                form_destination: 'kontakt@dawidrubin.pl'
+            });
             form.classList.add('hidden');
             document.getElementById('success').classList.remove('hidden');
             window.scrollTo({ top: 0, behavior: 'smooth' });

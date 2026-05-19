@@ -593,6 +593,13 @@
         }
 
         function showSuccess() {
+            window.dataLayer = window.dataLayer || [];
+            window.dataLayer.push({
+                event: 'generate_lead',
+                form_name: 'pdf_download_audyt_paid_media',
+                form_destination: 'kontakt@dawidrubin.pl',
+                file_name: 'audyt-paid-media-checklista.pdf'
+            });
             form.style.display = 'none';
             successMsg.style.display = 'block';
             triggerDownload();
