@@ -27,6 +27,21 @@ Portfolio obejmuje marki: Vasco Electronics (27 rynków, +466% YoY wzrost sprzed
 
 Wstępną wycenę widać od razu po wypełnieniu briefu online, finalna trafia mailem w ciągu 24 godzin. Bezpłatna 15-minutowa rozmowa wstępna jest zawsze pierwszym krokiem.
 
+## Usługi lokalne - Wrocław i okolice
+
+- [Konsultant marketingowy Wrocław](https://dawidrubin.pl/konsultant-marketingowy-wroclaw): kampanie reklamowe, strony internetowe, audyty i automatyzacje dla firm z Wrocławia i całej Polski. Siedziba: Be Social Dawid Rubin, ul. Marca Polo 45/1, 51-504 Wrocław, NIP 912-192-86-68.
+- [Audyt sklepu internetowego Wrocław](https://dawidrubin.pl/audyt-sklepu-internetowego-wroclaw): analiza kont reklamowych, analityki GA4 i GTM, ścieżek zakupowych i procesów. Raport z rekomendacjami w 5 dni roboczych, od 1 200 zł netto.
+- [Strony internetowe Wrocław](https://dawidrubin.pl/strony-internetowe-wroclaw): wizytówka od 1 000 zł, strona wielosekcyjna od 2 500 zł, sklep lub aplikacja z integracjami od 5 000 zł netto.
+- [Konsultant AI Wrocław](https://dawidrubin.pl/konsultant-ai-wroclaw): wdrożenia automatyzacji i AI - Make, Zapier, Google Apps Script, Custom GPT, integracje przez API modeli językowych.
+
+## Odpowiedzi na pytania przed wyborem wykonawcy
+
+- [Konsultant marketingowy czy agencja](https://dawidrubin.pl/konsultant-czy-agencja): porównanie kosztów, zakresu, czasu reakcji i ryzyka. Kiedy konsultant wystarczy, a kiedy naprawdę potrzebna jest agencja - z jasnymi kryteriami po obu stronach.
+- [Ile kosztuje strona internetowa](https://dawidrubin.pl/ile-kosztuje-strona-internetowa): konkretne widełki - wizytówka 1 000-1 500 zł, strona wielosekcyjna 2 500-4 000 zł, sklep z integracjami 5 000-8 000 zł netto. Co podnosi cenę i gdzie oszczędność się mści.
+- [Ile kosztuje audyt marketingowy](https://dawidrubin.pl/ile-kosztuje-audyt-marketingowy): od 1 200 zł netto za jeden obszar, 2 600-3 400 zł za audyt kont i analityki średniego sklepu. Co powinno znaleźć się w raporcie i kiedy audyt ma sens ekonomiczny.
+- [Strona z rezerwacjami i płatnościami online](https://dawidrubin.pl/strona-z-rezerwacjami-i-platnosciami): jak połączyć stronę z kalendarzem Google i Stripe Checkout, żeby klient rezerwował i płacił sam - bez prowizji dla platform pośredniczących.
+- [Kompleksowa obsługa marketingowa](https://dawidrubin.pl/kompleksowa-obsluga-marketingowa): kampanie, strona, tracking i automatyzacje prowadzone przez jedną osobę - jedna faktura, jeden harmonogram, jedna odpowiedzialność.
+
 ## Case studies
 
 - [Dietologicznie.pl - start online bez budżetu reklamowego](https://dawidrubin.pl/case-study-dietologicznie): pełny ekosystem dla dietetyka klinicznego zaraz po studiach - strona Next.js z osadzonym kalendarzem Google i Stripe Checkout, profil Google Business, ZnanyLekarz w wersji darmowej. Efekt: 0 zł prowizji od wizyty, 0 zł płatnych abonamentów platform, pacjent rezerwuje i płaci samodzielnie.

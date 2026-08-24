@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <!-- Google Consent Mode v2 - domyslnie brak zgody (musi byc PRZED GTM) -->
+    <script>
+    window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
+    (function(){var c=null;try{c=JSON.parse(localStorage.getItem('drConsent'));}catch(e){}
+    var g=function(k){return c&&c[k]?'granted':'denied';};
+    gtag('consent','default',{ad_storage:g('ads'),ad_user_data:g('ads'),ad_personalization:g('ads'),analytics_storage:g('analytics'),functionality_storage:'granted',security_storage:'granted',wait_for_update:500});
+    gtag('set','ads_data_redaction',!(c&&c.ads));})();
+    </script>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-TNDRSGJS');</script>
+    <!-- End Google Tag Manager -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/svg+xml" href="brands/logo-dr-mark.svg">
+    <link rel="apple-touch-icon" href="brands/logo-dr-mark.svg">
+    <meta name="theme-color" content="#1D4ED8">
+    <title>Jak połączyć stronę www z płatnościami i rezerwacjami online | Dawid Rubin</title>
+    <meta name="description" content="Jak zbudować stronę, na której klient sam rezerwuje termin i od razu płaci: kalendarz Google, Stripe Checkout, automatyczne potwierdzenia. Bez prowizji dla platform pośredniczących.">
+    <meta name="author" content="Dawid Rubin">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+    <link rel="canonical" href="https://dawidrubin.pl/strona-z-rezerwacjami-i-platnosciami">
+
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Dawid Rubin - Marketing dla firm każdej skali">
+    <meta property="og:url" content="https://dawidrubin.pl/strona-z-rezerwacjami-i-platnosciami">
+    <meta property="og:title" content="Strona z rezerwacjami i płatnościami - jak to połączyć">
+    <meta property="og:description" content="Kalendarz Google + Stripe Checkout. Klient rezerwuje i płaci sam, wizyta wpada opłacona. Bez prowizji platform.">
+    <meta property="og:image" content="https://dawidrubin.pl/og/og-home.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:locale" content="pl_PL">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Strona z rezerwacjami i płatnościami - jak to połączyć">
+    <meta name="twitter:description" content="Kalendarz Google + Stripe Checkout. Klient rezerwuje i płaci sam, wizyta wpada opłacona. Bez prowizji platform.">
+    <meta name="twitter:image" content="https://dawidrubin.pl/og/og-home.jpg">
+
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Strona główna",
+          "item": "https://dawidrubin.pl/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Strona z rezerwacjami i płatnościami",
+          "item": "https://dawidrubin.pl/strona-z-rezerwacjami-i-platnosciami"
+        }
+      ]
+    },
+    {
+      "@type": "Service",
+      "@id": "https://dawidrubin.pl/strona-z-rezerwacjami-i-platnosciami#service",
+      "name": "Strony z systemem rezerwacji i płatności online",
+      "url": "https://dawidrubin.pl/strona-z-rezerwacjami-i-platnosciami",
+      "description": "Jak zbudować stronę, na której klient sam rezerwuje termin i od razu płaci: kalendarz Google, Stripe Checkout, automatyczne potwierdzenia. Bez prowizji dla platform pośredniczących.",
+      "serviceType": [
+        "Systemy rezerwacji online",
+        "Integracje płatności",
+        "Strony internetowe"
+      ],
+      "provider": {
+        "@type": "ProfessionalService",
+        "@id": "https://dawidrubin.pl/#service",
+        "name": "Dawid Rubin - Marketing dla firm każdej skali",
+        "legalName": "Be Social Dawid Rubin",
+        "url": "https://dawidrubin.pl/",
+        "telephone": "+48665125308",
+        "email": "kontakt@dawidrubin.pl",
+        "vatID": "PL9121928668",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "ul. Marca Polo 45/1",
+          "addressLocality": "Wrocław",
+          "postalCode": "51-504",
+          "addressRegion": "dolnośląskie",
+          "addressCountry": "PL"
+        }
+      },
+      "areaServed": [
+        {
+          "@type": "Country",
+          "name": "Polska"
+        }
+      ],
+      "inLanguage": "pl-PL"
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://dawidrubin.pl/strona-z-rezerwacjami-i-platnosciami#webpage",
+      "url": "https://dawidrubin.pl/strona-z-rezerwacjami-i-platnosciami",
+      "name": "Jak połączyć stronę www z płatnościami i rezerwacjami online | Dawid Rubin",
+      "description": "Jak zbudować stronę, na której klient sam rezerwuje termin i od razu płaci: kalendarz Google, Stripe Checkout, automatyczne potwierdzenia. Bez prowizji dla platform pośredniczących.",
+      "inLanguage": "pl-PL",
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "Dawid Rubin",
+        "url": "https://dawidrubin.pl/"
+      },
+      "datePublished": "2026-08-24",
+      "dateModified": "2026-08-24"
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Jak połączyć stronę www z płatnościami i rezerwacjami online?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sprawdzony układ: strona z osadzonym kalendarzem Google pokazującym realnie wolne terminy, płatność przez Stripe Checkout (Blik, karta, Apple Pay, Google Pay) zaraz po wyborze terminu, a po potwierdzeniu płatności automatyczne zablokowanie terminu w kalendarzu i mail z potwierdzeniem do klienta. Klient przechodzi całą ścieżkę sam, bez Twojego udziału i bez prowizji dla platform pośredniczących."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Ile kosztuje strona z systemem rezerwacji i płatności?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Zwykle 5 000-8 000 zł netto, bo dochodzą integracje: kalendarz, operator płatności, mailing, obsługa potwierdzeń i przypadków brzegowych. Czas wdrożenia 4-8 tygodni. Wstępne widełki policzy brief projektu, finalna wycena trafia mailem w 24 godziny."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Czy muszę płacić prowizję od rezerwacji?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Mnie nie płacisz prowizji od niczego. Jedyny stały koszt to standardowa opłata operatora płatności - przy Stripe około 1,4% plus 0,25 zł od transakcji. Dla porównania portale rezerwacyjne pobierają zwykle kilkanaście procent od wizyty albo miesięczny abonament za samą możliwość przyjmowania rezerwacji."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Czy klient musi zakładać konto, żeby zarezerwować?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Nie. Wybiera termin, podaje podstawowe dane i płaci - bez rejestracji i bez instalowania aplikacji. Każdy dodatkowy krok w tej ścieżce to część klientów, którzy odpadają, więc projektuję ją tak krótko, jak się da."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Co jeśli klient chce odwołać wizytę?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Ustalamy zasady na etapie projektu i opisujemy je w regulaminie - na przykład bezpłatne odwołanie do 24 godzin przed terminem. Zwroty realizuje się w panelu Stripe kilkoma kliknięciami. Praktyka pokazuje, że po wprowadzeniu płatności z góry odwołań jest znacznie mniej."
+          }
+        }
+      ]
+    }
+  ]
+}
+    </script>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #F8FAFC; color: #0F172A; }
+        .vasco-blue { color: #1D4ED8; }
+        .bg-vasco-blue { background-color: #1D4ED8; }
+        .bento-card { background: #FFFFFF; border: 1px solid #E2E8F0; transition: all 0.3s ease; box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.05); }
+        .prose-custom p { margin-bottom: 1.15rem; line-height: 1.8; color: #475569; }
+        .prose-custom h3 { font-size: 1.3rem; font-weight: 700; margin-bottom: .7rem; margin-top: 2rem; color: #0F172A; }
+        .prose-custom ul { margin: 0 0 1.15rem 1.1rem; list-style: disc; }
+        .prose-custom li { margin-bottom: .45rem; line-height: 1.7; color: #475569; }
+        .prose-custom a { color: #1D4ED8; text-decoration: underline; text-underline-offset: 2px; }
+        .prose-custom a:hover { color: #1E40AF; }
+        .prose-custom table { width: 100%; border-collapse: collapse; margin-bottom: 1.4rem; font-size: .9rem; }
+        .prose-custom th, .prose-custom td { border: 1px solid #E2E8F0; padding: .7rem; text-align: left; vertical-align: top; }
+        .prose-custom th { background: #F1F5F9; font-weight: 700; color: #0F172A; }
+        .prose-custom td { color: #475569; }
+        .faq-item summary { cursor: pointer; list-style: none; }
+        .faq-item summary::-webkit-details-marker { display: none; }
+        .faq-item[open] .faq-icon { transform: rotate(45deg); }
+        .faq-icon { transition: transform .2s ease; }
+    </style>
+</head>
+<body class="antialiased">
+    <!-- Google Tag Manager (noscript) --><noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TNDRSGJS" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript><!-- End Google Tag Manager (noscript) -->
+
+    <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 bg-white/90 backdrop-blur-md border-b border-gray-200 shadow-sm">
+        <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+            <a href="/" class="text-xl font-bold tracking-tighter italic"><img src="brands/logo-dr-mark.svg" width="32" height="32" alt="" aria-hidden="true" class="w-8 h-8 inline-block align-middle mr-2"><span class="align-middle">DAWID<span class="vasco-blue">RUBIN</span></span></a>
+            <div class="hidden lg:flex items-center gap-8 text-sm font-semibold text-slate-600">
+                <a href="/#about" class="hover:text-blue-600 transition-all">O mnie</a>
+                <a href="/#services" class="hover:text-blue-600 transition-all">Usługi</a>
+                <a href="/#process" class="hover:text-blue-600 transition-all">Proces</a>
+                <div class="relative group/cs">
+                    <button class="flex items-center gap-1 hover:text-blue-600 transition-all cursor-pointer">
+                        Case Study
+                        <svg class="w-3.5 h-3.5 transition-transform duration-200 group-hover/cs:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"/></svg>
+                    </button>
+                    <div class="absolute top-full left-1/2 -translate-x-1/2 pt-3 opacity-0 invisible group-hover/cs:opacity-100 group-hover/cs:visible transition-all duration-200 z-50">
+                        <div class="bg-white rounded-2xl shadow-xl border border-gray-100 py-2" style="min-width: 280px;">
+                            <a href="case-study-wkreceni-w-rowery" class="flex items-center gap-3 px-4 py-3 hover:bg-green-50 hover:text-green-700 transition-colors text-slate-700">
+                                <span class="text-green-600 font-bold text-sm w-12 flex-shrink-0">↗</span>
+                                <span class="text-sm font-medium">Wkręceni w Rowery - sezonowe Ads</span>
+                            </a>
+                            <a href="case-study-pracownia-rachunkowosci" class="flex items-center gap-3 px-4 py-3 hover:bg-green-50 hover:text-green-700 transition-colors text-slate-700">
+                                <span class="text-green-600 font-bold text-sm w-12 flex-shrink-0">↗</span>
+                                <span class="text-sm font-medium">Pracownia Rachunkowości</span>
+                            </a>
+                            <a href="case-study-dietologicznie" class="flex items-center gap-3 px-4 py-3 hover:bg-green-50 hover:text-green-700 transition-colors text-slate-700">
+                                <span class="text-green-600 font-bold text-sm w-12 flex-shrink-0">↗</span>
+                                <span class="text-sm font-medium">Dietologicznie.pl - ekosystem</span>
+                            </a>
+                            <div class="h-px bg-gray-100 mx-4 my-1"></div>
+                            <div class="relative group/vasco">
+                                <button type="button" class="flex items-center gap-3 px-4 py-3 hover:bg-blue-50 hover:text-blue-700 transition-colors text-slate-700 w-full text-left">
+                                    <span class="text-blue-600 font-bold text-sm w-12 flex-shrink-0">VASCO</span>
+                                    <span class="text-sm font-medium flex-1">Vasco Electronics</span>
+                                    <svg class="w-3.5 h-3.5 transition-transform duration-200 group-hover/vasco:translate-x-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/></svg>
+                                </button>
+                                <div class="absolute top-0 left-full pl-2 opacity-0 invisible group-hover/vasco:opacity-100 group-hover/vasco:visible transition-all duration-200 z-50">
+                                    <div class="bg-white rounded-2xl shadow-xl border border-gray-100 py-2" style="min-width: 260px;">
+                                        <a href="case-study-globalny-wzrost" class="flex items-center gap-3 px-4 py-3 hover:bg-blue-50 hover:text-blue-700 transition-colors text-slate-700">
+                                            <span class="text-blue-600 font-bold text-sm w-12 flex-shrink-0">+64%</span>
+                                            <span class="text-sm font-medium">Globalny wzrost sprzedaży</span>
+                                        </a>
+                                        <a href="case-study-automatyzacja" class="flex items-center gap-3 px-4 py-3 hover:bg-blue-50 hover:text-blue-700 transition-colors text-slate-700">
+                                            <span class="text-blue-600 font-bold text-sm w-12 flex-shrink-0">80%</span>
+                                            <span class="text-sm font-medium">Oszczędność czasu</span>
+                                        </a>
+                                        <a href="case-study-vasco-usa" class="flex items-center gap-3 px-4 py-3 hover:bg-blue-50 hover:text-blue-700 transition-colors text-slate-700">
+                                            <span class="text-blue-600 font-bold text-sm w-12 flex-shrink-0">+466%</span>
+                                            <span class="text-sm font-medium">Wzrost sprzedaży USA</span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <a href="metodologia" class="text-blue-600 border-b border-blue-300 pb-0.5">Metodologia</a>
+                <a href="/blog" class="hover:text-blue-600 transition-all">Blog</a>
+                <a href="audyt-paid-media" class="inline-flex items-center gap-1.5 text-sm text-blue-700 border border-blue-200 hover:bg-blue-50 rounded-full px-3 py-1 transition-all">
+                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
+                    </svg>
+                    Pobierz PDF
+                </a>
+            </div>
+            <div class="flex items-center gap-4">
+                <a href="/#audit" class="hidden md:inline-block bg-vasco-blue hover:bg-blue-700 text-white px-5 py-2.5 rounded-full text-sm font-semibold transition-all">Porozmawiajmy</a>
+                <button id="mobile-menu-btn" class="lg:hidden p-2 text-slate-600 hover:text-blue-600 focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                </button>
+            </div>
+        </div>
+        <div id="mobile-menu" class="hidden lg:hidden bg-white border-b border-gray-200">
+            <div class="flex flex-col px-6 py-4 space-y-4 text-sm font-semibold text-slate-600">
+                <a href="/#about" class="hover:text-blue-600 transition-all">O mnie</a>
+                <a href="/#services" class="hover:text-blue-600 transition-all">Usługi</a>
+                <a href="/#process" class="hover:text-blue-600 transition-all">Proces</a>
+                <div>
+                    <button id="cs-mobile-btn" class="flex items-center justify-between w-full text-left hover:text-blue-600 transition-all">
+                        Case Study
+                        <svg id="cs-mobile-arrow" class="w-4 h-4 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"/></svg>
+                    </button>
+                    <div id="cs-mobile-submenu" class="hidden mt-3 space-y-2 border-l-2 border-blue-100 pl-4">
+                        <a href="case-study-wkreceni-w-rowery" class="flex items-center gap-2 text-sm text-slate-500 hover:text-green-600 transition-all py-1"><span class="text-green-500 font-bold">↗</span> Wkręceni w Rowery</a>
+                        <a href="case-study-pracownia-rachunkowosci" class="flex items-center gap-2 text-sm text-slate-500 hover:text-green-600 transition-all py-1"><span class="text-green-500 font-bold">↗</span> Pracownia Rachunkowości</a>
+                        <a href="case-study-dietologicznie" class="flex items-center gap-2 text-sm text-slate-500 hover:text-green-600 transition-all py-1"><span class="text-green-500 font-bold">↗</span> Dietologicznie.pl</a>
+                        <div>
+                            <button id="vasco-mobile-btn" type="button" class="flex items-center justify-between w-full text-left text-sm text-slate-700 font-semibold py-1 hover:text-blue-600 transition-all">
+                                <span class="flex items-center gap-2"><span class="text-blue-500 font-bold">VASCO</span> Vasco Electronics</span>
+                                <svg id="vasco-mobile-arrow" class="w-4 h-4 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"/></svg>
+                            </button>
+                            <div id="vasco-mobile-submenu" class="hidden mt-2 space-y-2 border-l-2 border-blue-100 pl-4">
+                                <a href="case-study-globalny-wzrost" class="flex items-center gap-2 text-sm text-slate-500 hover:text-blue-600 transition-all py-1"><span class="text-blue-500 font-bold">+64%</span> Globalny wzrost</a>
+                                <a href="case-study-automatyzacja" class="flex items-center gap-2 text-sm text-slate-500 hover:text-blue-600 transition-all py-1"><span class="text-blue-500 font-bold">80%</span> Oszczędność czasu</a>
+                                <a href="case-study-vasco-usa" class="flex items-center gap-2 text-sm text-slate-500 hover:text-blue-600 transition-all py-1"><span class="text-blue-500 font-bold">+466%</span> Wzrost USA</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <a href="metodologia" class="text-blue-600 border-b border-blue-300 pb-0.5 self-start">Metodologia</a>
+                <a href="audyt-paid-media" class="inline-flex items-center gap-1.5 text-sm text-blue-700 border border-blue-200 hover:bg-blue-50 rounded-full px-3 py-1 transition-all w-fit">
+                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
+                    </svg>
+                    Pobierz PDF
+                </a>
+                <a href="/#audit" class="inline-block text-center bg-vasco-blue text-white px-5 py-3 rounded-full mt-4 transition-all">Porozmawiajmy</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="pt-28 pb-14 px-6 bg-white border-b border-gray-100">
+        <div class="max-w-4xl mx-auto">
+            <div class="flex flex-wrap items-center gap-3 mb-6">
+                <a href="/" class="text-sm text-slate-500 hover:text-blue-600 transition-colors font-mono">&larr; Strona główna</a>
+                <span class="text-slate-300">/</span>
+                <span class="text-sm text-slate-500 font-mono">Strona z rezerwacjami i płatnościami</span>
+            </div>
+            <span class="text-blue-500 font-mono text-sm tracking-widest uppercase mb-4 block">Rozwiązanie, nie teoria</span>
+            <h1 class="text-3xl md:text-5xl font-bold leading-tight mb-6">Strona, na której klient <span class="vasco-blue">rezerwuje i płaci sam</span></h1>
+            <p class="text-lg text-slate-600 leading-relaxed mb-8">Najczęstszy problem usługodawcy: rezerwacje przychodzą przez telefon, Messengera i maila, część ludzi nie przychodzi, a portal rezerwacyjny bierze kilkanaście procent od każdej wizyty. Da się to złożyć inaczej - i taniej.</p>
+            <div class="flex flex-col sm:flex-row gap-3">
+                <a href="brief-projekt" data-track-offer="projekt" data-offer-price="5000" data-offer-location="cta_strona-z-rezerwacjami-i-platnosciami" class="text-center bg-blue-600 hover:bg-blue-700 text-white px-7 py-3.5 rounded-full font-bold transition-colors">Wyceń swój system rezerwacji</a>
+                <a href="umow-rozmowe" data-track-offer="staly_partner" data-offer-price="2500" data-offer-location="cta_strona-z-rezerwacjami-i-platnosciami" class="text-center border border-gray-300 hover:bg-gray-50 text-slate-800 px-7 py-3.5 rounded-full font-semibold transition-colors">Umów bezpłatną rozmowę</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-10 bg-vasco-blue text-white">
+        <div class="max-w-4xl mx-auto px-6">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center divide-y md:divide-y-0 md:divide-x divide-white/20">
+                <div class="">
+                    <div class="text-2xl md:text-3xl font-bold mb-1">0%</div>
+                    <div class="text-xs font-semibold tracking-widest uppercase text-blue-200">prowizji od wizyty</div>
+                </div>
+                <div class="">
+                    <div class="text-2xl md:text-3xl font-bold mb-1">~1,4%</div>
+                    <div class="text-xs font-semibold tracking-widest uppercase text-blue-200">opłata operatora płatności</div>
+                </div>
+                <div class="pt-5 md:pt-0">
+                    <div class="text-2xl md:text-3xl font-bold mb-1">24/7</div>
+                    <div class="text-xs font-semibold tracking-widest uppercase text-blue-200">przyjmowanie rezerwacji</div>
+                </div>
+                <div class="pt-5 md:pt-0">
+                    <div class="text-2xl md:text-3xl font-bold mb-1">4-8 tyg.</div>
+                    <div class="text-xs font-semibold tracking-widest uppercase text-blue-200">czas wdrożenia</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-16 px-6">
+        <div class="max-w-4xl mx-auto">
+            <div class="mb-12">
+                <span class="text-blue-500 font-mono text-xs tracking-widest uppercase mb-3 block">Problem</span>
+                <h2 class="text-2xl md:text-3xl font-bold mb-6 italic">Trzy koszty, których zwykle się nie liczy</h2>
+                <div class="prose-custom">
+
+                    <p><strong>Prowizja platformy.</strong> Portale rezerwacyjne pobierają zwykle kilkanaście procent od wizyty albo abonament za możliwość przyjmowania rezerwacji online. Przy wizycie za 220 zł i dwudziestu wizytach miesięcznie to kilkaset złotych miesięcznie - kilka tysięcy rocznie.</p>
+                    <p><strong>Twój czas na obsługę.</strong> Ustalanie terminu przez wymianę wiadomości zajmuje kilka minut na klienta. Przy dwudziestu klientach to kilka godzin miesięcznie spędzonych na czymś, co system załatwia sam.</p>
+                    <p><strong>Nieodwołane wizyty.</strong> Klient, który nic nie zapłacił, nie ma żadnego kosztu rezygnacji. Przy usłudze rozliczanej godzinowo każde takie okienko to bezpowrotnie stracony przychód.</p>
+                    <p>Pierwszy koszt jest widoczny na fakturze. Dwa pozostałe nie - i dlatego zwykle są większe.</p>
+                </div>
+            </div>
+
+            <div class="mb-12">
+                <span class="text-blue-500 font-mono text-xs tracking-widest uppercase mb-3 block">Rozwiązanie</span>
+                <h2 class="text-2xl md:text-3xl font-bold mb-6 italic">Jak to składam technicznie</h2>
+                <div class="prose-custom">
+
+                    <h3>Kalendarz Google osadzony na stronie</h3>
+                    <p>Dostępne terminy żyją w Twoim zwykłym kalendarzu Google - tym, którego już używasz na telefonie. Strona pokazuje tylko wolne okienka. Zablokujesz sobie termin na cokolwiek prywatnego - automatycznie znika z dostępnych. Jeden kalendarz, zero podwójnego prowadzenia i zero ryzyka podwójnej rezerwacji.</p>
+
+                    <h3>Stripe Checkout jako płatność</h3>
+                    <p>Po wybraniu terminu klient przechodzi do płatności: Blik, karta, Apple Pay, Google Pay. Znajomy, zaufany interfejs - bez zakładania konta i bez instalowania aplikacji. Płatność potwierdzona oznacza rezerwację potwierdzoną.</p>
+
+                    <h3>Automatyczne potwierdzenie</h3>
+                    <p>Po opłaceniu system rejestruje płatność, blokuje termin w kalendarzu i wysyła klientowi maila z potwierdzeniem oraz wszystkim, czego potrzebuje - linkiem do spotkania online, adresem albo formularzem do wypełnienia przed wizytą.</p>
+
+                    <p>Cała ścieżka od kliknięcia do potwierdzonej, opłaconej rezerwacji zajmuje klientowi mniej niż dwie minuty. Twój udział: zero.</p>
+                </div>
+            </div>
+
+            <div class="mb-12">
+                <span class="text-blue-500 font-mono text-xs tracking-widest uppercase mb-3 block">Przykład</span>
+                <h2 class="text-2xl md:text-3xl font-bold mb-6 italic">Dietologicznie.pl - jak to działa w praktyce</h2>
+                <div class="prose-custom">
+
+                    <p>Kaja jest dietetykiem klinicznym. Zaczynała bez budżetu reklamowego i bez pomysłu, jak przyjmować pacjentów online. Zamiast wchodzić w płatny plan portalu rezerwacyjnego, zbudowaliśmy własny system.</p>
+                    <p>Ścieżka pacjenta: znajduje gabinet w Mapach Google → wchodzi na stronę → wybiera pakiet → wybiera termin z realnego kalendarza → płaci przez Stripe → dostaje maila z potwierdzeniem i formularzem wywiadu. Wizyta trafia do kalendarza opłacona i z wypełnionym wywiadem.</p>
+                    <p>Profil na ZnanyLekarz też powstał - ale wyłącznie w bezpłatnej wersji, jako dodatkowy kanał widoczności. Proces transakcyjny został po stronie gabinetu, więc <strong>prowizji od wizyt nie ma wcale</strong>.</p>
+                    <p><a href="case-study-dietologicznie">Przeczytaj pełne case study</a>.</p>
+                </div>
+            </div>
+
+            <div class="mb-12">
+                <span class="text-blue-500 font-mono text-xs tracking-widest uppercase mb-3 block">Dla kogo</span>
+                <h2 class="text-2xl md:text-3xl font-bold mb-6 italic">Gdzie ten układ sprawdza się najlepiej</h2>
+                <div class="prose-custom">
+
+                    <ul>
+                        <li><strong>Gabinety i usługi zdrowotne</strong> - dietetyk, fizjoterapeuta, psycholog, kosmetolog. Płatność z góry rozwiązuje przy okazji problem nieodwołanych wizyt.</li>
+                        <li><strong>Trenerzy i coachowie</strong> - sesje online i stacjonarne, pakiety, spotkania cykliczne.</li>
+                        <li><strong>Konsultanci i doradcy</strong> - płatne konsultacje godzinowe bez ustalania terminu przez pięć maili.</li>
+                        <li><strong>Usługi z wizytą w umówionym terminie</strong> - warsztat, serwis, usługi mobilne z dojazdem.</li>
+                    </ul>
+                    <p>Kiedy ten układ <strong>nie</strong> ma sensu: gdy masz kilkunastu pracowników z osobnymi grafikami i złożonymi zasobami do rezerwowania. Wtedy dedykowany system rezerwacyjny wychodzi taniej niż budowanie tego od zera - i tak wtedy doradzam.</p>
+                </div>
+            </div>
+
+            <div class="mb-12">
+                <span class="text-blue-500 font-mono text-xs tracking-widest uppercase mb-3 block">Najczęstsze pytania</span>
+                <h2 class="text-2xl md:text-3xl font-bold mb-6 italic">Pytania, które słyszę najczęściej</h2>
+            <div class="space-y-3">
+                <details class="faq-item bg-white border border-gray-200 rounded-2xl shadow-sm">
+                    <summary class="flex items-center justify-between gap-4 p-6">
+                        <h3 class="text-lg font-bold text-slate-900 m-0">Jak połączyć stronę www z płatnościami i rezerwacjami online?</h3>
+                        <svg class="faq-icon w-5 h-5 text-blue-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/></svg>
+                    </summary>
+                    <div class="px-6 pb-6 -mt-2">
+                        <p class="text-slate-600 text-sm leading-relaxed">Sprawdzony układ: strona z osadzonym kalendarzem Google pokazującym realnie wolne terminy, płatność przez Stripe Checkout (Blik, karta, Apple Pay, Google Pay) zaraz po wyborze terminu, a po potwierdzeniu płatności automatyczne zablokowanie terminu w kalendarzu i mail z potwierdzeniem do klienta. Klient przechodzi całą ścieżkę sam, bez Twojego udziału i bez prowizji dla platform pośredniczących.</p>
+                    </div>
+                </details>
+                <details class="faq-item bg-white border border-gray-200 rounded-2xl shadow-sm">
+                    <summary class="flex items-center justify-between gap-4 p-6">
+                        <h3 class="text-lg font-bold text-slate-900 m-0">Ile kosztuje strona z systemem rezerwacji i płatności?</h3>
+                        <svg class="faq-icon w-5 h-5 text-blue-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/></svg>
+                    </summary>
+                    <div class="px-6 pb-6 -mt-2">
+                        <p class="text-slate-600 text-sm leading-relaxed">Zwykle 5 000-8 000 zł netto, bo dochodzą integracje: kalendarz, operator płatności, mailing, obsługa potwierdzeń i przypadków brzegowych. Czas wdrożenia 4-8 tygodni. Wstępne widełki policzy brief projektu, finalna wycena trafia mailem w 24 godziny.</p>
+                    </div>
+                </details>
+                <details class="faq-item bg-white border border-gray-200 rounded-2xl shadow-sm">
+                    <summary class="flex items-center justify-between gap-4 p-6">
+                        <h3 class="text-lg font-bold text-slate-900 m-0">Czy muszę płacić prowizję od rezerwacji?</h3>
+                        <svg class="faq-icon w-5 h-5 text-blue-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/></svg>
+                    </summary>
+                    <div class="px-6 pb-6 -mt-2">
+                        <p class="text-slate-600 text-sm leading-relaxed">Mnie nie płacisz prowizji od niczego. Jedyny stały koszt to standardowa opłata operatora płatności - przy Stripe około 1,4% plus 0,25 zł od transakcji. Dla porównania portale rezerwacyjne pobierają zwykle kilkanaście procent od wizyty albo miesięczny abonament za samą możliwość przyjmowania rezerwacji.</p>
+                    </div>
+                </details>
+                <details class="faq-item bg-white border border-gray-200 rounded-2xl shadow-sm">
+                    <summary class="flex items-center justify-between gap-4 p-6">
+                        <h3 class="text-lg font-bold text-slate-900 m-0">Czy klient musi zakładać konto, żeby zarezerwować?</h3>
+                        <svg class="faq-icon w-5 h-5 text-blue-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/></svg>
+                    </summary>
+                    <div class="px-6 pb-6 -mt-2">
+                        <p class="text-slate-600 text-sm leading-relaxed">Nie. Wybiera termin, podaje podstawowe dane i płaci - bez rejestracji i bez instalowania aplikacji. Każdy dodatkowy krok w tej ścieżce to część klientów, którzy odpadają, więc projektuję ją tak krótko, jak się da.</p>
+                    </div>
+                </details>
+                <details class="faq-item bg-white border border-gray-200 rounded-2xl shadow-sm">
+                    <summary class="flex items-center justify-between gap-4 p-6">
+                        <h3 class="text-lg font-bold text-slate-900 m-0">Co jeśli klient chce odwołać wizytę?</h3>
+                        <svg class="faq-icon w-5 h-5 text-blue-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/></svg>
+                    </summary>
+                    <div class="px-6 pb-6 -mt-2">
+                        <p class="text-slate-600 text-sm leading-relaxed">Ustalamy zasady na etapie projektu i opisujemy je w regulaminie - na przykład bezpłatne odwołanie do 24 godzin przed terminem. Zwroty realizuje się w panelu Stripe kilkoma kliknięciami. Praktyka pokazuje, że po wprowadzeniu płatności z góry odwołań jest znacznie mniej.</p>
+                    </div>
+                </details>
+            </div>
+            </div>
+
+            <div class="mb-12 bg-slate-50 border border-gray-200 rounded-3xl p-7">
+                <h2 class="text-lg font-bold mb-4">Zobacz też</h2>
+                <ul class="space-y-2">
+                    <li><a href="ile-kosztuje-strona-internetowa" class="text-blue-600 hover:text-blue-800 underline underline-offset-2 text-sm font-medium">Ile kosztuje strona internetowa</a></li>
+                    <li><a href="strony-internetowe-wroclaw" class="text-blue-600 hover:text-blue-800 underline underline-offset-2 text-sm font-medium">Strony internetowe Wrocław</a></li>
+                    <li><a href="case-study-dietologicznie" class="text-blue-600 hover:text-blue-800 underline underline-offset-2 text-sm font-medium">Case study: Dietologicznie.pl</a></li>
+                    <li><a href="kompleksowa-obsluga-marketingowa" class="text-blue-600 hover:text-blue-800 underline underline-offset-2 text-sm font-medium">Kampanie, strona i automatyzacje razem</a></li>
+                </ul>
+            </div>
+
+            <div class="bg-slate-900 text-white rounded-3xl p-8 md:p-10 text-center">
+                <h2 class="text-2xl md:text-3xl font-bold mb-3 italic">Policzmy, ile oddajesz platformom rocznie</h2>
+                <p class="text-slate-300 mb-7 max-w-xl mx-auto leading-relaxed">Opisz swoją usługę w briefie. Zobaczysz widełki od razu, a w ciągu doby dostaniesz propozycję, jak złożyć to u siebie.</p>
+                <div class="flex flex-col sm:flex-row gap-3 justify-center">
+                    <a href="brief-projekt" data-track-offer="projekt" data-offer-price="5000" data-offer-location="cta_dol_strona-z-rezerwacjami-i-platnosciami" class="bg-blue-600 hover:bg-blue-700 text-white px-7 py-3.5 rounded-full font-bold transition-colors">Wyceń swój system rezerwacji</a>
+                    <a href="umow-rozmowe" data-track-offer="staly_partner" data-offer-price="2500" data-offer-location="cta_dol_strona-z-rezerwacjami-i-platnosciami" class="border border-white/25 hover:bg-white/10 text-white px-7 py-3.5 rounded-full font-semibold transition-colors">Bezpłatna rozmowa 15 min</a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <footer class="py-12 bg-slate-900 text-white border-t border-white/10">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center text-slate-400 text-sm font-medium gap-4">
+            <a href="/" class="text-lg font-bold tracking-tighter italic text-white">DAWID<span class="text-blue-400">RUBIN</span></a>
+            <div>&copy; <script>document.write(new Date().getFullYear())</script> Dawid Rubin. Wszelkie prawa zastrzeżone.</div>
+            <div class="flex gap-6">
+                <a href="/" class="hover:text-white transition-colors">Strona główna</a>
+                <a href="case-study-vasco-usa" class="hover:text-white transition-colors">Case Study</a>
+                <a href="/#audit" class="hover:text-white transition-colors">Kontakt</a>
+                <a href="/polityka-prywatnosci" class="hover:text-white transition-colors">Prywatność</a>
+            </div>
+        </div>
+    </footer>
+
+
+    <script src="/cookie-consent.js" defer></script>
+    <script src="/tracking.js" defer></script>
+</body>
+</html>
