@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
+    <!-- Google Consent Mode v2 - domyslnie brak zgody (musi byc PRZED GTM) -->
+    <script>
+    window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
+    (function(){var c=null;try{c=JSON.parse(localStorage.getItem('drConsent'));}catch(e){}
+    var g=function(k){return c&&c[k]?'granted':'denied';};
+    gtag('consent','default',{ad_storage:g('ads'),ad_user_data:g('ads'),ad_personalization:g('ads'),analytics_storage:g('analytics'),functionality_storage:'granted',security_storage:'granted',wait_for_update:500});
+    gtag('set','ads_data_redaction',!(c&&c.ads));})();
+    </script>
     <!-- Google Tag Manager -->
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
     new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -454,6 +462,7 @@
                 <a href="/" class="hover:text-white transition-colors">Strona główna</a>
                 <a href="audyt-paid-media" class="hover:text-white transition-colors">Pobierz PDF</a>
                 <a href="/#audit" class="hover:text-white transition-colors">Kontakt</a>
+                <a href="/polityka-prywatnosci" class="hover:text-white transition-colors">Prywatność</a>
             </div>
         </div>
     </footer>
@@ -481,5 +490,6 @@
             });
         }
     </script>
+    <script src="/cookie-consent.js" defer></script>
 </body>
 </html>

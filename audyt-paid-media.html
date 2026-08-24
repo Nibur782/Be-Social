@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
+    <!-- Google Consent Mode v2 - domyslnie brak zgody (musi byc PRZED GTM) -->
+    <script>
+    window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
+    (function(){var c=null;try{c=JSON.parse(localStorage.getItem('drConsent'));}catch(e){}
+    var g=function(k){return c&&c[k]?'granted':'denied';};
+    gtag('consent','default',{ad_storage:g('ads'),ad_user_data:g('ads'),ad_personalization:g('ads'),analytics_storage:g('analytics'),functionality_storage:'granted',security_storage:'granted',wait_for_update:500});
+    gtag('set','ads_data_redaction',!(c&&c.ads));})();
+    </script>
     <!-- Google Tag Manager -->
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
     new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -404,7 +412,7 @@
             <p class="text-slate-600 mb-10">Jeden e-mail. Checklista w formacie PDF. Żadnych newsletterów bez zgody.</p>
 
             <form id="download-form" class="bg-slate-50 border-2 border-blue-200 rounded-3xl p-8 md:p-10 form-highlight" method="POST">
-                <!-- Web3Forms - darmowy backend formularzy. WAŻNE: wklej swój access_key z https://web3forms.com/ -->
+                <!-- Web3Forms access_key - zweryfikowany, aktywny. -->
                 <input type="hidden" name="access_key" value="13dd45e3-f82b-48cf-a929-e3bab6c0b0b2">
                 <input type="hidden" name="subject" value="Nowy lead - PDF Audyt Paid Media (dawidrubin.pl)">
                 <input type="hidden" name="from_name" value="dawidrubin.pl - formularz PDF">
@@ -568,13 +576,14 @@
                 <a href="/" class="hover:text-white transition-colors">Strona główna</a>
                 <a href="case-study-vasco-usa" class="hover:text-white transition-colors">Case Study</a>
                 <a href="/#audit" class="hover:text-white transition-colors">Kontakt</a>
+                <a href="/polityka-prywatnosci" class="hover:text-white transition-colors">Prywatność</a>
             </div>
         </div>
     </footer>
 
     <script>
         // PDF delivery: wysyłka leada do Web3Forms + auto-download PDF dla użytkownika
-        // Setup: zarejestruj się na https://web3forms.com/, wklej access_key w polu hidden na początku formularza
+        // Backend: Web3Forms (access_key w polu hidden formularza).
         const PDF_URL = 'audyt-paid-media-checklista.pdf';
 
         const form = document.getElementById('download-form');
@@ -658,5 +667,6 @@
         }
     </script>
 
+    <script src="/cookie-consent.js" defer></script>
 </body>
 </html>

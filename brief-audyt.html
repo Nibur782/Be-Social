@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
+    <!-- Google Consent Mode v2 - domyslnie brak zgody (musi byc PRZED GTM) -->
+    <script>
+    window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
+    (function(){var c=null;try{c=JSON.parse(localStorage.getItem('drConsent'));}catch(e){}
+    var g=function(k){return c&&c[k]?'granted':'denied';};
+    gtag('consent','default',{ad_storage:g('ads'),ad_user_data:g('ads'),ad_personalization:g('ads'),analytics_storage:g('analytics'),functionality_storage:'granted',security_storage:'granted',wait_for_update:500});
+    gtag('set','ads_data_redaction',!(c&&c.ads));})();
+    </script>
     <!-- Google Tag Manager -->
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
     new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -130,6 +138,7 @@
 
             <!-- Form -->
             <form id="brief-form" method="POST" class="bg-white border border-gray-200 rounded-3xl p-8 md:p-10 shadow-sm">
+                <!-- Web3Forms access_key - zweryfikowany, aktywny. Fallback mailto uruchamia się gdyby API było niedostępne. -->
                 <input type="hidden" name="access_key" value="13dd45e3-f82b-48cf-a929-e3bab6c0b0b2">
                 <input type="hidden" name="subject" value="Nowy brief audytu (dawidrubin.pl)">
                 <input type="hidden" name="from_name" value="dawidrubin.pl - brief audytu">
@@ -306,7 +315,7 @@
                     <div class="bg-gradient-to-br from-blue-600 to-blue-800 text-white rounded-3xl p-6 md:p-8 my-6">
                         <div class="text-xs font-mono tracking-widest uppercase text-blue-200 mb-2">Wstępna wycena audytu</div>
                         <div class="text-3xl md:text-5xl font-bold mb-2">
-                            <span id="pricing-low">—</span> - <span id="pricing-high">—</span> <span class="text-2xl">zł netto</span>
+                            <span id="pricing-low">-</span> - <span id="pricing-high">-</span> <span class="text-2xl">zł netto</span>
                         </div>
                         <p class="text-blue-100 text-sm leading-relaxed">
                             Finalną wycenę z konkretną propozycją zakresu prac <strong class="text-white">otrzymasz mailem w ciągu 24h</strong>. Zerowa zobowiązań - decydujesz po przeczytaniu propozycji.
@@ -378,7 +387,7 @@
         <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center text-slate-400 text-sm font-medium gap-3">
             <a href="/" class="text-lg font-bold tracking-tighter italic text-white">DAWID<span class="text-blue-400">RUBIN</span></a>
             <div>&copy; <script>document.write(new Date().getFullYear())</script> Dawid Rubin</div>
-            <a href="mailto:kontakt@dawidrubin.pl" class="hover:text-white transition-colors">kontakt@dawidrubin.pl</a><a href="tel:+48665125308" class="hover:text-white transition-colors">+48 665 125 308</a>
+            <a href="mailto:kontakt@dawidrubin.pl" class="hover:text-white transition-colors">kontakt@dawidrubin.pl</a><a href="tel:+48665125308" class="hover:text-white transition-colors">+48 665 125 308</a><a href="/polityka-prywatnosci" class="hover:text-white transition-colors">Prywatność</a>
         </div>
     </footer>
 
@@ -485,6 +494,38 @@
             showStep(currentStep);
         });
 
+        function buildMailtoFallback() {
+            const fd = new FormData(form);
+            const scopes = fd.getAll('audit_type').join(', ') || '(nie wybrano)';
+            const body = [
+                'Cześć Dawid,',
+                '',
+                'Wypełniłem brief audytu na dawidrubin.pl (mail wysłany z fallbacku, bo formularz nie mógł się połączyć z backendem).',
+                '',
+                '── OBSZARY AUDYTU ──',
+                scopes,
+                '',
+                '── SKALA BIZNESU ──',
+                fd.get('scale') || '(nie wybrano)',
+                '',
+                '── SZCZEGÓŁY ──',
+                'Branża: ' + (fd.get('industry') || '-'),
+                'Strona: ' + (fd.get('website') || '-'),
+                'Rynki: ' + (fd.get('markets') || '-'),
+                'Główny problem: ' + (fd.get('main_problem') || '-'),
+                'Co próbowałem: ' + (fd.get('tried_before') || '-'),
+                '',
+                '── KONTAKT ──',
+                'Imię: ' + (fd.get('name') || '-'),
+                'Email: ' + (fd.get('email') || '-'),
+                'Telefon: ' + (fd.get('phone') || '-'),
+                'Firma: ' + (fd.get('company') || '-'),
+                '',
+                'Wstępna wycena wg widelka na stronie: ' + (fd.get('_quote_low') || '?') + ' - ' + (fd.get('_quote_high') || '?') + ' zł netto'
+            ].join('\n');
+            return 'mailto:kontakt@dawidrubin.pl?subject=' + encodeURIComponent('Brief audytu z dawidrubin.pl') + '&body=' + encodeURIComponent(body);
+        }
+
         form.addEventListener('submit', async (e) => {
             e.preventDefault();
             if (!validateStep(4)) return;
@@ -505,8 +546,15 @@
                     throw new Error(data.message || 'Wystąpił błąd przy wysyłce');
                 }
             } catch (err) {
-                console.error(err);
-                alert('Coś poszło nie tak przy wysyłce. Napisz bezpośrednio na kontakt@dawidrubin.pl - obsłużę ręcznie. Przepraszam za niedogodność!');
+                console.error('Web3Forms failed, offering mailto fallback:', err);
+                // Fallback: open user's email client with all form data pre-filled
+                const mailtoUrl = buildMailtoFallback();
+                const confirmed = confirm('Nie udało się wysłać briefu automatycznie. Kliknij OK - otworzę Twojego klienta pocztowego z gotowym mailem do wysłania (wszystkie odpowiedzi są w treści). Anuluj = wróć do formularza.');
+                if (confirmed) {
+                    window.location.href = mailtoUrl;
+                    showSuccess();
+                    return;
+                }
                 btnSubmit.disabled = false;
                 submitLabel.classList.remove('hidden');
                 submitSpinner.classList.add('hidden');
@@ -531,5 +579,6 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
     </script>
+    <script src="/cookie-consent.js" defer></script>
 </body>
 </html>

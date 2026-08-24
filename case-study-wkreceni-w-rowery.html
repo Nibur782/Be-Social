@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
+    <!-- Google Consent Mode v2 - domyslnie brak zgody (musi byc PRZED GTM) -->
+    <script>
+    window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
+    (function(){var c=null;try{c=JSON.parse(localStorage.getItem('drConsent'));}catch(e){}
+    var g=function(k){return c&&c[k]?'granted':'denied';};
+    gtag('consent','default',{ad_storage:g('ads'),ad_user_data:g('ads'),ad_personalization:g('ads'),analytics_storage:g('analytics'),functionality_storage:'granted',security_storage:'granted',wait_for_update:500});
+    gtag('set','ads_data_redaction',!(c&&c.ads));})();
+    </script>
     <!-- Google Tag Manager -->
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
     new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -244,7 +252,7 @@
             <div class="bento-card rounded-3xl overflow-hidden">
                 <div class="p-6 pb-4 flex items-center justify-between flex-wrap gap-3">
                     <div>
-                        <div class="font-bold text-slate-800 mb-1">Strona główna wkreceni-w-rowery.pl</div>
+                        <div class="font-bold text-slate-800 mb-1">Strona główna <a href="https://wkreceni-w-rowery.pl" target="_blank" rel="noopener" class="text-blue-600 hover:text-blue-800 underline underline-offset-2">wkreceni-w-rowery.pl</a></div>
                         <p class="text-slate-500 text-xs font-mono uppercase">Live preview - widok desktop</p>
                     </div>
                     <a href="https://wkreceni-w-rowery.pl" target="_blank" rel="noopener" class="inline-flex items-center gap-2 text-blue-600 text-xs font-bold hover:text-blue-800 transition-colors">
@@ -397,6 +405,7 @@
                 <a href="https://www.linkedin.com/in/dawidrubin" target="_blank" rel="noopener" class="hover:text-white transition-colors">LinkedIn</a>
                 <a href="audyt-paid-media" class="hover:text-white transition-colors">Pobierz PDF</a>
                 <a href="mailto:kontakt@dawidrubin.pl" class="hover:text-white transition-colors">Kontakt</a><a href="tel:+48665125308" class="hover:text-white transition-colors">+48 665 125 308</a>
+                <a href="/polityka-prywatnosci" class="hover:text-white transition-colors">Prywatność</a>
             </div>
         </div>
     </footer>
@@ -424,5 +433,6 @@
             });
         }
     </script>
+    <script src="/cookie-consent.js" defer></script>
 </body>
 </html>
