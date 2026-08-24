@@ -633,17 +633,33 @@
         });
 
         function showSuccess() {
-            const emailEl = form.querySelector('input[name="email"]');
-            const phoneEl = form.querySelector('input[name="phone"]');
-            const nameEl = form.querySelector('input[name="name"]');
+            const fd = new FormData(form);
+            const types = fd.getAll('project_type');
+            const low = parseInt(fd.get('_quote_low'), 10) || undefined;
+            const high = parseInt(fd.get('_quote_high'), 10) || undefined;
             window.dataLayer = window.dataLayer || [];
             window.dataLayer.push({
                 event: 'generate_lead',
                 form_name: 'brief_projekt',
+                offer_name: 'projekt',
                 form_destination: 'kontakt@dawidrubin.pl',
-                user_email: emailEl ? emailEl.value : undefined,
-                user_phone: phoneEl ? phoneEl.value : undefined,
-                user_name: nameEl ? nameEl.value : undefined
+                // zakres i skala - do segmentacji leadow w GA4
+                project_scope: types.join(' | '),
+                project_scope_count: types.length,
+                website_scope: fd.get('strona_scope') || undefined,
+                business_scale: fd.get('scale') || undefined,
+                industry: fd.get('industry') || undefined,
+                declared_budget: fd.get('budget') || undefined,
+                deadline: fd.get('deadline') || undefined,
+                // wycena orientacyjna - 'value' pozwala liczyc wartosc konwersji
+                quote_low: low,
+                quote_high: high,
+                value: (low && high) ? Math.round((low + high) / 2) : undefined,
+                currency: 'PLN',
+                user_email: fd.get('email') || undefined,
+                user_phone: fd.get('phone') || undefined,
+                user_name: fd.get('name') || undefined,
+                user_company: fd.get('company') || undefined
             });
             form.classList.add('hidden');
             document.getElementById('success').classList.remove('hidden');
@@ -651,5 +667,6 @@
         }
     </script>
     <script src="/cookie-consent.js" defer></script>
+    <script src="/tracking.js" defer></script>
 </body>
 </html>

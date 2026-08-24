@@ -547,7 +547,7 @@
                         <svg class="faq-icon w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/></svg>
                     </summary>
                     <div class="faq-body px-6 pb-6 -mt-2">
-                        <p class="text-slate-600 text-sm">To moment, w którym możemy porozmawiać. <a href="umow-rozmowe" class="text-blue-600 font-semibold hover:underline">Umów bezpłatną sesję wstępną (15 min)</a> albo od razu <a href="brief-audyt" class="text-blue-600 font-semibold hover:underline">zamów pełny audyt od 2 900 PLN</a> - w 2 tygodnie dostarczam diagnozę i plan naprawy.</p>
+                        <p class="text-slate-600 text-sm">To moment, w którym możemy porozmawiać. <a href="umow-rozmowe" data-track-offer="staly_partner" data-offer-price="2500" data-offer-location="cta_podstrona" class="text-blue-600 font-semibold hover:underline">Umów bezpłatną sesję wstępną (15 min)</a> albo od razu <a href="brief-audyt" data-track-offer="audyt" data-offer-price="1200" data-offer-location="cta_podstrona" class="text-blue-600 font-semibold hover:underline">zamów pełny audyt od 2 900 PLN</a> - w 2 tygodnie dostarczam diagnozę i plan naprawy.</p>
                     </div>
                 </details>
             </div>
@@ -596,6 +596,9 @@
             const link = document.createElement('a');
             link.href = PDF_URL;
             link.download = 'audyt-paid-media-checklista.pdf';
+            // data-no-track: zdarzenie download_pdf wysyla juz showSuccess() -
+            // bez tego tracking.js policzylby to pobranie drugi raz
+            link.setAttribute('data-no-track', '');
             document.body.appendChild(link);
             link.click();
             document.body.removeChild(link);
@@ -604,11 +607,14 @@
         function showSuccess() {
             const emailEl = form.querySelector('input[name="email"]');
             window.dataLayer = window.dataLayer || [];
+            // Zdarzenie DODATKOWE (nie glowna konwersja) - pobranie darmowej checklisty
             window.dataLayer.push({
-                event: 'generate_lead',
+                event: 'download_pdf',
                 form_name: 'pdf_download_audyt_paid_media',
                 form_destination: 'kontakt@dawidrubin.pl',
                 file_name: 'audyt-paid-media-checklista.pdf',
+                file_extension: 'pdf',
+                download_source: 'formularz',
                 user_email: emailEl ? emailEl.value : undefined
             });
             form.style.display = 'none';
@@ -668,5 +674,6 @@
     </script>
 
     <script src="/cookie-consent.js" defer></script>
+    <script src="/tracking.js" defer></script>
 </body>
 </html>
